@@ -8,22 +8,44 @@
 import UIKit
 
 class HomeVC: UIViewController {
-
+    
+    let backImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.backgroundColor = .systemPurple
+        
+        return imageView
+    }()
+    
+    lazy var homeView: HomeView = {
+        let home = HomeView()
+        
+        home.partCollection.delegate = self
+        home.partCollection.dataSource = self
+        home.partCollection.register(PartCustomItem.self, forCellWithReuseIdentifier: PartCustomItem.identifier)
+        return home
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        setImageView()
+        setHomeView()
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func setImageView() {
+        
+        view.addSubview(backImageView)
+        
+        backImageView.snp.makeConstraints {
+            
+            $0.top.leading.trailing.bottom.equalToSuperview()
+        }
     }
-    */
-
+    private func setHomeView() {
+        
+        view.addSubview(homeView)
+        
+        homeView.snp.makeConstraints {
+            $0.top.leading.trailing.bottom.equalTo(view.snp_margins)
+        }
+    }
 }

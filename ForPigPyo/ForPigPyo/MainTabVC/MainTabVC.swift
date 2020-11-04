@@ -27,6 +27,7 @@ class MainTabVC: UITabBarController {
     func makeNaviController(tabBarImage: String, rootViewController: UIViewController = UIViewController()) -> UINavigationController {
         
         let navController = UINavigationController(rootViewController: rootViewController)
+        
         navController.tabBarItem.image = UIImage(systemName: tabBarImage)
         navController.navigationBar.tintColor = .systemPurple
         
