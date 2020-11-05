@@ -17,7 +17,14 @@ class PartTimeVC: UIViewController {
         
         return imageView
     }()
-    let partTimeView = PartTimeView()
+    lazy var partTimeView: PartTimeView = {
+        let view = PartTimeView()
+        view.historyTable.delegate = self
+        view.historyTable.dataSource = self
+        view.historyTable.register(PartTimeCustomCell.self, forCellReuseIdentifier: PartTimeCustomCell.identifier)
+        
+        return view
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +33,8 @@ class PartTimeVC: UIViewController {
         setPartTimeView()
     }
     private func setView() {
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: nil)
         
         view.addSubview(backImageView)
         

@@ -34,7 +34,7 @@ class HomeVC: UIViewController {
     }
     private func setView() {
         
-        title = "List"
+        navigationItem.title = "List"
         
         view.addSubview(backImageView)
         

@@ -15,7 +15,7 @@ class PartTimeCustomCell: UITableViewCell {
     let dateLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.font = Design.nomalTextSize
+        label.font = Design.boldLargeTextSize
         label.text = "1일"
         
         return label
@@ -30,16 +30,32 @@ class PartTimeCustomCell: UITableViewCell {
     let workTimeLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.font = Design.smallTextSize
-        label.text = "1시간"
+        label.font = Design.nomalTextSize
+        label.text = "근무시간: 1시간"
         
         return label
     }()
     let overTimeLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.font = Design.smallTextSize
-        label.text = "1시간"
+        label.font = Design.nomalTextSize
+        label.text = "추가 근무시간: 1시간"
+        
+        return label
+    }()
+    let hourlyWageLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .white
+        label.font = Design.nomalTextSize
+        label.text = "시급: 5,000원"
+        
+        return label
+    }()
+    let totalPayLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .white
+        label.font = Design.boldNomalTextSize
+        label.text = "총급여: 12,500원"
         
         return label
     }()
@@ -47,9 +63,14 @@ class PartTimeCustomCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        self.backgroundColor = .clear
+        self.selectionStyle = .none
+        
         setDateLabel()
         setworkTimeLabel()
         setOverTimeLabel()
+        setHourlyWageLabel()
+        setTotalPayLabel()
     }
     private func setDateLabel() {
         
@@ -57,7 +78,8 @@ class PartTimeCustomCell: UITableViewCell {
         contentView.addSubview(dateLabel)
         
         dateLabel.snp.makeConstraints {
-            $0.top.leading.equalToSuperview().inset(Design.smallPadding)
+            $0.leading.equalToSuperview().inset(Design.LargePadding)
+            $0.centerY.equalToSuperview()
         }
     }
     private func setworkTimeLabel() {
@@ -65,8 +87,8 @@ class PartTimeCustomCell: UITableViewCell {
         contentView.addSubview(workTimeLabel)
         
         workTimeLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(Design.smallPadding)
-            $0.leading.equalTo(dateLabel.snp.trailing).offset(Design.nomalPadding)
+            $0.top.equalToSuperview().offset(Design.nomalPadding)
+            $0.leading.equalTo(dateLabel.snp.trailing).offset(Design.LargePadding)
         }
     }
     private func setOverTimeLabel() {
@@ -76,7 +98,25 @@ class PartTimeCustomCell: UITableViewCell {
         overTimeLabel.snp.makeConstraints {
             $0.top.equalTo(workTimeLabel.snp.bottom).offset(Design.smallPadding)
             $0.leading.equalTo(workTimeLabel)
-            $0.bottom.equalToSuperview().inset(Design.smallPadding)
+            $0.bottom.equalToSuperview().inset(Design.nomalPadding)
+        }
+    }
+    private func setHourlyWageLabel() {
+        
+        contentView.addSubview(hourlyWageLabel)
+        
+        hourlyWageLabel.snp.makeConstraints {
+            $0.top.equalTo(workTimeLabel.snp.top)
+            $0.trailing.equalToSuperview().inset(Design.LargePadding)
+        }
+    }
+    private func setTotalPayLabel() {
+        
+        contentView.addSubview(totalPayLabel)
+        
+        totalPayLabel.snp.makeConstraints {
+            $0.trailing.equalTo(hourlyWageLabel.snp.trailing)
+            $0.bottom.equalTo(overTimeLabel.snp.bottom)
         }
     }
     required init?(coder: NSCoder) {
