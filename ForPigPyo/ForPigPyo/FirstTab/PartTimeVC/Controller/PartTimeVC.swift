@@ -26,6 +26,8 @@ class PartTimeVC: UIViewController {
         return view
     }()
     
+    let data = PayList(month: [PayList.Month(data: [PayList.Month.Data(date: "12일", workingTime: 1, overWorkingTime: 1, hourlyWage: 5000, totalPay: 12500)])])
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
