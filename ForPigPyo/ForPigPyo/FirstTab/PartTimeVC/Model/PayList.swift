@@ -10,11 +10,11 @@ import Foundation
 
 struct PayList: Codable {
     
-    let month: [Month]
+    var month: [Month]
     
     struct Month: Codable {
         
-        let data: [Data]
+        var data: [Data]
         
         struct Data: Codable {
             

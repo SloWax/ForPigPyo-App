@@ -20,12 +20,6 @@ class PartTimeCustomCell: UITableViewCell {
         
         return label
     }()
-    let dateFormat: DateFormatter = {
-        let format = DateFormatter()
-        format.dateFormat = "dd일"
-        
-        return format
-    }()
     
     let workTimeLabel: UILabel = {
         let label = UILabel()
@@ -74,7 +68,6 @@ class PartTimeCustomCell: UITableViewCell {
     }
     private func setDateLabel() {
         
-        dateLabel.text = dateFormat.string(from: Date())
         contentView.addSubview(dateLabel)
         
         dateLabel.snp.makeConstraints {
@@ -118,6 +111,19 @@ class PartTimeCustomCell: UITableViewCell {
             $0.trailing.equalTo(hourlyWageLabel.snp.trailing)
             $0.bottom.equalTo(overTimeLabel.snp.bottom)
         }
+    }
+    func setValue(date: String, work: Int, over: Int, hourly: Int, total: Int) {
+        
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        
+        dateLabel.text = "\(date) 일"
+        
+        workTimeLabel.text = "근무시간: \(work) 시간"
+        overTimeLabel.text = "추가 근무시간: \(over) 시간"
+        
+        hourlyWageLabel.text = "시급: \(formatter.string(from: hourly as NSNumber) ?? "") 원"
+        totalPayLabel.text = "총 급여: \(formatter.string(from: total as NSNumber) ?? "") 원"
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

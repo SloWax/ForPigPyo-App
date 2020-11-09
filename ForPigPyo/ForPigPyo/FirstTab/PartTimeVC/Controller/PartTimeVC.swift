@@ -25,8 +25,11 @@ class PartTimeVC: UIViewController {
         
         return view
     }()
-    
-    let data = PayList(month: [PayList.Month(data: [PayList.Month.Data(date: "12일", workingTime: 1, overWorkingTime: 1, hourlyWage: 5000, totalPay: 12500)])])
+    let model = PartTimeVCModel()
+    var data = PayList(month: [PayList.Month(data: [
+                                                PayList.Month.Data(date: "13", workingTime: 1, overWorkingTime: 1, hourlyWage: 5000, totalPay: 12500),
+                                                PayList.Month.Data(date: "12", workingTime: 1, overWorkingTime: 1, hourlyWage: 5000, totalPay: 12500)]
+    )])
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +50,7 @@ class PartTimeVC: UIViewController {
     }
     private func setPartTimeView() {
         
+        partTimeView.totalLabel.text = "총 \(model.setTotalPay(data: data)) 원"
         view.addSubview(partTimeView)
         
         partTimeView.snp.makeConstraints {

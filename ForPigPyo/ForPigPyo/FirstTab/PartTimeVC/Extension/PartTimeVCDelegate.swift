@@ -16,8 +16,8 @@ extension PartTimeVC: UITableViewDelegate {
         switch editingStyle {
         case .delete:
             print("delete")
-                
-//            tableView.deleteRows(at: [indexPath], with: .automatic)
+            data.month[0].data.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
         default:
             fatalError()
         }
