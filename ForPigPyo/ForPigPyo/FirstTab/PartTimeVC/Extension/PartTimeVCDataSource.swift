@@ -18,10 +18,12 @@ extension PartTimeVC: UITableViewDataSource {
         let value = data.month[0].data[indexPath.row]
         
         cell.setValue(date: value.date,
-                      work: value.workingTime,
                       over: value.overWorkingTime,
+                      nightWork: value.nightWorkTime,
+                      overNight: value.overNightWorkTime,
                       hourly: value.hourlyWage,
-                      total: value.totalPay)
+                      totalWork: value.workingTime,
+                      dayPay: value.totalPay)
         
         return cell
     }

@@ -27,8 +27,8 @@ class PartTimeVC: UIViewController {
     }()
     let model = PartTimeVCModel()
     var data = PayList(month: [PayList.Month(data: [
-                                                PayList.Month.Data(date: "13", workingTime: 1, overWorkingTime: 1, hourlyWage: 5000, totalPay: 12500),
-                                                PayList.Month.Data(date: "12", workingTime: 1, overWorkingTime: 1, hourlyWage: 5000, totalPay: 12500)]
+                                                PayList.Month.Data(date: "13", workingTime: 10, overWorkingTime: 1, nightWorkTime: 1, overNightWorkTime: 1, hourlyWage: 5000, totalPay: 12500),
+                                                PayList.Month.Data(date: "12", workingTime: 10, overWorkingTime: 1, nightWorkTime: 1, overNightWorkTime: 1, hourlyWage: 5000, totalPay: 12500)]
     )])
     
     override func viewDidLoad() {
