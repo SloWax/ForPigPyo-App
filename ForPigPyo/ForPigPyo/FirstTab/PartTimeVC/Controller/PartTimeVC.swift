@@ -25,6 +25,12 @@ class PartTimeVC: UIViewController {
         
         return view
     }()
+    let saveView: PartTimeSaveView = {
+        let view = PartTimeSaveView()
+        
+        return view
+    }()
+    
     let model = PartTimeVCModel()
     var data = PayList(month: [PayList.Month(data: [
                                                 PayList.Month.Data(date: "13", workingTime: 10, overWorkingTime: 1, nightWorkTime: 1, overNightWorkTime: 1, hourlyWage: 5000, totalPay: 12500),
@@ -36,6 +42,7 @@ class PartTimeVC: UIViewController {
         
         setView()
         setPartTimeView()
+        setSaveView()
     }
     private func setView() {
         
@@ -56,6 +63,17 @@ class PartTimeVC: UIViewController {
         partTimeView.snp.makeConstraints {
             
             $0.top.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
+    }
+    private func setSaveView() {
+        
+        view.addSubview(saveView)
+        
+        saveView.snp.makeConstraints {
+            $0.top.equalTo(partTimeView.totalLabel)
+            $0.width.equalToSuperview().multipliedBy(0.83)
+            
+            $0.trailing.equalToSuperview()
         }
     }
 }

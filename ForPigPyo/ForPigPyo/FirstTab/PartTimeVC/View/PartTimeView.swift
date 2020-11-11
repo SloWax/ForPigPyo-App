@@ -55,12 +55,6 @@ class PartTimeView: UIView {
         return tableView
     }()
     
-    let contentsView: PartTimeContentView = {
-        let view = PartTimeContentView()
-        
-        return view
-    }()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
