@@ -3,6 +3,7 @@
 //  ForPigPyo
 //
 //  Created by 표건욱 on 2020/11/04.
+//  Copyright © 2020 SloWax. All rights reserved.
 //
 
 import UIKit
@@ -28,10 +29,12 @@ class HomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setImageView()
+        setView()
         setHomeView()
     }
-    private func setImageView() {
+    private func setView() {
+        
+        title = "List"
         
         view.addSubview(backImageView)
         
@@ -45,7 +48,7 @@ class HomeVC: UIViewController {
         view.addSubview(homeView)
         
         homeView.snp.makeConstraints {
-            $0.top.leading.trailing.bottom.equalTo(view.snp_margins)
+            $0.top.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
 }

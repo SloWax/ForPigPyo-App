@@ -3,6 +3,7 @@
 //  ForPigPyo
 //
 //  Created by 표건욱 on 2020/11/04.
+//  Copyright © 2020 SloWax. All rights reserved.
 //
 
 import UIKit
@@ -10,12 +11,12 @@ import Foundation
 
 struct Design {
     static let padding: CGFloat = 30
-    static let edge = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    static let edge = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
     static let tableEdge = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
     static let partLineCount: CGFloat = 1
     
-    static let menuBorderWidth: CGFloat = 0.2
-    static let borderWidth: CGFloat = 0.5
+    static let qurterBorderWidth: CGFloat = 0.25
+    static let halfBorderWidth: CGFloat = 0.5
     
     static let cornerRadius: CGFloat = 10
     
@@ -27,7 +28,7 @@ struct Design {
     static let nomalTextSize = UIFont.systemFont(ofSize: 16)
     static let LargeTextSize = UIFont.systemFont(ofSize: 24)
     
-    static let boldNomalSize = UIFont.boldSystemFont(ofSize: 16)
-    static let boldLargeSize = UIFont.boldSystemFont(ofSize: 24)
-    static let boldHeaderSize = UIFont.boldSystemFont(ofSize: 32)
+    static let boldNomalTextSize = UIFont.boldSystemFont(ofSize: 16)
+    static let boldLargeTextSize = UIFont.boldSystemFont(ofSize: 24)
+    static let boldHeaderTextSize = UIFont.boldSystemFont(ofSize: 32)
 }

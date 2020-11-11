@@ -3,6 +3,7 @@
 //  ForPigPyo
 //
 //  Created by 표건욱 on 2020/11/04.
+//  Copyright © 2020 SloWax. All rights reserved.
 //
 
 import UIKit
@@ -18,7 +19,7 @@ class PartCustomItem: UICollectionViewCell {
         
         return imageView
     }()
-    let title: UILabel = {
+    let titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
         
@@ -29,8 +30,15 @@ class PartCustomItem: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        setItem()
         setImageView()
-        setTitle()
+        setTitleLabel()
+    }
+    private func setItem() {
+        
+        self.layer.cornerRadius = Design.cornerRadius
+        self.layer.borderWidth = Design.halfBorderWidth
+        self.layer.borderColor = UIColor.white.cgColor
     }
     private func setImageView() {
         
@@ -41,11 +49,12 @@ class PartCustomItem: UICollectionViewCell {
             $0.width.equalTo(imageView.snp.height)
         }
     }
-    private func setTitle() {
+    private func setTitleLabel() {
         
-        contentView.addSubview(title)
+        titleLabel.font = Design.boldLargeTextSize
+        contentView.addSubview(titleLabel)
         
-        title.snp.makeConstraints {
+        titleLabel.snp.makeConstraints {
             $0.leading.equalTo(imageView.snp.trailing).offset(Design.nomalPadding)
             $0.centerY.equalTo(imageView.snp.centerY)
         }
@@ -53,7 +62,7 @@ class PartCustomItem: UICollectionViewCell {
     func setValue(image: String, text: String) {
         
         imageView.image = UIImage(systemName: image)
-        title.text = text
+        titleLabel.text = text
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

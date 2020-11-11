@@ -6,6 +6,6 @@ target 'ForPigPyo' do
   use_frameworks!
 
   # Pods for ForPigPyo
-    pod 'SnapKit'
+    pod 'SnapKit', '~> 5.0.0'
 
 end

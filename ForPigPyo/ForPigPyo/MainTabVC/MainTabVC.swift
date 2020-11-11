@@ -3,6 +3,7 @@
 //  ForPigPyo
 //
 //  Created by 표건욱 on 2020/11/03.
+//  Copyright © 2020 SloWax. All rights reserved.
 //
 
 import UIKit
@@ -26,11 +27,11 @@ class MainTabVC: UITabBarController {
     
     func makeNaviController(tabBarImage: String, rootViewController: UIViewController = UIViewController()) -> UINavigationController {
         
-        let navController = UINavigationController(rootViewController: rootViewController)
+        let naviController = UINavigationController(rootViewController: rootViewController)
         
-        navController.tabBarItem.image = UIImage(systemName: tabBarImage)
-        navController.navigationBar.tintColor = .systemPurple
+        naviController.tabBarItem.image = UIImage(systemName: tabBarImage)
+        naviController.navigationBar.tintColor = .systemPurple
         
-        return navController
+        return naviController
     }
 }
