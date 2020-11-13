@@ -71,7 +71,7 @@ class PartTimeVC: UIViewController {
         
         saveView.snp.makeConstraints {
             $0.top.equalTo(partTimeView.totalLabel)
-            $0.width.equalToSuperview().multipliedBy(0.83)
+            $0.width.equalToSuperview()
             
             $0.trailing.equalToSuperview()
         }
