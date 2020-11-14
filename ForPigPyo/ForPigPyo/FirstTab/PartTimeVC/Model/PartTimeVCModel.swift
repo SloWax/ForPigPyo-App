@@ -7,9 +7,11 @@
 //
 
 import Foundation
+import SnapKit
 
 struct PartTimeVCModel {
     
+    // MARK: tableView에 있는 일 급여 합산
     func setTotalPay(data: PayList) -> String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
@@ -22,5 +24,9 @@ struct PartTimeVCModel {
         }
         
         return formatter.string(from: result as NSNumber) ?? ""
+    }
+    // MARK: data 저장 및 수정 뷰 불러오기
+    func loadSaveView() {
+        
     }
 }

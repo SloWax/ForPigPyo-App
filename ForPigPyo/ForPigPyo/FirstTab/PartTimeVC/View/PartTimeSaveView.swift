@@ -10,6 +10,16 @@ import UIKit
 
 class PartTimeSaveView: UIView {
     
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .white
+        label.textAlignment = .center
+        label.font = Design.boldLargeTextSize
+        label.text = "title"
+        
+        return label
+    }()
+    
     let cancleButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("취소", for: .normal)
@@ -202,8 +212,7 @@ class PartTimeSaveView: UIView {
         
         setView()
         
-        setCancleButton()
-        setSaveButton()
+        setTitleLabel()
         
         setDateTextField()
         setHourlyWageTextField()
@@ -212,6 +221,9 @@ class PartTimeSaveView: UIView {
         setOverTextField()
         setNightTextField()
         setOverNightTextField()
+        
+        setCancleButton()
+        setSaveButton()
     }
     private func setView() {
         
@@ -220,24 +232,12 @@ class PartTimeSaveView: UIView {
         self.layer.borderColor = UIColor.white.cgColor
         self.backgroundColor = .systemPurple
     }
-    private func setCancleButton() {
+    private func setTitleLabel() {
         
-        self.addSubview(cancleButton)
+        self.addSubview(titleLabel)
         
-        cancleButton.snp.makeConstraints {
-            
-            $0.top.leading.equalToSuperview().inset(Design.LargePadding)
-            $0.trailing.equalTo(self.snp.centerX).offset(-Design.LargePadding / 2)
-        }
-    }
-    private func setSaveButton() {
-        
-        self.addSubview(saveButton)
-        
-        saveButton.snp.makeConstraints {
-            
-            $0.top.trailing.equalToSuperview().inset(Design.LargePadding)
-            $0.leading.equalTo(self.snp.centerX).offset(Design.LargePadding / 2)
+        titleLabel.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview().inset(Design.LargePadding)
         }
     }
     private func setDateTextField() {
@@ -247,14 +247,14 @@ class PartTimeSaveView: UIView {
         
         dateLabel.snp.makeConstraints {
 
-            $0.top.equalTo(cancleButton.snp.bottom).offset(Design.nomalPadding)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(Design.nomalPadding)
             $0.width.equalTo(self.snp.width).multipliedBy(0.06)
-            $0.trailing.equalTo(cancleButton)
+            $0.trailing.equalTo(self.snp.centerX)
         }
         dateTextField.snp.makeConstraints {
             
             $0.top.equalTo(dateLabel)
-            $0.leading.equalTo(cancleButton)
+            $0.leading.equalTo(titleLabel)
             $0.trailing.equalTo(dateLabel.snp.leading).offset(-Design.smallPadding)
         }
     }
@@ -267,12 +267,12 @@ class PartTimeSaveView: UIView {
             
             $0.top.equalTo(dateLabel)
             $0.width.equalTo(self.snp.width).multipliedBy(0.06)
-            $0.trailing.equalTo(saveButton)
+            $0.trailing.equalTo(titleLabel)
         }
         hourlyWageTextField.snp.makeConstraints {
             
             $0.top.equalTo(hourlyWageLabel)
-            $0.leading.equalTo(saveButton)
+            $0.leading.equalTo(self.snp.centerX)
             $0.trailing.equalTo(hourlyWageLabel.snp.leading).offset(-Design.smallPadding)
         }
     }
@@ -377,8 +377,6 @@ class PartTimeSaveView: UIView {
             
             $0.top.equalTo(overNightLabel)
             $0.leading.trailing.equalTo(nightTextField)
-            
-            $0.bottom.equalToSuperview().inset(Design.nomalPadding)
         }
         
         self.addSubview(overNightMinLabel)
@@ -393,6 +391,51 @@ class PartTimeSaveView: UIView {
             
             $0.top.equalTo(overNightMinLabel)
             $0.leading.trailing.equalTo(nightMinTextField)
+        }
+    }
+    private func setCancleButton() {
+        
+        self.addSubview(cancleButton)
+        
+        cancleButton.snp.makeConstraints {
+            
+            $0.top.equalTo(overNightLabel.snp.bottom).offset(Design.LargePadding)
+            $0.leading.equalTo(overNightTextField)
+            $0.trailing.equalTo(self.snp.centerX).offset(-Design.LargePadding / 2)
+            
+            $0.bottom.equalToSuperview().inset(Design.LargePadding)
+        }
+    }
+    private func setSaveButton() {
+        
+        self.addSubview(saveButton)
+        
+        saveButton.snp.makeConstraints {
+            
+            $0.top.equalTo(cancleButton)
+            $0.leading.equalTo(self.snp.centerX).offset(Design.LargePadding / 2)
+            $0.trailing.equalTo(overNightMinLabel)
+        }
+    }
+    func setValue(title: String, isAdd: Bool, value: PayList.Month.Data?) {
+        
+        titleLabel.text = title
+        
+        if let value = value {
+            
+            dateTextField.text = value.date
+            hourlyWageTextField.text = "\(value.hourlyWage)"
+
+            totalTextField.text = "\(value.workingTime)"
+            overTextField.text = "\(value.overWorkingTime)"
+            nightTextField.text = "\(value.nightWorkTime)"
+            overNightTextField.text = "\(value.overNightWorkTime)"
+            
+            return
+        }
+        
+        [dateTextField, hourlyWageTextField, totalTextField, overTextField, nightTextField, overNightTextField].forEach { (textField) in
+            textField.text = nil
         }
     }
     required init?(coder: NSCoder) {

@@ -22,4 +22,9 @@ extension PartTimeVC: UITableViewDelegate {
             fatalError()
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        loadSaveView(isAdd: false, index: indexPath, title: "수정하기")
+    }
 }

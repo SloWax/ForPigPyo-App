@@ -11,13 +11,13 @@ import SnapKit
 
 class PartTimeVC: UIViewController {
     
-    let backImageView: UIImageView = {
+    private let backImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .systemPurple
         
         return imageView
     }()
-    lazy var partTimeView: PartTimeView = {
+    private lazy var partTimeView: PartTimeView = {
         let view = PartTimeView()
         view.historyTable.delegate = self
         view.historyTable.dataSource = self
@@ -25,11 +25,12 @@ class PartTimeVC: UIViewController {
         
         return view
     }()
-    let saveView: PartTimeSaveView = {
+    private let saveView: PartTimeSaveView = {
         let view = PartTimeSaveView()
         
         return view
     }()
+    private var constraint: Constraint?
     
     let model = PartTimeVCModel()
     var data = PayList(month: [PayList.Month(data: [
@@ -46,7 +47,7 @@ class PartTimeVC: UIViewController {
     }
     private func setView() {
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addSaveView(_:)))
         
         view.addSubview(backImageView)
         
@@ -67,13 +68,44 @@ class PartTimeVC: UIViewController {
     }
     private func setSaveView() {
         
+        [saveView.cancleButton, saveView.saveButton].forEach({ (button) in
+            button.addTarget(self, action: #selector(returnSaveView(_:)), for: .touchUpInside)
+        })
         view.addSubview(saveView)
         
         saveView.snp.makeConstraints {
             $0.top.equalTo(partTimeView.totalLabel)
             $0.width.equalToSuperview()
-            
-            $0.trailing.equalToSuperview()
+            constraint = $0.leading.equalTo(view.snp.trailing).constraint
         }
+    }
+    func loadSaveView(isAdd: Bool, index: IndexPath?, title: String) {
+        if isAdd == true {
+            
+            saveView.setValue(title: title, isAdd: isAdd, value: nil)
+        } else {
+            
+            saveView.setValue(title: title, isAdd: isAdd, value: data.month[0].data[index?.row ?? 0])
+        }
+        
+        UIView.animate(withDuration: 0.25) {
+            
+            self.constraint?.update(offset: -self.view.frame.width)
+            self.view.layoutIfNeeded()
+        }
+    }
+    @objc private func returnSaveView(_ sender: UIButton) {
+        
+        UIView.animate(withDuration: 0.25) {
+            
+            self.constraint?.update(offset: 0)
+            self.view.layoutIfNeeded()
+        }
+        
+        
+    }
+    @objc private func addSaveView(_ sender: UIButton) {
+        
+        loadSaveView(isAdd: true, index: nil, title: "추가하기")
     }
 }
