@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SnapKit
 
 struct PartTimeVCModel {
     
@@ -25,8 +24,16 @@ struct PartTimeVCModel {
         
         return formatter.string(from: result as NSNumber) ?? ""
     }
-    // MARK: data 저장 및 수정 뷰 불러오기
-    func loadSaveView() {
+    // MARK: data 저장 및 수정
+    func saveData(division: String, index: IndexPath) {
         
+        switch division {
+        case "추가하기":
+            <#code#>
+        case "수정하기":
+            <#code#>
+        default:
+            fatalError()
+        }
     }
 }

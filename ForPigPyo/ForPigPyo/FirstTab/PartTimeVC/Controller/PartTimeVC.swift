@@ -79,6 +79,14 @@ class PartTimeVC: UIViewController {
             constraint = $0.leading.equalTo(view.snp.trailing).constraint
         }
     }
+    private func moveSaveView(offset: CGFloat) {
+        
+        UIView.animate(withDuration: 0.25) {
+            
+            self.constraint?.update(offset: offset)
+            self.view.layoutIfNeeded()
+        }
+    }
     func loadSaveView(isAdd: Bool, index: IndexPath?, title: String) {
         if isAdd == true {
             
@@ -88,24 +96,20 @@ class PartTimeVC: UIViewController {
             saveView.setValue(title: title, isAdd: isAdd, value: data.month[0].data[index?.row ?? 0])
         }
         
-        UIView.animate(withDuration: 0.25) {
-            
-            self.constraint?.update(offset: -self.view.frame.width)
-            self.view.layoutIfNeeded()
-        }
-    }
-    @objc private func returnSaveView(_ sender: UIButton) {
-        
-        UIView.animate(withDuration: 0.25) {
-            
-            self.constraint?.update(offset: 0)
-            self.view.layoutIfNeeded()
-        }
-        
-        
+        moveSaveView(offset: -view.frame.width)
     }
     @objc private func addSaveView(_ sender: UIButton) {
         
         loadSaveView(isAdd: true, index: nil, title: "추가하기")
+    }
+    @objc private func returnSaveView(_ sender: UIButton) {
+        
+        if sender.tag == 1 {
+            print("save")
+            let division = saveView.titleLabel.text
+            model.saveData(division: division ?? "")
+        }
+        
+        moveSaveView(offset: 0)
     }
 }

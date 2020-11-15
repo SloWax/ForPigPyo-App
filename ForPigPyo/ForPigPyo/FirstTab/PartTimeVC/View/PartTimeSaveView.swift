@@ -27,6 +27,7 @@ class PartTimeSaveView: UIView {
         button.layer.cornerRadius = Design.cornerRadius
         button.tintColor = .systemPurple
         button.backgroundColor = .white
+        button.tag = 0
         
         return button
     }()
@@ -37,6 +38,7 @@ class PartTimeSaveView: UIView {
         button.layer.cornerRadius = Design.cornerRadius
         button.tintColor = .systemPurple
         button.backgroundColor = .white
+        button.tag = 1
         
         return button
     }()
