@@ -17,12 +17,6 @@ class PartTimeView: UIView {
         
         return label
     }()
-    let dateFormat: DateFormatter = {
-        let format = DateFormatter()
-        format.dateFormat = "yyyy년 MM월"
-        
-        return format
-    }()
     let totalLabel: UILabel = {
         let label = UILabel()
         label.text = "총 0 원"
@@ -65,7 +59,6 @@ class PartTimeView: UIView {
     }
     private func setDateLabel() {
         
-        dateLabel.text = dateFormat.string(from: Date())
         self.addSubview(dateLabel)
         
         dateLabel.snp.makeConstraints {

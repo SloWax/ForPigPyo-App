@@ -20,29 +20,6 @@ class PartTimeSaveView: UIView {
         return label
     }()
     
-    let cancleButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("취소", for: .normal)
-        button.titleLabel?.font = Design.boldNomalTextSize
-        button.layer.cornerRadius = Design.cornerRadius
-        button.tintColor = .systemPurple
-        button.backgroundColor = .white
-        button.tag = 0
-        
-        return button
-    }()
-    let saveButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("저장", for: .normal)
-        button.titleLabel?.font = Design.boldNomalTextSize
-        button.layer.cornerRadius = Design.cornerRadius
-        button.tintColor = .systemPurple
-        button.backgroundColor = .white
-        button.tag = 1
-        
-        return button
-    }()
-    
     let dateLabel: UILabel = {
         let label = UILabel()
         label.text = "일"
@@ -208,6 +185,28 @@ class PartTimeSaveView: UIView {
         return textField
     }()
     
+    let cancleButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("취소", for: .normal)
+        button.titleLabel?.font = Design.boldNomalTextSize
+        button.layer.cornerRadius = Design.cornerRadius
+        button.tintColor = .systemPurple
+        button.backgroundColor = .white
+        button.tag = 0
+        
+        return button
+    }()
+    let saveButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("저장", for: .normal)
+        button.titleLabel?.font = Design.boldNomalTextSize
+        button.layer.cornerRadius = Design.cornerRadius
+        button.tintColor = .systemPurple
+        button.backgroundColor = .white
+        button.tag = 1
+        
+        return button
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -419,11 +418,13 @@ class PartTimeSaveView: UIView {
             $0.trailing.equalTo(overNightMinLabel)
         }
     }
-    func setValue(title: String, isAdd: Bool, value: PayList.Month.Data?) {
+    func setValue(title: String, date: String?, index: Int, value: PayList.Month.Data?) {
         
         titleLabel.text = title
         
         if let value = value {
+            
+            titleLabel.tag = index
             
             dateTextField.text = value.date
             hourlyWageTextField.text = "\(value.hourlyWage)"
@@ -436,7 +437,9 @@ class PartTimeSaveView: UIView {
             return
         }
         
-        [dateTextField, hourlyWageTextField, totalTextField, overTextField, nightTextField, overNightTextField].forEach { (textField) in
+        dateTextField.text = date
+        
+        [hourlyWageTextField, totalTextField, overTextField, nightTextField, overNightTextField].forEach { (textField) in
             textField.text = nil
         }
     }

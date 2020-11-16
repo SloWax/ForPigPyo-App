@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6E30889925541C43001D006F /* PartTimeCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E30889825541C43001D006F /* PartTimeCustomCell.swift */; };
+		6E8552FF2564FC880077302E /* PartTimeSaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8552FE2564FC880077302E /* PartTimeSaveView.swift */; };
 		6E8CFFCD255175350002D202 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8CFFCC255175350002D202 /* AppDelegate.swift */; };
 		6E8CFFD7255175350002D202 /* ForPigPyo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6E8CFFD5255175350002D202 /* ForPigPyo.xcdatamodeld */; };
 		6E8CFFD9255175380002D202 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E8CFFD8255175380002D202 /* Assets.xcassets */; };
@@ -20,7 +21,6 @@
 		6EBE4B5E25541BB000CA73E9 /* PartTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBE4B5C25541BAF00CA73E9 /* PartTimeView.swift */; };
 		6EC1736A255C9B870023F365 /* PayList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC17369255C9B870023F365 /* PayList.swift */; };
 		6EC1736F255CAFC30023F365 /* PartTimeVCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC1736E255CAFC30023F365 /* PartTimeVCModel.swift */; };
-		6EC1738D255DC67E0023F365 /* PartTimeSaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC1738C255DC67E0023F365 /* PartTimeSaveView.swift */; };
 		6ED0728625529266000EE881 /* MainTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED0728525529266000EE881 /* MainTabVC.swift */; };
 		6ED072982552934A000EE881 /* MyPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED072972552934A000EE881 /* MyPageVC.swift */; };
 		6EFF5B0E2553F715007BAAF2 /* HomeVCDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFF5AFF2553F715007BAAF2 /* HomeVCDataSource.swift */; };
@@ -53,6 +53,7 @@
 /* Begin PBXFileReference section */
 		69905FD33D62068D7289E2D0 /* Pods-ForPigPyo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ForPigPyo.release.xcconfig"; path = "Target Support Files/Pods-ForPigPyo/Pods-ForPigPyo.release.xcconfig"; sourceTree = "<group>"; };
 		6E30889825541C43001D006F /* PartTimeCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartTimeCustomCell.swift; sourceTree = "<group>"; };
+		6E8552FE2564FC880077302E /* PartTimeSaveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartTimeSaveView.swift; sourceTree = "<group>"; };
 		6E8CFFC9255175350002D202 /* ForPigPyo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForPigPyo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E8CFFCC255175350002D202 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6E8CFFD6255175350002D202 /* ForPigPyo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ForPigPyo.xcdatamodel; sourceTree = "<group>"; };
@@ -71,7 +72,6 @@
 		6EBE4B5C25541BAF00CA73E9 /* PartTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartTimeView.swift; sourceTree = "<group>"; };
 		6EC17369255C9B870023F365 /* PayList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayList.swift; sourceTree = "<group>"; };
 		6EC1736E255CAFC30023F365 /* PartTimeVCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartTimeVCModel.swift; sourceTree = "<group>"; };
-		6EC1738C255DC67E0023F365 /* PartTimeSaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartTimeSaveView.swift; sourceTree = "<group>"; };
 		6ED0728525529266000EE881 /* MainTabVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabVC.swift; sourceTree = "<group>"; };
 		6ED072972552934A000EE881 /* MyPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageVC.swift; sourceTree = "<group>"; };
 		6EFF5AFF2553F715007BAAF2 /* HomeVCDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVCDataSource.swift; sourceTree = "<group>"; };
@@ -258,8 +258,8 @@
 			isa = PBXGroup;
 			children = (
 				6EBE4B5C25541BAF00CA73E9 /* PartTimeView.swift */,
-				6EC1738C255DC67E0023F365 /* PartTimeSaveView.swift */,
 				6E30889825541C43001D006F /* PartTimeCustomCell.swift */,
+				6E8552FE2564FC880077302E /* PartTimeSaveView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -523,7 +523,7 @@
 				6EC1736F255CAFC30023F365 /* PartTimeVCModel.swift in Sources */,
 				6EFF5B132553F715007BAAF2 /* HomeView.swift in Sources */,
 				6E8CFFD7255175350002D202 /* ForPigPyo.xcdatamodeld in Sources */,
-				6EC1738D255DC67E0023F365 /* PartTimeSaveView.swift in Sources */,
+				6E8552FF2564FC880077302E /* PartTimeSaveView.swift in Sources */,
 				6E30889925541C43001D006F /* PartTimeCustomCell.swift in Sources */,
 				6EBE4B5D25541BB000CA73E9 /* PartTimeVC.swift in Sources */,
 				6EFF5B0F2553F715007BAAF2 /* HomeVCDelegate.swift in Sources */,

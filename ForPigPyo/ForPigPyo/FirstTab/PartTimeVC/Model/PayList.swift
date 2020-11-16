@@ -26,7 +26,7 @@ struct PayList: Codable {
             let overNightWorkTime: Int
             
             let hourlyWage: Int
-            let totalPay: Int
+            let totalPay: Double
         }
     }
 }

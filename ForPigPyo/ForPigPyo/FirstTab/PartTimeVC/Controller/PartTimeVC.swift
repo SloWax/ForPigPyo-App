@@ -11,13 +11,15 @@ import SnapKit
 
 class PartTimeVC: UIViewController {
     
+    static let forkey = "PartTimeVC"
+    
     private let backImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .systemPurple
         
         return imageView
     }()
-    private lazy var partTimeView: PartTimeView = {
+    lazy var partTimeView: PartTimeView = {
         let view = PartTimeView()
         view.historyTable.delegate = self
         view.historyTable.dataSource = self
@@ -25,18 +27,20 @@ class PartTimeVC: UIViewController {
         
         return view
     }()
+    private let dateFormat: DateFormatter = {
+        let format = DateFormatter()
+        format.dateFormat = "yyyy년 MM월"
+        
+        return format
+    }()
     private let saveView: PartTimeSaveView = {
         let view = PartTimeSaveView()
         
         return view
     }()
     private var constraint: Constraint?
-    
     let model = PartTimeVCModel()
-    var data = PayList(month: [PayList.Month(data: [
-                                                PayList.Month.Data(date: "13", workingTime: 10, overWorkingTime: 1, nightWorkTime: 1, overNightWorkTime: 1, hourlyWage: 5000, totalPay: 12500),
-                                                PayList.Month.Data(date: "12", workingTime: 10, overWorkingTime: 1, nightWorkTime: 1, overNightWorkTime: 1, hourlyWage: 5000, totalPay: 12500)]
-    )])
+    var data: PayList?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +50,8 @@ class PartTimeVC: UIViewController {
         setSaveView()
     }
     private func setView() {
+        
+        data = model.loadData() ?? PayList(month: [PayList.Month(data: [PayList.Month.Data]())])
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addSaveView(_:)))
         
@@ -58,6 +64,7 @@ class PartTimeVC: UIViewController {
     }
     private func setPartTimeView() {
         
+        partTimeView.dateLabel.text = dateFormat.string(from: Date())
         partTimeView.totalLabel.text = "총 \(model.setTotalPay(data: data)) 원"
         view.addSubview(partTimeView)
         
@@ -67,12 +74,12 @@ class PartTimeVC: UIViewController {
         }
     }
     private func setSaveView() {
-        
+
         [saveView.cancleButton, saveView.saveButton].forEach({ (button) in
             button.addTarget(self, action: #selector(returnSaveView(_:)), for: .touchUpInside)
         })
         view.addSubview(saveView)
-        
+
         saveView.snp.makeConstraints {
             $0.top.equalTo(partTimeView.totalLabel)
             $0.width.equalToSuperview()
@@ -80,36 +87,61 @@ class PartTimeVC: UIViewController {
         }
     }
     private func moveSaveView(offset: CGFloat) {
-        
+
         UIView.animate(withDuration: 0.25) {
-            
+
             self.constraint?.update(offset: offset)
             self.view.layoutIfNeeded()
         }
     }
-    func loadSaveView(isAdd: Bool, index: IndexPath?, title: String) {
+    func loadSaveView(isAdd: Bool, index: Int, title: String) {
         if isAdd == true {
+                let format = DateFormatter()
+                format.dateFormat = "dd"
             
-            saveView.setValue(title: title, isAdd: isAdd, value: nil)
+            saveView.setValue(title: title, date: format.string(from: Date()), index: index, value: nil)
         } else {
             
-            saveView.setValue(title: title, isAdd: isAdd, value: data.month[0].data[index?.row ?? 0])
+            saveView.setValue(title: title, date: nil, index: index, value: data?.month[0].data[index])
         }
         
         moveSaveView(offset: -view.frame.width)
     }
     @objc private func addSaveView(_ sender: UIButton) {
         
-        loadSaveView(isAdd: true, index: nil, title: "추가하기")
+        loadSaveView(isAdd: true, index: 0, title: "추가하기")
     }
     @objc private func returnSaveView(_ sender: UIButton) {
         
+        
         if sender.tag == 1 {
-            print("save")
-            let division = saveView.titleLabel.text
-            model.saveData(division: division ?? "")
+            
+            let division = saveView.titleLabel
+            
+            let totalSum = model.totalPaySum(total: Double(saveView.totalTextField.text ?? "") ?? 0,
+                                             totalMin: Double(saveView.totalMinTextField.text ?? "") ?? 0,
+                                             hourly: Double(saveView.hourlyWageTextField.text ?? "") ?? 0,
+                                             over: Double(saveView.overTextField.text ?? "") ?? 0,
+                                             overMin: Double(saveView.overMinTextField.text ?? "") ?? 0,
+                                             night: Double(saveView.nightTextField.text ?? "") ?? 0,
+                                             nightMin: Double(saveView.nightMinTextField.text ?? "") ?? 0,
+                                             overNight: Double(saveView.overNightTextField.text ?? "") ?? 0,
+                                             overNightMin: Double(saveView.overNightMinTextField.text ?? "") ?? 0)
+            
+            let value = PayList.Month.Data(date: saveView.dateTextField.text ?? "",
+                                           workingTime: Int(saveView.totalTextField.text ?? "") ?? 0,
+                                           overWorkingTime: Int(saveView.overTextField.text ?? "") ?? 0,
+                                           nightWorkTime: Int(saveView.nightTextField.text ?? "") ?? 0,
+                                           overNightWorkTime: Int(saveView.overNightTextField.text ?? "") ?? 0,
+                                           hourlyWage: Int(saveView.hourlyWageTextField.text ?? "") ?? 0,
+                                           totalPay: totalSum)
+            
+            data = model.editData(division: division.text ?? "",data: data, index: division.tag, value: value)
         }
         
+        model.saveData(data: data ?? PayList(month: [PayList.Month(data: [PayList.Month.Data]())]))
+        partTimeView.totalLabel.text = "총 \(model.setTotalPay(data: data)) 원"
+        partTimeView.historyTable.reloadData()
         moveSaveView(offset: 0)
     }
 }
