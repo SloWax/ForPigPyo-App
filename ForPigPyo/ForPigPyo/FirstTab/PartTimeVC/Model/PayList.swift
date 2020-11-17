@@ -21,12 +21,19 @@ struct PayList: Codable {
             let date: String
             
             let workingTime: Int
-            let overWorkingTime: Int
-            let nightWorkTime: Int
-            let overNightWorkTime: Int
+            let workingTimeMin: Int
+            
+            let overTime: Int
+            let overTimeMin: Int
+            
+            let nightTime: Int
+            let nightTimeMin: Int
+            
+            let overNightTime: Int
+            let overNightTimeMin: Int
             
             let hourlyWage: Int
-            let totalPay: Double
+            let totalPay: Int
         }
     }
 }

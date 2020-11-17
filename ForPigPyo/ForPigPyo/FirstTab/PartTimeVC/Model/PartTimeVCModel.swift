@@ -16,7 +16,7 @@ struct PartTimeVCModel {
         formatter.numberStyle = .decimal
         
         let value = data?.month[0].data
-        var result: Double = 0
+        var result = 0
         
         guard value?.count != 0 else { return "0" }
         
@@ -61,7 +61,7 @@ struct PartTimeVCModel {
         return nil
     }
     // MARK: 일 급여 계산 Model
-    func totalPaySum(total: Double, totalMin: Double, hourly: Double, over: Double, overMin: Double, night: Double, nightMin: Double, overNight: Double, overNightMin: Double) -> Double {
+    func totalPaySum(total: Double, totalMin: Double, hourly: Double, over: Double, overMin: Double, night: Double, nightMin: Double, overNight: Double, overNightMin: Double) -> Int {
         
         let totalAll = convertTime(hour: total, min: totalMin)
         let overAll = convertTime(hour: over, min: overMin)
@@ -75,7 +75,7 @@ struct PartTimeVCModel {
         
         let totalPay = pay + overPay + nightPay + overNightPay
         
-        return totalPay
+        return Int(totalPay)
     }
     private func convertTime(hour: Double, min: Double) -> Double {
         

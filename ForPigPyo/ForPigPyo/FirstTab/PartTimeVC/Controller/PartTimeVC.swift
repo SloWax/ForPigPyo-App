@@ -130,9 +130,13 @@ class PartTimeVC: UIViewController {
             
             let value = PayList.Month.Data(date: saveView.dateTextField.text ?? "",
                                            workingTime: Int(saveView.totalTextField.text ?? "") ?? 0,
-                                           overWorkingTime: Int(saveView.overTextField.text ?? "") ?? 0,
-                                           nightWorkTime: Int(saveView.nightTextField.text ?? "") ?? 0,
-                                           overNightWorkTime: Int(saveView.overNightTextField.text ?? "") ?? 0,
+                                           workingTimeMin: Int(saveView.totalMinTextField.text ?? "") ?? 0,
+                                           overTime: Int(saveView.overTextField.text ?? "") ?? 0,
+                                           overTimeMin: Int(saveView.overMinTextField.text ?? "") ?? 0,
+                                           nightTime: Int(saveView.nightTextField.text ?? "") ?? 0,
+                                           nightTimeMin: Int(saveView.nightMinTextField.text ?? "") ?? 0,
+                                           overNightTime: Int(saveView.overNightTextField.text ?? "") ?? 0,
+                                           overNightTimeMin: Int(saveView.overNightMinTextField.text ?? "") ?? 0,
                                            hourlyWage: Int(saveView.hourlyWageTextField.text ?? "") ?? 0,
                                            totalPay: totalSum)
             

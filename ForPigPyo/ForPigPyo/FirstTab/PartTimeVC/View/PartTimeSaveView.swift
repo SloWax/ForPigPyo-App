@@ -430,9 +430,9 @@ class PartTimeSaveView: UIView {
             hourlyWageTextField.text = "\(value.hourlyWage)"
 
             totalTextField.text = "\(value.workingTime)"
-            overTextField.text = "\(value.overWorkingTime)"
-            nightTextField.text = "\(value.nightWorkTime)"
-            overNightTextField.text = "\(value.overNightWorkTime)"
+            overTextField.text = "\(value.overTime)"
+            nightTextField.text = "\(value.nightTime)"
+            overNightTextField.text = "\(value.overNightTime)"
             
             return
         }
