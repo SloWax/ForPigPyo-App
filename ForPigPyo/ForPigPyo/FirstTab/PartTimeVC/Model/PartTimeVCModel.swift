@@ -26,7 +26,7 @@ struct PartTimeVCModel {
         
         return formatter.string(from: result as NSNumber) ?? ""
     }
-    // MARK: data 저장 및 수정
+    // MARK: data 추가 및 수정
     func editData(division: String, data: PayList? ,index: Int, value: PayList.Month.Data) -> PayList? {
         
         var result = data
@@ -44,6 +44,7 @@ struct PartTimeVCModel {
             fatalError()
         }
     }
+    // MARK: data 저장 및 로드
     func saveData(data: PayList) {
         
         if let encoded = try? JSONEncoder().encode(data) {

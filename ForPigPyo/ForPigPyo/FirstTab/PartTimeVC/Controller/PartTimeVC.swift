@@ -74,7 +74,11 @@ class PartTimeVC: UIViewController {
         }
     }
     private func setSaveView() {
-
+        
+        [saveView.dateTextField, saveView.totalTextField, saveView.totalMinTextField, saveView.overTextField, saveView.overMinTextField, saveView.nightTextField, saveView.nightMinTextField, saveView.overNightTextField, saveView.overNightMinTextField].forEach { (textField) in
+            textField.addTarget(self, action: #selector(textCountLimit(_:)), for: .editingChanged)
+        }
+        
         [saveView.cancleButton, saveView.saveButton].forEach({ (button) in
             button.addTarget(self, action: #selector(returnSaveView(_:)), for: .touchUpInside)
         })
@@ -92,6 +96,13 @@ class PartTimeVC: UIViewController {
 
             self.constraint?.update(offset: offset)
             self.view.layoutIfNeeded()
+        }
+    }
+    private func setLabelAlpha(label: UILabel, value: CGFloat) {
+        
+        UIView.animate(withDuration: 0.25) {
+            
+            label.alpha = value
         }
     }
     func loadSaveView(isAdd: Bool, index: Int, title: String) {
@@ -112,7 +123,6 @@ class PartTimeVC: UIViewController {
         loadSaveView(isAdd: true, index: 0, title: "추가하기")
     }
     @objc private func returnSaveView(_ sender: UIButton) {
-        
         
         if sender.tag == 1 {
             
@@ -141,11 +151,37 @@ class PartTimeVC: UIViewController {
                                            totalPay: totalSum)
             
             data = model.editData(division: division.text ?? "",data: data, index: division.tag, value: value)
+            model.saveData(data: data ?? PayList(month: [PayList.Month(data: [PayList.Month.Data]())]))
+            partTimeView.totalLabel.text = "총 \(model.setTotalPay(data: data)) 원"
+            partTimeView.historyTable.reloadData()
+            
         }
         
-        model.saveData(data: data ?? PayList(month: [PayList.Month(data: [PayList.Month.Data]())]))
-        partTimeView.totalLabel.text = "총 \(model.setTotalPay(data: data)) 원"
-        partTimeView.historyTable.reloadData()
         moveSaveView(offset: 0)
+    }
+    @objc private func textCountLimit(_ sender: UITextField) {
+        
+        switch sender {
+        case saveView.dateTextField:
+            
+            sender.text?.count == 0 ? setLabelAlpha(label: saveView.dayLabel, value: 0) : setLabelAlpha(label: saveView.dayLabel, value: 1)
+        case saveView.totalTextField, saveView.totalMinTextField:
+            
+            sender.text?.count == 0 ? setLabelAlpha(label: saveView.workLabel, value: 0) : setLabelAlpha(label: saveView.workLabel, value: 1)
+        case saveView.overTextField, saveView.overMinTextField:
+            
+            sender.text?.count == 0 ? setLabelAlpha(label: saveView.overWorkLabel, value: 0) : setLabelAlpha(label: saveView.overWorkLabel, value: 1)
+        case saveView.nightTextField, saveView.nightMinTextField:
+            
+            sender.text?.count == 0 ? setLabelAlpha(label: saveView.nightWorkLabel, value: 0) : setLabelAlpha(label: saveView.nightWorkLabel, value: 1)
+        case saveView.overNightTextField, saveView.overNightMinTextField:
+            
+            sender.text?.count == 0 ? setLabelAlpha(label: saveView.overNightWorkLabel, value: 0) : setLabelAlpha(label: saveView.overNightWorkLabel, value: 1)
+        default:
+            
+            fatalError()
+        }
+        
+        guard sender.text?.count ?? 0 < 3  else { return sender.deleteBackward() }
     }
 }

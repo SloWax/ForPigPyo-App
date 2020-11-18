@@ -21,6 +21,8 @@ extension PartTimeVC: UITableViewDelegate {
             tableView.deleteRows(at: [indexPath], with: .automatic)
             
             partTimeView.totalLabel.text = "총 \(model.setTotalPay(data: data)) 원"
+            
+            model.saveData(data: data ?? PayList(month: [PayList.Month(data: [PayList.Month.Data]())]))
         default:
             fatalError()
         }
@@ -30,4 +32,5 @@ extension PartTimeVC: UITableViewDelegate {
         
         loadSaveView(isAdd: false, index: indexPath.row, title: "수정하기")
     }
+    
 }

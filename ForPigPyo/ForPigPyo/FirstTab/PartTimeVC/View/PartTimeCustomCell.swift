@@ -151,7 +151,6 @@ class PartTimeCustomCell: UITableViewCell {
     }
     
     func setValue(data:  PayList.Month.Data?) {
-//        date: String, over: Int, overMin: Int, night: Int, nightMin: Int, overNight: Int, overNightMin: Int, hourly: Int, totalWork: Int, dayPay: Int) {
         
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal

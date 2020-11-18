@@ -28,6 +28,14 @@ class PartTimeSaveView: UIView {
         
         return label
     }()
+    let dayLabel: UILabel = {
+        let label = UILabel()
+        label.text = "날짜 :"
+        label.textColor = .white
+        label.textAlignment = .left
+        
+        return label
+    }()
     let dateTextField: UITextField = {
         let textField = UITextField()
         textField.textAlignment = .right
@@ -36,6 +44,7 @@ class PartTimeSaveView: UIView {
         
         return textField
     }()
+    
     let hourlyWageLabel: UILabel = {
         let label = UILabel()
         label.text = "원"
@@ -61,11 +70,20 @@ class PartTimeSaveView: UIView {
         
         return label
     }()
+    let workLabel: UILabel = {
+        let label = UILabel()
+        label.text = "근무 :"
+        label.textColor = .white
+        label.textAlignment = .left
+        label.alpha = 0
+        
+        return label
+    }()
     let totalTextField: UITextField = {
         let textField = UITextField()
         textField.textAlignment = .right
         textField.textColor = .white
-        textField.attributedPlaceholder = NSAttributedString(string: "총 근무", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white.withAlphaComponent(0.5)])
+        textField.attributedPlaceholder = NSAttributedString(string: "근무", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white.withAlphaComponent(0.5)])
         
         return textField
     }()
@@ -81,7 +99,7 @@ class PartTimeSaveView: UIView {
         let textField = UITextField()
         textField.textAlignment = .right
         textField.textColor = .white
-        textField.attributedPlaceholder = NSAttributedString(string: "총 근무", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white.withAlphaComponent(0.5)])
+        textField.attributedPlaceholder = NSAttributedString(string: "근무", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white.withAlphaComponent(0.5)])
         
         return textField
     }()
@@ -91,6 +109,15 @@ class PartTimeSaveView: UIView {
         label.text = "시간"
         label.textColor = .white
         label.textAlignment = .left
+        
+        return label
+    }()
+    let overWorkLabel: UILabel = {
+        let label = UILabel()
+        label.text = "특근 :"
+        label.textColor = .white
+        label.textAlignment = .left
+        label.alpha = 0
         
         return label
     }()
@@ -127,6 +154,15 @@ class PartTimeSaveView: UIView {
         
         return label
     }()
+    let nightWorkLabel: UILabel = {
+        let label = UILabel()
+        label.text = "야간 근무 :"
+        label.textColor = .white
+        label.textAlignment = .left
+        label.alpha = 0
+        
+        return label
+    }()
     let nightTextField: UITextField = {
         let textField = UITextField()
         textField.textAlignment = .right
@@ -157,6 +193,15 @@ class PartTimeSaveView: UIView {
         label.text = "시간"
         label.textColor = .white
         label.textAlignment = .left
+        
+        return label
+    }()
+    let overNightWorkLabel: UILabel = {
+        let label = UILabel()
+        label.text = "야간 특근 :"
+        label.textColor = .white
+        label.textAlignment = .left
+        label.alpha = 0
         
         return label
     }()
@@ -215,13 +260,13 @@ class PartTimeSaveView: UIView {
         
         setTitleLabel()
         
-        setDateTextField()
-        setHourlyWageTextField()
+        setDate()
+        setHourlyWage()
         
-        setTotalTextField()
-        setOverTextField()
-        setNightTextField()
-        setOverNightTextField()
+        setTotal()
+        setOver()
+        setNight()
+        setOverNight()
         
         setCancleButton()
         setSaveButton()
@@ -241,9 +286,10 @@ class PartTimeSaveView: UIView {
             $0.top.leading.trailing.equalToSuperview().inset(Design.LargePadding)
         }
     }
-    private func setDateTextField() {
+    private func setDate() {
         
         self.addSubview(dateLabel)
+        self.addSubview(dayLabel)
         self.addSubview(dateTextField)
         
         dateLabel.snp.makeConstraints {
@@ -252,14 +298,19 @@ class PartTimeSaveView: UIView {
             $0.width.equalTo(self.snp.width).multipliedBy(0.06)
             $0.trailing.equalTo(self.snp.centerX)
         }
-        dateTextField.snp.makeConstraints {
+        dayLabel.snp.makeConstraints {
             
             $0.top.equalTo(dateLabel)
             $0.leading.equalTo(titleLabel)
+        }
+        dateTextField.snp.makeConstraints {
+            
+            $0.top.equalTo(dateLabel)
+            $0.leading.equalTo(dayLabel.snp.trailing)
             $0.trailing.equalTo(dateLabel.snp.leading).offset(-Design.smallPadding)
         }
     }
-    private func setHourlyWageTextField() {
+    private func setHourlyWage() {
         
         self.addSubview(hourlyWageLabel)
         self.addSubview(hourlyWageTextField)
@@ -277,9 +328,10 @@ class PartTimeSaveView: UIView {
             $0.trailing.equalTo(hourlyWageLabel.snp.leading).offset(-Design.smallPadding)
         }
     }
-    private func setTotalTextField() {
+    private func setTotal() {
         
         self.addSubview(totalLabel)
+        self.addSubview(workLabel)
         self.addSubview(totalTextField)
         
         totalLabel.snp.makeConstraints {
@@ -287,6 +339,11 @@ class PartTimeSaveView: UIView {
             $0.top.equalTo(dateLabel.snp.bottom).offset(Design.nomalPadding)
             $0.width.equalTo(self.snp.width).multipliedBy(0.1)
             $0.trailing.equalTo(dateLabel)
+        }
+        workLabel.snp.makeConstraints {
+            
+            $0.top.equalTo(totalLabel)
+            $0.leading.equalTo(dayLabel)
         }
         totalTextField.snp.makeConstraints {
             
@@ -308,15 +365,21 @@ class PartTimeSaveView: UIView {
             $0.leading.trailing.equalTo(hourlyWageTextField)
         }
     }
-    private func setOverTextField() {
+    private func setOver() {
         
         self.addSubview(overLabel)
+        self.addSubview(overWorkLabel)
         self.addSubview(overTextField)
         
         overLabel.snp.makeConstraints {
             
             $0.top.equalTo(totalLabel.snp.bottom).offset(Design.nomalPadding)
             $0.leading.trailing.equalTo(totalLabel)
+        }
+        overWorkLabel.snp.makeConstraints {
+            
+            $0.top.equalTo(overLabel)
+            $0.leading.equalTo(workLabel)
         }
         overTextField.snp.makeConstraints {
             
@@ -336,14 +399,21 @@ class PartTimeSaveView: UIView {
             $0.leading.trailing.equalTo(totalMinTextField)
         }
     }
-    private func setNightTextField() {
+    private func setNight() {
         
         self.addSubview(nightLabel)
+        self.addSubview(nightWorkLabel)
         self.addSubview(nightTextField)
         
         nightLabel.snp.makeConstraints {
+            
             $0.top.equalTo(overLabel.snp.bottom).offset(Design.nomalPadding)
             $0.leading.trailing.equalTo(overLabel)
+        }
+        nightWorkLabel.snp.makeConstraints {
+            
+            $0.top.equalTo(nightLabel)
+            $0.leading.equalTo(overWorkLabel)
         }
         nightTextField.snp.makeConstraints {
             
@@ -365,14 +435,20 @@ class PartTimeSaveView: UIView {
             $0.leading.trailing.equalTo(overMinTextField)
         }
     }
-    private func setOverNightTextField() {
+    private func setOverNight() {
         
         self.addSubview(overNightLabel)
+        self.addSubview(overNightWorkLabel)
         self.addSubview(overNightTextField)
         
         overNightLabel.snp.makeConstraints {
             $0.top.equalTo(nightLabel.snp.bottom).offset(Design.nomalPadding)
             $0.leading.trailing.equalTo(nightLabel)
+        }
+        overNightWorkLabel.snp.makeConstraints {
+            
+            $0.top.equalTo(overNightLabel)
+            $0.leading.equalTo(nightWorkLabel)
         }
         overNightTextField.snp.makeConstraints {
             
@@ -401,7 +477,7 @@ class PartTimeSaveView: UIView {
         cancleButton.snp.makeConstraints {
             
             $0.top.equalTo(overNightLabel.snp.bottom).offset(Design.LargePadding)
-            $0.leading.equalTo(overNightTextField)
+            $0.leading.equalTo(titleLabel)
             $0.trailing.equalTo(self.snp.centerX).offset(-Design.LargePadding / 2)
             
             $0.bottom.equalToSuperview().inset(Design.LargePadding)
@@ -415,7 +491,7 @@ class PartTimeSaveView: UIView {
             
             $0.top.equalTo(cancleButton)
             $0.leading.equalTo(self.snp.centerX).offset(Design.LargePadding / 2)
-            $0.trailing.equalTo(overNightMinLabel)
+            $0.trailing.equalTo(titleLabel)
         }
     }
     func setValue(title: String, date: String?, index: Int, value: PayList.Month.Data?) {
@@ -430,9 +506,21 @@ class PartTimeSaveView: UIView {
             hourlyWageTextField.text = "\(value.hourlyWage)"
 
             totalTextField.text = "\(value.workingTime)"
+            totalMinTextField.text = "\(value.workingTimeMin)"
+            
             overTextField.text = "\(value.overTime)"
+            overMinTextField.text = "\(value.overTimeMin)"
+            
             nightTextField.text = "\(value.nightTime)"
+            nightMinTextField.text = "\(value.nightTimeMin)"
+            
             overNightTextField.text = "\(value.overNightTime)"
+            overNightMinTextField.text = "\(value.overNightTimeMin)"
+            
+            [dayLabel, workLabel, overWorkLabel, nightWorkLabel, overNightWorkLabel].forEach { (label) in
+
+                label.alpha = 1
+            }
             
             return
         }
@@ -440,7 +528,12 @@ class PartTimeSaveView: UIView {
         dateTextField.text = date
         
         [hourlyWageTextField, totalTextField, overTextField, nightTextField, overNightTextField].forEach { (textField) in
+            
             textField.text = nil
+        }
+        [dayLabel, workLabel, overWorkLabel, nightWorkLabel, overNightWorkLabel].forEach { (label) in
+
+            label.alpha = 0
         }
     }
     required init?(coder: NSCoder) {
