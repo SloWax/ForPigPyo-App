@@ -150,12 +150,12 @@ class PartTimeCustomCell: UITableViewCell {
         }
     }
     
-    func setValue(data:  PayList.Month.Data?) {
+    func setValue(data:  PayList.Years.Month.Data?) {
         
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         
-        dateLabel.text = "\(data?.date ?? "")일"
+        dateLabel.text = "\(String(format: "%02d", data?.date ?? 0))일"
         
         overTimeLabel.text = "특근: \(data?.overTime ?? 0)시간 \(data?.overTimeMin ?? 0)분"
         nightWorkLabel.text = "야간: \(data?.nightTime ?? 0)시간 \(data?.nightTimeMin ?? 0)분"

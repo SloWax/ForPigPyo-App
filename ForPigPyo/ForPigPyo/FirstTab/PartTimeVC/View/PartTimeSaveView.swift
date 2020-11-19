@@ -494,7 +494,7 @@ class PartTimeSaveView: UIView {
             $0.trailing.equalTo(titleLabel)
         }
     }
-    func setValue(title: String, date: String?, index: Int, value: PayList.Month.Data?) {
+    func setValue(title: String, date: String?, index: Int, value: PayList.Years.Month.Data?) {
         
         titleLabel.text = title
         
@@ -502,7 +502,7 @@ class PartTimeSaveView: UIView {
             
             titleLabel.tag = index
             
-            dateTextField.text = value.date
+            dateTextField.text = "\(value.date)"
             hourlyWageTextField.text = "\(value.hourlyWage)"
 
             totalTextField.text = "\(value.workingTime)"
@@ -531,7 +531,7 @@ class PartTimeSaveView: UIView {
             
             textField.text = nil
         }
-        [dayLabel, workLabel, overWorkLabel, nightWorkLabel, overNightWorkLabel].forEach { (label) in
+        [workLabel, overWorkLabel, nightWorkLabel, overNightWorkLabel].forEach { (label) in
 
             label.alpha = 0
         }
@@ -539,5 +539,4 @@ class PartTimeSaveView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
 }

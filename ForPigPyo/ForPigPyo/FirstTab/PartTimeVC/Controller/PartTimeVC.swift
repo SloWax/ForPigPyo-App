@@ -51,7 +51,7 @@ class PartTimeVC: UIViewController {
     }
     private func setView() {
         
-        data = model.loadData() ?? PayList(month: [PayList.Month(data: [PayList.Month.Data]())])
+        data = model.loadData() ?? PayList(year: [PayList.Years(year: 0, month: [PayList.Years.Month(month: 1, data: [PayList.Years.Month.Data]())])])
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addSaveView(_:)))
         
@@ -113,7 +113,7 @@ class PartTimeVC: UIViewController {
             saveView.setValue(title: title, date: format.string(from: Date()), index: index, value: nil)
         } else {
             
-            saveView.setValue(title: title, date: nil, index: index, value: data?.month[0].data[index])
+            saveView.setValue(title: title, date: nil, index: index, value: data?.year[0].month[0].data[index])
         }
         
         moveSaveView(offset: -view.frame.width)
@@ -138,7 +138,13 @@ class PartTimeVC: UIViewController {
                                              overNight: Double(saveView.overNightTextField.text ?? "") ?? 0,
                                              overNightMin: Double(saveView.overNightMinTextField.text ?? "") ?? 0)
             
-            let value = PayList.Month.Data(date: saveView.dateTextField.text ?? "",
+            var date = saveView.dateTextField.text
+            if saveView.dateTextField.text?.count == 1 {
+                
+                date = "0\(saveView.dateTextField.text ?? "")"
+            }
+            
+            let value = PayList.Years.Month.Data(date: Int(date ?? "") ?? 0,
                                            workingTime: Int(saveView.totalTextField.text ?? "") ?? 0,
                                            workingTimeMin: Int(saveView.totalMinTextField.text ?? "") ?? 0,
                                            overTime: Int(saveView.overTextField.text ?? "") ?? 0,
@@ -151,7 +157,7 @@ class PartTimeVC: UIViewController {
                                            totalPay: totalSum)
             
             data = model.editData(division: division.text ?? "",data: data, index: division.tag, value: value)
-            model.saveData(data: data ?? PayList(month: [PayList.Month(data: [PayList.Month.Data]())]))
+            model.saveData(data: data ?? PayList(year: [PayList.Years(year: 0, month: [PayList.Years.Month(month: 1, data: [PayList.Years.Month.Data]())])]))
             partTimeView.totalLabel.text = "총 \(model.setTotalPay(data: data)) 원"
             partTimeView.historyTable.reloadData()
             

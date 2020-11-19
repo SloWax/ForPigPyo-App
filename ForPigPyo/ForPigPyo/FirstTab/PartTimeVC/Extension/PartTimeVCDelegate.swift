@@ -17,12 +17,12 @@ extension PartTimeVC: UITableViewDelegate {
         switch editingStyle {
         case .delete:
             
-            data?.month[0].data.remove(at: indexPath.row)
+            data?.year[0].month[0].data.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
             
             partTimeView.totalLabel.text = "총 \(model.setTotalPay(data: data)) 원"
             
-            model.saveData(data: data ?? PayList(month: [PayList.Month(data: [PayList.Month.Data]())]))
+            model.saveData(data: data ?? PayList(year: [PayList.Years(year: 0, month: [PayList.Years.Month(month: 1, data: [PayList.Years.Month.Data]())])]))
         default:
             fatalError()
         }

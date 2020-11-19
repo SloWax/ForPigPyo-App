@@ -15,7 +15,7 @@ struct PartTimeVCModel {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         
-        let value = data?.month[0].data
+        let value = data?.year[0].month[0].data
         var result = 0
         
         guard value?.count != 0 else { return "0" }
@@ -27,22 +27,30 @@ struct PartTimeVCModel {
         return formatter.string(from: result as NSNumber) ?? ""
     }
     // MARK: data 추가 및 수정
-    func editData(division: String, data: PayList? ,index: Int, value: PayList.Month.Data) -> PayList? {
+    func editData(division: String, data: PayList? ,index: Int, value: PayList.Years.Month.Data) -> PayList? {
         
         var result = data
         
         switch division {
         case "추가하기":
-            result?.month[0].data.insert(value, at: index)
+            result?.year[0].month[0].data.insert(value, at: index)
             
-            return result
+            return sortedData(data: &result)
         case "수정하기":
-            result?.month[0].data[index] = value
+            result?.year[0].month[0].data[index] = value
             
-            return result
+            return sortedData(data: &result)
         default:
             fatalError()
         }
+    }
+    // MARK: data sorted
+    func sortedData(data: inout PayList?) -> PayList? {
+        
+        let value = data?.year[0].month[0]
+        
+        data?.year[0].month[0].data = value?.data.sorted(by: {$0.date > $1.date}) ?? [PayList.Years.Month.Data]()
+        return data
     }
     // MARK: data 저장 및 로드
     func saveData(data: PayList) {

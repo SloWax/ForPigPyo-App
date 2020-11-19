@@ -10,30 +10,37 @@ import Foundation
 
 struct PayList: Codable {
     
-    var month: [Month]
+    var year: [Years]
     
-    struct Month: Codable {
+    struct Years: Codable {
         
-        var data: [Data]
+        let year: Int
+        var month: [Month]
         
-        struct Data: Codable {
+        struct Month: Codable {
             
-            let date: String
+            let month: Int
+            var data: [Data]
             
-            let workingTime: Int
-            let workingTimeMin: Int
-            
-            let overTime: Int
-            let overTimeMin: Int
-            
-            let nightTime: Int
-            let nightTimeMin: Int
-            
-            let overNightTime: Int
-            let overNightTimeMin: Int
-            
-            let hourlyWage: Int
-            let totalPay: Int
+            struct Data: Codable {
+                
+                let date: Int
+                
+                let workingTime: Int
+                let workingTimeMin: Int
+                
+                let overTime: Int
+                let overTimeMin: Int
+                
+                let nightTime: Int
+                let nightTimeMin: Int
+                
+                let overNightTime: Int
+                let overNightTimeMin: Int
+                
+                let hourlyWage: Int
+                let totalPay: Int
+            }
         }
     }
 }
