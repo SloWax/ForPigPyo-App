@@ -150,7 +150,7 @@ class PartTimeCustomCell: UITableViewCell {
         }
     }
     
-    func setValue(data:  PayList.Years.Month.Data?) {
+    func setValue(data:  PayList.Year.Month.Data?) {
         
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal

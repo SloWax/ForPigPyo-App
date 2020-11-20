@@ -17,12 +17,12 @@ extension PartTimeVC: UITableViewDelegate {
         switch editingStyle {
         case .delete:
             
-            data?.year[0].month[0].data.remove(at: indexPath.row)
+            data?.years[yearIndex].months[monthIndex].data.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
             
-            partTimeView.totalLabel.text = "총 \(model.setTotalPay(data: data)) 원"
+            partTimeView.totalLabel.text = "총 \(model.setTotalPay(data: data, yearIndex: yearIndex, monthIndex: monthIndex)) 원"
             
-            model.saveData(data: data ?? PayList(year: [PayList.Years(year: 0, month: [PayList.Years.Month(month: 1, data: [PayList.Years.Month.Data]())])]))
+            model.saveData(data: data ?? PayList(years: [PayList.Year(year: 0, months: [PayList.Year.Month(month: 1, data: [PayList.Year.Month.Data]())])]))
         default:
             fatalError()
         }
@@ -30,7 +30,7 @@ extension PartTimeVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        loadSaveView(isAdd: false, index: indexPath.row, title: "수정하기")
+        loadSaveView(isAdd: false, yearIndex: yearIndex, monthIndex: monthIndex, index: indexPath.row, title: "수정하기")
     }
     
 }

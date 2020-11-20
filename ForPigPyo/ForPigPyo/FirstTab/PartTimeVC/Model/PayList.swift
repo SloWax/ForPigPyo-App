@@ -10,12 +10,12 @@ import Foundation
 
 struct PayList: Codable {
     
-    var year: [Years]
+    var years: [Year]
     
-    struct Years: Codable {
+    struct Year: Codable {
         
         let year: Int
-        var month: [Month]
+        var months: [Month]
         
         struct Month: Codable {
             

@@ -494,7 +494,7 @@ class PartTimeSaveView: UIView {
             $0.trailing.equalTo(titleLabel)
         }
     }
-    func setValue(title: String, date: String?, index: Int, value: PayList.Years.Month.Data?) {
+    func setValue(title: String, date: String?, index: Int, value: PayList.Year.Month.Data?) {
         
         titleLabel.text = title
         
@@ -527,7 +527,7 @@ class PartTimeSaveView: UIView {
         
         dateTextField.text = date
         
-        [hourlyWageTextField, totalTextField, overTextField, nightTextField, overNightTextField].forEach { (textField) in
+        [hourlyWageTextField, totalTextField, totalMinTextField, overTextField, overMinTextField, nightTextField, nightMinTextField, overNightTextField, overNightMinTextField].forEach { (textField) in
             
             textField.text = nil
         }

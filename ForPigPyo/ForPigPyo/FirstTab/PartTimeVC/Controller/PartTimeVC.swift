@@ -11,8 +11,6 @@ import SnapKit
 
 class PartTimeVC: UIViewController {
     
-    static let forkey = "PartTimeVC"
-    
     private let backImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .systemPurple
@@ -21,18 +19,28 @@ class PartTimeVC: UIViewController {
     }()
     lazy var partTimeView: PartTimeView = {
         let view = PartTimeView()
+        [view.preButton, view.nexButton].forEach { (button) in
+            button.addTarget(self, action: #selector(moveTable(_:)), for: .touchUpInside)
+        }
         view.historyTable.delegate = self
         view.historyTable.dataSource = self
         view.historyTable.register(PartTimeCustomCell.self, forCellReuseIdentifier: PartTimeCustomCell.identifier)
         
         return view
     }()
-    private let dateFormat: DateFormatter = {
+    private let yearFormat: DateFormatter = {
         let format = DateFormatter()
-        format.dateFormat = "yyyy년 MM월"
+        format.dateFormat = "yyyy"
         
         return format
     }()
+    private let monthFormat: DateFormatter = {
+        let format = DateFormatter()
+        format.dateFormat = "MM"
+        
+        return format
+    }()
+    
     private let saveView: PartTimeSaveView = {
         let view = PartTimeSaveView()
         
@@ -41,6 +49,12 @@ class PartTimeVC: UIViewController {
     private var constraint: Constraint?
     let model = PartTimeVCModel()
     var data: PayList?
+    
+    static let forkey: String = "PartTimeVC"
+    lazy var yearInt = Int(yearFormat.string(from: Date())) ?? 0
+    lazy var monthInt = Int(monthFormat.string(from: Date())) ?? 0
+    var yearIndex: Int = 0
+    var monthIndex: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +65,11 @@ class PartTimeVC: UIViewController {
     }
     private func setView() {
         
-        data = model.loadData() ?? PayList(year: [PayList.Years(year: 0, month: [PayList.Years.Month(month: 1, data: [PayList.Years.Month.Data]())])])
+        data = model.loadData() ?? PayList(years: [PayList.Year(year: yearInt,
+                                                                months: [PayList.Year.Month(month: monthInt,
+                                                                                            data: [PayList.Year.Month.Data]())])])
+        setDateIndex()
+        checkTable()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addSaveView(_:)))
         
@@ -64,8 +82,7 @@ class PartTimeVC: UIViewController {
     }
     private func setPartTimeView() {
         
-        partTimeView.dateLabel.text = dateFormat.string(from: Date())
-        partTimeView.totalLabel.text = "총 \(model.setTotalPay(data: data)) 원"
+        loadPartTimeValue()
         view.addSubview(partTimeView)
         
         partTimeView.snp.makeConstraints {
@@ -90,6 +107,33 @@ class PartTimeVC: UIViewController {
             constraint = $0.leading.equalTo(view.snp.trailing).constraint
         }
     }
+    private func setDateIndex() {
+        
+        yearIndex = (data?.years.endIndex ?? 1) - 1
+        monthIndex = (data?.years[yearIndex].months.endIndex ?? 1) - 1
+    }
+    private func checkTable() {
+        
+        if let checkData = data?.years {
+            if !checkData.contains(where: { $0.year == yearInt }) {
+                
+                data = model.appendYear(data: &data, year: yearInt, month: monthInt)
+            } else if !checkData[yearIndex].months.contains(where: { $0.month == monthInt }) {
+                
+                data = model.appendMonth(data: &data, yearIndex: yearIndex, month: monthInt)
+            }
+        }
+        setDateIndex()
+    }
+    private func loadPartTimeValue() {
+        
+        let date = data?.years[yearIndex]
+        let year = date?.year ?? 0
+        let month = date?.months[monthIndex].month ?? 0
+        let total = model.setTotalPay(data: data, yearIndex: yearIndex, monthIndex: monthIndex)
+        
+        partTimeView.setValue(year: year, month: month, totalPay: total)
+    }
     private func moveSaveView(offset: CGFloat) {
 
         UIView.animate(withDuration: 0.25) {
@@ -105,7 +149,7 @@ class PartTimeVC: UIViewController {
             label.alpha = value
         }
     }
-    func loadSaveView(isAdd: Bool, index: Int, title: String) {
+    func loadSaveView(isAdd: Bool, yearIndex: Int, monthIndex: Int, index: Int, title: String) {
         if isAdd == true {
                 let format = DateFormatter()
                 format.dateFormat = "dd"
@@ -113,14 +157,35 @@ class PartTimeVC: UIViewController {
             saveView.setValue(title: title, date: format.string(from: Date()), index: index, value: nil)
         } else {
             
-            saveView.setValue(title: title, date: nil, index: index, value: data?.year[0].month[0].data[index])
+            saveView.setValue(title: title, date: nil, index: index, value: data?.years[yearIndex].months[monthIndex].data[index])
         }
         
         moveSaveView(offset: -view.frame.width)
     }
     @objc private func addSaveView(_ sender: UIButton) {
         
-        loadSaveView(isAdd: true, index: 0, title: "추가하기")
+        loadSaveView(isAdd: true, yearIndex: yearIndex, monthIndex: monthIndex, index: 0, title: "추가하기")
+    }
+    @objc private func moveTable(_ sender: UIButton) {
+        
+        switch sender {
+        case partTimeView.preButton:
+            
+            guard data?.years[yearIndex].months.startIndex != monthIndex else { return }
+            monthIndex -= 1
+            
+        case partTimeView.nexButton:
+            
+            guard (data?.years[yearIndex].months.endIndex ?? 1) - 1 != monthIndex else { return }
+            monthIndex += 1
+            
+        default:
+            fatalError()
+        }
+        
+        loadPartTimeValue()
+        partTimeView.historyTable.reloadData()
+        print("toggle")
     }
     @objc private func returnSaveView(_ sender: UIButton) {
         
@@ -144,7 +209,7 @@ class PartTimeVC: UIViewController {
                 date = "0\(saveView.dateTextField.text ?? "")"
             }
             
-            let value = PayList.Years.Month.Data(date: Int(date ?? "") ?? 0,
+            let value = PayList.Year.Month.Data(date: Int(date ?? "") ?? 0,
                                            workingTime: Int(saveView.totalTextField.text ?? "") ?? 0,
                                            workingTimeMin: Int(saveView.totalMinTextField.text ?? "") ?? 0,
                                            overTime: Int(saveView.overTextField.text ?? "") ?? 0,
@@ -156,9 +221,9 @@ class PartTimeVC: UIViewController {
                                            hourlyWage: Int(saveView.hourlyWageTextField.text ?? "") ?? 0,
                                            totalPay: totalSum)
             
-            data = model.editData(division: division.text ?? "",data: data, index: division.tag, value: value)
-            model.saveData(data: data ?? PayList(year: [PayList.Years(year: 0, month: [PayList.Years.Month(month: 1, data: [PayList.Years.Month.Data]())])]))
-            partTimeView.totalLabel.text = "총 \(model.setTotalPay(data: data)) 원"
+            data = model.editData(division: division.text ?? "", data: &data, yearIndex: yearIndex, monthIndex: monthIndex, index: division.tag, value: value)
+            model.saveData(data: data ?? PayList(years: [PayList.Year(year: 0, months: [PayList.Year.Month(month: 1, data: [PayList.Year.Month.Data]())])]))
+            partTimeView.totalLabel.text = "총 \(model.setTotalPay(data: data, yearIndex: yearIndex, monthIndex: monthIndex)) 원"
             partTimeView.historyTable.reloadData()
             
         }
