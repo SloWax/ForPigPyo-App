@@ -171,13 +171,31 @@ class PartTimeVC: UIViewController {
         switch sender {
         case partTimeView.preButton:
             
-            guard data?.years[yearIndex].months.startIndex != monthIndex else { return }
-            monthIndex -= 1
+            if data?.years[yearIndex].months.startIndex != monthIndex {
+                
+                monthIndex -= 1
+            } else if data?.years[yearIndex].months.startIndex == monthIndex, data?.years.startIndex != yearIndex {
+                
+                yearIndex -= 1
+                monthIndex = (data?.years[yearIndex].months.endIndex ?? 1) - 1
+            } else {
+                
+                return
+            }
             
         case partTimeView.nexButton:
             
-            guard (data?.years[yearIndex].months.endIndex ?? 1) - 1 != monthIndex else { return }
-            monthIndex += 1
+            if (data?.years[yearIndex].months.endIndex ?? 1) - 1 != monthIndex {
+                
+                monthIndex += 1
+            } else if (data?.years[yearIndex].months.endIndex ?? 1) - 1 == monthIndex, (data?.years.endIndex ?? 1) - 1 != yearIndex {
+                
+                yearIndex += 1
+                monthIndex = data?.years[yearIndex].months.startIndex ?? 0
+            } else {
+                
+                return
+            }
             
         default:
             fatalError()
