@@ -22,7 +22,7 @@ class MainTabVC: UITabBarController {
         
         viewControllers = [homeVC, myPageVC]
         
-        tabBar.tintColor = .systemPurple
+        tabBar.tintColor = Design.purple
     }
     
     func makeNaviController(tabBarImage: String, rootViewController: UIViewController = UIViewController()) -> UINavigationController {
@@ -30,7 +30,7 @@ class MainTabVC: UITabBarController {
         let naviController = UINavigationController(rootViewController: rootViewController)
         
         naviController.tabBarItem.image = UIImage(systemName: tabBarImage)
-        naviController.navigationBar.tintColor = .systemPurple
+        naviController.navigationBar.tintColor = Design.purple
         
         return naviController
     }

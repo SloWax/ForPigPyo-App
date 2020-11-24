@@ -13,7 +13,7 @@ class PartTimeVC: UIViewController {
     
     private let backImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .systemPurple
+        imageView.backgroundColor = Design.purple
         
         return imageView
     }()
@@ -59,17 +59,26 @@ class PartTimeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setData()
         setView()
         setPartTimeView()
         setSaveView()
     }
-    private func setView() {
+    private func setDateIndex() {
+        
+        yearIndex = (data?.years.endIndex ?? 1) - 1
+        monthIndex = (data?.years[yearIndex].months.endIndex ?? 1) - 1
+    }
+    private func setData() {
         
         data = model.loadData() ?? PayList(years: [PayList.Year(year: yearInt,
                                                                 months: [PayList.Year.Month(month: monthInt,
                                                                                             data: [PayList.Year.Month.Data]())])])
         setDateIndex()
-        checkTable()
+        data = model.checkDataTable(data: &data, yearIndex: yearIndex, monthIndex: monthIndex, yearInt: yearInt, monthInt: monthInt)
+        setDateIndex()
+    }
+    private func setView() {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addSaveView(_:)))
         
@@ -106,24 +115,6 @@ class PartTimeVC: UIViewController {
             $0.width.equalToSuperview()
             constraint = $0.leading.equalTo(view.snp.trailing).constraint
         }
-    }
-    private func setDateIndex() {
-        
-        yearIndex = (data?.years.endIndex ?? 1) - 1
-        monthIndex = (data?.years[yearIndex].months.endIndex ?? 1) - 1
-    }
-    private func checkTable() {
-        
-        if let checkData = data?.years {
-            if !checkData.contains(where: { $0.year == yearInt }) {
-                
-                data = model.appendYear(data: &data, year: yearInt, month: monthInt)
-            } else if !checkData[yearIndex].months.contains(where: { $0.month == monthInt }) {
-                
-                data = model.appendMonth(data: &data, yearIndex: yearIndex, month: monthInt)
-            }
-        }
-        setDateIndex()
     }
     private func loadPartTimeValue() {
         
@@ -200,10 +191,8 @@ class PartTimeVC: UIViewController {
         default:
             fatalError()
         }
-        
         loadPartTimeValue()
         partTimeView.historyTable.reloadData()
-        print("toggle")
     }
     @objc private func returnSaveView(_ sender: UIButton) {
         
@@ -211,7 +200,13 @@ class PartTimeVC: UIViewController {
             
             let division = saveView.titleLabel
             
-            let totalSum = model.totalPaySum(total: Double(saveView.totalTextField.text ?? "") ?? 0,
+            var date = saveView.dateTextField.text
+            if saveView.dateTextField.text?.count == 1 {
+                
+                date = "0\(saveView.dateTextField.text ?? "")"
+            }
+            
+            let totalPay = model.totalPaySum(total: Double(saveView.totalTextField.text ?? "") ?? 0,
                                              totalMin: Double(saveView.totalMinTextField.text ?? "") ?? 0,
                                              hourly: Double(saveView.hourlyWageTextField.text ?? "") ?? 0,
                                              over: Double(saveView.overTextField.text ?? "") ?? 0,
@@ -220,12 +215,6 @@ class PartTimeVC: UIViewController {
                                              nightMin: Double(saveView.nightMinTextField.text ?? "") ?? 0,
                                              overNight: Double(saveView.overNightTextField.text ?? "") ?? 0,
                                              overNightMin: Double(saveView.overNightMinTextField.text ?? "") ?? 0)
-            
-            var date = saveView.dateTextField.text
-            if saveView.dateTextField.text?.count == 1 {
-                
-                date = "0\(saveView.dateTextField.text ?? "")"
-            }
             
             let value = PayList.Year.Month.Data(date: Int(date ?? "") ?? 0,
                                            workingTime: Int(saveView.totalTextField.text ?? "") ?? 0,
@@ -237,7 +226,7 @@ class PartTimeVC: UIViewController {
                                            overNightTime: Int(saveView.overNightTextField.text ?? "") ?? 0,
                                            overNightTimeMin: Int(saveView.overNightMinTextField.text ?? "") ?? 0,
                                            hourlyWage: Int(saveView.hourlyWageTextField.text ?? "") ?? 0,
-                                           totalPay: totalSum)
+                                           totalPay: totalPay)
             
             data = model.editData(division: division.text ?? "", data: &data, yearIndex: yearIndex, monthIndex: monthIndex, index: division.tag, value: value)
             model.saveData(data: data ?? PayList(years: [PayList.Year(year: 0, months: [PayList.Year.Month(month: 1, data: [PayList.Year.Month.Data]())])]))

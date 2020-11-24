@@ -10,7 +10,7 @@ import Foundation
 
 struct PartTimeVCModel {
     
-    // MARK: tableView에 있는 일 급여 합산
+    // MARK: history에 있는 일 급여 합산
     func setTotalPay(data: PayList?, yearIndex: Int, monthIndex: Int) -> String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
@@ -29,7 +29,19 @@ struct PartTimeVCModel {
     }
     
     // MARK: dataTable 확인
-    func appendYear(data: inout PayList?, year: Int, month: Int) -> PayList? {
+    func checkDataTable(data: inout PayList?, yearIndex: Int, monthIndex: Int, yearInt: Int, monthInt: Int) -> PayList? {
+        if let checkData = data?.years {
+            if !checkData.contains(where: { $0.year == yearInt }) {
+                
+                data = appendYear(data: &data, year: yearInt, month: monthInt)
+            } else if !checkData[yearIndex].months.contains(where: { $0.month == monthInt }) {
+                
+                data = appendMonth(data: &data, yearIndex: yearIndex, month: monthInt)
+            }
+        }
+        return data
+    }
+    private func appendYear(data: inout PayList?, year: Int, month: Int) -> PayList? {
         
         data?.years.append(PayList.Year(year: year,
                                        months: [PayList.Year.Month(month: month,
@@ -37,7 +49,7 @@ struct PartTimeVCModel {
         
         return data
     }
-    func appendMonth(data: inout PayList?, yearIndex: Int, month: Int) -> PayList? {
+    private func appendMonth(data: inout PayList?, yearIndex: Int, month: Int) -> PayList? {
         
         data?.years[yearIndex].months.append(PayList.Year.Month(month: month,
                                                            data: [PayList.Year.Month.Data]()))
@@ -52,11 +64,11 @@ struct PartTimeVCModel {
         case "추가하기":
             data?.years[yearIndex].months[monthIndex].data.insert(value, at: index)
             
-            return sortedData(data: &data, yearIndex: yearIndex, monthIndex: monthIndex)
+            return sortedDate(data: &data, yearIndex: yearIndex, monthIndex: monthIndex)
         case "수정하기":
             data?.years[yearIndex].months[monthIndex].data[index] = value
             
-            return sortedData(data: &data, yearIndex: yearIndex, monthIndex: monthIndex)
+            return sortedDate(data: &data, yearIndex: yearIndex, monthIndex: monthIndex)
         default:
             fatalError()
         }
@@ -81,7 +93,7 @@ struct PartTimeVCModel {
     }
     
     // MARK: data sorted
-    func sortedData(data: inout PayList?, yearIndex: Int, monthIndex: Int) -> PayList? {
+    func sortedDate(data: inout PayList?, yearIndex: Int, monthIndex: Int) -> PayList? {
         
         let value = data?.years[yearIndex].months[monthIndex]
         data?.years[yearIndex].months[monthIndex].data = value?.data.sorted(by: {$0.date > $1.date}) ?? [PayList.Year.Month.Data]()
@@ -89,6 +101,17 @@ struct PartTimeVCModel {
         return data
     }
     
+    // MARK: data sorted
+    func totalWorkCalcu(total: Double, totalMin: Double, hourly: Double, over: Double, overMin: Double, night: Double, nightMin: Double, overNight: Double, overNightMin: Double) {
+        
+        
+    }
+    private func hourCalcu() {
+        
+    }
+    private func minCalcu() {
+        
+    }
     // MARK: 일 급여 계산
     func totalPaySum(total: Double, totalMin: Double, hourly: Double, over: Double, overMin: Double, night: Double, nightMin: Double, overNight: Double, overNightMin: Double) -> Int {
         
@@ -106,6 +129,7 @@ struct PartTimeVCModel {
         
         return Int(totalPay)
     }
+    
     private func convertTime(hour: Double, min: Double) -> Double {
         
         return hour + (min / 60)

@@ -12,7 +12,7 @@ class HomeVC: UIViewController {
     
     let backImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .systemPurple
+        imageView.backgroundColor = Design.purple
         
         return imageView
     }()
@@ -35,6 +35,7 @@ class HomeVC: UIViewController {
     private func setView() {
         
         navigationItem.title = "List"
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: Design.LargeTextSize ?? UIFont()]
         
         view.addSubview(backImageView)
         

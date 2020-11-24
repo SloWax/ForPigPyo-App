@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		6E30889925541C43001D006F /* PartTimeCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E30889825541C43001D006F /* PartTimeCustomCell.swift */; };
 		6E8552FF2564FC880077302E /* PartTimeSaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8552FE2564FC880077302E /* PartTimeSaveView.swift */; };
+		6E89CE1C25711A9200E40314 /* BMHANNA_11yrs_otf.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6E89CE1A25711A9200E40314 /* BMHANNA_11yrs_otf.otf */; };
+		6E89CE1D25711A9200E40314 /* BMHANNA_11yrs_otf.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6E89CE1A25711A9200E40314 /* BMHANNA_11yrs_otf.otf */; };
+		6E89CE1E25711A9200E40314 /* BMHANNA_11yrs_otf.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6E89CE1A25711A9200E40314 /* BMHANNA_11yrs_otf.otf */; };
+		6E89CE1F25711A9200E40314 /* BMHANNAAir_otf.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6E89CE1B25711A9200E40314 /* BMHANNAAir_otf.otf */; };
+		6E89CE2025711A9200E40314 /* BMHANNAAir_otf.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6E89CE1B25711A9200E40314 /* BMHANNAAir_otf.otf */; };
+		6E89CE2125711A9200E40314 /* BMHANNAAir_otf.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6E89CE1B25711A9200E40314 /* BMHANNAAir_otf.otf */; };
 		6E8CFFCD255175350002D202 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8CFFCC255175350002D202 /* AppDelegate.swift */; };
 		6E8CFFD7255175350002D202 /* ForPigPyo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6E8CFFD5255175350002D202 /* ForPigPyo.xcdatamodeld */; };
 		6E8CFFD9255175380002D202 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E8CFFD8255175380002D202 /* Assets.xcassets */; };
@@ -54,6 +60,8 @@
 		69905FD33D62068D7289E2D0 /* Pods-ForPigPyo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ForPigPyo.release.xcconfig"; path = "Target Support Files/Pods-ForPigPyo/Pods-ForPigPyo.release.xcconfig"; sourceTree = "<group>"; };
 		6E30889825541C43001D006F /* PartTimeCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartTimeCustomCell.swift; sourceTree = "<group>"; };
 		6E8552FE2564FC880077302E /* PartTimeSaveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartTimeSaveView.swift; sourceTree = "<group>"; };
+		6E89CE1A25711A9200E40314 /* BMHANNA_11yrs_otf.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BMHANNA_11yrs_otf.otf; sourceTree = "<group>"; };
+		6E89CE1B25711A9200E40314 /* BMHANNAAir_otf.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BMHANNAAir_otf.otf; sourceTree = "<group>"; };
 		6E8CFFC9255175350002D202 /* ForPigPyo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForPigPyo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E8CFFCC255175350002D202 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6E8CFFD6255175350002D202 /* ForPigPyo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ForPigPyo.xcdatamodel; sourceTree = "<group>"; };
@@ -186,6 +194,7 @@
 		6E8CFFCB255175350002D202 /* ForPigPyo */ = {
 			isa = PBXGroup;
 			children = (
+				6EA2C5862571132800E994A8 /* Design */,
 				6E8CFFCC255175350002D202 /* AppDelegate.swift */,
 				6E8C0002255175730002D202 /* MainTabVC */,
 				6EFF5AFD2553F715007BAAF2 /* FirstTab */,
@@ -223,6 +232,16 @@
 				6EA06BDF255C80650070F062 /* PartTimeVCDataSource.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		6EA2C5862571132800E994A8 /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				6EFF5B092553F715007BAAF2 /* Design.swift */,
+				6E89CE1A25711A9200E40314 /* BMHANNA_11yrs_otf.otf */,
+				6E89CE1B25711A9200E40314 /* BMHANNAAir_otf.otf */,
+			);
+			path = Design;
 			sourceTree = "<group>";
 		};
 		6EBE4B5725541BAF00CA73E9 /* PartTimeVC */ = {
@@ -301,7 +320,6 @@
 		6EFF5B082553F715007BAAF2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				6EFF5B092553F715007BAAF2 /* Design.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -449,6 +467,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E8CFFDC255175380002D202 /* LaunchScreen.storyboard in Resources */,
+				6E89CE1C25711A9200E40314 /* BMHANNA_11yrs_otf.otf in Resources */,
+				6E89CE1F25711A9200E40314 /* BMHANNAAir_otf.otf in Resources */,
 				6E8CFFD9255175380002D202 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -457,6 +477,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E89CE2025711A9200E40314 /* BMHANNAAir_otf.otf in Resources */,
+				6E89CE1D25711A9200E40314 /* BMHANNA_11yrs_otf.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,6 +486,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E89CE2125711A9200E40314 /* BMHANNAAir_otf.otf in Resources */,
+				6E89CE1E25711A9200E40314 /* BMHANNA_11yrs_otf.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -713,7 +737,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = individual.ForPigPyo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -733,7 +757,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = individual.ForPigPyo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

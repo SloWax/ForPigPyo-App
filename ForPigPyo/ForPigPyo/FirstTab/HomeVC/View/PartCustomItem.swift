@@ -51,7 +51,7 @@ class PartCustomItem: UICollectionViewCell {
     }
     private func setTitleLabel() {
         
-        titleLabel.font = .boldSystemFont(ofSize: self.frame.width / 14)
+        titleLabel.font = UIFont(name: "BMHANNA11yrsoldOTF", size: self.frame.width / 14)
         contentView.addSubview(titleLabel)
         
         titleLabel.snp.makeConstraints {
