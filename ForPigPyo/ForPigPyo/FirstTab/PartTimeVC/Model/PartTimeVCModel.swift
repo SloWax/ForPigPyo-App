@@ -101,16 +101,31 @@ struct PartTimeVCModel {
         return data
     }
     
-    // MARK: data sorted
-    func totalWorkCalcu(total: Double, totalMin: Double, hourly: Double, over: Double, overMin: Double, night: Double, nightMin: Double, overNight: Double, overNightMin: Double) {
+    // MARK: 총 근무시간 계산
+    func totalWorkCalcu(total: Int, totalMin: Int, over: Int, overMin: Int, night: Int, nightMin: Int, overNight: Int, overNightMin: Int) -> String {
         
+        var hour = hourCalcu(total: total, over: over, night: night, overNight: overNight)
+        var min = minCalcu(totalMin: totalMin, overMin: overMin, nightMin: nightMin, overNightMin: overNightMin)
         
+        let convertHour = min/60
+        let remainderMin = min%60
+        
+        hour = hour + convertHour
+        min = remainderMin
+        
+        return "\(hour)시간 \(min)분"
     }
-    private func hourCalcu() {
+    private func hourCalcu(total: Int, over: Int, night: Int, overNight: Int) -> Int {
         
+        let result = total + over + night + overNight
+        
+        return result
     }
-    private func minCalcu() {
+    private func minCalcu(totalMin: Int, overMin: Int, nightMin: Int, overNightMin: Int) -> Int {
         
+        let result = totalMin + overMin + nightMin + overNightMin
+        
+        return result
     }
     // MARK: 일 급여 계산
     func totalPaySum(total: Double, totalMin: Double, hourly: Double, over: Double, overMin: Double, night: Double, nightMin: Double, overNight: Double, overNightMin: Double) -> Int {

@@ -162,7 +162,7 @@ class PartTimeCustomCell: UITableViewCell {
         overNightWorkLabel.text = "야간 특근: \(data?.overNightTime ?? 0)시간 \(data?.overNightTimeMin ?? 0)분"
         
         hourlyWageLabel.text = "시급: \(formatter.string(from: (data?.hourlyWage ?? 0) as NSNumber) ?? "")원"
-        totalWorkTimeLabel.text = "총 근무: \(data?.workingTime ?? 0)시간 \(data?.workingTimeMin ?? 0)분"
+        totalWorkTimeLabel.text = "총 근무: \(data?.totalTime ?? "")"
         dayPayLabel.text = "일 급여: \(formatter.string(from: (data?.totalPay ?? 0) as NSNumber) ?? "")원"
     }
     required init?(coder: NSCoder) {

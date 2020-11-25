@@ -205,6 +205,14 @@ class PartTimeVC: UIViewController {
                 
                 date = "0\(saveView.dateTextField.text ?? "")"
             }
+            let totalTime = model.totalWorkCalcu(total: Int(saveView.totalTextField.text ?? "") ?? 0,
+                                                 totalMin: Int(saveView.totalMinTextField.text ?? "") ?? 0,
+                                                 over: Int(saveView.overTextField.text ?? "") ?? 0,
+                                                 overMin: Int(saveView.overMinTextField.text ?? "") ?? 0,
+                                                 night: Int(saveView.nightTextField.text ?? "") ?? 0,
+                                                 nightMin: Int(saveView.nightMinTextField.text ?? "") ?? 0,
+                                                 overNight: Int(saveView.overNightTextField.text ?? "") ?? 0,
+                                                 overNightMin: Int(saveView.overNightMinTextField.text ?? "") ?? 0)
             
             let totalPay = model.totalPaySum(total: Double(saveView.totalTextField.text ?? "") ?? 0,
                                              totalMin: Double(saveView.totalMinTextField.text ?? "") ?? 0,
@@ -226,6 +234,7 @@ class PartTimeVC: UIViewController {
                                            overNightTime: Int(saveView.overNightTextField.text ?? "") ?? 0,
                                            overNightTimeMin: Int(saveView.overNightMinTextField.text ?? "") ?? 0,
                                            hourlyWage: Int(saveView.hourlyWageTextField.text ?? "") ?? 0,
+                                           totalTime: totalTime,
                                            totalPay: totalPay)
             
             data = model.editData(division: division.text ?? "", data: &data, yearIndex: yearIndex, monthIndex: monthIndex, index: division.tag, value: value)

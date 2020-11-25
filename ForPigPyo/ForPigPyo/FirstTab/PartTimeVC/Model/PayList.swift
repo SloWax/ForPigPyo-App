@@ -39,6 +39,7 @@ struct PayList: Codable {
                 let overNightTimeMin: Int
                 
                 let hourlyWage: Int
+                let totalTime: String
                 let totalPay: Int
             }
         }
