@@ -45,6 +45,8 @@ class PartTimeSaveView: UIView {
         textField.font = Design.nomalTextSize
         textField.textAlignment = .right
         textField.textColor = .white
+        textField.keyboardType = .numberPad
+        textField.doneAccessory = true
         
         return textField
     }()
@@ -65,6 +67,8 @@ class PartTimeSaveView: UIView {
         textField.font = Design.nomalTextSize
         textField.textAlignment = .right
         textField.textColor = .white
+        textField.keyboardType = .numberPad
+        textField.doneAccessory = true
         
         return textField
     }()
@@ -95,6 +99,8 @@ class PartTimeSaveView: UIView {
         textField.font = Design.nomalTextSize
         textField.textAlignment = .right
         textField.textColor = .white
+        textField.keyboardType = .numberPad
+        textField.doneAccessory = true
         
         return textField
     }()
@@ -114,6 +120,8 @@ class PartTimeSaveView: UIView {
         textField.font = Design.nomalTextSize
         textField.textAlignment = .right
         textField.textColor = .white
+        textField.keyboardType = .numberPad
+        textField.doneAccessory = true
         
         return textField
     }()
@@ -144,6 +152,8 @@ class PartTimeSaveView: UIView {
         textField.font = Design.nomalTextSize
         textField.textAlignment = .right
         textField.textColor = .white
+        textField.keyboardType = .numberPad
+        textField.doneAccessory = true
         
         return textField
     }()
@@ -163,6 +173,8 @@ class PartTimeSaveView: UIView {
         textField.font = Design.nomalTextSize
         textField.textAlignment = .right
         textField.textColor = .white
+        textField.keyboardType = .numberPad
+        textField.doneAccessory = true
         
         return textField
     }()
@@ -193,6 +205,8 @@ class PartTimeSaveView: UIView {
         textField.font = Design.nomalTextSize
         textField.textAlignment = .right
         textField.textColor = .white
+        textField.keyboardType = .numberPad
+        textField.doneAccessory = true
         
         return textField
     }()
@@ -212,6 +226,8 @@ class PartTimeSaveView: UIView {
         textField.font = Design.nomalTextSize
         textField.textAlignment = .right
         textField.textColor = .white
+        textField.keyboardType = .numberPad
+        textField.doneAccessory = true
         
         return textField
     }()
@@ -242,6 +258,8 @@ class PartTimeSaveView: UIView {
         textField.font = Design.nomalTextSize
         textField.textAlignment = .right
         textField.textColor = .white
+        textField.keyboardType = .numberPad
+        textField.doneAccessory = true
         
         return textField
     }()
@@ -261,6 +279,8 @@ class PartTimeSaveView: UIView {
         textField.font = Design.nomalTextSize
         textField.textAlignment = .right
         textField.textColor = .white
+        textField.keyboardType = .numberPad
+        textField.doneAccessory = true
         
         return textField
     }()
@@ -303,8 +323,7 @@ class PartTimeSaveView: UIView {
         setNight()
         setOverNight()
         
-        setCancleButton()
-        setSaveButton()
+        setButton()
     }
     private func setView() {
         
@@ -505,9 +524,10 @@ class PartTimeSaveView: UIView {
             $0.leading.trailing.equalTo(nightMinTextField)
         }
     }
-    private func setCancleButton() {
+    private func setButton() {
         
         self.addSubview(cancleButton)
+        self.addSubview(saveButton)
         
         cancleButton.snp.makeConstraints {
             
@@ -517,17 +537,16 @@ class PartTimeSaveView: UIView {
             
             $0.bottom.equalToSuperview().inset(Design.LargePadding)
         }
-    }
-    private func setSaveButton() {
-        
-        self.addSubview(saveButton)
-        
         saveButton.snp.makeConstraints {
             
             $0.top.equalTo(cancleButton)
             $0.leading.equalTo(self.snp.centerX).offset(Design.LargePadding / 2)
             $0.trailing.equalTo(titleLabel)
         }
+    }
+    @objc private func setSaveButton() {
+        
+        
     }
     func setValue(title: String, date: String?, index: Int, value: PayList.Year.Month.Data?) {
         

@@ -101,11 +101,15 @@ class PartTimeVC: UIViewController {
     }
     private func setSaveView() {
         
-        [saveView.dateTextField, saveView.totalTextField, saveView.totalMinTextField, saveView.overTextField, saveView.overMinTextField, saveView.nightTextField, saveView.nightMinTextField, saveView.overNightTextField, saveView.overNightMinTextField].forEach { (textField) in
+        [saveView.dateTextField, saveView.totalTextField, saveView.totalMinTextField, saveView.overTextField,
+         saveView.overMinTextField, saveView.nightTextField, saveView.nightMinTextField, saveView.overNightTextField,
+         saveView.overNightMinTextField].forEach { (textField) in
+            
             textField.addTarget(self, action: #selector(textCountLimit(_:)), for: .editingChanged)
         }
         
         [saveView.cancleButton, saveView.saveButton].forEach({ (button) in
+            
             button.addTarget(self, action: #selector(returnSaveView(_:)), for: .touchUpInside)
         })
         view.addSubview(saveView)
@@ -238,12 +242,18 @@ class PartTimeVC: UIViewController {
                                            totalPay: totalPay)
             
             data = model.editData(division: division.text ?? "", data: &data, yearIndex: yearIndex, monthIndex: monthIndex, index: division.tag, value: value)
-            model.saveData(data: data ?? PayList(years: [PayList.Year(year: 0, months: [PayList.Year.Month(month: 1, data: [PayList.Year.Month.Data]())])]))
+            model.saveData(data: data ?? PayList(years: [PayList.Year]()))
             partTimeView.totalLabel.text = "총 \(model.setTotalPay(data: data, yearIndex: yearIndex, monthIndex: monthIndex)) 원"
             partTimeView.historyTable.reloadData()
             
         }
         
+        [saveView.dateTextField, saveView.hourlyWageTextField, saveView.totalTextField, saveView.totalMinTextField,
+         saveView.overTextField, saveView.overMinTextField, saveView.nightTextField, saveView.nightMinTextField,
+         saveView.overNightTextField, saveView.overNightMinTextField].forEach { (textField) in
+            
+            textField.resignFirstResponder()
+        }
         moveSaveView(offset: 0)
     }
     @objc private func textCountLimit(_ sender: UITextField) {
