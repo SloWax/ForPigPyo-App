@@ -22,7 +22,7 @@ extension PartTimeVC: UITableViewDelegate {
             
             partTimeView.totalLabel.text = "총 \(model.setTotalPay(data: data, yearIndex: yearIndex, monthIndex: monthIndex)) 원"
             
-            model.saveData(data: data ?? PayList(years: [PayList.Year(year: 0, months: [PayList.Year.Month(month: 1, data: [PayList.Year.Month.Data]())])]))
+            model.saveData(data: data ?? PayList(years: [PayList.Year]()))
         default:
             fatalError()
         }

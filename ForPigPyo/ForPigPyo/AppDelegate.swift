@@ -15,9 +15,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        let mainTabVC = MainTabVC()
+        
+        if let homeVC = mainTabVC.viewControllers?[0].children[0] as? HomeVC {
+            
+            homeVC.backImageView.image = homeVC.loadBackImage(forkey: HomeVC.forkey)
+        }
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = MainTabVC()
+        window?.rootViewController = mainTabVC
         window?.makeKeyAndVisible()
         
         return true

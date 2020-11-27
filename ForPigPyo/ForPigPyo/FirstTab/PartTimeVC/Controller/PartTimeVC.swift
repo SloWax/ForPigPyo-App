@@ -11,7 +11,7 @@ import SnapKit
 
 class PartTimeVC: UIViewController {
     
-    private let backImageView: UIImageView = {
+    let backImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = Design.purple
         
@@ -51,8 +51,8 @@ class PartTimeVC: UIViewController {
     var data: PayList?
     
     static let forkey: String = "PartTimeVC"
-    lazy var yearInt = Int(yearFormat.string(from: Date())) ?? 0
-    lazy var monthInt = Int(monthFormat.string(from: Date())) ?? 0
+    private lazy var yearInt = Int(yearFormat.string(from: Date())) ?? 0
+    private lazy var monthInt = Int(monthFormat.string(from: Date())) ?? 0
     var yearIndex: Int = 0
     var monthIndex: Int = 0
     
@@ -80,7 +80,8 @@ class PartTimeVC: UIViewController {
     }
     private func setView() {
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addSaveView(_:)))
+        let rightButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addSaveView(_:)))
+        navigationItem.rightBarButtonItem = rightButton
         
         view.addSubview(backImageView)
         

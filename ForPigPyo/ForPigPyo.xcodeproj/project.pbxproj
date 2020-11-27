@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		6E30889925541C43001D006F /* PartTimeCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E30889825541C43001D006F /* PartTimeCustomCell.swift */; };
 		6E807C782572740500337550 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E807C772572740500337550 /* TextField.swift */; };
+		6E807C81257288DC00337550 /* HomeVCImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E807C80257288DC00337550 /* HomeVCImagePicker.swift */; };
+		6E807C8625728DD600337550 /* HomeVCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E807C8525728DD600337550 /* HomeVCModel.swift */; };
 		6E8552FF2564FC880077302E /* PartTimeSaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8552FE2564FC880077302E /* PartTimeSaveView.swift */; };
 		6E89CE1C25711A9200E40314 /* BMHANNA_11yrs_otf.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6E89CE1A25711A9200E40314 /* BMHANNA_11yrs_otf.otf */; };
 		6E89CE1D25711A9200E40314 /* BMHANNA_11yrs_otf.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6E89CE1A25711A9200E40314 /* BMHANNA_11yrs_otf.otf */; };
@@ -61,6 +63,8 @@
 		69905FD33D62068D7289E2D0 /* Pods-ForPigPyo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ForPigPyo.release.xcconfig"; path = "Target Support Files/Pods-ForPigPyo/Pods-ForPigPyo.release.xcconfig"; sourceTree = "<group>"; };
 		6E30889825541C43001D006F /* PartTimeCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartTimeCustomCell.swift; sourceTree = "<group>"; };
 		6E807C772572740500337550 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		6E807C80257288DC00337550 /* HomeVCImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVCImagePicker.swift; sourceTree = "<group>"; };
+		6E807C8525728DD600337550 /* HomeVCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVCModel.swift; sourceTree = "<group>"; };
 		6E8552FE2564FC880077302E /* PartTimeSaveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartTimeSaveView.swift; sourceTree = "<group>"; };
 		6E89CE1A25711A9200E40314 /* BMHANNA_11yrs_otf.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BMHANNA_11yrs_otf.otf; sourceTree = "<group>"; };
 		6E89CE1B25711A9200E40314 /* BMHANNAAir_otf.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BMHANNAAir_otf.otf; sourceTree = "<group>"; };
@@ -308,6 +312,7 @@
 				6EFF5AFF2553F715007BAAF2 /* HomeVCDataSource.swift */,
 				6EFF5B002553F715007BAAF2 /* HomeVCDelegate.swift */,
 				6EFF5B012553F715007BAAF2 /* HomeVCDelegateFlowLayout.swift */,
+				6E807C80257288DC00337550 /* HomeVCImagePicker.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -323,6 +328,7 @@
 		6EFF5B082553F715007BAAF2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6E807C8525728DD600337550 /* HomeVCModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -545,8 +551,10 @@
 			files = (
 				6EFF5B142553F715007BAAF2 /* PartCustomItem.swift in Sources */,
 				6EFF5B102553F715007BAAF2 /* HomeVCDelegateFlowLayout.swift in Sources */,
+				6E807C81257288DC00337550 /* HomeVCImagePicker.swift in Sources */,
 				6EFF5B112553F715007BAAF2 /* HomeVC.swift in Sources */,
 				6E807C782572740500337550 /* TextField.swift in Sources */,
+				6E807C8625728DD600337550 /* HomeVCModel.swift in Sources */,
 				6EFF5B0E2553F715007BAAF2 /* HomeVCDataSource.swift in Sources */,
 				6EC1736F255CAFC30023F365 /* PartTimeVCModel.swift in Sources */,
 				6EFF5B132553F715007BAAF2 /* HomeView.swift in Sources */,

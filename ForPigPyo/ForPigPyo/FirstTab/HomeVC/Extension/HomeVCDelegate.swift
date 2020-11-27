@@ -14,6 +14,7 @@ extension HomeVC: UICollectionViewDelegate {
         guard let item = collectionView.cellForItem(at: indexPath) as? PartCustomItem else { fatalError() }
         let partVC = PartTimeVC()
         partVC.title = item.titleLabel.text
+        partVC.backImageView.image = backImageView.image
         
         navigationController?.pushViewController(partVC, animated: true)
     }
