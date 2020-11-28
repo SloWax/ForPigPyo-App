@@ -23,7 +23,7 @@ class PartTimeCustomCell: UITableViewCell {
     let overTimeLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.font = Design.nomalTextSize
+        label.font = Design.smallTextSize
         label.setContentHuggingPriority(.defaultHigh, for: .vertical)
         
         return label
@@ -31,7 +31,7 @@ class PartTimeCustomCell: UITableViewCell {
     let nightWorkLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.font = Design.nomalTextSize
+        label.font = Design.smallTextSize
         label.setContentHuggingPriority(.defaultHigh, for: .vertical)
         
         return label
@@ -39,7 +39,7 @@ class PartTimeCustomCell: UITableViewCell {
     let overNightWorkLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.font = Design.nomalTextSize
+        label.font = Design.smallTextSize
         
         return label
     }()
@@ -107,7 +107,7 @@ class PartTimeCustomCell: UITableViewCell {
         contentView.addSubview(nightWorkLabel)
         
         nightWorkLabel.snp.makeConstraints {
-            $0.top.equalTo(overTimeLabel.snp.bottom).offset(Design.smallPadding / 2)
+            $0.top.equalTo(overTimeLabel.snp.bottom).offset(Design.smallPadding)
             $0.leading.equalTo(overTimeLabel)
         }
     }
@@ -116,7 +116,7 @@ class PartTimeCustomCell: UITableViewCell {
         contentView.addSubview(overNightWorkLabel)
         
         overNightWorkLabel.snp.makeConstraints {
-            $0.top.equalTo(nightWorkLabel.snp.bottom).offset(Design.smallPadding / 2)
+            $0.top.equalTo(nightWorkLabel.snp.bottom).offset(Design.smallPadding)
             $0.leading.equalTo(nightWorkLabel)
             $0.bottom.equalToSuperview().inset(Design.nomalPadding)
         }
@@ -149,17 +149,49 @@ class PartTimeCustomCell: UITableViewCell {
             $0.bottom.equalTo(overNightWorkLabel)
         }
     }
-    
-    func setValue(data:  PayList.Year.Month.Data?) {
+    private func setOverText(data: PayList.Year.Month.Data?) {
+        
+        let overTimeMin = data?.overTimeMin ?? 0
+        
+        if overTimeMin == 0 {
+            
+            overTimeLabel.text = "특근: \(data?.overTime ?? 0)시간"
+        } else {
+            overTimeLabel.text = "특근: \(data?.overTime ?? 0)시간 \(overTimeMin)분"
+        }
+    }
+    private func setNightText(data: PayList.Year.Month.Data?) {
+        
+        let nightTimeMin = data?.nightTimeMin ?? 0
+        
+        if nightTimeMin == 0 {
+            
+            nightWorkLabel.text = "야간: \(data?.nightTime ?? 0)시간"
+        } else {
+            nightWorkLabel.text = "야간: \(data?.nightTime ?? 0)시간 \(nightTimeMin)분"
+        }
+    }
+    private func setOverNightText(data: PayList.Year.Month.Data?) {
+        
+        let overNightTimeMin = data?.overNightTimeMin ?? 0
+        
+        if overNightTimeMin == 0 {
+            
+            overNightWorkLabel.text = "야/특근: \(data?.overNightTime ?? 0)시간"
+        } else {
+            overNightWorkLabel.text = "야/특근: \(data?.overNightTime ?? 0)시간 \(overNightTimeMin)분"
+        }
+    }
+    func setValue(data: PayList.Year.Month.Data?) {
         
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         
         dateLabel.text = "\(String(format: "%02d", data?.date ?? 0))일"
         
-        overTimeLabel.text = "특근: \(data?.overTime ?? 0)시간 \(data?.overTimeMin ?? 0)분"
-        nightWorkLabel.text = "야간: \(data?.nightTime ?? 0)시간 \(data?.nightTimeMin ?? 0)분"
-        overNightWorkLabel.text = "야/특근: \(data?.overNightTime ?? 0)시간 \(data?.overNightTimeMin ?? 0)분"
+        setOverText(data: data)
+        setNightText(data: data)
+        setOverNightText(data: data)
         
         hourlyWageLabel.text = "시급: \(formatter.string(from: (data?.hourlyWage ?? 0) as NSNumber) ?? "")원"
         totalWorkTimeLabel.text = "총 근무: \(data?.totalTime ?? "")"

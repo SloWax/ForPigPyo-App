@@ -29,9 +29,9 @@ struct Design {
     static let cornerRadius: CGFloat = 10
     
     // MARK: font
-    static let smallTextSize = UIFont(name: "BMHANNAAirOTF", size: 14)
+    static let smallTextSize = UIFont(name: "BMHANNAAirOTF", size: 16)
     static let nomalTextSize = UIFont(name: "BMHANNAAirOTF", size: 19)
-    static let LargeTextSize = UIFont(name: "BMHANNAAirOTF", size: 24)
+    static let LargeTextSize = UIFont(name: "BMHANNAAirOTF", size: 22)
     
     static let boldNomalTextSize = UIFont(name: "BMHANNA11yrsoldOTF", size: 20)
     static let boldLargeTextSize = UIFont(name: "BMHANNA11yrsoldOTF", size: 26)
