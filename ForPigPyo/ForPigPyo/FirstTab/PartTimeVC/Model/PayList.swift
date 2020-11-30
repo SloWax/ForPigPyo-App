@@ -25,6 +25,7 @@ struct PayList: Codable {
             struct Data: Codable {
                 
                 let date: Int
+                let weekDay: String
                 
                 let workingTime: Int
                 let workingTimeMin: Int

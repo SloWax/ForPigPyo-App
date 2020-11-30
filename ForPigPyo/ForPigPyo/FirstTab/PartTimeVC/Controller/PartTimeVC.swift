@@ -102,7 +102,7 @@ class PartTimeVC: UIViewController {
     }
     private func setSaveView() {
         
-        [saveView.dateTextField, saveView.totalTextField, saveView.totalMinTextField, saveView.overTextField,
+        [saveView.dateTextField, saveView.workingTextField, saveView.workingMinTextField, saveView.overTextField,
          saveView.overMinTextField, saveView.nightTextField, saveView.nightMinTextField, saveView.overNightTextField,
          saveView.overNightMinTextField].forEach { (textField) in
             
@@ -205,42 +205,50 @@ class PartTimeVC: UIViewController {
             
             let division = saveView.titleLabel
             
-            var date = saveView.dateTextField.text
-            if saveView.dateTextField.text?.count == 1 {
-                
-                date = "0\(saveView.dateTextField.text ?? "")"
-            }
-            let totalTime = model.totalWorkCalcu(total: Int(saveView.totalTextField.text ?? "") ?? 0,
-                                                 totalMin: Int(saveView.totalMinTextField.text ?? "") ?? 0,
-                                                 over: Int(saveView.overTextField.text ?? "") ?? 0,
-                                                 overMin: Int(saveView.overMinTextField.text ?? "") ?? 0,
-                                                 night: Int(saveView.nightTextField.text ?? "") ?? 0,
-                                                 nightMin: Int(saveView.nightMinTextField.text ?? "") ?? 0,
-                                                 overNight: Int(saveView.overNightTextField.text ?? "") ?? 0,
-                                                 overNightMin: Int(saveView.overNightMinTextField.text ?? "") ?? 0)
+            let date = Int(saveView.dateTextField.text ?? "") ?? 0
+            let weekDay = model.getWeekDay(year: yearInt, month: monthInt, day: date)
+            let working = Int(saveView.workingTextField.text ?? "") ?? 0
+            let workingMin = Int(saveView.workingMinTextField.text ?? "") ?? 0
+            let over = Int(saveView.overTextField.text ?? "") ?? 0
+            let overMin = Int(saveView.overMinTextField.text ?? "") ?? 0
+            let night = Int(saveView.nightTextField.text ?? "") ?? 0
+            let nightMin = Int(saveView.nightMinTextField.text ?? "") ?? 0
+            let overNight = Int(saveView.overNightTextField.text ?? "") ?? 0
+            let overNightMin = Int(saveView.overNightMinTextField.text ?? "") ?? 0
+            let hourly = Int(saveView.hourlyWageTextField.text ?? "") ?? 0
+
+            let totalTime = model.totalWorkCalcu(working: working,
+                                                 workingMin: workingMin,
+                                                 over: over,
+                                                 overMin: overMin,
+                                                 night: night,
+                                                 nightMin: nightMin,
+                                                 overNight: overNight,
+                                                 overNightMin: overNightMin)
             
-            let totalPay = model.totalPaySum(total: Double(saveView.totalTextField.text ?? "") ?? 0,
-                                             totalMin: Double(saveView.totalMinTextField.text ?? "") ?? 0,
-                                             hourly: Double(saveView.hourlyWageTextField.text ?? "") ?? 0,
-                                             over: Double(saveView.overTextField.text ?? "") ?? 0,
-                                             overMin: Double(saveView.overMinTextField.text ?? "") ?? 0,
-                                             night: Double(saveView.nightTextField.text ?? "") ?? 0,
-                                             nightMin: Double(saveView.nightMinTextField.text ?? "") ?? 0,
-                                             overNight: Double(saveView.overNightTextField.text ?? "") ?? 0,
-                                             overNightMin: Double(saveView.overNightMinTextField.text ?? "") ?? 0)
+            let totalPay = model.totalPaySum(working: Double(working),
+                                             workingMin: Double(workingMin),
+                                             hourly: Double(hourly),
+                                             over: Double(over),
+                                             overMin: Double(overMin),
+                                             night: Double(night),
+                                             nightMin: Double(nightMin),
+                                             overNight: Double(overNight),
+                                             overNightMin: Double(overNightMin))
             
-            let value = PayList.Year.Month.Data(date: Int(date ?? "") ?? 0,
-                                           workingTime: Int(saveView.totalTextField.text ?? "") ?? 0,
-                                           workingTimeMin: Int(saveView.totalMinTextField.text ?? "") ?? 0,
-                                           overTime: Int(saveView.overTextField.text ?? "") ?? 0,
-                                           overTimeMin: Int(saveView.overMinTextField.text ?? "") ?? 0,
-                                           nightTime: Int(saveView.nightTextField.text ?? "") ?? 0,
-                                           nightTimeMin: Int(saveView.nightMinTextField.text ?? "") ?? 0,
-                                           overNightTime: Int(saveView.overNightTextField.text ?? "") ?? 0,
-                                           overNightTimeMin: Int(saveView.overNightMinTextField.text ?? "") ?? 0,
-                                           hourlyWage: Int(saveView.hourlyWageTextField.text ?? "") ?? 0,
-                                           totalTime: totalTime,
-                                           totalPay: totalPay)
+            let value = PayList.Year.Month.Data(date: date,
+                                                weekDay: weekDay,
+                                                workingTime: working,
+                                                workingTimeMin: workingMin,
+                                                overTime: over,
+                                                overTimeMin: overMin,
+                                                nightTime: night,
+                                                nightTimeMin: nightMin,
+                                                overNightTime: overNight,
+                                                overNightTimeMin: overNightMin,
+                                                hourlyWage: hourly,
+                                                totalTime: totalTime,
+                                                totalPay: totalPay)
             
             data = model.editData(division: division.text ?? "", data: &data, yearIndex: yearIndex, monthIndex: monthIndex, index: division.tag, value: value)
             model.saveData(data: data ?? PayList(years: [PayList.Year]()))
@@ -249,7 +257,7 @@ class PartTimeVC: UIViewController {
             
         }
         
-        [saveView.dateTextField, saveView.hourlyWageTextField, saveView.totalTextField, saveView.totalMinTextField,
+        [saveView.dateTextField, saveView.hourlyWageTextField, saveView.workingTextField, saveView.workingMinTextField,
          saveView.overTextField, saveView.overMinTextField, saveView.nightTextField, saveView.nightMinTextField,
          saveView.overNightTextField, saveView.overNightMinTextField].forEach { (textField) in
             
@@ -263,7 +271,7 @@ class PartTimeVC: UIViewController {
         case saveView.dateTextField:
             
             sender.text?.count == 0 ? setLabelAlpha(label: saveView.dayLabel, value: 0) : setLabelAlpha(label: saveView.dayLabel, value: 1)
-        case saveView.totalTextField, saveView.totalMinTextField:
+        case saveView.workingTextField, saveView.workingMinTextField:
             
             sender.text?.count == 0 ? setLabelAlpha(label: saveView.workLabel, value: 0) : setLabelAlpha(label: saveView.workLabel, value: 1)
         case saveView.overTextField, saveView.overMinTextField:

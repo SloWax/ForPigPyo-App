@@ -11,7 +11,13 @@ import Foundation
 
 struct Design {
     // MARK: backgroundColor
-    static let purple: UIColor = UIColor(displayP3Red: 158/255, green: 113/255, blue: 226/255, alpha: 1)
+//    static let purple: UIColor = UIColor(displayP3Red: 158/255, green: 113/255, blue: 226/255, alpha: 1)
+    static let purple: UIColor = UIColor(red: 227/255, green: 206/255, blue: 246/255, alpha: 1)
+    
+    // MARK: textColor
+    static let basic: UIColor = UIColor(displayP3Red: 190/255, green: 190/255, blue: 190/255, alpha: 1)
+    static let redSun: UIColor = UIColor(displayP3Red: 236/255, green: 120/255, blue: 115/255, alpha: 1)
+    static let blueSat: UIColor = UIColor(displayP3Red: 102/255, green: 112/255, blue: 238/255, alpha: 1)
     
     // MARK: padding
     static let padding: CGFloat = 30

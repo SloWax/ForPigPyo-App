@@ -19,6 +19,13 @@ class PartTimeCustomCell: UITableViewCell {
         
         return label
     }()
+    let weekDayLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .white
+        label.font = Design.boldLargeTextSize
+        
+        return label
+    }()
     
     let overTimeLabel: UILabel = {
         let label = UILabel()
@@ -74,6 +81,7 @@ class PartTimeCustomCell: UITableViewCell {
         self.selectionStyle = .none
         
         setDateLabel()
+        setWeekDayLabel()
         
         setOverTimeLabel()
         setNightWorkLabel()
@@ -89,7 +97,16 @@ class PartTimeCustomCell: UITableViewCell {
         
         dateLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(Design.LargePadding)
-            $0.centerY.equalToSuperview()
+            $0.bottom.equalTo(self.snp.centerY).offset(-Design.smallPadding / 2)
+        }
+    }
+    private func setWeekDayLabel() {
+        
+        contentView.addSubview(weekDayLabel)
+        
+        weekDayLabel.snp.makeConstraints {
+            $0.centerX.equalTo(dateLabel.snp.centerX)
+            $0.top.equalTo(self.snp.centerY).offset(Design.smallPadding / 2)
         }
     }
     
@@ -182,12 +199,27 @@ class PartTimeCustomCell: UITableViewCell {
             overNightWorkLabel.text = "야/특근: \(data?.overNightTime ?? 0)시간 \(overNightTimeMin)분"
         }
     }
+    private func setWeekLabelColor(label: UILabel, weakDay: String?) {
+        switch weakDay {
+        case "일":
+            
+            label.textColor = Design.redSun
+        case "토":
+            
+            label.textColor = Design.blueSat
+        default:
+            label.textColor = Design.basic
+        }
+    }
     func setValue(data: PayList.Year.Month.Data?) {
         
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         
         dateLabel.text = "\(String(format: "%02d", data?.date ?? 0))일"
+        weekDayLabel.text = data?.weekDay
+        setWeekLabelColor(label: weekDayLabel, weakDay: data?.weekDay)
+        
         
         setOverText(data: data)
         setNightText(data: data)

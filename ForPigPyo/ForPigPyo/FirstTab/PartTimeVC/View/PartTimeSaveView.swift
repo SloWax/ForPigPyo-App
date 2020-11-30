@@ -73,7 +73,7 @@ class PartTimeSaveView: UIView {
         return textField
     }()
     
-    let totalLabel: UILabel = {
+    let workingLabel: UILabel = {
         let label = UILabel()
         label.text = "시간"
         label.textColor = .white
@@ -92,7 +92,7 @@ class PartTimeSaveView: UIView {
         
         return label
     }()
-    let totalTextField: UITextField = {
+    let workingTextField: UITextField = {
         let textField = UITextField()
         let attributes = [NSAttributedString.Key.foregroundColor : UIColor.white.withAlphaComponent(0.5), .font: Design.nomalTextSize]
         textField.attributedPlaceholder = NSAttributedString(string: "근무", attributes: attributes as [NSAttributedString.Key : Any])
@@ -104,7 +104,7 @@ class PartTimeSaveView: UIView {
         
         return textField
     }()
-    let totalMinLabel: UILabel = {
+    let workingMinLabel: UILabel = {
         let label = UILabel()
         label.text = "분"
         label.textColor = .white
@@ -113,7 +113,7 @@ class PartTimeSaveView: UIView {
         
         return label
     }()
-    let totalMinTextField: UITextField = {
+    let workingMinTextField: UITextField = {
         let textField = UITextField()
         let attributes = [NSAttributedString.Key.foregroundColor : UIColor.white.withAlphaComponent(0.5), .font: Design.nomalTextSize]
         textField.attributedPlaceholder = NSAttributedString(string: "근무", attributes: attributes as [NSAttributedString.Key : Any])
@@ -384,11 +384,11 @@ class PartTimeSaveView: UIView {
     }
     private func setTotal() {
         
-        self.addSubview(totalLabel)
+        self.addSubview(workingLabel)
         self.addSubview(workLabel)
-        self.addSubview(totalTextField)
+        self.addSubview(workingTextField)
         
-        totalLabel.snp.makeConstraints {
+        workingLabel.snp.makeConstraints {
             
             $0.top.equalTo(dateLabel.snp.bottom).offset(Design.nomalPadding)
             $0.width.equalTo(self.snp.width).multipliedBy(0.1)
@@ -396,26 +396,26 @@ class PartTimeSaveView: UIView {
         }
         workLabel.snp.makeConstraints {
             
-            $0.top.equalTo(totalLabel)
+            $0.top.equalTo(workingLabel)
             $0.leading.equalTo(dayLabel)
         }
-        totalTextField.snp.makeConstraints {
+        workingTextField.snp.makeConstraints {
             
-            $0.top.equalTo(totalLabel)
+            $0.top.equalTo(workingLabel)
             $0.leading.equalTo(dateTextField)
-            $0.trailing.equalTo(totalLabel.snp.leading).offset(-Design.smallPadding)
+            $0.trailing.equalTo(workingLabel.snp.leading).offset(-Design.smallPadding)
         }
         
-        self.addSubview(totalMinLabel)
-        self.addSubview(totalMinTextField)
+        self.addSubview(workingMinLabel)
+        self.addSubview(workingMinTextField)
         
-        totalMinLabel.snp.makeConstraints {
-            $0.top.equalTo(totalLabel)
+        workingMinLabel.snp.makeConstraints {
+            $0.top.equalTo(workingLabel)
             $0.leading.trailing.equalTo(hourlyWageLabel)
         }
-        totalMinTextField.snp.makeConstraints {
+        workingMinTextField.snp.makeConstraints {
             
-            $0.top.equalTo(totalTextField)
+            $0.top.equalTo(workingTextField)
             $0.leading.trailing.equalTo(hourlyWageTextField)
         }
     }
@@ -427,8 +427,8 @@ class PartTimeSaveView: UIView {
         
         overLabel.snp.makeConstraints {
             
-            $0.top.equalTo(totalLabel.snp.bottom).offset(Design.nomalPadding)
-            $0.leading.trailing.equalTo(totalLabel)
+            $0.top.equalTo(workingLabel.snp.bottom).offset(Design.nomalPadding)
+            $0.leading.trailing.equalTo(workingLabel)
         }
         overWorkLabel.snp.makeConstraints {
             
@@ -438,7 +438,7 @@ class PartTimeSaveView: UIView {
         overTextField.snp.makeConstraints {
             
             $0.top.equalTo(overLabel)
-            $0.leading.trailing.equalTo(totalTextField)
+            $0.leading.trailing.equalTo(workingTextField)
         }
         
         self.addSubview(overMinLabel)
@@ -446,11 +446,11 @@ class PartTimeSaveView: UIView {
         
         overMinLabel.snp.makeConstraints {
             $0.top.equalTo(overLabel)
-            $0.leading.trailing.equalTo(totalMinLabel)
+            $0.leading.trailing.equalTo(workingMinLabel)
         }
         overMinTextField.snp.makeConstraints {
             $0.top.equalTo(overMinLabel)
-            $0.leading.trailing.equalTo(totalMinTextField)
+            $0.leading.trailing.equalTo(workingMinTextField)
         }
     }
     private func setNight() {
@@ -544,10 +544,6 @@ class PartTimeSaveView: UIView {
             $0.trailing.equalTo(titleLabel)
         }
     }
-    @objc private func setSaveButton() {
-        
-        
-    }
     func setValue(title: String, date: String?, index: Int, value: PayList.Year.Month.Data?) {
         
         titleLabel.text = title
@@ -559,8 +555,8 @@ class PartTimeSaveView: UIView {
             dateTextField.text = "\(value.date)"
             hourlyWageTextField.text = "\(value.hourlyWage)"
 
-            totalTextField.text = "\(value.workingTime)"
-            totalMinTextField.text = "\(value.workingTimeMin)"
+            workingTextField.text = "\(value.workingTime)"
+            workingMinTextField.text = "\(value.workingTimeMin)"
             
             overTextField.text = "\(value.overTime)"
             overMinTextField.text = "\(value.overTimeMin)"
@@ -581,7 +577,7 @@ class PartTimeSaveView: UIView {
         
         dateTextField.text = date
         
-        [hourlyWageTextField, totalTextField, totalMinTextField, overTextField, overMinTextField, nightTextField, nightMinTextField, overNightTextField, overNightMinTextField].forEach { (textField) in
+        [hourlyWageTextField, workingTextField, workingMinTextField, overTextField, overMinTextField, nightTextField, nightMinTextField, overNightTextField, overNightMinTextField].forEach { (textField) in
             
             textField.text = nil
         }

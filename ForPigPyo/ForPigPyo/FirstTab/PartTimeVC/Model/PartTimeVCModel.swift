@@ -15,8 +15,8 @@ struct PartTimeVCModel {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         
-        let value = data?.years[yearIndex].months[monthIndex].data
-        var result = 0
+        let value: [PayList.Year.Month.Data]? = data?.years[yearIndex].months[monthIndex].data
+        var result: Int = 0
         
         guard value?.count != 0 else { return "0" }
         
@@ -26,6 +26,32 @@ struct PartTimeVCModel {
         })
         
         return formatter.string(from: result as NSNumber) ?? ""
+    }
+    
+    // MARK: WeekDay 확인
+    func getWeekDay(year:Int, month:Int, day:Int) -> String {
+        
+        let calendar = Calendar(identifier: .gregorian)
+        let dateComponents: DateComponents = {
+            var components = DateComponents()
+            components.year = year
+            components.month = month
+            components.day = day
+            
+            return components
+        }()
+        let dateFormatter: DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "E"
+            formatter.locale = Locale(identifier: "ko-KR")
+            
+            return formatter
+        }()
+        
+        let fromDate = calendar.date(from: dateComponents)
+        
+        
+        return dateFormatter.string(from: fromDate ?? Date())
     }
     
     // MARK: dataTable 확인
@@ -102,13 +128,13 @@ struct PartTimeVCModel {
     }
     
     // MARK: 총 근무시간 계산
-    func totalWorkCalcu(total: Int, totalMin: Int, over: Int, overMin: Int, night: Int, nightMin: Int, overNight: Int, overNightMin: Int) -> String {
+    func totalWorkCalcu(working: Int, workingMin: Int, over: Int, overMin: Int, night: Int, nightMin: Int, overNight: Int, overNightMin: Int) -> String {
         
-        var hour = hourCalcu(total: total, over: over, night: night, overNight: overNight)
-        var min = minCalcu(totalMin: totalMin, overMin: overMin, nightMin: nightMin, overNightMin: overNightMin)
+        var hour: Int = hourCalcu(total: working, over: over, night: night, overNight: overNight)
+        var min: Int = minCalcu(totalMin: workingMin, overMin: overMin, nightMin: nightMin, overNightMin: overNightMin)
         
-        let convertHour = min/60
-        let remainderMin = min%60
+        let convertHour: Int = min/60
+        let remainderMin: Int = min%60
         
         hour = hour + convertHour
         min = remainderMin
@@ -117,30 +143,30 @@ struct PartTimeVCModel {
     }
     private func hourCalcu(total: Int, over: Int, night: Int, overNight: Int) -> Int {
         
-        let result = total + over + night + overNight
+        let result: Int = total + over + night + overNight
         
         return result
     }
     private func minCalcu(totalMin: Int, overMin: Int, nightMin: Int, overNightMin: Int) -> Int {
         
-        let result = totalMin + overMin + nightMin + overNightMin
+        let result: Int = totalMin + overMin + nightMin + overNightMin
         
         return result
     }
     // MARK: 일 급여 계산
-    func totalPaySum(total: Double, totalMin: Double, hourly: Double, over: Double, overMin: Double, night: Double, nightMin: Double, overNight: Double, overNightMin: Double) -> Int {
+    func totalPaySum(working: Double, workingMin: Double, hourly: Double, over: Double, overMin: Double, night: Double, nightMin: Double, overNight: Double, overNightMin: Double) -> Int {
         
-        let totalAll = convertTime(hour: total, min: totalMin)
-        let overAll = convertTime(hour: over, min: overMin)
-        let nightAll = convertTime(hour: night, min: nightMin)
-        let overNightAll = convertTime(hour: overNight, min: overNightMin)
+        let workingAll: Double = convertTime(hour: working, min: workingMin)
+        let overAll: Double = convertTime(hour: over, min: overMin)
+        let nightAll: Double = convertTime(hour: night, min: nightMin)
+        let overNightAll: Double = convertTime(hour: overNight, min: overNightMin)
         
-        let pay = (totalAll - overAll - nightAll - overNightAll) * hourly
-        let overPay = calcuPay(time: overAll, hourly: hourly, double: 1.5)
-        let nightPay = calcuPay(time: nightAll, hourly: hourly, double: 1.5)
-        let overNightPay = calcuPay(time: overNightAll, hourly: hourly, double: 2)
+        let pay: Double = calcuPay(time: workingAll, hourly: hourly, double: 1)
+        let overPay: Double = calcuPay(time: overAll, hourly: hourly, double: 1.5)
+        let nightPay: Double = calcuPay(time: nightAll, hourly: hourly, double: 1.5)
+        let overNightPay: Double = calcuPay(time: overNightAll, hourly: hourly, double: 2)
         
-        let totalPay = pay + overPay + nightPay + overNightPay
+        let totalPay: Double = pay + overPay + nightPay + overNightPay
         
         return Int(totalPay)
     }

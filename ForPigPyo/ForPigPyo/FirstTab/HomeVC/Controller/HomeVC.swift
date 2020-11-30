@@ -17,15 +17,14 @@ class HomeVC: UIViewController {
         
         return imageView
     }()
-    
-    lazy var imagePicker: UIImagePickerController = {
+    private lazy var imagePicker: UIImagePickerController = {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         
         return imagePicker
     }()
     
-    lazy var homeView: HomeView = {
+    private lazy var homeView: HomeView = {
         let home = HomeView()
         
         home.partCollection.delegate = self
@@ -34,7 +33,7 @@ class HomeVC: UIViewController {
         return home
     }()
     
-    let model = HomeVCModel()
+    private let model = HomeVCModel()
     
     static let forkey: String = "HomeVC"
     
