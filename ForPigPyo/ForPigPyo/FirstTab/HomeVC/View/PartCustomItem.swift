@@ -15,13 +15,13 @@ class PartCustomItem: UICollectionViewCell {
     
     let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.tintColor = .white
+        imageView.tintColor = Design.textBasic
         
         return imageView
     }()
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .white
+        label.textColor = Design.textBasic
         
         return label
     }()
@@ -38,7 +38,7 @@ class PartCustomItem: UICollectionViewCell {
         
         self.layer.cornerRadius = Design.cornerRadius
         self.layer.borderWidth = Design.halfBorderWidth
-        self.layer.borderColor = UIColor.white.cgColor
+        self.layer.borderColor = Design.textBasic.cgColor
     }
     private func setImageView() {
         

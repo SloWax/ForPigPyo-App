@@ -14,14 +14,14 @@ class PartTimeCustomCell: UITableViewCell {
     
     let dateLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .white
+        label.textColor = Design.textBasic
         label.font = Design.boldLargeTextSize
         
         return label
     }()
     let weekDayLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .white
+        label.textColor = Design.textBasic
         label.font = Design.boldLargeTextSize
         
         return label
@@ -29,7 +29,7 @@ class PartTimeCustomCell: UITableViewCell {
     
     let overTimeLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .white
+        label.textColor = Design.textBasic
         label.font = Design.smallTextSize
         label.setContentHuggingPriority(.defaultHigh, for: .vertical)
         
@@ -37,7 +37,7 @@ class PartTimeCustomCell: UITableViewCell {
     }()
     let nightWorkLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .white
+        label.textColor = Design.textBasic
         label.font = Design.smallTextSize
         label.setContentHuggingPriority(.defaultHigh, for: .vertical)
         
@@ -45,7 +45,7 @@ class PartTimeCustomCell: UITableViewCell {
     }()
     let overNightWorkLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .white
+        label.textColor = Design.textBasic
         label.font = Design.smallTextSize
         
         return label
@@ -54,21 +54,21 @@ class PartTimeCustomCell: UITableViewCell {
     
     let hourlyWageLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .white
+        label.textColor = Design.textBasic
         label.font = Design.nomalTextSize
         
         return label
     }()
     let totalWorkTimeLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .white
+        label.textColor = Design.textBasic
         label.font = Design.nomalTextSize
         
         return label
     }()
     let dayPayLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .white
+        label.textColor = Design.textBasic
         label.font = Design.boldNomalTextSize
         
         return label
@@ -203,12 +203,12 @@ class PartTimeCustomCell: UITableViewCell {
         switch weakDay {
         case "일":
             
-            label.textColor = Design.redSun
+            label.textColor = Design.textRedSun
         case "토":
             
-            label.textColor = Design.blueSat
+            label.textColor = Design.textBlueSat
         default:
-            label.textColor = Design.basic
+            label.textColor = Design.textBasic
         }
     }
     func setValue(data: PayList.Year.Month.Data?) {

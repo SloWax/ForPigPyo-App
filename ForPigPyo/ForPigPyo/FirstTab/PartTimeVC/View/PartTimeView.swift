@@ -12,7 +12,7 @@ class PartTimeView: UIView {
     
     let dateLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .white
+        label.textColor = Design.textBasic
         label.font = Design.boldLargeTextSize
         
         return label
@@ -20,7 +20,7 @@ class PartTimeView: UIView {
     let totalLabel: UILabel = {
         let label = UILabel()
         label.text = "총 0 원"
-        label.textColor = .white
+        label.textColor = Design.textBasic
         label.font = Design.boldLargeTextSize
         
         return label
@@ -28,14 +28,14 @@ class PartTimeView: UIView {
     
     let preButton: UIButton = {
         let button = UIButton(type: .system)
-        button.tintColor = .white
+        button.tintColor = Design.textBasic
         button.setImage(UIImage(systemName: "arrow.left"), for: .normal)
         
         return button
     }()
     let nexButton: UIButton = {
         let button = UIButton(type: .system)
-        button.tintColor = .white
+        button.tintColor = Design.textBasic
         button.setImage(UIImage(systemName: "arrow.right"), for: .normal)
         
         return button
@@ -44,7 +44,7 @@ class PartTimeView: UIView {
     let historyTable: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .clear
-        tableView.separatorColor = .white
+        tableView.separatorColor = Design.textBasic
         
         return tableView
     }()
