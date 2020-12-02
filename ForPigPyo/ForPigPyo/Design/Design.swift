@@ -11,7 +11,7 @@ import Foundation
 
 struct Design {
     // MARK: backgroundColor
-    static let purple: UIColor = UIColor(displayP3Red: 205/255, green: 189/255, blue: 222/255, alpha: 1)
+    static let purple: UIColor = UIColor(displayP3Red: 203/255, green: 166/255, blue: 249/255, alpha: 1)
     
     // MARK: textColor
     static let textBasic: UIColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
@@ -31,6 +31,7 @@ struct Design {
     // MARK: border
     static let qurterBorderWidth: CGFloat = 0.25
     static let halfBorderWidth: CGFloat = 0.5
+    static let qurterCornerRadius: CGFloat = 7.5
     static let cornerRadius: CGFloat = 10
     
     // MARK: font
@@ -38,6 +39,7 @@ struct Design {
     static let nomalTextSize = UIFont(name: "BMHANNAAirOTF", size: 19)
     static let LargeTextSize = UIFont(name: "BMHANNAAirOTF", size: 22)
     
+    static let boldSmallTextSize = UIFont(name: "BMHANNA11yrsoldOTF", size: 14)
     static let boldNomalTextSize = UIFont(name: "BMHANNA11yrsoldOTF", size: 20)
     static let boldLargeTextSize = UIFont(name: "BMHANNA11yrsoldOTF", size: 26)
     static let boldHeaderTextSize = UIFont(name: "BMHANNA11yrsoldOTF", size: 32)

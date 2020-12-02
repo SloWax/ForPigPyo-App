@@ -40,17 +40,19 @@ class PartTimeVC: UIViewController {
         
         return format
     }()
-    
     private let saveView: PartTimeSaveView = {
         let view = PartTimeSaveView()
         
         return view
     }()
+    
+    static let forkey: String = "PartTimeVC"
+    
     private var constraint: Constraint?
+    var deductionIndex: Int = 0
     let model = PartTimeVCModel()
     var data: PayList?
     
-    static let forkey: String = "PartTimeVC"
     private lazy var yearInt = Int(yearFormat.string(from: Date())) ?? 0
     private lazy var monthInt = Int(monthFormat.string(from: Date())) ?? 0
     var yearIndex: Int = 0
@@ -92,13 +94,16 @@ class PartTimeVC: UIViewController {
     }
     private func setPartTimeView() {
         
-        loadPartTimeValue()
+        partTimeView.deductionButton.setTitle(partTimeView.deduction[deductionIndex], for: .normal)
+        partTimeView.deductionButton.addTarget(self, action: #selector(changeDeduction(_:)), for: .touchUpInside)
         view.addSubview(partTimeView)
         
         partTimeView.snp.makeConstraints {
             
             $0.top.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
         }
+        
+        loadPartTimeValue(deduction: deductionIndex % partTimeView.deduction.count)
     }
     private func setSaveView() {
         
@@ -121,15 +126,7 @@ class PartTimeVC: UIViewController {
             constraint = $0.leading.equalTo(view.snp.trailing).constraint
         }
     }
-    private func loadPartTimeValue() {
-        
-        let date = data?.years[yearIndex]
-        let year = date?.year ?? 0
-        let month = date?.months[monthIndex].month ?? 0
-        let total = model.setTotalPay(data: data, yearIndex: yearIndex, monthIndex: monthIndex)
-        
-        partTimeView.setValue(year: year, month: month, totalPay: total)
-    }
+    
     private func moveSaveView(offset: CGFloat) {
 
         UIView.animate(withDuration: 0.25) {
@@ -145,6 +142,7 @@ class PartTimeVC: UIViewController {
             label.alpha = value
         }
     }
+    
     func loadSaveView(isAdd: Bool, yearIndex: Int, monthIndex: Int, index: Int, title: String) {
         if isAdd == true {
                 let format = DateFormatter()
@@ -158,6 +156,16 @@ class PartTimeVC: UIViewController {
         
         moveSaveView(offset: -view.frame.width)
     }
+    func loadPartTimeValue(deduction: Int) {
+        
+        let date = data?.years[yearIndex]
+        let year = date?.year ?? 0
+        let month = date?.months[monthIndex].month ?? 0
+        let total = model.setTotalPay(data: data, yearIndex: yearIndex, monthIndex: monthIndex, deduction: deduction)
+        
+        partTimeView.setValue(year: year, month: month, totalPay: total)
+    }
+    
     @objc private func addSaveView(_ sender: UIButton) {
         
         loadSaveView(isAdd: true, yearIndex: yearIndex, monthIndex: monthIndex, index: 0, title: "추가하기")
@@ -196,8 +204,16 @@ class PartTimeVC: UIViewController {
         default:
             fatalError()
         }
-        loadPartTimeValue()
+        
+        loadPartTimeValue(deduction: deductionIndex % partTimeView.deduction.count)
         partTimeView.historyTable.reloadData()
+    }
+    @objc private func changeDeduction(_ sender: UIButton) {
+        
+        deductionIndex += 1
+        partTimeView.deductionButton.setTitle(partTimeView.deduction[deductionIndex % partTimeView.deduction.count], for: .normal)
+        
+        loadPartTimeValue(deduction: deductionIndex % partTimeView.deduction.count)
     }
     @objc private func returnSaveView(_ sender: UIButton) {
         
@@ -252,7 +268,7 @@ class PartTimeVC: UIViewController {
             
             data = model.editData(division: division.text ?? "", data: &data, yearIndex: yearIndex, monthIndex: monthIndex, index: division.tag, value: value)
             model.saveData(data: data ?? PayList(years: [PayList.Year]()))
-            partTimeView.totalLabel.text = "총 \(model.setTotalPay(data: data, yearIndex: yearIndex, monthIndex: monthIndex)) 원"
+            loadPartTimeValue(deduction: deductionIndex % partTimeView.deduction.count)
             partTimeView.historyTable.reloadData()
             
         }

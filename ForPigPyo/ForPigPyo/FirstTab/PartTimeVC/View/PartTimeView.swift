@@ -25,6 +25,16 @@ class PartTimeView: UIView {
         
         return label
     }()
+    let deductionButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.tintColor = Design.purple
+        button.titleLabel?.font = Design.boldSmallTextSize
+        button.backgroundColor = Design.textBasic
+        button.layer.cornerRadius = Design.qurterCornerRadius
+        
+        return button
+    }()
+    let deduction: [String] = ["미공제", "3.3%", "4대보험"]
     
     let preButton: UIButton = {
         let button = UIButton(type: .system)
@@ -55,6 +65,7 @@ class PartTimeView: UIView {
         setDateLabel()
         setTotalLabel()
         setButtons()
+        setDeductionButton()
         setHistoryTable()
     }
     private func setDateLabel() {
@@ -88,6 +99,17 @@ class PartTimeView: UIView {
             $0.top.equalTo(dateLabel)
             $0.trailing.equalToSuperview().inset(Design.padding)
         }
+    }
+    private func setDeductionButton() {
+        
+        self.addSubview(deductionButton)
+        
+        deductionButton.snp.makeConstraints {
+            $0.bottom.equalTo(totalLabel)
+            $0.trailing.equalTo(nexButton)
+            $0.width.equalToSuperview().multipliedBy(0.15)
+        }
+        
     }
     private func setHistoryTable() {
         

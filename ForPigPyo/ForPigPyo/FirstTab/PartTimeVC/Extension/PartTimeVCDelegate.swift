@@ -20,8 +20,7 @@ extension PartTimeVC: UITableViewDelegate {
             data?.years[yearIndex].months[monthIndex].data.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
             
-            partTimeView.totalLabel.text = "총 \(model.setTotalPay(data: data, yearIndex: yearIndex, monthIndex: monthIndex)) 원"
-            
+            loadPartTimeValue(deduction: deductionIndex % partTimeView.deduction.count)
             model.saveData(data: data ?? PayList(years: [PayList.Year]()))
         default:
             fatalError()

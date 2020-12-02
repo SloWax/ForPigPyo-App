@@ -11,7 +11,7 @@ import Foundation
 struct PartTimeVCModel {
     
     // MARK: history에 있는 일 급여 합산
-    func setTotalPay(data: PayList?, yearIndex: Int, monthIndex: Int) -> String {
+    func setTotalPay(data: PayList?, yearIndex: Int, monthIndex: Int, deduction: Int) -> String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         
@@ -24,6 +24,20 @@ struct PartTimeVCModel {
             
             result += $0.totalPay
         })
+        
+        switch deduction {
+        case 0:
+            
+            print("미공제")
+        case 1:
+            
+            result = Int(Double(result) * 0.967)
+        case 2:
+            
+            result = Int(Double(result) * 0.91656)
+        default:
+            fatalError()
+        }
         
         return formatter.string(from: result as NSNumber) ?? ""
     }
