@@ -109,7 +109,7 @@ class PartTimeCustomCell: UITableViewCell {
             $0.top.equalTo(self.snp.centerY).offset(Design.smallPadding / 2)
         }
     }
-    
+
     private func setOverTimeLabel() {
         
         contentView.addSubview(overTimeLabel)
@@ -166,6 +166,7 @@ class PartTimeCustomCell: UITableViewCell {
             $0.bottom.equalTo(overNightWorkLabel)
         }
     }
+    
     private func setOverText(data: PayList.Year.Month.Data?) {
         
         let overTimeMin = data?.overTimeMin ?? 0
@@ -211,6 +212,7 @@ class PartTimeCustomCell: UITableViewCell {
             label.textColor = Design.textBasic
         }
     }
+    
     func setValue(data: PayList.Year.Month.Data?) {
         
         let formatter = NumberFormatter()
@@ -229,6 +231,7 @@ class PartTimeCustomCell: UITableViewCell {
         totalWorkTimeLabel.text = "총 근무: \(data?.totalTime ?? "")"
         dayPayLabel.text = "일 급여: \(formatter.string(from: (data?.totalPay ?? 0) as NSNumber) ?? "")원"
     }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

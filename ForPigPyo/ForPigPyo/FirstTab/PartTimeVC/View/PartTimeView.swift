@@ -120,11 +120,13 @@ class PartTimeView: UIView {
             $0.leading.trailing.bottom.equalToSuperview()
         }
     }
+    
     func setValue(year: Int, month: Int, totalPay: String) {
         
         dateLabel.text = "\(year)년 \(month)월"
         totalLabel.text = "총 \(totalPay) 원"
     }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

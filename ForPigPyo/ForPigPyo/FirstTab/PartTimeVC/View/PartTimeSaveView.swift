@@ -544,6 +544,7 @@ class PartTimeSaveView: UIView {
             $0.trailing.equalTo(titleLabel)
         }
     }
+    
     func setValue(title: String, date: String?, index: Int, value: PayList.Year.Month.Data?) {
         
         titleLabel.text = title
@@ -586,6 +587,7 @@ class PartTimeSaveView: UIView {
             label.alpha = 0
         }
     }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

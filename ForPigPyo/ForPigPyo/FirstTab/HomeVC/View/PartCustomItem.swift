@@ -59,11 +59,13 @@ class PartCustomItem: UICollectionViewCell {
             $0.centerY.equalTo(imageView.snp.centerY)
         }
     }
+    
     func setValue(image: String, text: String) {
         
         imageView.image = UIImage(systemName: image)
         titleLabel.text = text
     }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

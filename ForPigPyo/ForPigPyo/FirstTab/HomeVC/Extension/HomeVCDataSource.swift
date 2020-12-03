@@ -20,15 +20,13 @@ extension HomeVC: UICollectionViewDataSource {
         case 0:
             guard let item = collectionView.dequeueReusableCell(withReuseIdentifier: PartCustomItem.identifier, for: indexPath) as? PartCustomItem else { fatalError() }
             item.setValue(image: "dollarsign.square.fill",
-                          text: "이번 달엔 얼마나 받을까?"
-            )
+                          text: "이번 달엔 얼마나 받을까?")
             
             return item
         case 1:
             guard let item = collectionView.dequeueReusableCell(withReuseIdentifier: PartCustomItem.identifier, for: indexPath) as? PartCustomItem else { fatalError() }
             item.setValue(image: "plus.bubble.fill",
-                          text: "원하는 기능을 보내주세요!"
-            )
+                          text: "원하는 기능을 보내주세요!")
             
             return item
         default:
@@ -36,6 +34,4 @@ extension HomeVC: UICollectionViewDataSource {
         }
         
     }
-    
-    
 }

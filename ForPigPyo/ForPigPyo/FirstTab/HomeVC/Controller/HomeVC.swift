@@ -17,13 +17,19 @@ class HomeVC: UIViewController {
         
         return imageView
     }()
+    let indicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView()
+        indicator.hidesWhenStopped = true
+        indicator.style = .medium
+        
+        return indicator
+    }()
     private lazy var imagePicker: UIImagePickerController = {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         
         return imagePicker
     }()
-    
     private lazy var homeView: HomeView = {
         let home = HomeView()
         
@@ -62,11 +68,19 @@ class HomeVC: UIViewController {
     private func setHomeView() {
         
         view.addSubview(homeView)
+        homeView.addSubview(indicator)
         
         homeView.snp.makeConstraints {
+            
             $0.top.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
         }
+        
+        indicator.snp.makeConstraints {
+            
+            $0.center.equalToSuperview()
+        }
     }
+    
     func saveBackImage(image: UIImage?) {
         
         if let pngData = image?.pngData() {
@@ -87,14 +101,20 @@ class HomeVC: UIViewController {
             return nil
         }
     }
+    
     @objc private func setBackground(_ sender: UIButton) {
+        
         let alert = UIAlertController(title: "배경화면 설정", message: nil, preferredStyle: .actionSheet)
         
         let pickerButton = UIAlertAction(title: "갤러리에서 선택", style: .default) { _ in
             
+            self.indicator.startAnimating()
             self.imagePicker.sourceType = .photoLibrary
             self.imagePicker.mediaTypes = [kUTTypeImage] as [String]
-            self.present(self.imagePicker, animated: true)
+            self.present(self.imagePicker, animated: true) {
+                
+                self.indicator.stopAnimating()
+            }
         }
         let resetButton = UIAlertAction(title: "리셋", style: .default) { _ in
             
