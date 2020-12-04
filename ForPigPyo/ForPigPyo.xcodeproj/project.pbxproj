@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E084CB9257A704E00756E7A /* EmailVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E084CB8257A704E00756E7A /* EmailVCDelegate.swift */; };
 		6E30889925541C43001D006F /* PartTimeCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E30889825541C43001D006F /* PartTimeCustomCell.swift */; };
 		6E807C782572740500337550 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E807C772572740500337550 /* TextField.swift */; };
 		6E807C81257288DC00337550 /* HomeVCImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E807C80257288DC00337550 /* HomeVCImagePicker.swift */; };
@@ -63,6 +64,7 @@
 
 /* Begin PBXFileReference section */
 		69905FD33D62068D7289E2D0 /* Pods-ForPigPyo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ForPigPyo.release.xcconfig"; path = "Target Support Files/Pods-ForPigPyo/Pods-ForPigPyo.release.xcconfig"; sourceTree = "<group>"; };
+		6E084CB8257A704E00756E7A /* EmailVCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVCDelegate.swift; sourceTree = "<group>"; };
 		6E30889825541C43001D006F /* PartTimeCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartTimeCustomCell.swift; sourceTree = "<group>"; };
 		6E807C772572740500337550 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		6E807C80257288DC00337550 /* HomeVCImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVCImagePicker.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 		6E9076DA25794CE60079C164 /* EmailVC */ = {
 			isa = PBXGroup;
 			children = (
+				6E9076F6257A64D30079C164 /* Extension */,
 				6E9076DB25794D050079C164 /* Controller */,
 				6E9076DC25794D120079C164 /* Model */,
 				6E9076DD25794D1C0079C164 /* View */,
@@ -266,6 +269,14 @@
 				6E9076F1257A52190079C164 /* EmailView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		6E9076F6257A64D30079C164 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				6E084CB8257A704E00756E7A /* EmailVCDelegate.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		6EA06BD9255C7FED0070F062 /* Extension */ = {
@@ -415,6 +426,7 @@
 			buildConfigurationList = 6E8CFFF6255175390002D202 /* Build configuration list for PBXNativeTarget "ForPigPyo" */;
 			buildPhases = (
 				2446A45806E43183401BF8C6 /* [CP] Check Pods Manifest.lock */,
+				D23AB8ADF62471C698DC003A /* [CP] Prepare Artifacts */,
 				6E8CFFC5255175350002D202 /* Sources */,
 				6E8CFFC6255175350002D202 /* Frameworks */,
 				6E8CFFC7255175350002D202 /* Resources */,
@@ -580,6 +592,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ForPigPyo/Pods-ForPigPyo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D23AB8ADF62471C698DC003A /* [CP] Prepare Artifacts */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ForPigPyo/Pods-ForPigPyo-artifacts-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Prepare Artifacts";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ForPigPyo/Pods-ForPigPyo-artifacts-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ForPigPyo/Pods-ForPigPyo-artifacts.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -606,6 +635,7 @@
 				6ED072982552934A000EE881 /* MyPageVC.swift in Sources */,
 				6E8CFFCD255175350002D202 /* AppDelegate.swift in Sources */,
 				6EA06BDB255C803F0070F062 /* PartTimeVCDelegate.swift in Sources */,
+				6E084CB9257A704E00756E7A /* EmailVCDelegate.swift in Sources */,
 				6EBE4B5E25541BB000CA73E9 /* PartTimeView.swift in Sources */,
 				6ED0728625529266000EE881 /* MainTabVC.swift in Sources */,
 				6EFF5B122553F715007BAAF2 /* Design.swift in Sources */,

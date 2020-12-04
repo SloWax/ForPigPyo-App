@@ -6,6 +6,7 @@ target 'ForPigPyo' do
   use_frameworks!
 
   # Pods for ForPigPyo
-    pod 'SnapKit', '~> 5.0.0'
+	pod 'SnapKit', '~> 5.0.0'
+	pod 'Google-Mobile-Ads-SDK'
 
 end
