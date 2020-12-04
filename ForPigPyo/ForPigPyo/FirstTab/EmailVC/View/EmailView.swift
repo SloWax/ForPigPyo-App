@@ -20,6 +20,8 @@ class EmailView: UIView {
         label.text = """
 원하는 기능을 메일에 적어서 보내주세요.
 언제가 될지는 모르겠지만 짬짬이 개발해 추가해드리겠습니다!
+
+잠시 시간을 내어주시어 광고를 봐주신다면 개발이 더욱 빨라질 수 있습니다!!
 """
         let attrString = NSMutableAttributedString(string: label.text ?? "")
         let paragraphStyle = NSMutableParagraphStyle()
@@ -30,10 +32,19 @@ class EmailView: UIView {
         
         return label
     }()
-    
     let emailButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("email 보내기", for: .normal)
+        button.titleLabel?.font = Design.boldLargeTextSize
+        button.layer.cornerRadius = Design.cornerRadius
+        button.backgroundColor = Design.textBasic
+        button.tintColor = Design.purple
+        
+        return button
+    }()
+    let adButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("광고로 후원하기", for: .normal)
         button.titleLabel?.font = Design.boldLargeTextSize
         button.layer.cornerRadius = Design.cornerRadius
         button.backgroundColor = Design.textBasic
@@ -47,7 +58,9 @@ class EmailView: UIView {
         
         setExplainLabel()
         setEmailButton()
+        setadButton()
     }
+    
     private func setExplainLabel() {
         
         self.addSubview(explainLabel)
@@ -62,9 +75,19 @@ class EmailView: UIView {
         
         emailButton.snp.makeConstraints {
             $0.top.equalTo(explainLabel.snp.bottom).offset(Design.padding)
+            $0.leading.trailing.equalToSuperview().inset(Design.nomalPadding)
+        }
+    }
+    private func setadButton() {
+        
+        self.addSubview(adButton)
+        
+        adButton.snp.makeConstraints {
+            $0.top.equalTo(emailButton.snp.bottom).offset(Design.LargePadding)
             $0.leading.trailing.bottom.equalToSuperview().inset(Design.nomalPadding)
         }
     }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

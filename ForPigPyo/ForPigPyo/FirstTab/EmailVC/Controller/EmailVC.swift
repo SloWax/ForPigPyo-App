@@ -8,6 +8,7 @@
 
 import UIKit
 import MessageUI
+import GoogleMobileAds
 
 class EmailVC: UIViewController {
     
@@ -19,6 +20,11 @@ class EmailVC: UIViewController {
     }()
     private let emailView = EmailView()
     
+    var interstitial: GADInterstitial!
+    
+    private let test: String = "ca-app-pub-3940256099942544/4411468910"
+    private let adsId: String = "ca-app-pub-1495831513834989/2874709656"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,6 +32,8 @@ class EmailVC: UIViewController {
         setEmailView()
     }
     private func setView() {
+        
+        interstitial = createAndLoadInterstitial()
         
         view.addSubview(backImageView)
         
@@ -37,6 +45,7 @@ class EmailVC: UIViewController {
     private func setEmailView() {
         
         emailView.emailButton.addTarget(self, action: #selector(presentEmail(_:)), for: .touchUpInside)
+        emailView.adButton.addTarget(self, action: #selector(presentAds(_:)), for: .touchUpInside)
         view.addSubview(emailView)
         
         emailView.snp.makeConstraints {
@@ -44,6 +53,16 @@ class EmailVC: UIViewController {
             $0.leading.trailing.centerY.equalTo(view.safeAreaLayoutGuide)
         }
     }
+    
+    func createAndLoadInterstitial() -> GADInterstitial {
+        
+        let interstitial = GADInterstitial(adUnitID: test)
+        interstitial.delegate = self
+        interstitial.load(GADRequest())
+        
+        return interstitial
+    }
+    
     @objc private func presentEmail(_ sender: UIButton) {
         if MFMailComposeViewController.canSendMail() {
             
@@ -65,12 +84,8 @@ class EmailVC: UIViewController {
             present(alert, animated: true)
         }
     }
-}
-
-extension EmailVC: MFMailComposeViewControllerDelegate {
-    
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+    @objc private func presentAds(_ sender: UIButton) {
         
-        controller.dismiss(animated: true)
+        interstitial.present(fromRootViewController: self)
     }
 }
