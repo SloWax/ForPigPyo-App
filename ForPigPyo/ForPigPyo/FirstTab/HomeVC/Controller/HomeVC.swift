@@ -11,6 +11,8 @@ import MobileCoreServices
 
 class HomeVC: UIViewController {
     
+    static let forkey: String = "HomeVC"
+    
     let backImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = Design.purple
@@ -35,13 +37,17 @@ class HomeVC: UIViewController {
         
         home.partCollection.delegate = self
         home.partCollection.dataSource = self
-        home.partCollection.register(PartCustomItem.self, forCellWithReuseIdentifier: PartCustomItem.identifier)
+        home.partCollection.register(HomeCustomItem.self, forCellWithReuseIdentifier: HomeCustomItem.identifier)
         return home
     }()
     
-    private let model = HomeVCModel()
+    let model: HomeVCModel = HomeVCModel(menu: [HomeVCModel.Menu(image: "dollarsign.square.fill",
+                                                                 title: "이번 달엔 얼마나 받을까?",
+                                                                 myPageMenu: ["나의 시급 설정", "기본 세금 설정"]),
+                                                HomeVCModel.Menu(image: "plus.bubble.fill",
+                                                                 title: "원하는 기능을 보내주세요!",
+                                                                 myPageMenu: [])])
     
-    static let forkey: String = "HomeVC"
     
     override func viewDidLoad() {
         super.viewDidLoad()

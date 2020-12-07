@@ -1,19 +1,19 @@
 //
-//  PartCustomItem.swift
+//  HomeCustomItem.swift
 //  ForPigPyo
 //
-//  Created by 표건욱 on 2020/11/04.
+//  Created by 표건욱 on 2020/12/08.
 //  Copyright © 2020 SloWax. All rights reserved.
 //
 
 import UIKit
 import SnapKit
 
-class PartCustomItem: UICollectionViewCell {
+class HomeCustomItem: UICollectionViewCell {
     
     static let identifier = "PartCustomItem"
     
-    let imageView: UIImageView = {
+    private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.tintColor = Design.textBasic
         
@@ -45,6 +45,7 @@ class PartCustomItem: UICollectionViewCell {
         contentView.addSubview(imageView)
         
         imageView.snp.makeConstraints {
+            
             $0.top.leading.bottom.equalToSuperview().inset(Design.smallPadding)
             $0.width.equalTo(imageView.snp.height)
         }
@@ -55,6 +56,7 @@ class PartCustomItem: UICollectionViewCell {
         contentView.addSubview(titleLabel)
         
         titleLabel.snp.makeConstraints {
+            
             $0.leading.equalTo(imageView.snp.trailing).offset(Design.nomalPadding)
             $0.centerY.equalTo(imageView.snp.centerY)
         }

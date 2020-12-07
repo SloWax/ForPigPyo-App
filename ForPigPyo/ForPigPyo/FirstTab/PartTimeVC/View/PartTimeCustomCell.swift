@@ -10,16 +10,16 @@ import UIKit
 
 class PartTimeCustomCell: UITableViewCell {
     
-    static let identifier = "PartCustomItem"
+    static let identifier = "PartCustomCell"
     
-    let dateLabel: UILabel = {
+    private let dateLabel: UILabel = {
         let label = UILabel()
         label.textColor = Design.textBasic
         label.font = Design.boldLargeTextSize
         
         return label
     }()
-    let weekDayLabel: UILabel = {
+    private let weekDayLabel: UILabel = {
         let label = UILabel()
         label.textColor = Design.textBasic
         label.font = Design.boldLargeTextSize
@@ -27,7 +27,7 @@ class PartTimeCustomCell: UITableViewCell {
         return label
     }()
     
-    let overTimeLabel: UILabel = {
+    private let overTimeLabel: UILabel = {
         let label = UILabel()
         label.textColor = Design.textBasic
         label.font = Design.smallTextSize
@@ -35,7 +35,7 @@ class PartTimeCustomCell: UITableViewCell {
         
         return label
     }()
-    let nightWorkLabel: UILabel = {
+    private let nightWorkLabel: UILabel = {
         let label = UILabel()
         label.textColor = Design.textBasic
         label.font = Design.smallTextSize
@@ -43,7 +43,7 @@ class PartTimeCustomCell: UITableViewCell {
         
         return label
     }()
-    let overNightWorkLabel: UILabel = {
+    private let overNightWorkLabel: UILabel = {
         let label = UILabel()
         label.textColor = Design.textBasic
         label.font = Design.smallTextSize
@@ -52,21 +52,21 @@ class PartTimeCustomCell: UITableViewCell {
     }()
     
     
-    let hourlyWageLabel: UILabel = {
+    private let hourlyWageLabel: UILabel = {
         let label = UILabel()
         label.textColor = Design.textBasic
         label.font = Design.nomalTextSize
         
         return label
     }()
-    let totalWorkTimeLabel: UILabel = {
+    private let totalWorkTimeLabel: UILabel = {
         let label = UILabel()
         label.textColor = Design.textBasic
         label.font = Design.nomalTextSize
         
         return label
     }()
-    let dayPayLabel: UILabel = {
+    private let dayPayLabel: UILabel = {
         let label = UILabel()
         label.textColor = Design.textBasic
         label.font = Design.boldNomalTextSize

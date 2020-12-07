@@ -10,7 +10,7 @@ import UIKit
 
 class EmailView: UIView {
     
-    let explainLabel: UILabel = {
+    private let explainLabel: UILabel = {
         let label = UILabel()
         label.textColor = Design.textBasic
         label.font = Design.boldNomalTextSize

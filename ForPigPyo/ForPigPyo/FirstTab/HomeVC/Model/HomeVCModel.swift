@@ -11,6 +11,15 @@ import Foundation
 
 struct HomeVCModel {
     
+    let menu: [Menu]
+    
+    struct Menu {
+        
+        let image: String
+        let title: String
+        let myPageMenu: [String?]
+    }
+    
     func saveBackImage(data: Data?, forkey: String) {
         
         UserDefaults.standard.set(data, forKey: forkey)
@@ -21,3 +30,4 @@ struct HomeVCModel {
         return UserDefaults.standard.object(forKey: forkey) as? Data
     }
 }
+

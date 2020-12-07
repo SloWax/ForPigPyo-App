@@ -1,8 +1,8 @@
 //
-//  EmailVCDelegate.swift
+//  EmailVCMailCompose.swift
 //  ForPigPyo
 //
-//  Created by 표건욱 on 2020/12/04.
+//  Created by 표건욱 on 2020/12/07.
 //  Copyright © 2020 SloWax. All rights reserved.
 //
 
@@ -30,6 +30,7 @@ extension EmailVC: MFMailComposeViewControllerDelegate {
     }
 }
 
+
 extension EmailVC: GADInterstitialDelegate {
     
     func interstitialDidDismissScreen(_ ad: GADInterstitial) {
@@ -44,3 +45,4 @@ extension EmailVC: GADInterstitialDelegate {
         present(alert, animated: true)
     }
 }
+

@@ -11,6 +11,8 @@ import SnapKit
 
 class PartTimeVC: UIViewController {
     
+    static let forkey: String = "PartTimeVC"
+    
     let backImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = Design.purple
@@ -46,12 +48,12 @@ class PartTimeVC: UIViewController {
         return view
     }()
     
-    static let forkey: String = "PartTimeVC"
-    
     private var constraint: Constraint?
-    var deductionIndex: Int = 0
     let model = PartTimeVCModel()
     var data: PayList?
+    
+    let tax: [String] = MyPageVCModel.taxCategory
+    var taxIndex: Int = 0
     
     private lazy var yearInt = Int(yearFormat.string(from: Date())) ?? 0
     private lazy var monthInt = Int(monthFormat.string(from: Date())) ?? 0
@@ -94,8 +96,8 @@ class PartTimeVC: UIViewController {
     }
     private func setPartTimeView() {
         
-        partTimeView.deductionButton.setTitle(partTimeView.deduction[deductionIndex], for: .normal)
-        partTimeView.deductionButton.addTarget(self, action: #selector(changeDeduction(_:)), for: .touchUpInside)
+        partTimeView.setButtonTitle(title: tax[taxIndex])
+        partTimeView.taxButton.addTarget(self, action: #selector(changeDeduction(_:)), for: .touchUpInside)
         view.addSubview(partTimeView)
         
         partTimeView.snp.makeConstraints {
@@ -103,7 +105,7 @@ class PartTimeVC: UIViewController {
             $0.top.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
         }
         
-        loadPartTimeValue(deduction: deductionIndex % partTimeView.deduction.count)
+        loadPartTimeValue(deduction: taxIndex % tax.count)
     }
     private func setSaveView() {
         
@@ -144,6 +146,7 @@ class PartTimeVC: UIViewController {
     }
     
     func loadSaveView(isAdd: Bool, yearIndex: Int, monthIndex: Int, index: Int, title: String) {
+        
         if isAdd == true {
                 let format = DateFormatter()
                 format.dateFormat = "dd"
@@ -205,15 +208,15 @@ class PartTimeVC: UIViewController {
             fatalError()
         }
         
-        loadPartTimeValue(deduction: deductionIndex % partTimeView.deduction.count)
+        loadPartTimeValue(deduction: taxIndex % tax.count)
         partTimeView.historyTable.reloadData()
     }
     @objc private func changeDeduction(_ sender: UIButton) {
         
-        deductionIndex += 1
-        partTimeView.deductionButton.setTitle(partTimeView.deduction[deductionIndex % partTimeView.deduction.count], for: .normal)
+        taxIndex += 1
+        partTimeView.setButtonTitle(title: tax[taxIndex % tax.count])
         
-        loadPartTimeValue(deduction: deductionIndex % partTimeView.deduction.count)
+        loadPartTimeValue(deduction: taxIndex % tax.count)
     }
     @objc private func returnSaveView(_ sender: UIButton) {
         
@@ -268,7 +271,7 @@ class PartTimeVC: UIViewController {
             
             data = model.editData(division: division.text ?? "", data: &data, yearIndex: yearIndex, monthIndex: monthIndex, index: division.tag, value: value)
             model.saveData(data: data ?? PayList(years: [PayList.Year]()))
-            loadPartTimeValue(deduction: deductionIndex % partTimeView.deduction.count)
+            loadPartTimeValue(deduction: taxIndex % tax.count)
             partTimeView.historyTable.reloadData()
             
         }

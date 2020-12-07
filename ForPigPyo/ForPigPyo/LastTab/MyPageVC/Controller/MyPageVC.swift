@@ -16,19 +16,45 @@ class MyPageVC: UIViewController {
         
         return imageView
     }()
+    lazy var myPageTable: UITableView = {
+        let tableView = UITableView()
+        tableView.backgroundColor = .clear
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(MyPageCustomCell.self, forCellReuseIdentifier: MyPageCustomCell.identifier)
+        tableView.register(MyPageHeaderCustomSection.self, forHeaderFooterViewReuseIdentifier: MyPageHeaderCustomSection.identifier)
+        
+        
+        return tableView
+    }()
+    
+    var menuData: HomeVCModel = HomeVCModel(menu: [HomeVCModel.Menu]())
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setView()
+        setMyPageTable()
     }
     private func setView() {
+        
+        navigationItem.title = "My Page"
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: Design.LargeTextSize ?? UIFont()]
         
         view.addSubview(backImageView)
         
         backImageView.snp.makeConstraints {
             
             $0.top.leading.trailing.bottom.equalToSuperview()
+        }
+    }
+    private func setMyPageTable() {
+        
+        view.addSubview(myPageTable)
+        
+        myPageTable.snp.makeConstraints {
+            
+            $0.top.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
 }

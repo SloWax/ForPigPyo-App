@@ -23,7 +23,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let homeVC = mainTabVC.viewControllers?[0].children[0] as? HomeVC {
             
             homeVC.backImageView.image = homeVC.loadBackImage(forkey: HomeVC.forkey)
+            if let myPageVC = mainTabVC.viewControllers?[(mainTabVC.viewControllers?.count ?? 2) - 1].children[0] as? MyPageVC {
+                
+                myPageVC.backImageView.image = homeVC.loadBackImage(forkey: HomeVC.forkey)
+                myPageVC.menuData = homeVC.model
+            }
         }
+        
+        
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = mainTabVC

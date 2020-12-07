@@ -25,7 +25,7 @@ class PartTimeView: UIView {
         
         return label
     }()
-    let deductionButton: UIButton = {
+    let taxButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = Design.purple
         button.titleLabel?.font = Design.boldSmallTextSize
@@ -34,7 +34,6 @@ class PartTimeView: UIView {
         
         return button
     }()
-    let deduction: [String] = ["미공제", "3.3%", "4대보험"]
     
     let preButton: UIButton = {
         let button = UIButton(type: .system)
@@ -102,9 +101,9 @@ class PartTimeView: UIView {
     }
     private func setDeductionButton() {
         
-        self.addSubview(deductionButton)
+        self.addSubview(taxButton)
         
-        deductionButton.snp.makeConstraints {
+        taxButton.snp.makeConstraints {
             $0.bottom.equalTo(totalLabel)
             $0.trailing.equalTo(nexButton)
             $0.width.equalToSuperview().multipliedBy(0.15)
@@ -125,6 +124,10 @@ class PartTimeView: UIView {
         
         dateLabel.text = "\(year)년 \(month)월"
         totalLabel.text = "총 \(totalPay) 원"
+    }
+    func setButtonTitle(title: String) {
+        
+        taxButton.setTitle(title, for: .normal)
     }
     
     required init?(coder: NSCoder) {
