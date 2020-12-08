@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class MyPageVC: UIViewController {
     
@@ -27,14 +28,24 @@ class MyPageVC: UIViewController {
         
         return tableView
     }()
+    lazy var taxPickerView: DonePickerView = {
+    let picker = DonePickerView()
+    picker.pickerView.dataSource = self
+    picker.pickerView.delegate = self
     
+    return picker
+}()
+    
+    let model = MyPageVCModel()
     var menuData: HomeVCModel = HomeVCModel(menu: [HomeVCModel.Menu]())
+    var constraint: Constraint?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setView()
         setMyPageTable()
+        setTaxPickerView()
     }
     private func setView() {
         
@@ -56,5 +67,32 @@ class MyPageVC: UIViewController {
             
             $0.top.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
         }
+    }
+    private func setTaxPickerView() {
+        
+        taxPickerView.doneButton.action = #selector(taxPickerDone(_:))
+        view.addSubview(taxPickerView)
+        
+        taxPickerView.snp.makeConstraints {
+            
+            constraint = $0.top.equalTo(view.snp_bottomMargin).constraint
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+        }
+    }
+    
+    func moveTaxPicker(offset: CGFloat) {
+        
+        UIView.animate(withDuration: 0.25) {
+            
+            self.constraint?.update(offset: offset)
+            self.view.layoutIfNeeded()
+        }
+        myPageTable.reloadData()
+    }
+    
+    @objc private func taxPickerDone(_ sender: UIBarButtonItem) {
+        
+        moveTaxPicker(offset: 0)
+        taxPickerView.pickerView.selectRow(0, inComponent: 0, animated: true)
     }
 }

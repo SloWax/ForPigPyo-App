@@ -22,9 +22,6 @@ class EmailVC: UIViewController {
     
     var interstitial: GADInterstitial!
     
-    private let test: String = "ca-app-pub-3940256099942544/4411468910"
-    private let adsId: String = "ca-app-pub-1495831513834989/2874709656"
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -56,7 +53,7 @@ class EmailVC: UIViewController {
     
     func createAndLoadInterstitial() -> GADInterstitial {
         
-        let interstitial = GADInterstitial(adUnitID: test)
+        let interstitial = GADInterstitial(adUnitID: EmailVCModel.test)
         interstitial.delegate = self
         interstitial.load(GADRequest())
         

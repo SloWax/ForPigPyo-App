@@ -34,6 +34,10 @@
 		6EAAABC4257E8275006758BF /* MyPageCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAAABC3257E8275006758BF /* MyPageCustomCell.swift */; };
 		6EAAABC9257E8322006758BF /* HomeCustomItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAAABC8257E8322006758BF /* HomeCustomItem.swift */; };
 		6EAAABD6257E91B8006758BF /* MyPageHeaderCustomSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAAABD5257E91B8006758BF /* MyPageHeaderCustomSection.swift */; };
+		6EAAABDE257EA989006758BF /* EmailVCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAAABDD257EA989006758BF /* EmailVCModel.swift */; };
+		6EAAABE3257FC021006758BF /* MyPageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAAABE2257FC021006758BF /* MyPageData.swift */; };
+		6EAAABE8257FD647006758BF /* MyPageVCPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAAABE7257FD647006758BF /* MyPageVCPickerView.swift */; };
+		6EAAABF92580CFEC006758BF /* DonePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAAABF82580CFEC006758BF /* DonePickerView.swift */; };
 		6EBE4B5D25541BB000CA73E9 /* PartTimeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBE4B5925541BAF00CA73E9 /* PartTimeVC.swift */; };
 		6EBE4B5E25541BB000CA73E9 /* PartTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBE4B5C25541BAF00CA73E9 /* PartTimeView.swift */; };
 		6EC1736A255C9B870023F365 /* PayList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC17369255C9B870023F365 /* PayList.swift */; };
@@ -94,6 +98,10 @@
 		6EAAABC3257E8275006758BF /* MyPageCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCustomCell.swift; sourceTree = "<group>"; };
 		6EAAABC8257E8322006758BF /* HomeCustomItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCustomItem.swift; sourceTree = "<group>"; };
 		6EAAABD5257E91B8006758BF /* MyPageHeaderCustomSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageHeaderCustomSection.swift; sourceTree = "<group>"; };
+		6EAAABDD257EA989006758BF /* EmailVCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVCModel.swift; sourceTree = "<group>"; };
+		6EAAABE2257FC021006758BF /* MyPageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageData.swift; sourceTree = "<group>"; };
+		6EAAABE7257FD647006758BF /* MyPageVCPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageVCPickerView.swift; sourceTree = "<group>"; };
+		6EAAABF82580CFEC006758BF /* DonePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonePickerView.swift; sourceTree = "<group>"; };
 		6EBE4B5925541BAF00CA73E9 /* PartTimeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartTimeVC.swift; sourceTree = "<group>"; };
 		6EBE4B5C25541BAF00CA73E9 /* PartTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartTimeView.swift; sourceTree = "<group>"; };
 		6EC17369255C9B870023F365 /* PayList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayList.swift; sourceTree = "<group>"; };
@@ -165,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				6EAAAB93257E3BC9006758BF /* MyPageVCModel.swift */,
+				6EAAABE2257FC021006758BF /* MyPageData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -174,6 +183,7 @@
 			children = (
 				6EAAABC3257E8275006758BF /* MyPageCustomCell.swift */,
 				6EAAABD5257E91B8006758BF /* MyPageHeaderCustomSection.swift */,
+				6EAAABF82580CFEC006758BF /* DonePickerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -211,6 +221,7 @@
 		6E8CFFCB255175350002D202 /* ForPigPyo */ = {
 			isa = PBXGroup;
 			children = (
+				6EAAABEC2580CBFA006758BF /* Extension */,
 				6EA2C5862571132800E994A8 /* Design */,
 				6E8CFFCC255175350002D202 /* AppDelegate.swift */,
 				6E8C0002255175730002D202 /* MainTabVC */,
@@ -264,6 +275,7 @@
 		6E9076DC25794D120079C164 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6EAAABDD257EA989006758BF /* EmailVCModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -288,7 +300,6 @@
 			isa = PBXGroup;
 			children = (
 				6EAAABA0257E6AE6006758BF /* PartTimeVCTableView.swift */,
-				6E807C772572740500337550 /* TextField.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -301,6 +312,14 @@
 				6E89CE1B25711A9200E40314 /* BMHANNAAir_otf.otf */,
 			);
 			path = Design;
+			sourceTree = "<group>";
+		};
+		6EAAABEC2580CBFA006758BF /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				6E807C772572740500337550 /* TextField.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		6EBE4B5725541BAF00CA73E9 /* PartTimeVC */ = {
@@ -346,6 +365,7 @@
 			isa = PBXGroup;
 			children = (
 				6EAAABB3257E6BDD006758BF /* MyPageVCTableView.swift */,
+				6EAAABE7257FD647006758BF /* MyPageVCPickerView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -627,6 +647,7 @@
 				6EAAABA9257E6B89006758BF /* EmailVCMailCompose.swift in Sources */,
 				6E9076F2257A52190079C164 /* EmailView.swift in Sources */,
 				6E807C8625728DD600337550 /* HomeVCModel.swift in Sources */,
+				6EAAABF92580CFEC006758BF /* DonePickerView.swift in Sources */,
 				6EAAAB94257E3BC9006758BF /* MyPageVCModel.swift in Sources */,
 				6EC1736F255CAFC30023F365 /* PartTimeVCModel.swift in Sources */,
 				6EFF5B132553F715007BAAF2 /* HomeView.swift in Sources */,
@@ -636,8 +657,11 @@
 				6E30889925541C43001D006F /* PartTimeCustomCell.swift in Sources */,
 				6EAAABC4257E8275006758BF /* MyPageCustomCell.swift in Sources */,
 				6EBE4B5D25541BB000CA73E9 /* PartTimeVC.swift in Sources */,
+				6EAAABDE257EA989006758BF /* EmailVCModel.swift in Sources */,
 				6EC1736A255C9B870023F365 /* PayList.swift in Sources */,
 				6EAAABD6257E91B8006758BF /* MyPageHeaderCustomSection.swift in Sources */,
+				6EAAABE3257FC021006758BF /* MyPageData.swift in Sources */,
+				6EAAABE8257FD647006758BF /* MyPageVCPickerView.swift in Sources */,
 				6ED072982552934A000EE881 /* MyPageVC.swift in Sources */,
 				6EAAABB4257E6BDD006758BF /* MyPageVCTableView.swift in Sources */,
 				6E8CFFCD255175350002D202 /* AppDelegate.swift in Sources */,

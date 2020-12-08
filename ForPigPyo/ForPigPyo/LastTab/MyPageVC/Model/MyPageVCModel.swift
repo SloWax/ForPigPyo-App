@@ -8,18 +8,30 @@
 
 import Foundation
 
-struct MyPageVCModel: Codable {
+struct MyPageVCModel {
     
-    struct HourlyWage: Codable {
+    func saveHourly(data: String, forKey: String) {
         
-        let myHourlyWage: String
-    }
-    struct Tax: Codable {
+        guard data != "" else { return setUserDefaults(data: nil, forKey: forKey) }
         
-        let myTax: Int
+        if let value = Int(data) {
+            guard value != 0 else { return setUserDefaults(data: nil, forKey: forKey) }
+            
+            setUserDefaults(data: String(value), forKey: forKey)
+        }
     }
-    
-    static let myPageVCHourly: String = "MyPageVCHourly"
-    static let MyPageVCTax: String = "MyPageVCTax"
-    static let taxCategory: [String] = ["미공제", "3.3%", "4대보험"]
+    func saveTax(data: String, forKey: String) {
+        
+        guard data != "미공제" else { return setUserDefaults(data: nil, forKey: forKey) }
+            
+        setUserDefaults(data: data, forKey: forKey)
+    }
+    func loadData(forKey: String) -> String? {
+        
+        return UserDefaults.standard.string(forKey: forKey)
+    }
+    private func setUserDefaults(data: String?, forKey: String) {
+        
+        UserDefaults.standard.set(data, forKey: forKey)
+    }
 }

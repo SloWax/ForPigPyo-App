@@ -52,7 +52,7 @@ class PartTimeVC: UIViewController {
     let model = PartTimeVCModel()
     var data: PayList?
     
-    let tax: [String] = MyPageVCModel.taxCategory
+    let tax: [String] = MyPageData.taxCategory
     var taxIndex: Int = 0
     
     private lazy var yearInt = Int(yearFormat.string(from: Date())) ?? 0

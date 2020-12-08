@@ -16,6 +16,7 @@ extension MyPageVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
         guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: MyPageHeaderCustomSection.identifier) as? MyPageHeaderCustomSection else { fatalError() }
         header.setValue(title: menuData.menu[section].title)
         
@@ -34,9 +35,23 @@ extension MyPageVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MyPageCustomCell.identifier, for: indexPath) as? MyPageCustomCell else { fatalError() }
+        
         let sectionIV = menuData.menu[indexPath.section]
+        var value: String?
+        
+        if indexPath.section == 0 {
+            if indexPath.row == 0 {
+                
+                value = model.loadData(forKey: MyPageData.myPageVCHourly)
+            } else {
+                
+                value = model.loadData(forKey: MyPageData.MyPageVCTax)
+            }
+        }
         cell.setValue(image: sectionIV.image,
-                      title: sectionIV.myPageMenu[indexPath.row])
+                      title: sectionIV.myPageMenu[indexPath.row],
+                      value: value,
+                      row: indexPath.row)
         
         return cell
     }
@@ -45,7 +60,50 @@ extension MyPageVC: UITableViewDataSource {
 extension MyPageVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if indexPath.row != 1 {
+            
+            moveTaxPicker(offset: 0)
+            taxPickerView.pickerView.selectRow(0, inComponent: 0, animated: true)
+        }
+        
         guard let cell = tableView.cellForRow(at: indexPath) as? MyPageCustomCell else { fatalError() }
         
+        switch indexPath.section {
+        case 0:
+            
+            switch indexPath.row {
+            case 0:
+                let alert = UIAlertController(title: cell.titleLabel.text, message: "자동 입력을 위해 시급을 넣어주세요.", preferredStyle: .alert)
+                let noButton = UIAlertAction(title: "취소", style: .default) { (_ ) in
+                    
+                    alert.textFields?[0].resignFirstResponder()
+                }
+                let okButton = UIAlertAction(title: "저장", style: .default) { (_ ) in
+                    
+                    self.model.saveHourly(data: alert.textFields?[0].text ?? "", forKey: MyPageData.myPageVCHourly)
+                    self.myPageTable.reloadData()
+                    
+                    alert.textFields?[0].resignFirstResponder()
+                }
+                
+                alert.addTextField { (textField) in
+                    
+                    textField.keyboardType = .numberPad
+                    textField.doneAccessory = true
+                }
+                alert.addAction(noButton)
+                alert.addAction(okButton)
+                
+                present(alert, animated: true)
+            case 1:
+                
+                moveTaxPicker(offset: -self.taxPickerView.frame.height)
+            default:
+                fatalError()
+            }
+        default:
+            fatalError()
+        }
     }
 }
