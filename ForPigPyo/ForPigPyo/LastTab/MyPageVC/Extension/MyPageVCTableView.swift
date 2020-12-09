@@ -37,15 +37,17 @@ extension MyPageVC: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MyPageCustomCell.identifier, for: indexPath) as? MyPageCustomCell else { fatalError() }
         
         let sectionIV = menuData.menu[indexPath.section]
-        var value: String?
+        var value: String? = nil
         
         if indexPath.section == 0 {
             if indexPath.row == 0 {
                 
-                value = model.loadData(forKey: MyPageData.myPageVCHourly)
+                value = model.loadHourly(forKey: MyPageData.myPageVCHourly)
             } else {
                 
-                value = model.loadData(forKey: MyPageData.MyPageVCTax)
+                if let index = model.loadTax(forKey: MyPageData.MyPageVCTax) {
+                    value = MyPageData.taxCategory[index]
+                }
             }
         }
         cell.setValue(image: sectionIV.image,

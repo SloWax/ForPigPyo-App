@@ -33,6 +33,15 @@ extension MyPageVC: UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        row == 0 ? model.saveTax(data: MyPageData.taxCategory[0], forKey: MyPageData.MyPageVCTax) : model.saveTax(data: MyPageData.taxCategory[row - 1], forKey: MyPageData.MyPageVCTax)
+        row == 0 ? model.saveTax(data: nil, forKey: MyPageData.MyPageVCTax) : model.saveTax(data: row - 1, forKey: MyPageData.MyPageVCTax)
+        
+        guard row != 0 else { return }
+        
+        if let partVC = tabBarController?.viewControllers?[0].children.last as? PartTimeVC {
+            
+            partVC.taxIndex = row - 1
+            partVC.partTimeView.setButtonTitle(title: MyPageData.taxCategory[partVC.taxIndex])
+            partVC.loadPartTimeValue(deduction: partVC.taxIndex % partVC.tax.count)
+        }
     }
 }

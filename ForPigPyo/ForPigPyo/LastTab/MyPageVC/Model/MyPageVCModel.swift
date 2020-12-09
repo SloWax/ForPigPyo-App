@@ -12,25 +12,27 @@ struct MyPageVCModel {
     
     func saveHourly(data: String, forKey: String) {
         
-        guard data != "" else { return setUserDefaults(data: nil, forKey: forKey) }
+        guard data != "" else { return saveHourlyDefaults(data: nil, forKey: forKey) }
         
         if let value = Int(data) {
-            guard value != 0 else { return setUserDefaults(data: nil, forKey: forKey) }
+            guard value != 0 else { return saveHourlyDefaults(data: nil, forKey: forKey) }
             
-            setUserDefaults(data: String(value), forKey: forKey)
+            saveHourlyDefaults(data: String(value), forKey: forKey)
         }
     }
-    func saveTax(data: String, forKey: String) {
-        
-        guard data != "미공제" else { return setUserDefaults(data: nil, forKey: forKey) }
+    func saveTax(data: Int?, forKey: String) {
             
-        setUserDefaults(data: data, forKey: forKey)
+        UserDefaults.standard.set(data, forKey: forKey)
     }
-    func loadData(forKey: String) -> String? {
+    func loadHourly(forKey: String) -> String? {
         
         return UserDefaults.standard.string(forKey: forKey)
     }
-    private func setUserDefaults(data: String?, forKey: String) {
+    func loadTax(forKey: String) -> Int? {
+        
+        return UserDefaults.standard.object(forKey: forKey) as? Int
+    }
+    private func saveHourlyDefaults(data: String?, forKey: String) {
         
         UserDefaults.standard.set(data, forKey: forKey)
     }

@@ -50,10 +50,11 @@ class PartTimeVC: UIViewController {
     
     private var constraint: Constraint?
     let model = PartTimeVCModel()
+    let myModel = MyPageVCModel()
     var data: PayList?
     
     let tax: [String] = MyPageData.taxCategory
-    var taxIndex: Int = 0
+    lazy var taxIndex: Int = myModel.loadTax(forKey: MyPageData.MyPageVCTax) ?? 0
     
     private lazy var yearInt = Int(yearFormat.string(from: Date())) ?? 0
     private lazy var monthInt = Int(monthFormat.string(from: Date())) ?? 0
@@ -68,6 +69,7 @@ class PartTimeVC: UIViewController {
         setPartTimeView()
         setSaveView()
     }
+    
     private func setDateIndex() {
         
         yearIndex = (data?.years.endIndex ?? 1) - 1
@@ -148,13 +150,15 @@ class PartTimeVC: UIViewController {
     func loadSaveView(isAdd: Bool, yearIndex: Int, monthIndex: Int, index: Int, title: String) {
         
         if isAdd == true {
-                let format = DateFormatter()
-                format.dateFormat = "dd"
+            let format = DateFormatter()
+            format.dateFormat = "dd"
             
-            saveView.setValue(title: title, date: format.string(from: Date()), index: index, value: nil)
+            let hourly = myModel.loadHourly(forKey: MyPageData.myPageVCHourly)
+            
+            saveView.setValue(title: title, date: format.string(from: Date()), hourly: hourly, index: index, value: nil)
         } else {
             
-            saveView.setValue(title: title, date: nil, index: index, value: data?.years[yearIndex].months[monthIndex].data[index])
+            saveView.setValue(title: title, date: nil, hourly: nil, index: index, value: data?.years[yearIndex].months[monthIndex].data[index])
         }
         
         moveSaveView(offset: -view.frame.width)
@@ -211,7 +215,8 @@ class PartTimeVC: UIViewController {
         loadPartTimeValue(deduction: taxIndex % tax.count)
         partTimeView.historyTable.reloadData()
     }
-    @objc private func changeDeduction(_ sender: UIButton) {
+    
+    @objc private func changeDeduction(_ sender: UIButton?) {
         
         taxIndex += 1
         partTimeView.setButtonTitle(title: tax[taxIndex % tax.count])

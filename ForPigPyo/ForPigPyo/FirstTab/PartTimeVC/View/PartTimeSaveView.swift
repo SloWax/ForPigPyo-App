@@ -545,7 +545,7 @@ class PartTimeSaveView: UIView {
         }
     }
     
-    func setValue(title: String, date: String?, index: Int, value: PayList.Year.Month.Data?) {
+    func setValue(title: String, date: String?, hourly: String?, index: Int, value: PayList.Year.Month.Data?) {
         
         titleLabel.text = title
         
@@ -577,8 +577,10 @@ class PartTimeSaveView: UIView {
         }
         
         dateTextField.text = date
+        hourlyWageTextField.text = hourly
         
-        [hourlyWageTextField, workingTextField, workingMinTextField, overTextField, overMinTextField, nightTextField, nightMinTextField, overNightTextField, overNightMinTextField].forEach { (textField) in
+        
+        [ workingTextField, workingMinTextField, overTextField, overMinTextField, nightTextField, nightMinTextField, overNightTextField, overNightMinTextField].forEach { (textField) in
             
             textField.text = nil
         }
