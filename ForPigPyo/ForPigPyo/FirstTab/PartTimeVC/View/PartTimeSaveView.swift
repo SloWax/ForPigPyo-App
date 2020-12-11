@@ -190,7 +190,7 @@ class PartTimeSaveView: UIView {
     }()
     let nightWorkLabel: UILabel = {
         let label = UILabel()
-        label.text = "야간 근무 :"
+        label.text = "야근 :"
         label.textColor = Design.textBasic
         label.textAlignment = .left
         label.font = Design.nomalTextSize
@@ -201,7 +201,7 @@ class PartTimeSaveView: UIView {
     let nightTextField: UITextField = {
         let textField = UITextField()
         let attributes = [NSAttributedString.Key.foregroundColor : Design.textBasic.withAlphaComponent(0.5), .font: Design.nomalTextSize]
-        textField.attributedPlaceholder = NSAttributedString(string: "야간 근무", attributes: attributes as [NSAttributedString.Key : Any])
+        textField.attributedPlaceholder = NSAttributedString(string: "야근", attributes: attributes as [NSAttributedString.Key : Any])
         textField.font = Design.nomalTextSize
         textField.textAlignment = .right
         textField.textColor = Design.textBasic
@@ -222,7 +222,7 @@ class PartTimeSaveView: UIView {
     let nightMinTextField: UITextField = {
         let textField = UITextField()
         let attributes = [NSAttributedString.Key.foregroundColor : Design.textBasic.withAlphaComponent(0.5), .font: Design.nomalTextSize]
-        textField.attributedPlaceholder = NSAttributedString(string: "야간 근무", attributes: attributes as [NSAttributedString.Key : Any])
+        textField.attributedPlaceholder = NSAttributedString(string: "야근", attributes: attributes as [NSAttributedString.Key : Any])
         textField.font = Design.nomalTextSize
         textField.textAlignment = .right
         textField.textColor = Design.textBasic
@@ -243,7 +243,7 @@ class PartTimeSaveView: UIView {
     }()
     let overNightWorkLabel: UILabel = {
         let label = UILabel()
-        label.text = "야간 특근 :"
+        label.text = "야/특근 :"
         label.textColor = Design.textBasic
         label.textAlignment = .left
         label.font = Design.nomalTextSize
@@ -254,7 +254,7 @@ class PartTimeSaveView: UIView {
     let overNightTextField: UITextField = {
         let textField = UITextField()
         let attributes = [NSAttributedString.Key.foregroundColor : Design.textBasic.withAlphaComponent(0.5), .font: Design.nomalTextSize]
-        textField.attributedPlaceholder = NSAttributedString(string: "야간 특근", attributes: attributes as [NSAttributedString.Key : Any])
+        textField.attributedPlaceholder = NSAttributedString(string: "야/특근", attributes: attributes as [NSAttributedString.Key : Any])
         textField.font = Design.nomalTextSize
         textField.textAlignment = .right
         textField.textColor = Design.textBasic
@@ -275,7 +275,7 @@ class PartTimeSaveView: UIView {
     let overNightMinTextField: UITextField = {
         let textField = UITextField()
         let attributes = [NSAttributedString.Key.foregroundColor : Design.textBasic.withAlphaComponent(0.5), .font: Design.nomalTextSize]
-        textField.attributedPlaceholder = NSAttributedString(string: "야간 특근", attributes: attributes as [NSAttributedString.Key : Any])
+        textField.attributedPlaceholder = NSAttributedString(string: "야/특근", attributes: attributes as [NSAttributedString.Key : Any])
         textField.font = Design.nomalTextSize
         textField.textAlignment = .right
         textField.textColor = Design.textBasic

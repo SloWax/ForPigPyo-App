@@ -841,11 +841,12 @@
 				CURRENT_PROJECT_VERSION = 255;
 				DEVELOPMENT_TEAM = 3799SNND63;
 				INFOPLIST_FILE = ForPigPyo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = individual.ForPigPyo;
+				PRODUCT_BUNDLE_IDENTIFIER = SloWax.ForPigPyo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -862,11 +863,12 @@
 				CURRENT_PROJECT_VERSION = 255;
 				DEVELOPMENT_TEAM = 3799SNND63;
 				INFOPLIST_FILE = ForPigPyo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = individual.ForPigPyo;
+				PRODUCT_BUNDLE_IDENTIFIER = SloWax.ForPigPyo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

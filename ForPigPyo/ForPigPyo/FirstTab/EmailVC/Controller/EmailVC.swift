@@ -53,11 +53,25 @@ class EmailVC: UIViewController {
     
     func createAndLoadInterstitial() -> GADInterstitial {
         
-        let interstitial = GADInterstitial(adUnitID: EmailVCModel.test)
+        let interstitial = GADInterstitial(adUnitID: EmailVCModel.adsId)
         interstitial.delegate = self
         interstitial.load(GADRequest())
         
         return interstitial
+    }
+    func checkAds() {
+        if interstitial.isReady {
+            
+            interstitial.present(fromRootViewController: self)
+        } else {
+            
+            let alert = UIAlertController(title: nil, message: "광고를 불러오는 중입니다.", preferredStyle: .alert)
+            let okButton = UIAlertAction(title: "확인", style: .default)
+            
+            alert.addAction(okButton)
+            
+            present(alert, animated: true)
+        }
     }
     
     @objc private func presentEmail(_ sender: UIButton) {
@@ -83,6 +97,6 @@ class EmailVC: UIViewController {
     }
     @objc private func presentAds(_ sender: UIButton) {
         
-        interstitial.present(fromRootViewController: self)
+        checkAds()
     }
 }

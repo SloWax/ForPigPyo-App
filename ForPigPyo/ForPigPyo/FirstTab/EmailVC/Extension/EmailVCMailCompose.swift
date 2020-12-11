@@ -20,7 +20,7 @@ extension EmailVC: MFMailComposeViewControllerDelegate {
         let noButton = UIAlertAction(title: "안 봐욧!", style: .default)
         let okButton = UIAlertAction(title: "볼래요!", style: .default) {_ in
             
-            self.interstitial.present(fromRootViewController: self)
+            self.checkAds()
         }
         
         alert.addAction(noButton)
