@@ -64,7 +64,7 @@ class EmailVC: UIViewController {
         
         let bannerView = GADBannerView()
         bannerView.adSize = GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(view.frame.width)
-        bannerView.adUnitID = EmailVCModel.bannertest
+        bannerView.adUnitID = EmailVCModel.bannerAdsId
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
         
@@ -80,9 +80,16 @@ class EmailVC: UIViewController {
     }
     func checkAds() {
         
-        guard interstitial.isReady else { return }
+        interstitial.isReady ? interstitial.present(fromRootViewController: self) : thanksAlert()
+    }
+    func thanksAlert() {
         
-        interstitial.present(fromRootViewController: self)
+        let alert = UIAlertController(title: nil, message: "소중한 의견 감사합니다!!", preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "별말씀을:)", style: .default)
+        
+        alert.addAction(okButton)
+        
+        present(alert, animated: true)
     }
     
     @objc private func presentEmail(_ sender: UIButton) {
