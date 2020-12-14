@@ -20,13 +20,14 @@ class EmailVC: UIViewController {
     }()
     private let emailView = EmailView()
     
+    var bannerView : GADBannerView!
     var interstitial: GADInterstitial!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        setView()
-        setEmailView()
+            
+            setView()
+            setEmailView()
     }
     private func setView() {
         
@@ -38,11 +39,19 @@ class EmailVC: UIViewController {
             
             $0.top.leading.trailing.bottom.equalToSuperview()
         }
+        
+        bannerView = createAndLoadBannerView()
+        view.addSubview(bannerView)
+        
+        bannerView.snp.makeConstraints {
+            
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
     }
     private func setEmailView() {
         
         emailView.emailButton.addTarget(self, action: #selector(presentEmail(_:)), for: .touchUpInside)
-        emailView.adButton.addTarget(self, action: #selector(presentAds(_:)), for: .touchUpInside)
         view.addSubview(emailView)
         
         emailView.snp.makeConstraints {
@@ -51,27 +60,29 @@ class EmailVC: UIViewController {
         }
     }
     
+    private func createAndLoadBannerView() -> GADBannerView {
+        
+        let bannerView = GADBannerView()
+        bannerView.adSize = GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(view.frame.width)
+        bannerView.adUnitID = EmailVCModel.bannertest
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        
+        return bannerView
+    }
     func createAndLoadInterstitial() -> GADInterstitial {
         
-        let interstitial = GADInterstitial(adUnitID: EmailVCModel.adsId)
+        let interstitial = GADInterstitial(adUnitID: EmailVCModel.fullAdsId)
         interstitial.delegate = self
         interstitial.load(GADRequest())
         
         return interstitial
     }
     func checkAds() {
-        if interstitial.isReady {
-            
-            interstitial.present(fromRootViewController: self)
-        } else {
-            
-            let alert = UIAlertController(title: nil, message: "광고를 불러오는 중입니다.", preferredStyle: .alert)
-            let okButton = UIAlertAction(title: "확인", style: .default)
-            
-            alert.addAction(okButton)
-            
-            present(alert, animated: true)
-        }
+        
+        guard interstitial.isReady else { return }
+        
+        interstitial.present(fromRootViewController: self)
     }
     
     @objc private func presentEmail(_ sender: UIButton) {
@@ -94,9 +105,5 @@ class EmailVC: UIViewController {
             
             present(alert, animated: true)
         }
-    }
-    @objc private func presentAds(_ sender: UIButton) {
-        
-        checkAds()
     }
 }

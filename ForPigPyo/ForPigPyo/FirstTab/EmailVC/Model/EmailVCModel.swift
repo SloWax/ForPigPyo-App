@@ -10,6 +10,9 @@ import Foundation
 
 struct EmailVCModel {
     
-    static let test: String = "ca-app-pub-3940256099942544/4411468910"
-    static let adsId: String = "ca-app-pub-1495831513834989/2874709656"
+    static let fulltest: String = "ca-app-pub-3940256099942544/4411468910"
+    static let bannertest: String = "ca-app-pub-3940256099942544/2934735716"
+    
+    static let fullAdsId: String = "ca-app-pub-1495831513834989/2874709656"
+    static let bannerAdsId: String = "ca-app-pub-1495831513834989/6549745688"
 }
