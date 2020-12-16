@@ -17,8 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        // 광고 초기화
         GADMobileAds.sharedInstance().start(completionHandler: nil)
         
+        // HomeVC에서 저장된 배경이미지가 있을 경우 HomeVC와 MyPageVC에 설정
         let mainTabVC = MainTabVC()
         if let homeVC = mainTabVC.viewControllers?[0].children[0] as? HomeVC {
             
@@ -31,7 +33,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         
-        
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = mainTabVC
         window?.makeKeyAndVisible()
@@ -39,6 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    // 다음 업데이트 시 UserDefaults가 아닌 Core Data 구현 예정
     // MARK: - Core Data stack
 
     lazy var persistentContainer: NSPersistentContainer = {

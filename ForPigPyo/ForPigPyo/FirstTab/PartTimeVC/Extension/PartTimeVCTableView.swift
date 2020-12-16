@@ -30,7 +30,7 @@ extension PartTimeVC: UITableViewDelegate {
         return true
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
+        // tableView cell 슬라이딩 delete
         switch editingStyle {
         case .delete:
             

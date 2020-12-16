@@ -107,7 +107,7 @@ class HomeVC: UIViewController {
             return nil
         }
     }
-    
+    // rightBarButton Action
     @objc private func setBackground(_ sender: UIButton) {
         
         let alert = UIAlertController(title: "배경화면 설정", message: nil, preferredStyle: .actionSheet)

@@ -8,6 +8,8 @@
 
 import UIKit
 
+// rightBarButton 과 연결되는 SaveView (첨엔 이렇게 길어질 줄 몰랐는데.. 추후 업데이트 시 리팩토링하면서 최소한 1/3로 줄일 예정)
+
 class PartTimeSaveView: UIView {
     
     let titleLabel: UILabel = {

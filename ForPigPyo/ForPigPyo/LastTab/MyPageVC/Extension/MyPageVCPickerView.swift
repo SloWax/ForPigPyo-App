@@ -30,7 +30,7 @@ extension MyPageVC: UIPickerViewDataSource {
 }
 
 extension MyPageVC: UIPickerViewDelegate {
-    
+    // 선택된 row의 index 값을 UserDefaults에 저장하여 PartTimeVC load 시 설정, 만약 tabBar에서 PartTimeVC가 load되어 있을 경우 해당 VC를 찾아서 값 넘겨줌
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         row == 0 ? model.saveTax(data: nil, forKey: MyPageData.MyPageVCTax) : model.saveTax(data: row - 1, forKey: MyPageData.MyPageVCTax)

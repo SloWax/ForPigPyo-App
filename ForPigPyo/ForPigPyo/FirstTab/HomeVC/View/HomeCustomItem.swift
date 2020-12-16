@@ -9,6 +9,8 @@
 import UIKit
 import SnapKit
 
+// HomeVC CollectionView item
+
 class HomeCustomItem: UICollectionViewCell {
     
     static let identifier = "PartCustomItem"

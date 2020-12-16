@@ -8,6 +8,8 @@
 
 import UIKit
 
+// TabBarController 생성 시 NavigationController와 함께 생성
+
 class MainTabVC: UITabBarController {
 
     override func viewDidLoad() {

@@ -8,6 +8,8 @@
 
 import UIKit
 
+// PartTimeVC 전체 View
+
 class PartTimeView: UIView {
     
     let dateLabel: UILabel = {

@@ -29,6 +29,7 @@ class EmailVC: UIViewController {
             setView()
             setEmailView()
     }
+    // set View
     private func setView() {
         
         interstitial = createAndLoadInterstitial()
@@ -61,7 +62,7 @@ class EmailVC: UIViewController {
     }
     
     private func createAndLoadBannerView() -> GADBannerView {
-        
+        // 배너광고 초기화
         let bannerView = GADBannerView()
         bannerView.adSize = GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(view.frame.width)
         bannerView.adUnitID = EmailVCModel.bannerAdsId
@@ -71,7 +72,7 @@ class EmailVC: UIViewController {
         return bannerView
     }
     func createAndLoadInterstitial() -> GADInterstitial {
-        
+        // 전면광고 초기화
         let interstitial = GADInterstitial(adUnitID: EmailVCModel.fullAdsId)
         interstitial.delegate = self
         interstitial.load(GADRequest())
@@ -79,11 +80,11 @@ class EmailVC: UIViewController {
         return interstitial
     }
     func checkAds() {
-        
+        // 전면광고가 준비되었을 경우 present, else tanksAlert
         interstitial.isReady ? interstitial.present(fromRootViewController: self) : thanksAlert()
     }
     func thanksAlert() {
-        
+        // email을 보내고 창을 dismiss 하면 감사인사 ^^
         let alert = UIAlertController(title: nil, message: "소중한 의견 감사합니다!!", preferredStyle: .alert)
         let okButton = UIAlertAction(title: "별말씀을:)", style: .default)
         
@@ -93,6 +94,7 @@ class EmailVC: UIViewController {
     }
     
     @objc private func presentEmail(_ sender: UIButton) {
+        // 기기 내 메일 앱 설정이 완료되었는지 확인 후 mail present, else 확인 Alert
         if MFMailComposeViewController.canSendMail() {
             
             let email = MFMailComposeViewController()

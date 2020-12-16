@@ -8,6 +8,8 @@
 
 import UIKit
 
+// PartTimeVC tableView CustomCell
+
 class PartTimeCustomCell: UITableViewCell {
     
     static let identifier = "PartCustomCell"

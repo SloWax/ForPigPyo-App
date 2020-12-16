@@ -8,6 +8,8 @@
 
 import UIKit
 
+// MyPageVC tableView CustomSection
+
 class MyPageHeaderCustomSection: UITableViewHeaderFooterView {
     
     static let identifier = "MyPageHeaderCustomSection"

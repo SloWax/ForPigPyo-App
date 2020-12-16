@@ -8,6 +8,8 @@
 
 import UIKit
 
+// EmailVC 전체 View
+
 class EmailView: UIView {
     
     private let explainLabel: UILabel = {

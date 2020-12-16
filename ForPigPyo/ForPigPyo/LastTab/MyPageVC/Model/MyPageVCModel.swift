@@ -10,6 +10,8 @@ import Foundation
 
 struct MyPageVCModel {
     
+    // MARK: 시급 설정
+    
     func saveHourly(data: String, forKey: String) {
         
         guard data != "" else { return saveHourlyDefaults(data: nil, forKey: forKey) }
@@ -20,10 +22,15 @@ struct MyPageVCModel {
             saveHourlyDefaults(data: String(value), forKey: forKey)
         }
     }
+    
+    // MARK: 세금 설정
+    
     func saveTax(data: Int?, forKey: String) {
-            
+     // 세금 index 저장
         UserDefaults.standard.set(data, forKey: forKey)
     }
+    
+    // MARK: MyPage에서 저장한 정보 load
     func loadHourly(forKey: String) -> String? {
         
         return UserDefaults.standard.string(forKey: forKey)

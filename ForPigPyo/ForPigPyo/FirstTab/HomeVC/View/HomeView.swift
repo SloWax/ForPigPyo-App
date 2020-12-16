@@ -9,6 +9,8 @@
 import UIKit
 import SnapKit
 
+// HomeVC 전체 View
+
 class HomeView: UIView {
 
     let partCollection: UICollectionView = {

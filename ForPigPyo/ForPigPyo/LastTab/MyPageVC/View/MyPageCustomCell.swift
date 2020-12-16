@@ -8,6 +8,8 @@
 
 import UIKit
 
+// MyPageVC tableView CustomCell
+
 class MyPageCustomCell: UITableViewCell {
     
     static let identifier = "MyPageCustomCell"

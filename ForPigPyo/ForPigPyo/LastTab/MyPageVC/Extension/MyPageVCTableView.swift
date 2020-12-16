@@ -38,7 +38,7 @@ extension MyPageVC: UITableViewDataSource {
         
         let sectionIV = menuData.menu[indexPath.section]
         var value: String? = nil
-        
+        // section 별 메뉴 설정 추후 업데이트 시 section 추가되면 switch문으로 변경 예정
         if indexPath.section == 0 {
             if indexPath.row == 0 {
                 
@@ -73,7 +73,7 @@ extension MyPageVC: UITableViewDelegate {
         
         switch indexPath.section {
         case 0:
-            
+            // cell 별 Action
             switch indexPath.row {
             case 0:
                 let alert = UIAlertController(title: cell.titleLabel.text, message: "자동 입력을 위해 시급을 넣어주세요.", preferredStyle: .alert)

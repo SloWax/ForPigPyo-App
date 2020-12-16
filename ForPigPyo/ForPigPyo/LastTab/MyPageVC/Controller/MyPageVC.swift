@@ -47,6 +47,7 @@ class MyPageVC: UIViewController {
         setMyPageTable()
         setTaxPickerView()
     }
+    // set View
     private func setView() {
         
         navigationItem.title = "My Page"
@@ -81,7 +82,7 @@ class MyPageVC: UIViewController {
     }
     
     func moveTaxPicker(offset: CGFloat) {
-        
+        // pickerView animation
         UIView.animate(withDuration: 0.25) {
             
             self.constraint?.update(offset: offset)
@@ -91,7 +92,7 @@ class MyPageVC: UIViewController {
     }
     
     @objc private func taxPickerDone(_ sender: UIBarButtonItem) {
-        
+        // picker doneButton Action
         moveTaxPicker(offset: 0)
         taxPickerView.pickerView.selectRow(0, inComponent: 0, animated: true)
     }

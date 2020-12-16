@@ -9,7 +9,7 @@
 import Foundation
 
 struct EmailVCModel {
-    
+    // 광고 id
     static let fulltest: String = "ca-app-pub-3940256099942544/4411468910"
     static let bannertest: String = "ca-app-pub-3940256099942544/2934735716"
     

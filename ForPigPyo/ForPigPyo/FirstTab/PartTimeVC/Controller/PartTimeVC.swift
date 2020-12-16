@@ -69,7 +69,7 @@ class PartTimeVC: UIViewController {
         setPartTimeView()
         setSaveView()
     }
-    
+    // set View
     private func setDateIndex() {
         
         yearIndex = (data?.years.endIndex ?? 1) - 1
@@ -132,7 +132,7 @@ class PartTimeVC: UIViewController {
     }
     
     private func moveSaveView(offset: CGFloat) {
-
+        // saveView animation
         UIView.animate(withDuration: 0.25) {
 
             self.constraint?.update(offset: offset)
@@ -140,7 +140,7 @@ class PartTimeVC: UIViewController {
         }
     }
     private func setLabelAlpha(label: UILabel, value: CGFloat) {
-        
+        // saveView 내 태그 label alpha
         UIView.animate(withDuration: 0.25) {
             
             label.alpha = value
@@ -148,11 +148,11 @@ class PartTimeVC: UIViewController {
     }
     
     func loadSaveView(isAdd: Bool, yearIndex: Int, monthIndex: Int, index: Int, title: String) {
-        
+        // saveView를 불러올 시 rightBarButton 과 tableView 내 cell을 선택 했는지 확인 후 값 넘겨주기
         if isAdd == true {
             let format = DateFormatter()
             format.dateFormat = "dd"
-            
+            // 설정된 기본 시급이 있으면 값 넘겨주고 없으면 nil 넣기
             let hourly = myModel.loadHourly(forKey: MyPageData.myPageVCHourly)
             
             saveView.setValue(title: title, date: format.string(from: Date()), hourly: hourly, index: index, value: nil)
@@ -164,7 +164,7 @@ class PartTimeVC: UIViewController {
         moveSaveView(offset: -view.frame.width)
     }
     func loadPartTimeValue(deduction: Int) {
-        
+        // partTimeView 상단 날짜와 월 예상 급여 set
         let date = data?.years[yearIndex]
         let year = date?.year ?? 0
         let month = date?.months[monthIndex].month ?? 0
@@ -174,11 +174,11 @@ class PartTimeVC: UIViewController {
     }
     
     @objc private func addSaveView(_ sender: UIButton) {
-        
+        // rightBarButton Action
         loadSaveView(isAdd: true, yearIndex: yearIndex, monthIndex: monthIndex, index: 0, title: "추가하기")
     }
     @objc private func moveTable(_ sender: UIButton) {
-        
+        // 년, 월 이동 시 저장된 데이터가 있으면 해당 데이터 load, else return
         switch sender {
         case partTimeView.preButton:
             
@@ -217,14 +217,14 @@ class PartTimeVC: UIViewController {
     }
     
     @objc private func changeDeduction(_ sender: UIButton?) {
-        
+        // 예상 급여 우측 세금공제 button 터치 시 index를 변경하여 title 변경하고 model에 해당 index 넘겨주어 예상급여 재계산
         taxIndex += 1
         partTimeView.setButtonTitle(title: tax[taxIndex % tax.count])
         
         loadPartTimeValue(deduction: taxIndex % tax.count)
     }
     @objc private func returnSaveView(_ sender: UIButton) {
-        
+        // saveView 하단 취소, 저장버튼 Action tag로 버튼 구별, 1 경우 saveView 내 모든 객체 값 가져와 data 저장 후 모든 뷰 reload, else return
         if sender.tag == 1 {
             
             let division = saveView.titleLabel
@@ -290,7 +290,7 @@ class PartTimeVC: UIViewController {
         moveSaveView(offset: 0)
     }
     @objc private func textCountLimit(_ sender: UITextField) {
-        
+        // saveView 내 textField textCount Limit
         switch sender {
         case saveView.dateTextField:
             
