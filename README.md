@@ -8,7 +8,7 @@
 - 2020.12.15 v1.0 배포
 - https://apps.apple.com/app/id1544430902
 
-## Architecture 
+## 아키텍처 
 - MVC
 
 
