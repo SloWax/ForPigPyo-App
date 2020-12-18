@@ -44,9 +44,9 @@ class DonePickerView: UIView {
     }
     private func setDoneButton() {
         let titleButton = UIBarButtonItem(title: "세금 설정  ", style: .plain, target: nil, action: nil)
-        let backColor: UIColor = .systemBackground
+        let backColor: UIColor = Design.purple
         titleButton.isEnabled = false
-        titleButton.setTitleTextAttributes([.foregroundColor : backColor.withAlphaComponent(0.25)], for: .disabled)
+        titleButton.setTitleTextAttributes([.foregroundColor : backColor.withAlphaComponent(0.75)], for: .disabled)
         
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let items = [flexSpace, flexSpace, titleButton, flexSpace, doneButton]
