@@ -72,15 +72,16 @@ class PartTimeVC: UIViewController {
     // set View
     private func setDateIndex() {
         
-        yearIndex = (data?.years.endIndex ?? 1) - 1
-        monthIndex = (data?.years[yearIndex].months.endIndex ?? 1) - 1
+        yearIndex = data?.years.lastIndex(where: { $0.year == yearInt}) ?? 0
+        monthIndex = data?.years[yearIndex].months.lastIndex(where: { $0.month == monthInt }) ?? 0
     }
     private func setData() {
         
-        data = model.loadData() ?? PayList(years: [PayList.Year(year: yearInt,
-                                                                months: [PayList.Year.Month(month: monthInt,
-                                                                                            data: [PayList.Year.Month.Data]())])])
+        var firstData: PayList? = PayList(years: [PayList.Year]())
+        
+        data = model.loadData() ?? model.appendYear(data: &firstData, yearIndex: -1, year: yearInt, month: monthInt)
         setDateIndex()
+        
         data = model.checkDataTable(data: &data, yearIndex: yearIndex, monthIndex: monthIndex, yearInt: yearInt, monthInt: monthInt)
         setDateIndex()
     }

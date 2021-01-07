@@ -71,28 +71,33 @@ struct PartTimeVCModel {
     // MARK: dataTable 확인
     func checkDataTable(data: inout PayList?, yearIndex: Int, monthIndex: Int, yearInt: Int, monthInt: Int) -> PayList? {
         if let checkData = data?.years {
-            if !checkData.contains(where: { $0.year == yearInt }) {
-                
-                data = appendYear(data: &data, year: yearInt, month: monthInt)
-            } else if !checkData[yearIndex].months.contains(where: { $0.month == monthInt }) {
-                
-                data = appendMonth(data: &data, yearIndex: yearIndex, month: monthInt)
+            var checkCount = 0
+            
+            for check in checkData {
+                if check.year == yearInt {
+                    checkCount += 1
+                    
+                    break
+                } else {
+                    
+                    continue
+                }
             }
+            guard checkCount == 0 else { return data }
+            data = appendYear(data: &data, yearIndex: yearIndex, year: yearInt, month: monthInt)
         }
         return data
     }
-    private func appendYear(data: inout PayList?, year: Int, month: Int) -> PayList? {
+    
+    // MARK: Happy New Year!
+    func appendYear(data: inout PayList?, yearIndex: Int, year: Int, month: Int) -> PayList? {
         
         data?.years.append(PayList.Year(year: year,
-                                       months: [PayList.Year.Month(month: month,
-                                                                   data: [PayList.Year.Month.Data]())]))
-        
-        return data
-    }
-    private func appendMonth(data: inout PayList?, yearIndex: Int, month: Int) -> PayList? {
-        
-        data?.years[yearIndex].months.append(PayList.Year.Month(month: month,
-                                                           data: [PayList.Year.Month.Data]()))
+                                       months: [PayList.Year.Month]()))
+        (1 ... 12).forEach({ (month) in
+            
+            data?.years[yearIndex + 1].months.append(PayList.Year.Month(month: month, data: [PayList.Year.Month.Data]()))
+        })
         
         return data
     }
