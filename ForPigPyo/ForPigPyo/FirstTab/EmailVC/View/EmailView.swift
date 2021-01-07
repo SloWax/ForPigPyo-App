@@ -22,9 +22,6 @@ class EmailView: UIView {
         label.text = """
 원하는 기능을 메일에 적어서 보내주세요.
 언제가 될지는 모르겠지만 짬짬이 개발해 추가해드리겠습니다!
-
-메일을 보내주신 뒤
-잠시 시간을 내어주시어 광고를 봐주신다면 개발이 더욱 빨라질 수 있습니다!!
 """
         let attrString = NSMutableAttributedString(string: label.text ?? "")
         let paragraphStyle = NSMutableParagraphStyle()
