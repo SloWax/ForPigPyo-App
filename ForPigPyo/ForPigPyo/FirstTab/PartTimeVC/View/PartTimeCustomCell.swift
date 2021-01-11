@@ -98,7 +98,7 @@ class PartTimeCustomCell: UITableViewCell {
         contentView.addSubview(dateLabel)
         
         dateLabel.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(Design.LargePadding)
+            $0.leading.equalToSuperview().inset(Design.largePadding)
             $0.bottom.equalTo(self.snp.centerY).offset(-Design.smallPadding / 2)
         }
     }
@@ -146,7 +146,7 @@ class PartTimeCustomCell: UITableViewCell {
         contentView.addSubview(hourlyWageLabel)
         
         hourlyWageLabel.snp.makeConstraints {
-            $0.trailing.equalToSuperview().inset(Design.LargePadding)
+            $0.trailing.equalToSuperview().inset(Design.largePadding)
             $0.bottom.equalTo(overTimeLabel)
         }
     }

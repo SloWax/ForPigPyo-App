@@ -50,10 +50,10 @@ extension MyPageVC: UITableViewDataSource {
                 }
             }
         }
-        cell.setValue(image: sectionIV.image,
-                      title: sectionIV.myPageMenu[indexPath.row],
-                      value: value,
-                      row: indexPath.row)
+//        cell.setValue(image: sectionIV.image,
+//                      title: sectionIV.myPageMenu[indexPath.row],
+//                      value: value,
+//                      row: indexPath.row)
         
         return cell
     }

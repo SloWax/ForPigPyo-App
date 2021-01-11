@@ -14,10 +14,49 @@ class PartTimeView: UIView {
     
     let dateLabel: UILabel = {
         let label = UILabel()
-        label.textColor = Design.textBasic
+//        label.textColor = Design.textBasic
         label.font = Design.boldLargeTextSize
         
         return label
+    }()
+    let preButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.tintColor = .black
+        button.setImage(UIImage(systemName: "arrow.left"), for: .normal)
+        
+        return button
+    }()
+    let nexButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.tintColor = .black
+        button.setImage(UIImage(systemName: "arrow.right"), for: .normal)
+        
+        return button
+    }()
+    
+    private let containerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = Design.lightGray
+        view.layer.cornerRadius = Design.cornerRadius
+        
+        return view
+    }()
+    let explainLabel: UILabel = {
+        let label = UILabel()
+        label.text = "이번 달에는 얼마를 받을까요?"
+//        label.textColor = Design.textBasic
+        label.font = Design.boldSmallTextSize
+        
+        return label
+    }()
+    let taxButton: UIButton = {
+        let button = UIButton(type: .system)
+//        button.tintColor = Design.purple
+        button.titleLabel?.font = Design.boldSmallTextSize
+        button.backgroundColor = .lightGray
+        button.layer.cornerRadius = Design.qurterCornerRadius
+        
+        return button
     }()
     let totalLabel: UILabel = {
         let label = UILabel()
@@ -26,30 +65,6 @@ class PartTimeView: UIView {
         label.font = Design.boldLargeTextSize
         
         return label
-    }()
-    let taxButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.tintColor = Design.purple
-        button.titleLabel?.font = Design.boldSmallTextSize
-        button.backgroundColor = Design.textBasic
-        button.layer.cornerRadius = Design.qurterCornerRadius
-        
-        return button
-    }()
-    
-    let preButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.tintColor = Design.textBasic
-        button.setImage(UIImage(systemName: "arrow.left"), for: .normal)
-        
-        return button
-    }()
-    let nexButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.tintColor = Design.textBasic
-        button.setImage(UIImage(systemName: "arrow.right"), for: .normal)
-        
-        return button
     }()
     
     let historyTable: UITableView = {
@@ -64,9 +79,8 @@ class PartTimeView: UIView {
         super.init(frame: frame)
         
         setDateLabel()
-        setTotalLabel()
         setButtons()
-        setDeductionButton()
+        setTotalContainer()
         setHistoryTable()
     }
     private func setDateLabel() {
@@ -76,15 +90,6 @@ class PartTimeView: UIView {
         dateLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.top.equalToSuperview().offset(Design.padding)
-        }
-    }
-    private func setTotalLabel() {
-        
-        self.addSubview(totalLabel)
-        
-        totalLabel.snp.makeConstraints {
-            $0.centerX.equalTo(dateLabel)
-            $0.top.equalTo(dateLabel.snp.bottom).offset(Design.padding)
         }
     }
     private func setButtons() {
@@ -101,23 +106,46 @@ class PartTimeView: UIView {
             $0.trailing.equalToSuperview().inset(Design.padding)
         }
     }
-    private func setDeductionButton() {
+    private func setTotalContainer() {
         
-        self.addSubview(taxButton)
+        self.addSubview(containerView)
         
-        taxButton.snp.makeConstraints {
-            $0.bottom.equalTo(totalLabel)
-            $0.trailing.equalTo(nexButton)
-            $0.width.equalToSuperview().multipliedBy(0.15)
+        containerView.snp.makeConstraints {
+            
+            $0.top.equalTo(dateLabel.snp.bottom).offset(Design.padding)
+            $0.leading.trailing.equalToSuperview().inset(Design.largePadding)
         }
         
+        containerView.addSubview(explainLabel)
+        
+        explainLabel.snp.makeConstraints {
+            
+            $0.top.equalToSuperview().offset(Design.nomalPadding)
+            $0.leading.equalToSuperview().inset(Design.largestPadding)
+        }
+        
+        containerView.addSubview(taxButton)
+        
+        taxButton.snp.makeConstraints {
+            $0.top.equalTo(explainLabel)
+            $0.trailing.equalToSuperview().inset(Design.largestPadding)
+            $0.width.equalToSuperview().multipliedBy(0.13)
+        }
+        
+        containerView.addSubview(totalLabel)
+        
+        totalLabel.snp.makeConstraints {
+            $0.top.equalTo(taxButton.snp.bottom).offset(Design.smallPadding)
+            $0.trailing.equalTo(taxButton)
+            $0.bottom.equalToSuperview().inset(Design.nomalPadding)
+        }
     }
     private func setHistoryTable() {
         
         self.addSubview(historyTable)
         
         historyTable.snp.makeConstraints {
-            $0.top.equalTo(totalLabel.snp.bottom).offset(Design.padding)
+            $0.top.equalTo(totalLabel.snp.bottom).offset(Design.nomalPadding)
             $0.leading.trailing.bottom.equalToSuperview()
         }
     }

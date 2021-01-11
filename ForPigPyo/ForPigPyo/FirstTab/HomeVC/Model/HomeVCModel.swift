@@ -15,8 +15,8 @@ struct HomeVCModel {
     
     struct Menu {
         
-        let image: String
         let title: String
+        let subTitle: String
         let myPageMenu: [String?]
     }
     

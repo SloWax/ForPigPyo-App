@@ -18,8 +18,8 @@ extension HomeVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let item = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCustomItem.identifier, for: indexPath) as? HomeCustomItem else { fatalError() }
-        item.setValue(image: model.menu[indexPath.row].image,
-                      text: model.menu[indexPath.row].title)
+        item.setValue(title: model.menu[indexPath.row].title,
+                      subTitle: model.menu[indexPath.row].subTitle)
         
         return item
     }
@@ -35,11 +35,14 @@ extension HomeVC: UICollectionViewDelegate {
         case 0:
             let partVC = PartTimeVC()
             
-            partVC.title = item.titleLabel.text
+//            partVC.title = item.titleLabel.text
             partVC.backImageView.image = backImageView.image
             
             navigationController?.pushViewController(partVC, animated: true)
         case 1:
+            
+            return
+        case 2:
             let emailVC = EmailVC()
             
             emailVC.title = item.titleLabel.text

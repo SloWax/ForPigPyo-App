@@ -12,6 +12,7 @@ import Foundation
 struct Design {
     // MARK: backgroundColor
     static let purple: UIColor = UIColor(displayP3Red: 203/255, green: 166/255, blue: 249/255, alpha: 1)
+    static let lightGray: UIColor = UIColor(displayP3Red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
     
     // MARK: textColor
     static let textBasic: UIColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
@@ -26,7 +27,8 @@ struct Design {
     
     static let smallPadding: CGFloat = 5
     static let nomalPadding: CGFloat = 10
-    static let LargePadding: CGFloat = 15
+    static let largePadding: CGFloat = 15
+    static let largestPadding: CGFloat = 20
     
     // MARK: border
     static let qurterBorderWidth: CGFloat = 0.25

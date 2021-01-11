@@ -15,15 +15,15 @@ class HomeCustomItem: UICollectionViewCell {
     
     static let identifier = "PartCustomItem"
     
-    private let imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.tintColor = Design.textBasic
-        
-        return imageView
-    }()
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = Design.textBasic
+//        label.textColor = Design.textBasic
+        
+        return label
+    }()
+    let subTitleLabel: UILabel = {
+        let label = UILabel()
+//        label.textColor = Design.textBasic
         
         return label
     }()
@@ -33,24 +33,15 @@ class HomeCustomItem: UICollectionViewCell {
         super.init(frame: frame)
         
         setItem()
-        setImageView()
         setTitleLabel()
+        setSubTitleLabel()
     }
     private func setItem() {
         
-        self.layer.cornerRadius = Design.cornerRadius
-        self.layer.borderWidth = Design.halfBorderWidth
-        self.layer.borderColor = Design.textBasic.cgColor
-    }
-    private func setImageView() {
-        
-        contentView.addSubview(imageView)
-        
-        imageView.snp.makeConstraints {
-            
-            $0.top.leading.bottom.equalToSuperview().inset(Design.smallPadding)
-            $0.width.equalTo(imageView.snp.height)
-        }
+        self.backgroundColor = Design.lightGray
+//        self.layer.cornerRadius = Design.cornerRadius
+//        self.layer.borderWidth = Design.halfBorderWidth
+//        self.layer.borderColor = Design.textBasic.cgColor
     }
     private func setTitleLabel() {
         
@@ -59,15 +50,25 @@ class HomeCustomItem: UICollectionViewCell {
         
         titleLabel.snp.makeConstraints {
             
-            $0.leading.equalTo(imageView.snp.trailing).offset(Design.nomalPadding)
-            $0.centerY.equalTo(imageView.snp.centerY)
+            $0.top.leading.equalToSuperview().offset(Design.nomalPadding)
+        }
+    }
+    private func setSubTitleLabel() {
+        
+        contentView.addSubview(subTitleLabel)
+        
+        subTitleLabel.snp.makeConstraints {
+            
+            $0.top.equalTo(titleLabel.snp.bottom).offset(Design.smallPadding)
+            $0.leading.equalTo(titleLabel)
         }
     }
     
-    func setValue(image: String, text: String) {
+    func setValue(title: String, subTitle: String) {
         
-        imageView.image = UIImage(systemName: image)
-        titleLabel.text = text
+        
+        titleLabel.text = title
+        subTitleLabel.text = subTitle
     }
     
     required init?(coder: NSCoder) {

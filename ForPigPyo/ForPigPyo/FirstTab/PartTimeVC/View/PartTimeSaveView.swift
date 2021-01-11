@@ -339,7 +339,7 @@ class PartTimeSaveView: UIView {
         self.addSubview(titleLabel)
         
         titleLabel.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview().inset(Design.LargePadding)
+            $0.top.leading.trailing.equalToSuperview().inset(Design.largePadding)
         }
     }
     private func setDate() {
@@ -533,16 +533,16 @@ class PartTimeSaveView: UIView {
         
         cancleButton.snp.makeConstraints {
             
-            $0.top.equalTo(overNightLabel.snp.bottom).offset(Design.LargePadding)
+            $0.top.equalTo(overNightLabel.snp.bottom).offset(Design.largePadding)
             $0.leading.equalTo(titleLabel)
-            $0.trailing.equalTo(self.snp.centerX).offset(-Design.LargePadding / 2)
+            $0.trailing.equalTo(self.snp.centerX).offset(-Design.largePadding / 2)
             
-            $0.bottom.equalToSuperview().inset(Design.LargePadding)
+            $0.bottom.equalToSuperview().inset(Design.largePadding)
         }
         saveButton.snp.makeConstraints {
             
             $0.top.equalTo(cancleButton)
-            $0.leading.equalTo(self.snp.centerX).offset(Design.LargePadding / 2)
+            $0.leading.equalTo(self.snp.centerX).offset(Design.largePadding / 2)
             $0.trailing.equalTo(titleLabel)
         }
     }

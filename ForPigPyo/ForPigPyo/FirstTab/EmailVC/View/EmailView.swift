@@ -55,7 +55,7 @@ class EmailView: UIView {
         self.addSubview(explainLabel)
         
         explainLabel.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview().inset(Design.LargePadding)
+            $0.top.leading.trailing.equalToSuperview().inset(Design.largePadding)
         }
     }
     private func setEmailButton() {

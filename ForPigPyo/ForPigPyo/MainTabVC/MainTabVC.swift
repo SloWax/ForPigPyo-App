@@ -16,7 +16,7 @@ class MainTabVC: UITabBarController {
         super.viewDidLoad()
         
         let homeVC = makeNaviController(tabBarImage: "house", rootViewController: HomeVC())
-        homeVC.title = "홈"
+        homeVC.title = "모두의 앱"
         
         
         let myPageVC = makeNaviController(tabBarImage: "person", rootViewController: MyPageVC())
@@ -24,7 +24,7 @@ class MainTabVC: UITabBarController {
         
         viewControllers = [homeVC, myPageVC]
         
-        tabBar.tintColor = Design.purple
+        tabBar.tintColor = .black
     }
     
     func makeNaviController(tabBarImage: String, rootViewController: UIViewController = UIViewController()) -> UINavigationController {
@@ -32,7 +32,7 @@ class MainTabVC: UITabBarController {
         let naviController = UINavigationController(rootViewController: rootViewController)
         
         naviController.tabBarItem.image = UIImage(systemName: tabBarImage)
-        naviController.navigationBar.tintColor = Design.purple
+        naviController.navigationBar.tintColor = .black
         
         return naviController
     }

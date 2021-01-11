@@ -73,7 +73,7 @@ class MyPageCustomCell: UITableViewCell {
         
         valueLabel.snp.makeConstraints {
             
-            $0.trailing.equalTo(self.snp.trailing).inset(Design.LargePadding)
+            $0.trailing.equalTo(self.snp.trailing).inset(Design.largePadding)
             $0.centerY.equalToSuperview()
         }
     }

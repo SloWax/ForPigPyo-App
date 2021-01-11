@@ -15,7 +15,7 @@ class PartTimeVC: UIViewController {
     
     let backImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = Design.purple
+        imageView.backgroundColor = .black
         
         return imageView
     }()
@@ -87,8 +87,8 @@ class PartTimeVC: UIViewController {
     }
     private func setView() {
         
-        let rightButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addSaveView(_:)))
-        navigationItem.rightBarButtonItem = rightButton
+//        let rightButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addSaveView(_:)))
+//        navigationItem.rightBarButtonItem = rightButton
         
         view.addSubview(backImageView)
         
