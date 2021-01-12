@@ -51,7 +51,7 @@ class MyPageVC: UIViewController {
     private func setView() {
         
         navigationItem.title = "My Page"
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: Design.LargeTextSize ?? UIFont()]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: Design.largeTextSize ?? UIFont()]
         
         view.addSubview(backImageView)
         

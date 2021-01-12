@@ -12,12 +12,14 @@ import Foundation
 struct Design {
     // MARK: backgroundColor
     static let purple: UIColor = UIColor(displayP3Red: 203/255, green: 166/255, blue: 249/255, alpha: 1)
-    static let lightGray: UIColor = UIColor(displayP3Red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
+    static let lightGray: UIColor = UIColor(displayP3Red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
+    static let gray: UIColor = UIColor(displayP3Red: 221/255, green: 221/255, blue: 221/255, alpha: 1)
+    static let yellow: UIColor = UIColor(displayP3Red: 255/255, green: 209/255, blue: 0/255, alpha: 1)
     
     // MARK: textColor
-    static let textBasic: UIColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
-    static let textRedSun: UIColor = UIColor(displayP3Red: 236/255, green: 120/255, blue: 115/255, alpha: 1)
-    static let textBlueSat: UIColor = UIColor(displayP3Red: 102/255, green: 112/255, blue: 238/255, alpha: 1)
+    static let textBasic: UIColor = UIColor(displayP3Red: 57/255, green: 57/255, blue: 57/255, alpha: 1)
+    static let textRedSun: UIColor = UIColor(displayP3Red: 237/255, green: 99/255, blue: 99/255, alpha: 1)
+    static let textBlueSat: UIColor = UIColor(displayP3Red: 111/255, green: 116/255, blue: 234/255, alpha: 1)
     
     // MARK: padding
     static let padding: CGFloat = 30
@@ -33,17 +35,18 @@ struct Design {
     // MARK: border
     static let qurterBorderWidth: CGFloat = 0.25
     static let halfBorderWidth: CGFloat = 0.5
-    static let qurterCornerRadius: CGFloat = 7.5
-    static let cornerRadius: CGFloat = 10
+    static let oneFifthCornerRadius: CGFloat = 5
+    static let cornerRadius: CGFloat = 25
     
     // MARK: font
-    static let smallTextSize = UIFont(name: "BMHANNAAirOTF", size: 16)
-    static let nomalTextSize = UIFont(name: "BMHANNAAirOTF", size: 19)
-    static let LargeTextSize = UIFont(name: "BMHANNAAirOTF", size: 22)
+    static let smallTextSize = UIFont(name: "NotoSansCJKkr-Black", size: 16)
+    static let nomalTextSize = UIFont(name: "NotoSansCJKkr-Black", size: 19)
+    static let largeTextSize = UIFont(name: "NotoSansCJKkr-Black", size: 22)
+    static let headerTextSize = UIFont(name: "NotoSansCJKkr-Black", size: 26)
     
-    static let boldSmallTextSize = UIFont(name: "BMHANNA11yrsoldOTF", size: 14)
-    static let boldNomalTextSize = UIFont(name: "BMHANNA11yrsoldOTF", size: 20)
-    static let boldLargeTextSize = UIFont(name: "BMHANNA11yrsoldOTF", size: 26)
-    static let boldHeaderTextSize = UIFont(name: "BMHANNA11yrsoldOTF", size: 32)
+    static let boldSmallTextSize = UIFont(name: "NotoSansCJKkr-Bold", size: 14)
+    static let boldNomalTextSize = UIFont(name: "NotoSansCJKkr-Bold", size: 20)
+    static let boldLargeTextSize = UIFont(name: "NotoSansCJKkr-Bold", size: 26)
+    static let boldHeaderTextSize = UIFont(name: "NotoSansCJKkr-Bold", size: 32)
     
 }

@@ -17,13 +17,13 @@ class HomeCustomItem: UICollectionViewCell {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-//        label.textColor = Design.textBasic
+        label.textColor = Design.textBasic
         
         return label
     }()
     let subTitleLabel: UILabel = {
         let label = UILabel()
-//        label.textColor = Design.textBasic
+        label.textColor = Design.textBasic
         
         return label
     }()
@@ -45,21 +45,23 @@ class HomeCustomItem: UICollectionViewCell {
     }
     private func setTitleLabel() {
         
-        titleLabel.font = UIFont(name: "BMHANNA11yrsoldOTF", size: self.frame.width / 14)
+        titleLabel.font = UIFont(name: "NotoSansCJKkr-Bold", size: self.frame.width / 16)
         contentView.addSubview(titleLabel)
         
         titleLabel.snp.makeConstraints {
             
-            $0.top.leading.equalToSuperview().offset(Design.nomalPadding)
+            $0.top.equalToSuperview().offset(Design.smallPadding)
+            $0.leading.equalToSuperview().inset(Design.largePadding)
         }
     }
     private func setSubTitleLabel() {
         
+        subTitleLabel.font = UIFont(name: "NotoSansCJKkr-Medium", size: self.frame.width / 23)
         contentView.addSubview(subTitleLabel)
         
         subTitleLabel.snp.makeConstraints {
             
-            $0.top.equalTo(titleLabel.snp.bottom).offset(Design.smallPadding)
+            $0.top.equalTo(titleLabel.snp.bottom)
             $0.leading.equalTo(titleLabel)
         }
     }

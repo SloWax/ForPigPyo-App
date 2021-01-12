@@ -15,7 +15,7 @@ class PartTimeVC: UIViewController {
     
     let backImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .black
+        imageView.backgroundColor = .systemBackground
         
         return imageView
     }()
@@ -24,9 +24,12 @@ class PartTimeVC: UIViewController {
         [view.preButton, view.nexButton].forEach { (button) in
             button.addTarget(self, action: #selector(moveTable(_:)), for: .touchUpInside)
         }
+        
         view.historyTable.delegate = self
         view.historyTable.dataSource = self
         view.historyTable.register(PartTimeCustomCell.self, forCellReuseIdentifier: PartTimeCustomCell.identifier)
+        
+        view.addButton.addTarget(self, action: #selector(addSaveView(_:)), for: .touchUpInside)
         
         return view
     }()
@@ -86,9 +89,6 @@ class PartTimeVC: UIViewController {
         setDateIndex()
     }
     private func setView() {
-        
-//        let rightButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addSaveView(_:)))
-//        navigationItem.rightBarButtonItem = rightButton
         
         view.addSubview(backImageView)
         
@@ -216,7 +216,6 @@ class PartTimeVC: UIViewController {
         loadPartTimeValue(deduction: taxIndex % tax.count)
         partTimeView.historyTable.reloadData()
     }
-    
     @objc private func changeDeduction(_ sender: UIButton?) {
         // 예상 급여 우측 세금공제 button 터치 시 index를 변경하여 title 변경하고 model에 해당 index 넘겨주어 예상급여 재계산
         taxIndex += 1

@@ -14,8 +14,8 @@ class PartTimeView: UIView {
     
     let dateLabel: UILabel = {
         let label = UILabel()
-//        label.textColor = Design.textBasic
-        label.font = Design.boldLargeTextSize
+        label.textColor = Design.textBasic
+        label.font = Design.headerTextSize
         
         return label
     }()
@@ -44,25 +44,25 @@ class PartTimeView: UIView {
     let explainLabel: UILabel = {
         let label = UILabel()
         label.text = "이번 달에는 얼마를 받을까요?"
-//        label.textColor = Design.textBasic
+        label.textColor = Design.textBasic
         label.font = Design.boldSmallTextSize
         
         return label
     }()
     let taxButton: UIButton = {
         let button = UIButton(type: .system)
-//        button.tintColor = Design.purple
+        button.tintColor = Design.textBasic
         button.titleLabel?.font = Design.boldSmallTextSize
-        button.backgroundColor = .lightGray
-        button.layer.cornerRadius = Design.qurterCornerRadius
+        button.backgroundColor = Design.gray
+        button.layer.cornerRadius = Design.oneFifthCornerRadius
         
         return button
     }()
     let totalLabel: UILabel = {
         let label = UILabel()
-        label.text = "총 0 원"
+        label.text = "총 급여: 0 원"
         label.textColor = Design.textBasic
-        label.font = Design.boldLargeTextSize
+        label.font = Design.boldNomalTextSize
         
         return label
     }()
@@ -70,9 +70,20 @@ class PartTimeView: UIView {
     let historyTable: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .clear
-        tableView.separatorColor = Design.textBasic
+        tableView.separatorColor = .clear
         
         return tableView
+    }()
+    
+    let addButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.tintColor = .systemBackground
+        button.setTitle("근무 추가", for: .normal)
+        button.titleLabel?.font = Design.boldNomalTextSize
+        button.backgroundColor = Design.yellow
+        button.layer.cornerRadius = Design.cornerRadius
+        
+        return button
     }()
     
     override init(frame: CGRect) {
@@ -82,6 +93,7 @@ class PartTimeView: UIView {
         setButtons()
         setTotalContainer()
         setHistoryTable()
+        setAddButton()
     }
     private func setDateLabel() {
         
@@ -98,11 +110,11 @@ class PartTimeView: UIView {
         self.addSubview(nexButton)
         
         preButton.snp.makeConstraints {
-            $0.top.equalTo(dateLabel)
+            $0.centerY.equalTo(dateLabel)
             $0.leading.equalToSuperview().inset(Design.padding)
         }
         nexButton.snp.makeConstraints {
-            $0.top.equalTo(dateLabel)
+            $0.centerY.equalTo(dateLabel)
             $0.trailing.equalToSuperview().inset(Design.padding)
         }
     }
@@ -129,7 +141,8 @@ class PartTimeView: UIView {
         taxButton.snp.makeConstraints {
             $0.top.equalTo(explainLabel)
             $0.trailing.equalToSuperview().inset(Design.largestPadding)
-            $0.width.equalToSuperview().multipliedBy(0.13)
+            $0.width.equalToSuperview().multipliedBy(0.15)
+            $0.height.equalTo(taxButton.snp.width).multipliedBy(0.37)
         }
         
         containerView.addSubview(totalLabel)
@@ -149,11 +162,23 @@ class PartTimeView: UIView {
             $0.leading.trailing.bottom.equalToSuperview()
         }
     }
+    private func setAddButton() {
+        
+        self.addSubview(addButton)
+        
+        addButton.snp.makeConstraints {
+            
+            $0.width.equalToSuperview().multipliedBy(0.26)
+            $0.height.equalTo(addButton.snp.width).multipliedBy(0.5)
+            $0.trailing.equalToSuperview().inset(Design.largePadding)
+            $0.bottom.equalToSuperview().inset(Design.padding)
+        }
+    }
     
     func setValue(year: Int, month: Int, totalPay: String) {
         
         dateLabel.text = "\(year)년 \(month)월"
-        totalLabel.text = "총 \(totalPay) 원"
+        totalLabel.text = "총 급여: \(totalPay) 원"
     }
     func setButtonTitle(title: String) {
         

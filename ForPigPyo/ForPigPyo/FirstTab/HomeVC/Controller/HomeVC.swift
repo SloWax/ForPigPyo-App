@@ -62,7 +62,6 @@ class HomeVC: UIViewController {
     private func setView() {
         
         navigationItem.title = "모두의 앱"
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: Design.LargeTextSize ?? UIFont()]
         
 //        let rightButton = UIBarButtonItem(image: UIImage(systemName: "photo.fill"), style: .plain, target: self, action: #selector(setBackground(_:)))
 //        navigationItem.rightBarButtonItem = rightButton
