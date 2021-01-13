@@ -16,122 +16,61 @@ class PartTimeCustomCell: UITableViewCell {
     
     private let dateLabel: UILabel = {
         let label = UILabel()
-        label.textColor = Design.textBasic
-        label.font = Design.boldSmallTextSize
         
         return label
     }()
     private let weekDayLabel: UILabel = {
         let label = UILabel()
-        label.textColor = Design.textBasic
-        label.font = Design.boldSmallTextSize
         
         return label
     }()
     
-    private let containerView: UIView = {
-        let view = UIView()
-        view.backgroundColor = Design.lightGray
-        view.layer.cornerRadius = Design.cornerRadius
+    private let containerView: ContainerView = {
+        let view = ContainerView()
+        view.label1.text = "특근:"
         
+        view.label2.text = "야간:"
+        
+        view.label3.text = "야/특근:"
+        
+        view.label4.text = "시급:"
+        
+        view.label5.text = "총 근무:"
+        
+        view.label6.text = "일 급여:"
+        
+        view.labelBundle.forEach { $0.font = Design.boldSmallTextSize }
         return view
-    }()
-    
-    private let overTimeLabel: UILabel = {
-        let label = UILabel()
-        label.text = "특근:"
-        label.textColor = Design.textBasic
-        label.font = Design.boldSmallTextSize
-        label.setContentHuggingPriority(.defaultHigh, for: .vertical)
-        
-        return label
-    }()
-    private let nightWorkLabel: UILabel = {
-        let label = UILabel()
-        label.text = "야간:"
-        label.textColor = Design.textBasic
-        label.font = Design.boldSmallTextSize
-        label.setContentHuggingPriority(.defaultHigh, for: .vertical)
-        
-        return label
-    }()
-    private let overNightWorkLabel: UILabel = {
-        let label = UILabel()
-        label.text = "야/특근:"
-        label.textColor = Design.textBasic
-        label.font = Design.boldSmallTextSize
-        
-        return label
     }()
     
     private let overTime: UILabel = {
         let label = UILabel()
-        label.textColor = Design.textBasic
-        label.font = Design.boldSmallTextSize
-        label.setContentHuggingPriority(.defaultHigh, for: .vertical)
         
         return label
     }()
     private let nightTime: UILabel = {
         let label = UILabel()
-        label.textColor = Design.textBasic
-        label.font = Design.boldSmallTextSize
-        label.setContentHuggingPriority(.defaultHigh, for: .vertical)
         
         return label
     }()
     private let overNightTime: UILabel = {
         let label = UILabel()
-        label.textColor = Design.textBasic
-        label.font = Design.boldSmallTextSize
-        
-        return label
-    }()
-    
-    
-    private let hourlyWageLabel: UILabel = {
-        let label = UILabel()
-        label.text = "시급:"
-        label.textColor = Design.textBasic
-        label.font = Design.boldSmallTextSize
-        
-        return label
-    }()
-    private let totalWorkTimeLabel: UILabel = {
-        let label = UILabel()
-        label.text = "총 근무:"
-        label.textColor = Design.textBasic
-        label.font = Design.boldSmallTextSize
-        
-        return label
-    }()
-    private let dayPayLabel: UILabel = {
-        let label = UILabel()
-        label.text = "일 급여:"
-        label.textColor = Design.textBasic
-        label.font = Design.boldSmallTextSize
         
         return label
     }()
     
     private let hourlyWageValue: UILabel = {
         let label = UILabel()
-        label.textColor = Design.textBasic
-        label.font = Design.boldSmallTextSize
         
         return label
     }()
     private let totalWorkValue: UILabel = {
         let label = UILabel()
-        label.textColor = Design.textBasic
-        label.font = Design.boldSmallTextSize
         
         return label
     }()
     private let dayPayValue: UILabel = {
         let label = UILabel()
-        label.textColor = Design.textBasic
-        label.font = Design.boldSmallTextSize
         
         return label
     }()
@@ -142,14 +81,18 @@ class PartTimeCustomCell: UITableViewCell {
         self.backgroundColor = .clear
         self.selectionStyle = .none
         
-        setDateLabel()
-        setWeekDayLabel()
+        setDate()
         
         setContainerView()
         setTimeLabel()
         setValueLabel()
     }
-    private func setDateLabel() {
+    private func setDate() {
+        
+        [dateLabel, weekDayLabel].forEach {
+            $0.textColor = Design.textBasic
+            $0.font = Design.boldSmallTextSize
+        }
         
         contentView.addSubview(dateLabel)
         
@@ -158,8 +101,6 @@ class PartTimeCustomCell: UITableViewCell {
             $0.top.equalToSuperview().offset(Design.smallPadding)
             $0.leading.equalToSuperview().inset(Design.largestPadding + Design.largePadding)
         }
-    }
-    private func setWeekDayLabel() {
         
         contentView.addSubview(weekDayLabel)
         
@@ -181,84 +122,85 @@ class PartTimeCustomCell: UITableViewCell {
             $0.bottom.equalToSuperview()
         }
         
-        containerView.addSubview(overTimeLabel)
-        
-        overTimeLabel.snp.makeConstraints {
+        containerView.label1.snp.makeConstraints {
             
             $0.top.equalToSuperview().offset(Design.smallPadding)
             $0.leading.equalTo(dateLabel.snp.leading)
         }
         
-        containerView.addSubview(nightWorkLabel)
-        
-        nightWorkLabel.snp.makeConstraints {
-            $0.top.equalTo(overTimeLabel.snp.bottom)
-            $0.leading.equalTo(overTimeLabel)
+        containerView.label2.snp.makeConstraints {
+            
+            $0.top.equalTo(containerView.label1.snp.bottom)
+            $0.leading.equalTo(containerView.label1)
         }
         
-        containerView.addSubview(overNightWorkLabel)
-        
-        overNightWorkLabel.snp.makeConstraints {
-            $0.top.equalTo(nightWorkLabel.snp.bottom)
-            $0.leading.equalTo(nightWorkLabel)
+        containerView.label3.snp.makeConstraints {
+            
+            $0.top.equalTo(containerView.label2.snp.bottom)
+            $0.leading.equalTo(containerView.label2)
             $0.bottom.equalToSuperview().inset(Design.nomalPadding)
         }
         
-        
-        containerView.addSubview(hourlyWageLabel)
-        
-        hourlyWageLabel.snp.makeConstraints {
+        containerView.label4.snp.makeConstraints {
             
             $0.leading.equalTo(containerView.snp.centerX).offset(Design.largePadding)
-            $0.bottom.equalTo(overTimeLabel)
+            $0.bottom.equalTo(containerView.label1)
         }
         
-        containerView.addSubview(totalWorkTimeLabel)
-        
-        totalWorkTimeLabel.snp.makeConstraints {
+        containerView.label5.snp.makeConstraints {
             
-            $0.leading.equalTo(hourlyWageLabel)
-            $0.bottom.equalTo(nightWorkLabel)
+            $0.leading.equalTo(containerView.label4)
+            $0.bottom.equalTo(containerView.label2)
         }
         
-        containerView.addSubview(dayPayLabel)
-        
-        dayPayLabel.snp.makeConstraints {
+        containerView.label6.snp.makeConstraints {
             
-            $0.leading.equalTo(totalWorkTimeLabel)
-            $0.bottom.equalTo(overNightWorkLabel)
+            $0.leading.equalTo(containerView.label5)
+            $0.bottom.equalTo(containerView.label3)
         }
     }
     private func setTimeLabel() {
         
+        [overTime, nightTime, overNightTime].forEach {
+            
+            $0.textColor = Design.textBasic
+            $0.font = Design.boldSmallTextSize
+        }
+        
         containerView.addSubview(overTime)
         
         overTime.snp.makeConstraints {
-            $0.top.equalTo(overTimeLabel)
+            $0.top.equalTo(containerView.label1)
             $0.trailing.equalTo(containerView.snp.centerX).inset(Design.smallPadding)
         }
         
         containerView.addSubview(nightTime)
         
         nightTime.snp.makeConstraints {
-            $0.top.equalTo(nightWorkLabel)
+            $0.top.equalTo(containerView.label2)
             $0.trailing.equalTo(overTime.snp.trailing)
         }
         
         containerView.addSubview(overNightTime)
         
         overNightTime.snp.makeConstraints {
-            $0.top.equalTo(overNightWorkLabel)
+            $0.top.equalTo(containerView.label3)
             $0.trailing.equalTo(nightTime.snp.trailing)
         }
     }
     private func setValueLabel() {
         
+        [hourlyWageValue, totalWorkValue, dayPayValue].forEach {
+            
+            $0.textColor = Design.textBasic
+            $0.font = Design.boldSmallTextSize
+        }
+        
         containerView.addSubview(hourlyWageValue)
         
         hourlyWageValue.snp.makeConstraints {
             
-            $0.top.equalTo(hourlyWageLabel)
+            $0.top.equalTo(containerView.label4)
             $0.trailing.equalToSuperview().inset(Design.largePadding)
         }
         
@@ -266,7 +208,7 @@ class PartTimeCustomCell: UITableViewCell {
         
         totalWorkValue.snp.makeConstraints {
             
-            $0.top.equalTo(totalWorkTimeLabel)
+            $0.top.equalTo(containerView.label5)
             $0.trailing.equalTo(hourlyWageValue)
         }
         
@@ -274,7 +216,7 @@ class PartTimeCustomCell: UITableViewCell {
         
         dayPayValue.snp.makeConstraints {
             
-            $0.top.equalTo(dayPayLabel)
+            $0.top.equalTo(containerView.label6)
             $0.trailing.equalTo(totalWorkValue)
         }
     }
@@ -315,6 +257,7 @@ class PartTimeCustomCell: UITableViewCell {
         }
     }
     private func setWeekLabelColor(label: UILabel, weakDay: String?) {
+        
         switch weakDay {
         case "일":
             
@@ -323,6 +266,7 @@ class PartTimeCustomCell: UITableViewCell {
             
             label.textColor = Design.textBlueSat
         default:
+            
             label.textColor = Design.textBasic
         }
     }
@@ -344,7 +288,6 @@ class PartTimeCustomCell: UITableViewCell {
         totalWorkValue.text = "\(data?.totalTime ?? "")"
         dayPayValue.text = "\(formatter.string(from: (data?.totalPay ?? 0) as NSNumber) ?? "")원"
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

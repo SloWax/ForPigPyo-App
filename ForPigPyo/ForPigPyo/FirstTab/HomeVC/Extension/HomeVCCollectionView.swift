@@ -59,7 +59,7 @@ extension HomeVC:UICollectionViewDelegateFlowLayout {
     // 줄 간격
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         
-        return Design.padding
+        return Design.largestPadding
     }
     // 행 간격
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

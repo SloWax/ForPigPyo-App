@@ -34,20 +34,15 @@ class PartTimeView: UIView {
         return button
     }()
     
-    private let containerView: UIView = {
-        let view = UIView()
-        view.backgroundColor = Design.lightGray
-        view.layer.cornerRadius = Design.cornerRadius
+    let containerView: ContainerView = {
+        let view = ContainerView()
+        view.label1.text = "이번 달에는 얼마를 받을까요?"
+        view.label1.font = Design.boldSmallTextSize
+        
+        view.label2.text = "총 급여: 0 원"
+        view.label2.font = Design.boldNomalTextSize
         
         return view
-    }()
-    let explainLabel: UILabel = {
-        let label = UILabel()
-        label.text = "이번 달에는 얼마를 받을까요?"
-        label.textColor = Design.textBasic
-        label.font = Design.boldSmallTextSize
-        
-        return label
     }()
     let taxButton: UIButton = {
         let button = UIButton(type: .system)
@@ -57,14 +52,6 @@ class PartTimeView: UIView {
         button.layer.cornerRadius = Design.oneFifthCornerRadius
         
         return button
-    }()
-    let totalLabel: UILabel = {
-        let label = UILabel()
-        label.text = "총 급여: 0 원"
-        label.textColor = Design.textBasic
-        label.font = Design.boldNomalTextSize
-        
-        return label
     }()
     
     let historyTable: UITableView = {
@@ -128,29 +115,25 @@ class PartTimeView: UIView {
             $0.leading.trailing.equalToSuperview().inset(Design.largePadding)
         }
         
-        containerView.addSubview(explainLabel)
-        
-        explainLabel.snp.makeConstraints {
+        containerView.label1.snp.makeConstraints {
             
             $0.top.equalToSuperview().offset(Design.nomalPadding)
             $0.leading.equalToSuperview().inset(Design.largestPadding)
         }
         
+        containerView.label2.snp.makeConstraints {
+            $0.top.equalTo(containerView.label1.snp.bottom).offset(Design.smallPadding)
+            $0.trailing.equalToSuperview().inset(Design.largestPadding)
+            $0.bottom.equalToSuperview().inset(Design.nomalPadding)
+        }
+        
         containerView.addSubview(taxButton)
         
         taxButton.snp.makeConstraints {
-            $0.top.equalTo(explainLabel)
-            $0.trailing.equalToSuperview().inset(Design.largestPadding)
+            $0.top.equalTo(containerView.label1)
+            $0.trailing.equalTo(containerView.label2)
             $0.width.equalToSuperview().multipliedBy(0.15)
             $0.height.equalTo(taxButton.snp.width).multipliedBy(0.37)
-        }
-        
-        containerView.addSubview(totalLabel)
-        
-        totalLabel.snp.makeConstraints {
-            $0.top.equalTo(taxButton.snp.bottom).offset(Design.smallPadding)
-            $0.trailing.equalTo(taxButton)
-            $0.bottom.equalToSuperview().inset(Design.nomalPadding)
         }
     }
     private func setHistoryTable() {
@@ -158,7 +141,7 @@ class PartTimeView: UIView {
         self.addSubview(historyTable)
         
         historyTable.snp.makeConstraints {
-            $0.top.equalTo(totalLabel.snp.bottom).offset(Design.nomalPadding)
+            $0.top.equalTo(containerView.label2.snp.bottom).offset(Design.nomalPadding)
             $0.leading.trailing.bottom.equalToSuperview()
         }
     }
@@ -178,7 +161,7 @@ class PartTimeView: UIView {
     func setValue(year: Int, month: Int, totalPay: String) {
         
         dateLabel.text = "\(year)년 \(month)월"
-        totalLabel.text = "총 급여: \(totalPay) 원"
+        containerView.label2.text = "총 급여: \(totalPay) 원"
     }
     func setButtonTitle(title: String) {
         

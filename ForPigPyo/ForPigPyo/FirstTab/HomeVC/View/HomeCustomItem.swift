@@ -39,9 +39,6 @@ class HomeCustomItem: UICollectionViewCell {
     private func setItem() {
         
         self.backgroundColor = Design.lightGray
-//        self.layer.cornerRadius = Design.cornerRadius
-//        self.layer.borderWidth = Design.halfBorderWidth
-//        self.layer.borderColor = Design.textBasic.cgColor
     }
     private func setTitleLabel() {
         

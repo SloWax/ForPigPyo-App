@@ -126,7 +126,7 @@ class PartTimeVC: UIViewController {
         view.addSubview(saveView)
 
         saveView.snp.makeConstraints {
-            $0.top.equalTo(partTimeView.totalLabel)
+            $0.top.equalTo(partTimeView.containerView.label2)
             $0.width.equalToSuperview()
             constraint = $0.leading.equalTo(view.snp.trailing).constraint
         }
@@ -176,7 +176,12 @@ class PartTimeVC: UIViewController {
     
     @objc private func addSaveView(_ sender: UIButton) {
         // rightBarButton Action
-        loadSaveView(isAdd: true, yearIndex: yearIndex, monthIndex: monthIndex, index: 0, title: "추가하기")
+        let timeDataVC = TimeDataVC()
+        timeDataVC.modalPresentationStyle = .fullScreen
+        
+        present(timeDataVC, animated: true)
+//        loadSaveView(isAdd: true, yearIndex: yearIndex, monthIndex: monthIndex, index: 0, title: "추가하기")
+        
     }
     @objc private func moveTable(_ sender: UIButton) {
         // 년, 월 이동 시 저장된 데이터가 있으면 해당 데이터 load, else return
