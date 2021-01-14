@@ -547,50 +547,50 @@ class PartTimeSaveView: UIView {
         }
     }
     
-    func setValue(title: String, date: String?, hourly: String?, index: Int, value: PayList.Year.Month.Data?) {
-        
-        titleLabel.text = title
-        
-        if let value = value {
-            
-            titleLabel.tag = index
-            
-            dateTextField.text = "\(value.date)"
-            hourlyWageTextField.text = "\(value.hourlyWage)"
-
-            workingTextField.text = "\(value.workingTime)"
-            workingMinTextField.text = "\(value.workingTimeMin)"
-            
-            overTextField.text = "\(value.overTime)"
-            overMinTextField.text = "\(value.overTimeMin)"
-            
-            nightTextField.text = "\(value.nightTime)"
-            nightMinTextField.text = "\(value.nightTimeMin)"
-            
-            overNightTextField.text = "\(value.overNightTime)"
-            overNightMinTextField.text = "\(value.overNightTimeMin)"
-            
-            [dayLabel, workLabel, overWorkLabel, nightWorkLabel, overNightWorkLabel].forEach { (label) in
-
-                label.alpha = 1
-            }
-            
-            return
-        }
-        
-        dateTextField.text = date
-        hourlyWageTextField.text = hourly
-        
-        
-        [ workingTextField, workingMinTextField, overTextField, overMinTextField, nightTextField, nightMinTextField, overNightTextField, overNightMinTextField].forEach { (textField) in
-            
-            textField.text = nil
-        }
-        [workLabel, overWorkLabel, nightWorkLabel, overNightWorkLabel].forEach { (label) in
-
-            label.alpha = 0
-        }
-    }
+//    func setValue(title: String, date: String?, hourly: String?, index: Int, value: PayList.Year.Month.Data?) {
+//
+//        titleLabel.text = title
+//
+//        if let value = value {
+//
+//            titleLabel.tag = index
+//
+//            dateTextField.text = "\(value.date)"
+//            hourlyWageTextField.text = "\(value.hourlyWage)"
+//
+//            workingTextField.text = "\(value.workingTime)"
+//            workingMinTextField.text = "\(value.workingTimeMin)"
+//
+//            overTextField.text = "\(value.overTime)"
+//            overMinTextField.text = "\(value.overTimeMin)"
+//
+//            nightTextField.text = "\(value.nightTime)"
+//            nightMinTextField.text = "\(value.nightTimeMin)"
+//
+//            overNightTextField.text = "\(value.overNightTime)"
+//            overNightMinTextField.text = "\(value.overNightTimeMin)"
+//
+//            [dayLabel, workLabel, overWorkLabel, nightWorkLabel, overNightWorkLabel].forEach { (label) in
+//
+//                label.alpha = 1
+//            }
+//
+//            return
+//        }
+//
+//        dateTextField.text = date
+//        hourlyWageTextField.text = hourly
+//
+//
+//        [ workingTextField, workingMinTextField, overTextField, overMinTextField, nightTextField, nightMinTextField, overNightTextField, overNightMinTextField].forEach { (textField) in
+//
+//            textField.text = nil
+//        }
+//        [workLabel, overWorkLabel, nightWorkLabel, overNightWorkLabel].forEach { (label) in
+//
+//            label.alpha = 0
+//        }
+//    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

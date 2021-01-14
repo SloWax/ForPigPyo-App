@@ -15,19 +15,133 @@ class TimeDataVC: UIViewController {
         
         return view
     }()
+    
+    let model = PartTimeVCModel()
+    
+    var data: PayList?
+    var yearIndex: Int = 0
+    var monthIndex: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardNotification(_:)), name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardNotification(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
         setView()
     }
+    
     private func setView() {
         
+        view.backgroundColor = .systemBackground
+        
+        timeDataView.limitContainerView.forEach {
+            $0.textFieldBundle.forEach { (textField) in
+                textField.addTarget(self, action: #selector(textCountLimit(_:)), for: .editingChanged)
+            }
+        }
+        
+        timeDataView.dismissButton.addTarget(self, action: #selector(xButton(_:)), for: .touchUpInside)
+        timeDataView.saveButton.addTarget(self, action: #selector(dataSave(_:)), for: .touchUpInside)
         view.addSubview(timeDataView)
         
         timeDataView.snp.makeConstraints {
             
-            $0.top.leading.trailing.bottom.equalToSuperview()
+            $0.top.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
         }
+    }
+    
+    @objc private func xButton(_ sender: UIButton) {
+        
+        dismiss(animated: true)
+    }
+    @objc private func keyboardNotification(_ sender: NSNotification) {
+        
+        switch sender.name {
+        case UIResponder.keyboardDidShowNotification:
+            
+            if let keyboardSize = (sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+                
+                timeDataView.constraint?.update(inset: 55 + keyboardSize.height)
+            }
+        case UIResponder.keyboardWillHideNotification:
+            
+            UIView.animate(withDuration: 0.5) {
+                
+                self.timeDataView.constraint?.update(inset: 55)
+                self.view.layoutIfNeeded()
+            }
+        default:
+            fatalError()
+        }
+    }
+    @objc private func dataSave(_ sender: UIButton) {
+        // saveView 하단 취소, 저장버튼 Action tag로 버튼 구별, 1 경우 saveView 내 모든 객체 값 가져와 data 저장 후 모든 뷰 reload, else return
+
+            let division = timeDataView.titleLabel
+
+            let date = Int(timeDataView.dateView.textField1.text ?? "") ?? 0
+            let weekDay = model.getWeekDay(year: timeDataView.dateView.label1.tag, month: timeDataView.dateView.label2.tag, day: date)
+            let working = Int(timeDataView.workView.textField1.text ?? "") ?? 0
+            let workingMin = Int(timeDataView.workView.textField2.text ?? "") ?? 0
+            let over = Int(timeDataView.overView.textField1.text ?? "") ?? 0
+            let overMin = Int(timeDataView.overView.textField2.text ?? "") ?? 0
+            let night = Int(timeDataView.nightView.textField1.text ?? "") ?? 0
+            let nightMin = Int(timeDataView.nightView.textField2.text ?? "") ?? 0
+            let overNight = Int(timeDataView.overNightView.textField1.text ?? "") ?? 0
+            let overNightMin = Int(timeDataView.overNightView.textField2.text ?? "") ?? 0
+            let hourly = Int(timeDataView.hourlyWageView.textField1.text ?? "") ?? 0
+
+            let totalTime = model.totalWorkCalcu(working: working,
+                                                 workingMin: workingMin,
+                                                 over: over,
+                                                 overMin: overMin,
+                                                 night: night,
+                                                 nightMin: nightMin,
+                                                 overNight: overNight,
+                                                 overNightMin: overNightMin)
+
+            let totalPay = model.totalPaySum(working: Double(working),
+                                             workingMin: Double(workingMin),
+                                             hourly: Double(hourly),
+                                             over: Double(over),
+                                             overMin: Double(overMin),
+                                             night: Double(night),
+                                             nightMin: Double(nightMin),
+                                             overNight: Double(overNight),
+                                             overNightMin: Double(overNightMin))
+
+            let value = PayList.Year.Month.Data(date: date,
+                                                weekDay: weekDay,
+                                                workingTime: working,
+                                                workingTimeMin: workingMin,
+                                                overTime: over,
+                                                overTimeMin: overMin,
+                                                nightTime: night,
+                                                nightTimeMin: nightMin,
+                                                overNightTime: overNight,
+                                                overNightTimeMin: overNightMin,
+                                                hourlyWage: hourly,
+                                                totalTime: totalTime,
+                                                totalPay: totalPay)
+        
+        data = model.editData(division: division.text ?? "", data: &data, yearIndex: yearIndex, monthIndex: monthIndex, saveIndex: division.tag, value: value)
+        
+        if let mainTabVC = presentingViewController as? MainTabVC {
+            if let partTimeVC = mainTabVC.children[0].children[1] as? PartTimeVC {
+                partTimeVC.data = data
+                partTimeVC.model.saveData(data: data ?? PayList(years: [PayList.Year]()))
+                partTimeVC.loadPartTimeValue(deduction: partTimeVC.taxIndex % partTimeVC.tax.count)
+                partTimeVC.partTimeView.historyTable.reloadData()
+            }
+        }
+        
+        dismiss(animated: true)
+    }
+    @objc private func textCountLimit(_ sender: UITextField) {
+        
+        guard sender.text?.count ?? 0 < 3  else { return sender.deleteBackward() }
+        
+        
     }
 }

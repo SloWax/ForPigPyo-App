@@ -46,6 +46,6 @@ extension PartTimeVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        loadSaveView(isAdd: false, yearIndex: yearIndex, monthIndex: monthIndex, index: indexPath.row, title: "수정하기")
+        presentTimeDataVC(isAdd: false, saveIndex: indexPath.row)
     }
 }

@@ -103,15 +103,15 @@ struct PartTimeVCModel {
     }
     
     // MARK: data 추가 및 수정
-    func editData(division: String, data: inout PayList?, yearIndex: Int, monthIndex: Int, index: Int, value: PayList.Year.Month.Data) -> PayList? {
+    func editData(division: String, data: inout PayList?, yearIndex: Int, monthIndex: Int, saveIndex: Int, value: PayList.Year.Month.Data) -> PayList? {
         
         switch division {
-        case "추가하기":
-            data?.years[yearIndex].months[monthIndex].data.insert(value, at: index)
+        case "근무 추가하기":
+            data?.years[yearIndex].months[monthIndex].data.insert(value, at: saveIndex)
             
             return sortedDate(data: &data, yearIndex: yearIndex, monthIndex: monthIndex)
-        case "수정하기":
-            data?.years[yearIndex].months[monthIndex].data[index] = value
+        case "근무 수정하기":
+            data?.years[yearIndex].months[monthIndex].data[saveIndex] = value
             
             return sortedDate(data: &data, yearIndex: yearIndex, monthIndex: monthIndex)
         default:
