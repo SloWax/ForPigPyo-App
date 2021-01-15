@@ -33,7 +33,13 @@ class MainTabVC: UITabBarController {
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: Design.boldNomalTextSize ?? UIFont()]
         
         naviController.tabBarItem.image = UIImage(named: tabBarImage)
+        
         naviController.navigationBar.tintColor = Design.textBasic
+        
+        naviController.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        naviController.navigationBar.shadowImage = UIImage()
+        naviController.navigationBar.isTranslucent = true
+        
         
         
         return naviController

@@ -407,6 +407,13 @@ class TimeDataView: UIView {
             overNightView.textField1.text = "\(value.overNightTime)"
             overNightView.textField2.text = "\(value.overNightTimeMin)"
             
+            totalView.label2.text = "\(value.totalTime.convertTime[0]) 시간"
+            totalView.label3.text = "\(value.totalTime.convertTime[1]) 분"
+            
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .decimal
+            
+            previewLabel.text = "\(formatter.string(from: value.totalPay as NSNumber) ?? "0") 원"
             
             return
         }

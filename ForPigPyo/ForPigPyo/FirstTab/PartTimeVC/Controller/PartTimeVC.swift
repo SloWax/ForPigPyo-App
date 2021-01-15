@@ -45,11 +45,6 @@ class PartTimeVC: UIViewController {
         
         return format
     }()
-//    private let saveView: PartTimeSaveView = {
-//        let view = PartTimeSaveView()
-//
-//        return view
-//    }()
     
     let model = PartTimeVCModel()
     let myModel = MyPageVCModel()

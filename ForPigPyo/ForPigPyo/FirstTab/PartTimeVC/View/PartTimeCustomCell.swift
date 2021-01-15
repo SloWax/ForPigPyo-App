@@ -284,9 +284,9 @@ class PartTimeCustomCell: UITableViewCell {
             setTimeText(label: label, data: data)
         }
         
-        hourlyWageValue.text = "\(formatter.string(from: (data?.hourlyWage ?? 0) as NSNumber) ?? "")원"
-        totalWorkValue.text = "\(data?.totalTime ?? "")"
-        dayPayValue.text = "\(formatter.string(from: (data?.totalPay ?? 0) as NSNumber) ?? "")원"
+        hourlyWageValue.text = "\(formatter.string(from: (data?.hourlyWage ?? 0) as NSNumber) ?? "0")원"
+        totalWorkValue.text = "\(data?.totalTime ?? "0 시간 0 분")"
+        dayPayValue.text = "\(formatter.string(from: (data?.totalPay ?? 0) as NSNumber) ?? "0")원"
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

@@ -16,12 +16,29 @@ class TimeDataVC: UIViewController {
         return view
     }()
     
-    let model = PartTimeVCModel()
+    private let model = TimeDataVCModel()
+    
+    private var hourly: Int = 0
+    
+    private var work: Int = 0
+    private var workMin: Int = 0
+    
+    private var over: Int = 0
+    private var overMin: Int = 0
+    
+    private var night: Int = 0
+    private var nightMin: Int = 0
+    
+    private var overNight: Int = 0
+    private var overNightMin: Int = 0
+    
+    private var totalTime: [Int] = [0, 0]
+    private var totalPay: Int = 0
     
     var data: PayList?
     var yearIndex: Int = 0
     var monthIndex: Int = 0
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,6 +67,22 @@ class TimeDataVC: UIViewController {
             $0.top.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
+    private func reloadValue() {
+        
+        hourly = Int(timeDataView.hourlyWageView.textField1.text ?? "") ?? 0
+        
+        work = Int(timeDataView.workView.textField1.text ?? "") ?? 0
+        workMin = Int(timeDataView.workView.textField2.text ?? "") ?? 0
+        
+        over = Int(timeDataView.overView.textField1.text ?? "") ?? 0
+        overMin = Int(timeDataView.overView.textField2.text ?? "") ?? 0
+        
+        night = Int(timeDataView.nightView.textField1.text ?? "") ?? 0
+        nightMin = Int(timeDataView.nightView.textField2.text ?? "") ?? 0
+        
+        overNight = Int(timeDataView.overNightView.textField1.text ?? "") ?? 0
+        overNightMin = Int(timeDataView.overNightView.textField2.text ?? "") ?? 0
+    }
     
     @objc private func xButton(_ sender: UIButton) {
         
@@ -76,59 +109,41 @@ class TimeDataVC: UIViewController {
         }
     }
     @objc private func dataSave(_ sender: UIButton) {
-        // saveView 하단 취소, 저장버튼 Action tag로 버튼 구별, 1 경우 saveView 내 모든 객체 값 가져와 data 저장 후 모든 뷰 reload, else return
-
-            let division = timeDataView.titleLabel
-
-            let date = Int(timeDataView.dateView.textField1.text ?? "") ?? 0
-            let weekDay = model.getWeekDay(year: timeDataView.dateView.label1.tag, month: timeDataView.dateView.label2.tag, day: date)
-            let working = Int(timeDataView.workView.textField1.text ?? "") ?? 0
-            let workingMin = Int(timeDataView.workView.textField2.text ?? "") ?? 0
-            let over = Int(timeDataView.overView.textField1.text ?? "") ?? 0
-            let overMin = Int(timeDataView.overView.textField2.text ?? "") ?? 0
-            let night = Int(timeDataView.nightView.textField1.text ?? "") ?? 0
-            let nightMin = Int(timeDataView.nightView.textField2.text ?? "") ?? 0
-            let overNight = Int(timeDataView.overNightView.textField1.text ?? "") ?? 0
-            let overNightMin = Int(timeDataView.overNightView.textField2.text ?? "") ?? 0
-            let hourly = Int(timeDataView.hourlyWageView.textField1.text ?? "") ?? 0
-
-            let totalTime = model.totalWorkCalcu(working: working,
-                                                 workingMin: workingMin,
-                                                 over: over,
-                                                 overMin: overMin,
-                                                 night: night,
-                                                 nightMin: nightMin,
-                                                 overNight: overNight,
-                                                 overNightMin: overNightMin)
-
-            let totalPay = model.totalPaySum(working: Double(working),
-                                             workingMin: Double(workingMin),
-                                             hourly: Double(hourly),
-                                             over: Double(over),
-                                             overMin: Double(overMin),
-                                             night: Double(night),
-                                             nightMin: Double(nightMin),
-                                             overNight: Double(overNight),
-                                             overNightMin: Double(overNightMin))
-
-            let value = PayList.Year.Month.Data(date: date,
-                                                weekDay: weekDay,
-                                                workingTime: working,
-                                                workingTimeMin: workingMin,
-                                                overTime: over,
-                                                overTimeMin: overMin,
-                                                nightTime: night,
-                                                nightTimeMin: nightMin,
-                                                overNightTime: overNight,
-                                                overNightTimeMin: overNightMin,
-                                                hourlyWage: hourly,
-                                                totalTime: totalTime,
-                                                totalPay: totalPay)
         
-        data = model.editData(division: division.text ?? "", data: &data, yearIndex: yearIndex, monthIndex: monthIndex, saveIndex: division.tag, value: value)
+        let division = timeDataView.titleLabel
+        
+        let date = Int(timeDataView.dateView.textField1.text ?? "") ?? 0
+        let weekDay = model.getWeekDay(year: timeDataView.dateView.label1.tag,
+                                       month: timeDataView.dateView.label2.tag,
+                                       day: date)
+        
+        reloadValue()
+        
+        let value = PayList.Year.Month.Data(date: date,
+                                            weekDay: weekDay,
+                                            workingTime: work,
+                                            workingTimeMin: workMin,
+                                            overTime: over,
+                                            overTimeMin: overMin,
+                                            nightTime: night,
+                                            nightTimeMin: nightMin,
+                                            overNightTime: overNight,
+                                            overNightTimeMin: overNightMin,
+                                            hourlyWage: hourly,
+                                            totalTime: "\(totalTime[0])시간 \(totalTime[1])분",
+                                            totalPay: totalPay)
+        
+        
+        data = model.editData(division: division.text ?? "",
+                              data: &data,
+                              yearIndex: yearIndex,
+                              monthIndex: monthIndex,
+                              saveIndex: division.tag,
+                              value: value)
         
         if let mainTabVC = presentingViewController as? MainTabVC {
             if let partTimeVC = mainTabVC.children[0].children[1] as? PartTimeVC {
+                
                 partTimeVC.data = data
                 partTimeVC.model.saveData(data: data ?? PayList(years: [PayList.Year]()))
                 partTimeVC.loadPartTimeValue(deduction: partTimeVC.taxIndex % partTimeVC.tax.count)
@@ -142,6 +157,33 @@ class TimeDataVC: UIViewController {
         
         guard sender.text?.count ?? 0 < 3  else { return sender.deleteBackward() }
         
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
         
+        reloadValue()
+        
+        totalTime = model.totalWorkCalcu(work: work,
+                                         workMin: workMin,
+                                         over: over,
+                                         overMin: overMin,
+                                         night: night,
+                                         nightMin: nightMin,
+                                         overNight: overNight,
+                                         overNightMin: overNightMin)
+        
+        timeDataView.totalView.label2.text = "\(totalTime[0]) 시간"
+        timeDataView.totalView.label3.text = "\(totalTime[1]) 분"
+        
+        totalPay = model.totalPaySum(hourly: Double(hourly),
+                                     working: Double(work),
+                                     workingMin: Double(workMin),
+                                     over: Double(over),
+                                     overMin: Double(overMin),
+                                     night: Double(night),
+                                     nightMin: Double(nightMin),
+                                     overNight: Double(overNight),
+                                     overNightMin: Double(overNightMin))
+        
+        timeDataView.previewLabel.text = "\(formatter.string(from: totalPay as NSNumber) ?? "0") 원"
     }
 }

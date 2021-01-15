@@ -35,6 +35,7 @@ class PaddingLabel: UILabel {
         let superContentSize = super.intrinsicContentSize
         let width = superContentSize.width + padding.left + padding.right
         let height = superContentSize.height + padding.top + padding.bottom
+        
         return CGSize(width: width, height: height)
     }
     
@@ -42,7 +43,7 @@ class PaddingLabel: UILabel {
         let superSizeThatFits = super.sizeThatFits(size)
         let width = superSizeThatFits.width + padding.left + padding.right
         let heigth = superSizeThatFits.height + padding.top + padding.bottom
+        
         return CGSize(width: width, height: heigth)
     }
-    
 }

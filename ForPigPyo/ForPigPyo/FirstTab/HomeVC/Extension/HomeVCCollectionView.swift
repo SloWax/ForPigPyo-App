@@ -36,6 +36,7 @@ extension HomeVC: UICollectionViewDelegate {
             let partVC = PartTimeVC()
             
             partVC.backImageView.image = backImageView.image
+            partVC.title = item.titleLabel.text
             
             navigationController?.pushViewController(partVC, animated: true)
         case 1:
