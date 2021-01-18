@@ -40,13 +40,16 @@ extension HomeVC: UICollectionViewDelegate {
             
             navigationController?.pushViewController(partVC, animated: true)
         case 1:
+            let savingVC = SavingVC()
             
-            return
+            savingVC.savingView.titleLabel.text = item.titleLabel.text
+            
+            navigationController?.pushViewController(savingVC, animated: true)
         case 2:
             let emailVC = EmailVC()
             
-            emailVC.title = item.titleLabel.text
             emailVC.backImageView.image = backImageView.image
+            emailVC.title = item.titleLabel.text
             
             navigationController?.pushViewController(emailVC, animated: true)
         default:

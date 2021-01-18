@@ -39,7 +39,6 @@ class PartTimeCustomCell: UITableViewCell {
         
         view.label6.text = "일 급여:"
         
-        view.labelBundle.forEach { $0.font = Design.boldSmallTextSize }
         return view
     }()
     
@@ -112,6 +111,8 @@ class PartTimeCustomCell: UITableViewCell {
     }
     
     private func setContainerView() {
+        
+        containerView.labelBundle.forEach { $0.font = Design.boldSmallTextSize }
         
         contentView.addSubview(containerView)
         
@@ -288,6 +289,7 @@ class PartTimeCustomCell: UITableViewCell {
         totalWorkValue.text = "\(data?.totalTime ?? "0 시간 0 분")"
         dayPayValue.text = "\(formatter.string(from: (data?.totalPay ?? 0) as NSNumber) ?? "0")원"
     }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

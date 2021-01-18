@@ -54,6 +54,23 @@ class ContainerView: UIView {
     }()
     lazy var textFieldBundle = [textField1, textField2]
     
+    let button1: UIButton = {
+        let button = UIButton(type: .system)
+        
+        return button
+    }()
+    let button2: UIButton = {
+        let button = UIButton(type: .system)
+        
+        return button
+    }()
+    let button3: UIButton = {
+        let button = UIButton(type: .system)
+        
+        return button
+    }()
+    lazy var buttonBundle = [button1, button2, button3]
+    
     override init(frame: CGRect) {
         super .init(frame: frame)
         
@@ -74,6 +91,12 @@ class ContainerView: UIView {
             
             $0.keyboardType = .numberPad
             $0.doneAccessory = true
+            
+            self.addSubview($0)
+        }
+        buttonBundle.forEach {
+            
+            $0.tintColor = Design.textBasic.withAlphaComponent(0.5)
             
             self.addSubview($0)
         }

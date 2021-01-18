@@ -175,10 +175,7 @@ class TimeDataView: UIView {
     }
     private func setContainerView() {
         
-        allContainerView.forEach {
-            
-            motherScrollView.addSubview($0)
-        }
+        allContainerView.forEach { motherScrollView.addSubview($0) }
         
         dateView.snp.makeConstraints {
             
