@@ -162,6 +162,21 @@ class SavingView: UIView {
         }
     }
     
+    func setValue(aimSaving: Int, untilSaving: Int, untilDay: String, thisMonthSave: Int) {
+        
+        let fomatter: NumberFormatter = {
+            let format = NumberFormatter()
+            format.numberStyle = .decimal
+            
+            return format
+        }()
+        
+        myAimView.label2.text = "\(fomatter.string(from: aimSaving as NSNumber) ?? "0") 원"
+        untilAimView.label2.text = "\(fomatter.string(from: untilSaving as NSNumber) ?? "0") 원"
+        untilDateView.label2.text = untilDay
+        thisMonthView.label2.text = "\(fomatter.string(from: thisMonthSave as NSNumber) ?? "0") 원"
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

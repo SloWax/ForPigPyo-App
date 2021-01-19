@@ -35,14 +35,10 @@ class SetAimView: UIView {
         view.label3.text = "월"
         view.label4.text = "일"
         
-        view.button1.setTitle("2021", for: .normal)
-        view.button2.setTitle("01", for: .normal)
-        view.button3.setTitle("01", for: .normal)
-        
         return view
     }()
     
-    let savingAdminButton: UIButton = {
+    let saveButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = Design.yellow
         
@@ -93,14 +89,14 @@ class SetAimView: UIView {
             $0.bottom.equalTo(myAimView.snp.top).offset(-Design.largestPadding)
         }
         
-        self.addSubview(savingAdminButton)
+        self.addSubview(saveButton)
         
-        savingAdminButton.snp.makeConstraints {
+        saveButton.snp.makeConstraints {
             
             $0.top.equalTo(untilDateView.snp.bottom).offset(Design.largePadding)
             $0.trailing.equalTo(untilDateView).inset(Design.nomalPadding)
             $0.width.equalToSuperview().multipliedBy(0.16)
-            $0.height.equalTo(savingAdminButton.snp.width)
+            $0.height.equalTo(saveButton.snp.width)
         }
     }
     private func setObject() {

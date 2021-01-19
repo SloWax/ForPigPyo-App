@@ -13,7 +13,6 @@ class SavingAddEditView: UIView {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.font = Design.boldLargeTextSize
-        label.text = "저축 추가/수정하기"
         
         return label
     }()
@@ -23,9 +22,6 @@ class SavingAddEditView: UIView {
         view.label1.text = "저축월:"
         view.label2.text = "년"
         view.label3.text = "월"
-        
-        view.button1.setTitle("2021", for: .normal)
-        view.button2.setTitle("01", for: .normal)
         
         return view
     }()
@@ -163,6 +159,7 @@ class SavingAddEditView: UIView {
             $0.trailing.equalTo(saveDateView.label2.snp.leading)
         }
     }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

@@ -68,13 +68,20 @@ class SavingAdminCustomCell: UITableViewCell {
         }
     }
     
-    func setValue(year: String, month: String, saving: String) {
+    func setValue(data: SavingList.Data?) {
         
-        containerView.label1.text = "\(year)년"
+        let fomatter: NumberFormatter = {
+            let format = NumberFormatter()
+            format.numberStyle = .decimal
+            
+            return format
+        }()
         
-        containerView.label2.text = "\(month)월"
+        containerView.label1.text = "\(data?.year ?? "")년"
         
-        containerView.label3.text = "\(saving) 원"
+        containerView.label2.text = "\(data?.month ?? "")월"
+        
+        containerView.label3.text = "\(fomatter.string(from: (data?.saving ?? 0) as NSNumber) ?? "0") 원"
     }
     
     required init?(coder: NSCoder) {

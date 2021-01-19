@@ -86,6 +86,18 @@ class SavingAdminView: UIView {
         }
     }
     
+    func setValue(allSave: Int) {
+        
+        let fomatter: NumberFormatter = {
+            let format = NumberFormatter()
+            format.numberStyle = .decimal
+            
+            return format
+        }()
+        
+        containerView.label2.text = "\(fomatter.string(from: allSave as NSNumber) ?? "0") 원"
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
