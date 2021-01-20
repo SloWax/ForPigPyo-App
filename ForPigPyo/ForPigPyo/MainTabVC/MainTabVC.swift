@@ -30,11 +30,11 @@ class MainTabVC: UITabBarController {
     func makeNaviController(tabBarImage: String, rootViewController: UIViewController = UIViewController()) -> UINavigationController {
         
         let naviController = UINavigationController(rootViewController: rootViewController)
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: Design.boldNomalTextSize ?? UIFont()]
         
         naviController.tabBarItem.image = UIImage(named: tabBarImage)
         
         naviController.navigationBar.tintColor = Design.textBasic
+        naviController.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: Design.boldNomalTextSize ?? UIFont()]
         
         naviController.navigationBar.setBackgroundImage(UIImage(), for: .default)
         naviController.navigationBar.shadowImage = UIImage()

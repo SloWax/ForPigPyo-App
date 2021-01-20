@@ -83,6 +83,37 @@ class TimeDataVC: UIViewController {
         overNight = Int(timeDataView.overNightView.textField1.text ?? "") ?? 0
         overNightMin = Int(timeDataView.overNightView.textField2.text ?? "") ?? 0
     }
+    func totalCalcu() {
+        
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        
+        reloadValue()
+        
+        totalTime = model.totalWorkCalcu(work: work,
+                                         workMin: workMin,
+                                         over: over,
+                                         overMin: overMin,
+                                         night: night,
+                                         nightMin: nightMin,
+                                         overNight: overNight,
+                                         overNightMin: overNightMin)
+        
+        timeDataView.totalView.label2.text = "\(totalTime[0]) 시간"
+        timeDataView.totalView.label3.text = "\(totalTime[1]) 분"
+        
+        totalPay = model.totalPaySum(hourly: Double(hourly),
+                                     working: Double(work),
+                                     workingMin: Double(workMin),
+                                     over: Double(over),
+                                     overMin: Double(overMin),
+                                     night: Double(night),
+                                     nightMin: Double(nightMin),
+                                     overNight: Double(overNight),
+                                     overNightMin: Double(overNightMin))
+        
+        timeDataView.previewLabel.text = "\(formatter.string(from: totalPay as NSNumber) ?? "0") 원"
+    }
     
     @objc private func xButton(_ sender: UIButton) {
         
@@ -157,33 +188,6 @@ class TimeDataVC: UIViewController {
         
         guard sender.text?.count ?? 0 < 3  else { return sender.deleteBackward() }
         
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        
-        reloadValue()
-        
-        totalTime = model.totalWorkCalcu(work: work,
-                                         workMin: workMin,
-                                         over: over,
-                                         overMin: overMin,
-                                         night: night,
-                                         nightMin: nightMin,
-                                         overNight: overNight,
-                                         overNightMin: overNightMin)
-        
-        timeDataView.totalView.label2.text = "\(totalTime[0]) 시간"
-        timeDataView.totalView.label3.text = "\(totalTime[1]) 분"
-        
-        totalPay = model.totalPaySum(hourly: Double(hourly),
-                                     working: Double(work),
-                                     workingMin: Double(workMin),
-                                     over: Double(over),
-                                     overMin: Double(overMin),
-                                     night: Double(night),
-                                     nightMin: Double(nightMin),
-                                     overNight: Double(overNight),
-                                     overNightMin: Double(overNightMin))
-        
-        timeDataView.previewLabel.text = "\(formatter.string(from: totalPay as NSNumber) ?? "0") 원"
+        totalCalcu()
     }
 }

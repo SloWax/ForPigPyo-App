@@ -29,10 +29,14 @@ class SetAimVC: UIViewController {
     private var day: String = ""
     private lazy var dateBundle = [year, month, day]
     
-    private var constraint: Constraint?
+    private var viewConstraint: Constraint?
+    private var pickerConstraint: Constraint?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardNotification(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardNotification(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         setView()
     }
@@ -51,7 +55,8 @@ class SetAimVC: UIViewController {
         
         setAimView.snp.makeConstraints {
             
-            $0.top.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
+            viewConstraint = $0.top.equalTo(view.safeAreaLayoutGuide).constraint
+            $0.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
         }
         
         datePickerView.datePicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
@@ -60,7 +65,7 @@ class SetAimVC: UIViewController {
         
         datePickerView.snp.makeConstraints {
             $0.height.equalTo(setAimView).multipliedBy(0.2)
-            constraint = $0.top.equalTo(view.snp_bottomMargin).constraint
+            pickerConstraint = $0.top.equalTo(view.snp_bottomMargin).constraint
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
         }
     }
@@ -68,7 +73,7 @@ class SetAimVC: UIViewController {
         // datePicker animation
         UIView.animate(withDuration: 0.25) {
             
-            self.constraint?.update(offset: offset)
+            self.pickerConstraint?.update(offset: offset)
             self.view.layoutIfNeeded()
         }
     }
@@ -88,6 +93,30 @@ class SetAimVC: UIViewController {
         setAimView.untilDateView.button3.setTitle(day, for: .normal)
     }
     
+    @objc private func keyboardNotification(_ sender: NSNotification) {
+        
+        switch sender.name {
+        case UIResponder.keyboardWillShowNotification:
+            
+            if let keyboardSize = (sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+                
+                UIView.animate(withDuration: 0.5) {
+                    
+                    self.viewConstraint?.update(offset: -keyboardSize.height / 2)
+                    self.view.layoutIfNeeded()
+                }
+            }
+        case UIResponder.keyboardWillHideNotification:
+            
+            UIView.animate(withDuration: 0.5) {
+                
+                self.viewConstraint?.update(offset: 0)
+                self.view.layoutIfNeeded()
+            }
+        default:
+            fatalError()
+        }
+    }
     @objc private func untilDate(_ sender: UIButton) {
         
         setAimView.myAimView.textField1.resignFirstResponder()

@@ -12,7 +12,7 @@ class SavingAddEditView: UIView {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = Design.boldLargeTextSize
+        label.font = Design.headerTextSize
         
         return label
     }()

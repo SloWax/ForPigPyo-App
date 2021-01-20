@@ -17,7 +17,14 @@ struct HomeVCModel {
         
         let title: String
         let subTitle: String
-        let myPageMenu: [String?]
+        
+        let myPageMenu: [PageMenu]
+        
+        struct PageMenu {
+            
+            let image: String
+            let title: String
+        }
     }
     
     func saveBackImage(data: Data?, forkey: String) {

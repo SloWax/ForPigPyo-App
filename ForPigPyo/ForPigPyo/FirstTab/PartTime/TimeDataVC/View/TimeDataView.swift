@@ -112,7 +112,7 @@ class TimeDataView: UIView {
     let previewLabel: PaddingLabel = {
     let label = PaddingLabel(padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: Design.largePadding))
     label.text = "0 원"
-    label.backgroundColor = Design.gray
+    label.backgroundColor = Design.lightGray
     label.layer.cornerRadius = Design.cornerRadius
     label.layer.borderColor = Design.yellow.cgColor
     label.layer.borderWidth = 2
@@ -381,7 +381,7 @@ class TimeDataView: UIView {
         }
     }
     
-    func setValue(title: String, date: String?, hourly: String?, saveIndex: Int, value: PayList.Year.Month.Data?) {
+    func setValue(title: String, date: String?, hourly: String?, workHour: String?, workMin: String?, saveIndex: Int, value: PayList.Year.Month.Data?) {
         
         titleLabel.text = title
         
@@ -417,6 +417,8 @@ class TimeDataView: UIView {
         
         dateView.textField1.text = date
         hourlyWageView.textField1.text = hourly
+        workView.textField1.text = workHour
+        workView.textField2.text = workMin
     }
     
     required init?(coder: NSCoder) {

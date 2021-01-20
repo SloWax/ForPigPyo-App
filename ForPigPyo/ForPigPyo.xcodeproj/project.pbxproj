@@ -16,6 +16,8 @@
 		6E00CFD425BAA09000FF1E06 /* SavingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E00CFD325BAA09000FF1E06 /* SavingList.swift */; };
 		6E00CFD925BAADA100FF1E06 /* SavingVCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E00CFD825BAADA100FF1E06 /* SavingVCModel.swift */; };
 		6E00CFE625BACCFE00FF1E06 /* DoneDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E00CFE525BACCFE00FF1E06 /* DoneDatePickerView.swift */; };
+		6E00D01725BC1C5500FF1E06 /* MonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E00D01625BC1C5500FF1E06 /* MonthYearPickerView.swift */; };
+		6E00D02A25BC20ED00FF1E06 /* DoneMonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E00D02925BC20ED00FF1E06 /* DoneMonthYearPickerView.swift */; };
 		6E26B37125B54C2C0025C998 /* TimeDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E26B37025B54C2C0025C998 /* TimeDataVC.swift */; };
 		6E26B37925B54E110025C998 /* TimeDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E26B37825B54E110025C998 /* TimeDataView.swift */; };
 		6E26B37E25B5539F0025C998 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E26B37D25B5539F0025C998 /* ContainerView.swift */; };
@@ -26,6 +28,7 @@
 		6E26B3B125B9545E0025C998 /* SavingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E26B3B025B9545E0025C998 /* SavingView.swift */; };
 		6E26B3B625B96D260025C998 /* SetAimVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E26B3B525B96D260025C998 /* SetAimVC.swift */; };
 		6E26B3C425B971BE0025C998 /* SetAimView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E26B3C325B971BE0025C998 /* SetAimView.swift */; };
+		6E2A807025BC29C800D4B80B /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2A806F25BC29C800D4B80B /* Date.swift */; };
 		6E30889925541C43001D006F /* PartTimeCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E30889825541C43001D006F /* PartTimeCustomCell.swift */; };
 		6E807C782572740500337550 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E807C772572740500337550 /* TextField.swift */; };
 		6E807C81257288DC00337550 /* HomeVCImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E807C80257288DC00337550 /* HomeVCImagePicker.swift */; };
@@ -56,6 +59,7 @@
 		6EAAABE3257FC021006758BF /* MyPageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAAABE2257FC021006758BF /* MyPageData.swift */; };
 		6EAAABE8257FD647006758BF /* MyPageVCPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAAABE7257FD647006758BF /* MyPageVCPickerView.swift */; };
 		6EAAABF92580CFEC006758BF /* DonePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAAABF82580CFEC006758BF /* DonePickerView.swift */; };
+		6EAF7A7925BC619200F91A39 /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAF7A7825BC619200F91A39 /* MyPageView.swift */; };
 		6EBE4B5D25541BB000CA73E9 /* PartTimeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBE4B5925541BAF00CA73E9 /* PartTimeVC.swift */; };
 		6EBE4B5E25541BB000CA73E9 /* PartTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBE4B5C25541BAF00CA73E9 /* PartTimeView.swift */; };
 		6EC1736A255C9B870023F365 /* PayList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC17369255C9B870023F365 /* PayList.swift */; };
@@ -99,6 +103,8 @@
 		6E00CFD325BAA09000FF1E06 /* SavingList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingList.swift; sourceTree = "<group>"; };
 		6E00CFD825BAADA100FF1E06 /* SavingVCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingVCModel.swift; sourceTree = "<group>"; };
 		6E00CFE525BACCFE00FF1E06 /* DoneDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneDatePickerView.swift; sourceTree = "<group>"; };
+		6E00D01625BC1C5500FF1E06 /* MonthYearPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthYearPickerView.swift; sourceTree = "<group>"; };
+		6E00D02925BC20ED00FF1E06 /* DoneMonthYearPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneMonthYearPickerView.swift; sourceTree = "<group>"; };
 		6E26B37025B54C2C0025C998 /* TimeDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDataVC.swift; sourceTree = "<group>"; };
 		6E26B37825B54E110025C998 /* TimeDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDataView.swift; sourceTree = "<group>"; };
 		6E26B37D25B5539F0025C998 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
@@ -109,6 +115,7 @@
 		6E26B3B025B9545E0025C998 /* SavingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingView.swift; sourceTree = "<group>"; };
 		6E26B3B525B96D260025C998 /* SetAimVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAimVC.swift; sourceTree = "<group>"; };
 		6E26B3C325B971BE0025C998 /* SetAimView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAimView.swift; sourceTree = "<group>"; };
+		6E2A806F25BC29C800D4B80B /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		6E30889825541C43001D006F /* PartTimeCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartTimeCustomCell.swift; sourceTree = "<group>"; };
 		6E807C772572740500337550 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		6E807C80257288DC00337550 /* HomeVCImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVCImagePicker.swift; sourceTree = "<group>"; };
@@ -141,6 +148,7 @@
 		6EAAABE2257FC021006758BF /* MyPageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageData.swift; sourceTree = "<group>"; };
 		6EAAABE7257FD647006758BF /* MyPageVCPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageVCPickerView.swift; sourceTree = "<group>"; };
 		6EAAABF82580CFEC006758BF /* DonePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonePickerView.swift; sourceTree = "<group>"; };
+		6EAF7A7825BC619200F91A39 /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
 		6EBE4B5925541BAF00CA73E9 /* PartTimeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartTimeVC.swift; sourceTree = "<group>"; };
 		6EBE4B5C25541BAF00CA73E9 /* PartTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartTimeView.swift; sourceTree = "<group>"; };
 		6EC17369255C9B870023F365 /* PayList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayList.swift; sourceTree = "<group>"; };
@@ -257,6 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				6E00CFCE25B9C8CB00FF1E06 /* SavingAddEditView.swift */,
+				6E00D02925BC20ED00FF1E06 /* DoneMonthYearPickerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -302,6 +311,7 @@
 				6EAAABC3257E8275006758BF /* MyPageCustomCell.swift */,
 				6EAAABD5257E91B8006758BF /* MyPageHeaderCustomSection.swift */,
 				6EAAABF82580CFEC006758BF /* DonePickerView.swift */,
+				6EAF7A7825BC619200F91A39 /* MyPageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -563,6 +573,7 @@
 				6EFF5B092553F715007BAAF2 /* Design.swift */,
 				6E26B37D25B5539F0025C998 /* ContainerView.swift */,
 				6E26B38E25B6865F0025C998 /* PaddingLabel.swift */,
+				6E00D01625BC1C5500FF1E06 /* MonthYearPickerView.swift */,
 				6EAAABEC2580CBFA006758BF /* Extension */,
 			);
 			path = Design;
@@ -573,6 +584,7 @@
 			children = (
 				6E807C772572740500337550 /* TextField.swift */,
 				6E26B39F25B83B190025C998 /* String.swift */,
+				6E2A806F25BC29C800D4B80B /* Date.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -917,6 +929,7 @@
 				6E26B39825B8078C0025C998 /* TimeDataVCModel.swift in Sources */,
 				6E8CFFD7255175350002D202 /* ForPigPyo.xcdatamodeld in Sources */,
 				6EAAABA1257E6AE6006758BF /* PartTimeVCTableView.swift in Sources */,
+				6E00D02A25BC20ED00FF1E06 /* DoneMonthYearPickerView.swift in Sources */,
 				6E26B3C425B971BE0025C998 /* SetAimView.swift in Sources */,
 				6E30889925541C43001D006F /* PartTimeCustomCell.swift in Sources */,
 				6E00CFD425BAA09000FF1E06 /* SavingList.swift in Sources */,
@@ -936,9 +949,12 @@
 				6E8CFFCD255175350002D202 /* AppDelegate.swift in Sources */,
 				6E26B38F25B6865F0025C998 /* PaddingLabel.swift in Sources */,
 				6E00CFBB25B9C2CC00FF1E06 /* SavingAdminVCTableView.swift in Sources */,
+				6E2A807025BC29C800D4B80B /* Date.swift in Sources */,
+				6EAF7A7925BC619200F91A39 /* MyPageView.swift in Sources */,
 				6EBE4B5E25541BB000CA73E9 /* PartTimeView.swift in Sources */,
 				6ED0728625529266000EE881 /* MainTabVC.swift in Sources */,
 				6EFF5B122553F715007BAAF2 /* Design.swift in Sources */,
+				6E00D01725BC1C5500FF1E06 /* MonthYearPickerView.swift in Sources */,
 				6E26B3A025B83B190025C998 /* String.swift in Sources */,
 				6E00CFD925BAADA100FF1E06 /* SavingVCModel.swift in Sources */,
 				6E9076DF25794D3B0079C164 /* EmailVC.swift in Sources */,

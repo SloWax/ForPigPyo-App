@@ -43,7 +43,9 @@ class HomeVC: UIViewController {
     
     let model: HomeVCModel = HomeVCModel(menu: [HomeVCModel.Menu(title: "급여 계산기",
                                                                  subTitle: "이번 달엔 얼마나 받을까?",
-                                                                 myPageMenu: ["나의 시급 설정", "기본 세금 설정"]),
+                                                                 myPageMenu: [HomeVCModel.Menu.PageMenu(image: "hourly", title: "나의 시급 설정"),
+                                                                              HomeVCModel.Menu.PageMenu(image: "worktime", title: "근무 시간 설정"),
+                                                                              HomeVCModel.Menu.PageMenu(image: "tax", title: "기본 세금 설정")]),
                                                 HomeVCModel.Menu(title: "목표를 위한 저축",
                                                                  subTitle: "목표까지는 얼마나 남았을까요?",
                                                                  myPageMenu: []),

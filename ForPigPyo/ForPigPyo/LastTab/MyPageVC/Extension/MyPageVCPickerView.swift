@@ -35,13 +35,15 @@ extension MyPageVC: UIPickerViewDelegate {
         
         row == 0 ? model.saveTax(data: nil, forKey: MyPageData.MyPageVCTax) : model.saveTax(data: row - 1, forKey: MyPageData.MyPageVCTax)
         
-        guard row != 0 else { return }
-        
         if let partVC = tabBarController?.viewControllers?[0].children.last as? PartTimeVC {
+            var row = row
+            if row == 0 { row = 1 }
             
             partVC.taxIndex = row - 1
             partVC.partTimeView.setButtonTitle(title: MyPageData.taxCategory[partVC.taxIndex])
             partVC.loadPartTimeValue(deduction: partVC.taxIndex % partVC.tax.count)
         }
+        
+        myPageView.tableView.reloadData()
     }
 }

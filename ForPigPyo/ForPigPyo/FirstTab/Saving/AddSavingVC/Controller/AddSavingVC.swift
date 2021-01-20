@@ -16,12 +16,12 @@ class AddSavingVC: UIViewController {
         
         return view
     }()
-    let datePickerView: DoneDatePickerView = {
-        let view = DoneDatePickerView()
-        view.datePicker.datePickerMode = .date
-        
+    let datePickerView: DoneMonthYearPickerView = {
+        let view = DoneMonthYearPickerView()
+
         return view
     }()
+    
     
     private let formatter = DateFormatter()
     private var year: String = ""
@@ -30,10 +30,14 @@ class AddSavingVC: UIViewController {
     
     var data: SavingList?
     private let model = SavingVCModel()
-    private var constraint: Constraint?
+    private var viewConstraint: Constraint?
+    private var pickerConstraint: Constraint?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardNotification(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardNotification(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         setView()
     }
@@ -44,7 +48,7 @@ class AddSavingVC: UIViewController {
         
         savingAddEditView.saveDateView.buttonBundle.forEach {
             
-            $0.addTarget(self, action: #selector(saveDate(_:)), for: .touchUpInside)
+            $0.addTarget(self, action: #selector(dateButton(_:)), for: .touchUpInside)
         }
         savingAddEditView.saveButton.addTarget(self, action: #selector(saveButton(_:)), for: .touchUpInside)
         savingAddEditView.saveSumView.textField1.addTarget(self, action: #selector(doneDate(_:)), for: .editingDidBegin)
@@ -52,16 +56,22 @@ class AddSavingVC: UIViewController {
         
         savingAddEditView.snp.makeConstraints {
             
-            $0.top.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
+            viewConstraint = $0.top.equalTo(view.safeAreaLayoutGuide).constraint
+            $0.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
         }
         
-        datePickerView.datePicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
+        datePickerView.monthYearPicker.onDateSelected = { (year: Int, month: Int) in
+            self.formatter.dateFormat = "yyyy-MM"
+            
+            let date = self.formatter.date(from: "\(year)-\(month)")
+            self.setDate(date: date ?? Date())
+    }
         datePickerView.doneButton.action = #selector(doneDate(_:))
         view.addSubview(datePickerView)
         
         datePickerView.snp.makeConstraints {
             $0.height.equalTo(savingAddEditView).multipliedBy(0.2)
-            constraint = $0.top.equalTo(view.snp_bottomMargin).constraint
+            pickerConstraint = $0.top.equalTo(view.snp_bottomMargin).constraint
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
         }
     }
@@ -69,7 +79,7 @@ class AddSavingVC: UIViewController {
         // datePicker animation
         UIView.animate(withDuration: 0.25) {
             
-            self.constraint?.update(offset: offset)
+            self.pickerConstraint?.update(offset: offset)
             self.view.layoutIfNeeded()
         }
     }
@@ -85,14 +95,34 @@ class AddSavingVC: UIViewController {
         savingAddEditView.saveDateView.button2.setTitle(month, for: .normal)
     }
     
-    @objc private func saveDate(_ sender: UIButton) {
+    @objc private func dateButton(_ sender: UIButton) {
         
         savingAddEditView.saveSumView.textField1.resignFirstResponder()
         moveDatePicker(offset: -self.datePickerView.frame.height)
     }
-    @objc private func dateChanged() {
+    @objc private func keyboardNotification(_ sender: NSNotification) {
         
-        setDate(date: datePickerView.datePicker.date)
+        switch sender.name {
+        case UIResponder.keyboardWillShowNotification:
+            
+            if let keyboardSize = (sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+                
+                UIView.animate(withDuration: 0.5) {
+                    
+                    self.viewConstraint?.update(offset: -keyboardSize.height / 2)
+                    self.view.layoutIfNeeded()
+                }
+            }
+        case UIResponder.keyboardWillHideNotification:
+            
+            UIView.animate(withDuration: 0.5) {
+                
+                self.viewConstraint?.update(offset: 0)
+                self.view.layoutIfNeeded()
+            }
+        default:
+            fatalError()
+        }
     }
     @objc private func doneDate(_ sender: UIBarButtonItem) {
         

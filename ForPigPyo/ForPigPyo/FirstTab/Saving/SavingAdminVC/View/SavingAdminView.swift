@@ -10,6 +10,14 @@ import UIKit
 
 class SavingAdminView: UIView {
     
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = Design.headerTextSize
+        label.text = "저축액 관리하기"
+        
+        return label
+    }()
+    
     let containerView: ContainerView = {
         let view = ContainerView()
         view.label1.text = "지금까지 얼마나 모았을까요?"
@@ -48,12 +56,20 @@ class SavingAdminView: UIView {
     
     private func setView() {
         
+        self.addSubview(titleLabel)
+        
+        titleLabel.snp.makeConstraints {
+            
+            $0.top.leading.equalToSuperview().inset(Design.largePadding)
+        }
+        
         self.addSubview(containerView)
         
         containerView.snp.makeConstraints {
             
-            $0.top.equalTo(self.snp.bottom).multipliedBy(0.11)
-            $0.leading.trailing.equalToSuperview().inset(Design.largePadding)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(Design.padding)
+            $0.leading.equalTo(titleLabel)
+            $0.trailing.equalToSuperview().inset(Design.largePadding)
         }
         
         containerView.label1.snp.makeConstraints {

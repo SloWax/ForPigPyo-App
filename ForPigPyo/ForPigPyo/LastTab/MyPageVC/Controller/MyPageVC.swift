@@ -13,28 +13,28 @@ class MyPageVC: UIViewController {
     
     let backImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = Design.purple
+        imageView.backgroundColor = .systemBackground
         
         return imageView
     }()
-    lazy var myPageTable: UITableView = {
-        let tableView = UITableView()
-        tableView.backgroundColor = .clear
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.register(MyPageCustomCell.self, forCellReuseIdentifier: MyPageCustomCell.identifier)
-        tableView.register(MyPageHeaderCustomSection.self, forHeaderFooterViewReuseIdentifier: MyPageHeaderCustomSection.identifier)
+    lazy var myPageView: MyPageView = {
+        let view = MyPageView()
+        
+        view.tableView.dataSource = self
+        view.tableView.delegate = self
+        view.tableView.register(MyPageCustomCell.self, forCellReuseIdentifier: MyPageCustomCell.identifier)
+        view.tableView.register(MyPageHeaderCustomSection.self, forHeaderFooterViewReuseIdentifier: MyPageHeaderCustomSection.identifier)
         
         
-        return tableView
+        return view
     }()
     lazy var taxPickerView: DonePickerView = {
-    let picker = DonePickerView()
-    picker.pickerView.dataSource = self
-    picker.pickerView.delegate = self
-    
-    return picker
-}()
+        let picker = DonePickerView()
+        picker.pickerView.dataSource = self
+        picker.pickerView.delegate = self
+        
+        return picker
+    }()
     
     let model = MyPageVCModel()
     var menuData: HomeVCModel = HomeVCModel(menu: [HomeVCModel.Menu]())
@@ -44,14 +44,20 @@ class MyPageVC: UIViewController {
         super.viewDidLoad()
         
         setView()
-        setMyPageTable()
-        setTaxPickerView()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let partVC = tabBarController?.viewControllers?[0].children.last as? PartTimeVC {
+            
+            taxPickerView.pickerView.selectRow((partVC.taxIndex % partVC.tax.count) + 1, inComponent: 0, animated: true)
+            myPageView.tableView.reloadData()
+        }
     }
     // set View
     private func setView() {
         
-        navigationItem.title = "My Page"
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: Design.largeTextSize ?? UIFont()]
+        navigationItem.title = "마이 페이지"
         
         view.addSubview(backImageView)
         
@@ -59,17 +65,13 @@ class MyPageVC: UIViewController {
             
             $0.top.leading.trailing.bottom.equalToSuperview()
         }
-    }
-    private func setMyPageTable() {
         
-        view.addSubview(myPageTable)
+        view.addSubview(myPageView)
         
-        myPageTable.snp.makeConstraints {
+        myPageView.snp.makeConstraints {
             
             $0.top.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
         }
-    }
-    private func setTaxPickerView() {
         
         taxPickerView.doneButton.action = #selector(taxPickerDone(_:))
         view.addSubview(taxPickerView)
@@ -88,12 +90,14 @@ class MyPageVC: UIViewController {
             self.constraint?.update(offset: offset)
             self.view.layoutIfNeeded()
         }
-        myPageTable.reloadData()
+        myPageView.tableView.reloadData()
     }
-    
+    @objc func textCountLimit(_ sender: UITextField) {
+        
+        guard sender.text?.count ?? 0 < 3  else { return sender.deleteBackward() }
+    }
     @objc private func taxPickerDone(_ sender: UIBarButtonItem) {
         // picker doneButton Action
         moveTaxPicker(offset: 0)
-        taxPickerView.pickerView.selectRow(0, inComponent: 0, animated: true)
     }
 }

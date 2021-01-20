@@ -113,12 +113,14 @@ class PartTimeVC: UIViewController {
     func presentTimeDataVC(isAdd: Bool, saveIndex: Int) {
         
         let timeDataVC = TimeDataVC()
+        let timeDataView = timeDataVC.timeDataView
         
         timeDataVC.data = data
         timeDataVC.yearIndex = yearIndex
         timeDataVC.monthIndex = monthIndex
-        timeDataVC.timeDataView.dateView.label1.tag = yearInt
-        timeDataVC.timeDataView.dateView.label2.tag = monthInt
+        
+        timeDataView.dateView.label1.tag = yearInt
+        timeDataView.dateView.label2.tag = monthInt
         
         switch isAdd {
         case true:
@@ -130,11 +132,28 @@ class PartTimeVC: UIViewController {
                 return format
             }()
             let hourly = myModel.loadHourly(forKey: MyPageData.myPageVCHourly)
+            let workHour = myModel.loadHourly(forKey: MyPageData.myPageVCWorkHour)
+            let workMin = myModel.loadHourly(forKey: MyPageData.myPageVCWorkMin)
             
-            timeDataVC.timeDataView.setValue(title: "근무 추가하기", date: format.string(from: Date()), hourly: hourly, saveIndex: saveIndex, value: nil)
+            timeDataView.setValue(title: "근무 추가하기",
+                                  date: format.string(from: Date()),
+                                  hourly: hourly,
+                                  workHour: workHour,
+                                  workMin: workMin,
+                                  saveIndex: saveIndex,
+                                  value: nil)
+            timeDataVC.totalCalcu()
         case false:
             
-            timeDataVC.timeDataView.setValue(title: "근무 수정하기", date: nil, hourly: nil, saveIndex: saveIndex, value: data?.years[yearIndex].months[monthIndex].data[saveIndex])
+            let value = data?.years[yearIndex].months[monthIndex].data[saveIndex]
+            
+            timeDataView.setValue(title: "근무 수정하기",
+                                  date: nil,
+                                  hourly: nil,
+                                  workHour: nil,
+                                  workMin: nil,
+                                  saveIndex: saveIndex,
+                                  value: value)
         }
         
         timeDataVC.modalPresentationStyle = .fullScreen
@@ -190,5 +209,6 @@ class PartTimeVC: UIViewController {
         partTimeView.setButtonTitle(title: tax[taxIndex % tax.count])
         
         loadPartTimeValue(deduction: taxIndex % tax.count)
+        myModel.saveTax(data: taxIndex % tax.count, forKey: MyPageData.MyPageVCTax)
     }
 }
