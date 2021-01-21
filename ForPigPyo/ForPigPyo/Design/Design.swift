@@ -36,6 +36,7 @@ struct Design {
     static let qurterBorderWidth: CGFloat = 0.25
     static let halfBorderWidth: CGFloat = 0.5
     static let oneFifthCornerRadius: CGFloat = 5
+    static let twentyCornerRadius: CGFloat = 20
     static let cornerRadius: CGFloat = 25
     
     // MARK: font

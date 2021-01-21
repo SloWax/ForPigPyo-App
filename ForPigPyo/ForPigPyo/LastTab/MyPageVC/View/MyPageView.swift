@@ -13,7 +13,7 @@ class MyPageView: UIView {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = Design.boldNomalTextSize
-        label.text = "급여 계산기"
+        label.attributedText = "급여 계산기".underLine
         
         return label
     }()

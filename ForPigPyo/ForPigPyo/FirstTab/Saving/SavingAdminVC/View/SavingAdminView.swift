@@ -13,14 +13,14 @@ class SavingAdminView: UIView {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.font = Design.headerTextSize
-        label.text = "저축액 관리하기"
+        label.attributedText = "저축액 관리하기".underLine
         
         return label
     }()
     
     let containerView: ContainerView = {
         let view = ContainerView()
-        view.label1.text = "지금까지 얼마나 모았을까요?"
+        view.label1.attributedText = "지금까지 얼마나 모았을까요?".underLine
         view.label1.font = Design.boldSmallTextSize
         
         view.label2.text = "0 원"
@@ -35,6 +35,12 @@ class SavingAdminView: UIView {
         tableView.separatorColor = .clear
         
         return tableView
+    }()
+    let emptyView: EmptyView = {
+        let view = EmptyView()
+        view.setValue(explain: "저축 추가를 눌러서 저축액\n관리를 시작해보세요:)")
+        
+        return view
     }()
     
     let addButton: UIButton = {
@@ -89,6 +95,13 @@ class SavingAdminView: UIView {
         tableView.snp.makeConstraints {
             $0.top.equalTo(containerView.label2.snp.bottom).offset(Design.largestPadding)
             $0.leading.trailing.bottom.equalToSuperview()
+        }
+        
+        self.addSubview(emptyView)
+        
+        emptyView.snp.makeConstraints {
+            
+            $0.top.leading.trailing.bottom.equalTo(tableView)
         }
         
         self.addSubview(addButton)

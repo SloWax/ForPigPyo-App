@@ -41,7 +41,7 @@ struct PartTimeVCModel {
         switch deduction {
         case 0:
             
-            print("미공제")
+            break
         case 1:
             
             result = Int(Double(result) * 0.967)

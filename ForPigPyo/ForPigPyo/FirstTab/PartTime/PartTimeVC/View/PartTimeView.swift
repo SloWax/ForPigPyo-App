@@ -12,6 +12,13 @@ import UIKit
 
 class PartTimeView: UIView {
     
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = Design.headerTextSize
+        
+        return label
+    }()
+    
     let dateLabel: UILabel = {
         let label = UILabel()
         label.textColor = Design.textBasic
@@ -22,6 +29,7 @@ class PartTimeView: UIView {
     let preButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = .black
+        button.addBottomBorder(borderWidth: 6)
         button.setImage(UIImage(systemName: "arrow.left"), for: .normal)
         
         return button
@@ -29,6 +37,7 @@ class PartTimeView: UIView {
     let nexButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = .black
+        button.addBottomBorder(borderWidth: 6)
         button.setImage(UIImage(systemName: "arrow.right"), for: .normal)
         
         return button
@@ -36,7 +45,7 @@ class PartTimeView: UIView {
     
     let containerView: ContainerView = {
         let view = ContainerView()
-        view.label1.text = "이번 달에는 얼마를 받을까요?"
+        view.label1.attributedText = "이번 달에는 얼마를 받을까요?".underLine
         view.label1.font = Design.boldSmallTextSize
         
         view.label2.text = "총 급여: 0 원"
@@ -61,6 +70,12 @@ class PartTimeView: UIView {
         
         return tableView
     }()
+    let emptyView: EmptyView = {
+        let view = EmptyView()
+        view.setValue(explain: "근무 추가를 눌러서 급여\n관리를 시작해보세요:)")
+        
+        return view
+    }()
     
     let addButton: UIButton = {
         let button = UIButton(type: .system)
@@ -76,36 +91,36 @@ class PartTimeView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setDateLabel()
-        setButtons()
-        setTotalContainer()
-        setHistoryTable()
-        setAddButton()
+        setView()
     }
-    private func setDateLabel() {
+    
+    private func setView() {
+        
+        self.addSubview(titleLabel)
+        
+        titleLabel.snp.makeConstraints {
+            
+            $0.top.leading.equalToSuperview().inset(Design.largePadding)
+        }
         
         self.addSubview(dateLabel)
         
         dateLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.equalToSuperview().offset(Design.padding)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(Design.largePadding)
         }
-    }
-    private func setButtons() {
         
         self.addSubview(preButton)
         self.addSubview(nexButton)
         
         preButton.snp.makeConstraints {
             $0.centerY.equalTo(dateLabel)
-            $0.leading.equalToSuperview().inset(Design.padding)
+            $0.leading.equalToSuperview().inset(Design.largePadding)
         }
         nexButton.snp.makeConstraints {
             $0.centerY.equalTo(dateLabel)
-            $0.trailing.equalToSuperview().inset(Design.padding)
+            $0.trailing.equalToSuperview().inset(Design.largePadding)
         }
-    }
-    private func setTotalContainer() {
         
         self.addSubview(containerView)
         
@@ -135,8 +150,6 @@ class PartTimeView: UIView {
             $0.width.equalToSuperview().multipliedBy(0.15)
             $0.height.equalTo(taxButton.snp.width).multipliedBy(0.37)
         }
-    }
-    private func setHistoryTable() {
         
         self.addSubview(historyTable)
         
@@ -144,8 +157,13 @@ class PartTimeView: UIView {
             $0.top.equalTo(containerView.label2.snp.bottom).offset(Design.nomalPadding)
             $0.leading.trailing.bottom.equalToSuperview()
         }
-    }
-    private func setAddButton() {
+        
+        self.addSubview(emptyView)
+        
+        emptyView.snp.makeConstraints {
+            
+            $0.top.leading.trailing.bottom.equalTo(historyTable)
+        }
         
         self.addSubview(addButton)
         
@@ -160,7 +178,7 @@ class PartTimeView: UIView {
     
     func setValue(year: Int, month: Int, totalPay: String) {
         
-        dateLabel.text = "\(year)년 \(month)월"
+        dateLabel.attributedText = "\(year)년 \(month)월".underLine
         containerView.label2.text = "총 급여: \(totalPay) 원"
     }
     func setButtonTitle(title: String) {

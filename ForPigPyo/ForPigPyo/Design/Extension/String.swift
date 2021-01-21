@@ -7,9 +7,11 @@
 //
 
 import Foundation
+import UIKit
 
 extension String {
     var convertTime: [String] {
+        
         var hour: String = ""
         var min: String = ""
         var check: Bool = false
@@ -25,5 +27,18 @@ extension String {
         }
         
         return [hour, min]
+    }
+    
+    var underLine: NSAttributedString {
+        
+        let lineStyle = NSUnderlineStyle.init(rawValue: 20).rawValue
+        let attributes :[NSAttributedString.Key : Any]  = [
+            NSAttributedString.Key.underlineStyle: lineStyle,
+            NSAttributedString.Key.foregroundColor: Design.textBasic,
+            NSAttributedString.Key.underlineColor: Design.yellow]
+
+        let attributedString = NSAttributedString(string: self, attributes: attributes)
+        
+        return attributedString
     }
 }

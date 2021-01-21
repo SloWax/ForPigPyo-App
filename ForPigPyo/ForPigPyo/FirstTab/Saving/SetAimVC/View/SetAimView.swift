@@ -13,7 +13,7 @@ class SetAimView: UIView {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.font = Design.headerTextSize
-        label.text = "목표 설정하기"
+        label.attributedText = "목표 설정하기".underLine
         
         return label
     }()

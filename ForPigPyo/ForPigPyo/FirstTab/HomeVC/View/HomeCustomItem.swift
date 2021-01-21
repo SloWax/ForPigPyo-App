@@ -66,7 +66,7 @@ class HomeCustomItem: UICollectionViewCell {
     func setValue(title: String, subTitle: String) {
         
         
-        titleLabel.text = title
+        titleLabel.attributedText = title.underLine
         subTitleLabel.text = subTitle
     }
     

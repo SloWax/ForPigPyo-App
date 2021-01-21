@@ -383,7 +383,7 @@ class TimeDataView: UIView {
     
     func setValue(title: String, date: String?, hourly: String?, workHour: String?, workMin: String?, saveIndex: Int, value: PayList.Year.Month.Data?) {
         
-        titleLabel.text = title
+        titleLabel.attributedText = title.underLine
         
         if let value = value {
             

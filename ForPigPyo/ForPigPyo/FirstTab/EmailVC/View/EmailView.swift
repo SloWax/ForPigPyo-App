@@ -36,7 +36,7 @@ class EmailView: UIView {
         view.label1.attributedText = attrString
         
         view.label2.font = Design.boldNomalTextSize
-        view.label2.text = "- '모두의' 개발진"
+        view.label2.text = "- 모두의 개발진"
         
         return view
     }()

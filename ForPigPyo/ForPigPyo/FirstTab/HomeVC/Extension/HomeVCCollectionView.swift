@@ -35,17 +35,17 @@ extension HomeVC: UICollectionViewDelegate {
         case 0:
             let partVC = PartTimeVC()
             
-//            partVC.title = item.titleLabel.text
+            partVC.partTimeView.titleLabel.attributedText = item.titleLabel.text?.underLine
             navigationController?.pushViewController(partVC, animated: true)
         case 1:
             let savingVC = SavingVC()
             
-            savingVC.savingView.titleLabel.text = item.titleLabel.text
+            savingVC.savingView.titleLabel.attributedText = item.titleLabel.text?.underLine
             navigationController?.pushViewController(savingVC, animated: true)
         case 2:
             let emailVC = EmailVC()
             
-            emailVC.emailView.titleLabel.text = item.titleLabel.text
+            emailVC.emailView.titleLabel.attributedText = item.titleLabel.text?.underLine
             navigationController?.pushViewController(emailVC, animated: true)
         default:
             fatalError()

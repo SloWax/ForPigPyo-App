@@ -178,6 +178,7 @@ class TimeDataVC: UIViewController {
                 partTimeVC.data = data
                 partTimeVC.model.saveData(data: data ?? PayList(years: [PayList.Year]()))
                 partTimeVC.loadPartTimeValue(deduction: partTimeVC.taxIndex % partTimeVC.tax.count)
+                partTimeVC.partTimeView.emptyView.isHidden = true
                 partTimeVC.partTimeView.historyTable.reloadData()
             }
         }

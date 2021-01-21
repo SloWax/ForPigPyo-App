@@ -24,7 +24,7 @@ class SavingView: UIView {
         button.titleLabel?.font = Design.boldSmallTextSize
         button.tintColor = Design.textBasic
         
-        button.layer.cornerRadius = Design.cornerRadius
+        button.layer.cornerRadius = Design.twentyCornerRadius
         button.layer.borderColor = Design.yellow.cgColor
         button.layer.borderWidth = 2
         
@@ -33,7 +33,7 @@ class SavingView: UIView {
     
     let myAimView: ContainerView = {
         let view = ContainerView()
-        view.label1.text = "나의 목표 금액"
+        view.label1.attributedText = "나의 목표 금액".underLine
         
         view.label2.text = "0 원"
         
@@ -41,7 +41,7 @@ class SavingView: UIView {
     }()
     let untilAimView: ContainerView = {
         let view = ContainerView()
-        view.label1.text = "지금까지 얼마나 모았을까요?"
+        view.label1.attributedText = "지금까지 얼마나 모았을까요?".underLine
         
         view.label2.text = "0 원"
         
@@ -49,7 +49,7 @@ class SavingView: UIView {
     }()
     let untilDateView: ContainerView = {
         let view = ContainerView()
-        view.label1.text = "목표까지 남은 기간"
+        view.label1.attributedText = "목표까지 남은 기간".underLine
         
         view.label2.text = "Day"
         
@@ -57,7 +57,7 @@ class SavingView: UIView {
     }()
     let thisMonthView: ContainerView = {
         let view = ContainerView()
-        view.label1.text = "이번 달 모은 금액"
+        view.label1.attributedText = "이번 달 모은 금액".underLine
         
         view.label2.text = "0 원"
         

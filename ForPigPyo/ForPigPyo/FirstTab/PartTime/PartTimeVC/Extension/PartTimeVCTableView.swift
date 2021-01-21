@@ -11,11 +11,18 @@ import UIKit
 extension PartTimeVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return data?.years[yearIndex].months[monthIndex].data.count ?? 0
+        let dataCount = data?.years[yearIndex].months[monthIndex].data.count ?? 0
+        
+        if dataCount == 0 {
+            partTimeView.emptyView.isHidden = false
+        } else {
+            partTimeView.emptyView.isHidden = true
+        }
+        
+        return dataCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: PartTimeCustomCell.identifier, for: indexPath) as? PartTimeCustomCell else { fatalError() }
         cell.setValue(data: data?.years[yearIndex].months[monthIndex].data[indexPath.row])
         
@@ -29,8 +36,10 @@ extension PartTimeVC: UITableViewDelegate {
         
         return true
     }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        // tableView cell 슬라이딩 delete
+        
+        // tableView cell delete
         switch editingStyle {
         case .delete:
             

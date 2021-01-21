@@ -10,7 +10,7 @@ import UIKit
 
 class SavingAdminVC: UIViewController {
     
-    private lazy var savingAdminView: SavingAdminView = {
+    lazy var savingAdminView: SavingAdminView = {
         let view = SavingAdminView()
         view.tableView.delegate = self
         view.tableView.dataSource = self
@@ -62,7 +62,7 @@ class SavingAdminVC: UIViewController {
         switch isEdit {
         case false:
             
-            savingView.titleLabel.text = "저축 추가하기"
+            savingView.titleLabel.attributedText = "저축 추가하기".underLine
             addSavingVC.setDate(date: Date())
         case true:
             
@@ -77,7 +77,7 @@ class SavingAdminVC: UIViewController {
                 let dateString = "\(dataIndex.year)-\(dataIndex.month)"
                 let date = formatter.date(from: dateString) ?? Date()
                 
-                savingView.titleLabel.text = "저축 수정하기"
+                savingView.titleLabel.attributedText = "저축 수정하기".underLine
                 addSavingVC.setDate(date: date)
                 savingView.saveSumView.textField1.text = "\(dataIndex.saving)"
             }

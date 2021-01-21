@@ -12,7 +12,15 @@ extension SavingAdminVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return data?.data.count ?? 0
+        let dataCount = data?.data.count ?? 0
+        
+        if dataCount == 0 {
+            savingAdminView.emptyView.isHidden = false
+        } else {
+            savingAdminView.emptyView.isHidden = true
+        }
+        
+        return dataCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

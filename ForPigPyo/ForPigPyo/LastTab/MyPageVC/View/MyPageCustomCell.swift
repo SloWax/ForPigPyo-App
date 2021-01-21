@@ -114,7 +114,7 @@ class MyPageCustomCell: UITableViewCell {
     func setValue(image: String, title: String?, value: String?, row: Int) {
         
         sectionImage.image = UIImage(named: image)
-        titleLabel.text = title
+        titleLabel.attributedText = title?.underLine
         valueLabel.text = checkValue(row: row, value: value)
     }
     
