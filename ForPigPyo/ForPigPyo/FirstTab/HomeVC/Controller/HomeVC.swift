@@ -15,7 +15,7 @@ class HomeVC: UIViewController {
     
     let backImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = Design.purple
+        imageView.backgroundColor = .systemBackground
         
         return imageView
     }()
@@ -41,11 +41,16 @@ class HomeVC: UIViewController {
         return home
     }()
     
-    let model: HomeVCModel = HomeVCModel(menu: [HomeVCModel.Menu(image: "dollarsign.square.fill",
-                                                                 title: "이번 달엔 얼마나 받을까?",
-                                                                 myPageMenu: ["나의 시급 설정", "기본 세금 설정"]),
-                                                HomeVCModel.Menu(image: "plus.bubble.fill",
-                                                                 title: "원하는 기능을 보내주세요!",
+    let model: HomeVCModel = HomeVCModel(menu: [HomeVCModel.Menu(title: "급여 계산기",
+                                                                 subTitle: "이번 달엔 얼마나 받을까?",
+                                                                 myPageMenu: [HomeVCModel.Menu.PageMenu(image: "hourly", title: "나의 시급 설정"),
+                                                                              HomeVCModel.Menu.PageMenu(image: "worktime", title: "근무 시간 설정"),
+                                                                              HomeVCModel.Menu.PageMenu(image: "tax", title: "기본 세금 설정")]),
+                                                HomeVCModel.Menu(title: "목표를 위한 저축",
+                                                                 subTitle: "목표까지는 얼마나 남았을까요?",
+                                                                 myPageMenu: []),
+                                                HomeVCModel.Menu(title: "새로운 기능",
+                                                                 subTitle: "원하는 기능을 보내주세요!",
                                                                  myPageMenu: [])])
     
     
@@ -58,11 +63,10 @@ class HomeVC: UIViewController {
     
     private func setView() {
         
-        navigationItem.title = "List"
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: Design.LargeTextSize ?? UIFont()]
+        navigationItem.title = "모두의 앱"
         
-        let rightButton = UIBarButtonItem(image: UIImage(systemName: "photo.fill"), style: .plain, target: self, action: #selector(setBackground(_:)))
-        navigationItem.rightBarButtonItem = rightButton
+//        let rightButton = UIBarButtonItem(image: UIImage(systemName: "photo.fill"), style: .plain, target: self, action: #selector(setBackground(_:)))
+//        navigationItem.rightBarButtonItem = rightButton
         
         view.addSubview(backImageView)
         

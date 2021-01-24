@@ -20,6 +20,10 @@ struct MyPageData: Codable {
     }
     
     static let myPageVCHourly: String = "MyPageVCHourly"
+    
+    static let myPageVCWorkHour: String = "myPageVCWorkHour"
+    static let myPageVCWorkMin: String = "myPageVCWorkMin"
+    
     static let MyPageVCTax: String = "MyPageVCTax"
     static let taxCategory: [String] = ["미공제", "3.3%", "4대보험"]
 }

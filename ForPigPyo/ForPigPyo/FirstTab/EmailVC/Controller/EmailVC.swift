@@ -14,11 +14,15 @@ class EmailVC: UIViewController {
     
     let backImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = Design.purple
+        imageView.backgroundColor = .systemBackground
         
         return imageView
     }()
-    private let emailView = EmailView()
+    let emailView: EmailView = {
+        let view = EmailView()
+        
+        return view
+    }()
     
     var bannerView : GADBannerView!
     var interstitial: GADInterstitial!
@@ -27,7 +31,6 @@ class EmailVC: UIViewController {
         super.viewDidLoad()
             
             setView()
-            setEmailView()
     }
     // set View
     private func setView() {
@@ -49,15 +52,14 @@ class EmailVC: UIViewController {
             $0.centerX.equalToSuperview()
             $0.bottom.equalTo(view.safeAreaLayoutGuide)
         }
-    }
-    private func setEmailView() {
         
         emailView.emailButton.addTarget(self, action: #selector(presentEmail(_:)), for: .touchUpInside)
         view.addSubview(emailView)
         
         emailView.snp.makeConstraints {
             
-            $0.leading.trailing.centerY.equalTo(view.safeAreaLayoutGuide)
+            $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.bottom.equalTo(bannerView.snp.top)
         }
     }
     

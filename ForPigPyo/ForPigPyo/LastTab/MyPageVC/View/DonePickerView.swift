@@ -22,7 +22,7 @@ class DonePickerView: UIView {
         let button = UIBarButtonItem()
         button.title = "Done"
         button.style = .done
-        button.tintColor = Design.purple
+        button.tintColor = Design.textBasic
         
         return button
     }()
@@ -34,6 +34,7 @@ class DonePickerView: UIView {
         
         return picker
     }()
+        
     private lazy var blurEffectView = UIVisualEffectView()
     
     override init(frame: CGRect) {
@@ -44,7 +45,7 @@ class DonePickerView: UIView {
     }
     private func setDoneButton() {
         let titleButton = UIBarButtonItem(title: "세금 설정  ", style: .plain, target: nil, action: nil)
-        let backColor: UIColor = Design.purple
+        let backColor: UIColor = Design.textBasic
         titleButton.isEnabled = false
         titleButton.setTitleTextAttributes([.foregroundColor : backColor.withAlphaComponent(0.75)], for: .disabled)
         

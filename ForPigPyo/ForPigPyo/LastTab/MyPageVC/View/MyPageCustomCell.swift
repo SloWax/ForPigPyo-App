@@ -29,7 +29,6 @@ class MyPageCustomCell: UITableViewCell {
     private let valueLabel: UILabel = {
         let label = UILabel()
         label.textColor = Design.textBasic
-        label.font = Design.nomalTextSize
         label.text = "미설정"
         
         return label
@@ -38,42 +37,51 @@ class MyPageCustomCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        self.backgroundColor = .clear
         self.selectionStyle = .none
+        contentView.backgroundColor = Design.lightGray
         
         setSectionImage()
         setTitleLabel()
         setValueLabel()
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 5, left: 15, bottom: 5, right: 15))
+    }
+    
     private func setSectionImage() {
         
         contentView.addSubview(sectionImage)
         
         sectionImage.snp.makeConstraints {
             
-            $0.top.leading.bottom.equalToSuperview().inset(Design.smallPadding)
-            $0.width.equalTo(self.frame.width / 5)
-            $0.height.equalTo(sectionImage.snp.width)
+            $0.top.bottom.equalToSuperview().inset(Design.largePadding)
+            $0.leading.equalToSuperview().inset(Design.largestPadding)
+            $0.width.equalTo(contentView.frame.width / 7)
+            $0.height.equalTo(sectionImage.snp.width).multipliedBy(1.3)
         }
     }
     private func setTitleLabel() {
         
-        titleLabel.font = UIFont(name: "BMHANNA11yrsoldOTF", size: self.frame.width / 12)
+        titleLabel.font = UIFont(name: "NotoSansCJKkr-Bold", size: contentView.frame.width / 16)
         contentView.addSubview(titleLabel)
         
         titleLabel.snp.makeConstraints {
             
-            $0.leading.equalTo(sectionImage.snp.trailing).offset(Design.nomalPadding)
+            $0.leading.equalTo(sectionImage.snp.trailing).offset(Design.largePadding)
             $0.centerY.equalTo(sectionImage.snp.centerY)
         }
     }
     private func setValueLabel() {
         
+        valueLabel.font = UIFont(name: "NotoSansCJKkr-Bold", size: contentView.frame.width / 18)
         contentView.addSubview(valueLabel)
         
         valueLabel.snp.makeConstraints {
             
-            $0.trailing.equalTo(self.snp.trailing).inset(Design.LargePadding)
+            $0.trailing.equalTo(contentView.snp.trailing).inset(Design.largePadding)
             $0.centerY.equalToSuperview()
         }
     }
@@ -91,8 +99,11 @@ class MyPageCustomCell: UITableViewCell {
             let intValue = Int(value ?? "") ?? 0
             let result = formatter.string(from: NSNumber(value: intValue)) ?? ""
             
-            return "\(result)원"
+            return "\(result) 원"
         case 1:
+            
+            return value ?? "미설정"
+        case 2:
             
             return value ?? "미설정"
         default:
@@ -102,8 +113,8 @@ class MyPageCustomCell: UITableViewCell {
     
     func setValue(image: String, title: String?, value: String?, row: Int) {
         
-        sectionImage.image = UIImage(systemName: image)
-        titleLabel.text = title
+        sectionImage.image = UIImage(named: image)
+        titleLabel.attributedText = title?.underLine
         valueLabel.text = checkValue(row: row, value: value)
     }
     

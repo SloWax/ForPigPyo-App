@@ -15,13 +15,13 @@ class HomeCustomItem: UICollectionViewCell {
     
     static let identifier = "PartCustomItem"
     
-    private let imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.tintColor = Design.textBasic
-        
-        return imageView
-    }()
     let titleLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = Design.textBasic
+        
+        return label
+    }()
+    let subTitleLabel: UILabel = {
         let label = UILabel()
         label.textColor = Design.textBasic
         
@@ -33,41 +33,41 @@ class HomeCustomItem: UICollectionViewCell {
         super.init(frame: frame)
         
         setItem()
-        setImageView()
         setTitleLabel()
+        setSubTitleLabel()
     }
     private func setItem() {
         
-        self.layer.cornerRadius = Design.cornerRadius
-        self.layer.borderWidth = Design.halfBorderWidth
-        self.layer.borderColor = Design.textBasic.cgColor
-    }
-    private func setImageView() {
-        
-        contentView.addSubview(imageView)
-        
-        imageView.snp.makeConstraints {
-            
-            $0.top.leading.bottom.equalToSuperview().inset(Design.smallPadding)
-            $0.width.equalTo(imageView.snp.height)
-        }
+        self.backgroundColor = Design.lightGray
     }
     private func setTitleLabel() {
         
-        titleLabel.font = UIFont(name: "BMHANNA11yrsoldOTF", size: self.frame.width / 14)
+        titleLabel.font = UIFont(name: "NotoSansCJKkr-Bold", size: self.frame.width / 16)
         contentView.addSubview(titleLabel)
         
         titleLabel.snp.makeConstraints {
             
-            $0.leading.equalTo(imageView.snp.trailing).offset(Design.nomalPadding)
-            $0.centerY.equalTo(imageView.snp.centerY)
+            $0.top.equalToSuperview().offset(Design.smallPadding)
+            $0.leading.equalToSuperview().inset(Design.largePadding)
+        }
+    }
+    private func setSubTitleLabel() {
+        
+        subTitleLabel.font = UIFont(name: "NotoSansCJKkr-Medium", size: self.frame.width / 23)
+        contentView.addSubview(subTitleLabel)
+        
+        subTitleLabel.snp.makeConstraints {
+            
+            $0.top.equalTo(titleLabel.snp.bottom)
+            $0.leading.equalTo(titleLabel)
         }
     }
     
-    func setValue(image: String, text: String) {
+    func setValue(title: String, subTitle: String) {
         
-        imageView.image = UIImage(systemName: image)
-        titleLabel.text = text
+        
+        titleLabel.attributedText = title.underLine
+        subTitleLabel.text = subTitle
     }
     
     required init?(coder: NSCoder) {

@@ -15,24 +15,32 @@ class MainTabVC: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let homeVC = makeNaviController(tabBarImage: "house", rootViewController: HomeVC())
-        homeVC.title = "홈"
+        let homeVC = makeNaviController(tabBarImage: "wallet", rootViewController: HomeVC())
+        homeVC.title = "모두의 앱"
         
         
-        let myPageVC = makeNaviController(tabBarImage: "person", rootViewController: MyPageVC())
+        let myPageVC = makeNaviController(tabBarImage: "gingerbread", rootViewController: MyPageVC())
         myPageVC.title = "마이페이지"
         
         viewControllers = [homeVC, myPageVC]
         
-        tabBar.tintColor = Design.purple
+        tabBar.tintColor = Design.textBasic
     }
     
     func makeNaviController(tabBarImage: String, rootViewController: UIViewController = UIViewController()) -> UINavigationController {
         
         let naviController = UINavigationController(rootViewController: rootViewController)
         
-        naviController.tabBarItem.image = UIImage(systemName: tabBarImage)
-        naviController.navigationBar.tintColor = Design.purple
+        naviController.tabBarItem.image = UIImage(named: tabBarImage)
+        
+        naviController.navigationBar.tintColor = Design.textBasic
+        naviController.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: Design.boldNomalTextSize ?? UIFont()]
+        
+        naviController.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        naviController.navigationBar.shadowImage = UIImage()
+        naviController.navigationBar.isTranslucent = true
+        
+        
         
         return naviController
     }

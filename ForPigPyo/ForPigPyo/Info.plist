@@ -30,6 +30,9 @@
 	<array>
 		<string>BMHANNA_11yrs_otf.otf</string>
 		<string>BMHANNAAir_otf.otf</string>
+		<string>NotoSansCJKkr-Black.otf</string>
+		<string>NotoSansCJKkr-Bold.otf</string>
+		<string>NotoSansCJKkr-Medium.otf</string>
 	</array>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
