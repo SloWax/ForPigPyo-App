@@ -29,7 +29,6 @@ class PartTimeView: UIView {
     let preButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = .black
-        button.addBottomBorder(borderWidth: 6)
         button.setImage(UIImage(systemName: "arrow.left"), for: .normal)
         
         return button
@@ -37,7 +36,6 @@ class PartTimeView: UIView {
     let nexButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = .black
-        button.addBottomBorder(borderWidth: 6)
         button.setImage(UIImage(systemName: "arrow.right"), for: .normal)
         
         return button
@@ -178,7 +176,7 @@ class PartTimeView: UIView {
     
     func setValue(year: Int, month: Int, totalPay: String) {
         
-        dateLabel.attributedText = "\(year)년 \(month)월".underLine
+        dateLabel.text = "\(year)년 \(month)월"
         containerView.label2.text = "총 급여: \(totalPay) 원"
     }
     func setButtonTitle(title: String) {
