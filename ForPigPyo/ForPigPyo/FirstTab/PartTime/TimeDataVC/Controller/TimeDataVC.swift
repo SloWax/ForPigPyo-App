@@ -52,7 +52,7 @@ class TimeDataVC: UIViewController {
         
         view.backgroundColor = .systemBackground
         
-        timeDataView.limitContainerView.forEach {
+        timeDataView.allContainerView.forEach {
             $0.textFieldBundle.forEach { (textField) in
                 textField.addTarget(self, action: #selector(textCountLimit(_:)), for: .editingChanged)
             }
@@ -187,7 +187,7 @@ class TimeDataVC: UIViewController {
     }
     @objc private func textCountLimit(_ sender: UITextField) {
         
-        guard sender.text?.count ?? 0 < 3  else { return sender.deleteBackward() }
+        guard sender.text?.count ?? 0 < 3 || sender == timeDataView.hourlyWageView.textField1 else { return sender.deleteBackward() }
         
         totalCalcu()
     }

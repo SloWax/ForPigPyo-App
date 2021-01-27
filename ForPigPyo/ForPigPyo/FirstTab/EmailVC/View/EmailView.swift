@@ -26,8 +26,7 @@ class EmailView: UIView {
         view.label1.font = Design.boldNomalTextSize
         view.label1.numberOfLines = 0
         view.label1.text = """
-원하는 기능을 메일에 적어서 보내주세요.
-짬짬이 개발해 추가하겠습니다!
+원하는 기능을 메일에 적어서 보내주세요. 짬짬이 개발해 추가하겠습니다!
 """
         let attrString = NSMutableAttributedString(string: view.label1.text ?? "")
         let paragraphStyle = NSMutableParagraphStyle()

@@ -100,8 +100,7 @@ class TimeDataView: UIView {
         
         return view
     }()
-    private lazy var allContainerView = [dateView, hourlyWageView, workView, overView, nightView, overNightView, totalView]
-    lazy var limitContainerView = [dateView, workView, overView, nightView, overNightView]
+    lazy var allContainerView = [dateView, hourlyWageView, workView, overView, nightView, overNightView, totalView]
     
     private let totalLabel: UILabel = {
         let label = UILabel()
