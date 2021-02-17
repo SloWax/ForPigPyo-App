@@ -26,7 +26,7 @@ struct SavingVCModel {
         let calendar = Calendar.current
         let formatter: DateFormatter = {
             let formatter = DateFormatter()
-            formatter.locale = Locale(identifier:"ko_KR")
+            formatter.locale = Locale(identifier: "ko_KR")
             formatter.dateFormat = "yyyy-MM-dd"
             
             return formatter
@@ -59,7 +59,7 @@ struct SavingVCModel {
         
         let formatter: DateFormatter = {
             let formatter = DateFormatter()
-            formatter.locale = Locale(identifier:"ko_KR")
+            formatter.locale = Locale(identifier: "ko_KR")
             formatter.dateFormat = "yyyy-MM"
             
             return formatter

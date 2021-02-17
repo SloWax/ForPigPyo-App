@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6802EBA82CFEB78D11A6CC5A /* Pods_ForPigPyo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1DA0E8AF301F3BE82BC2BC0 /* Pods_ForPigPyo.framework */; };
 		6E00CFA725B9B4F800FF1E06 /* SavingAdminVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E00CFA625B9B4F800FF1E06 /* SavingAdminVC.swift */; };
 		6E00CFB025B9B54300FF1E06 /* SavingAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E00CFAF25B9B54300FF1E06 /* SavingAdminView.swift */; };
 		6E00CFB525B9B90B00FF1E06 /* SavingAdminCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E00CFB425B9B90B00FF1E06 /* SavingAdminCustomCell.swift */; };
@@ -18,6 +19,7 @@
 		6E00CFE625BACCFE00FF1E06 /* DoneDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E00CFE525BACCFE00FF1E06 /* DoneDatePickerView.swift */; };
 		6E00D01725BC1C5500FF1E06 /* MonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E00D01625BC1C5500FF1E06 /* MonthYearPickerView.swift */; };
 		6E00D02A25BC20ED00FF1E06 /* DoneMonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E00D02925BC20ED00FF1E06 /* DoneMonthYearPickerView.swift */; };
+		6E13DB8425DFF870004FFF8F /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 6E13DB8325DFF870004FFF8F /* .swiftlint.yml */; };
 		6E26B37125B54C2C0025C998 /* TimeDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E26B37025B54C2C0025C998 /* TimeDataVC.swift */; };
 		6E26B37925B54E110025C998 /* TimeDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E26B37825B54E110025C998 /* TimeDataView.swift */; };
 		6E26B37E25B5539F0025C998 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E26B37D25B5539F0025C998 /* ContainerView.swift */; };
@@ -74,7 +76,6 @@
 		6EFF5B112553F715007BAAF2 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFF5B072553F715007BAAF2 /* HomeVC.swift */; };
 		6EFF5B122553F715007BAAF2 /* Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFF5B092553F715007BAAF2 /* Design.swift */; };
 		6EFF5B132553F715007BAAF2 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFF5B0B2553F715007BAAF2 /* HomeView.swift */; };
-		88CF12C0348C3923C0735665 /* Pods_ForPigPyo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 817331743512060A35C6AD95 /* Pods_ForPigPyo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,7 +96,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		69905FD33D62068D7289E2D0 /* Pods-ForPigPyo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ForPigPyo.release.xcconfig"; path = "Target Support Files/Pods-ForPigPyo/Pods-ForPigPyo.release.xcconfig"; sourceTree = "<group>"; };
+		42ECBD6378213DFBA6934C5F /* Pods-ForPigPyo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ForPigPyo.debug.xcconfig"; path = "Target Support Files/Pods-ForPigPyo/Pods-ForPigPyo.debug.xcconfig"; sourceTree = "<group>"; };
 		6E00CFA625B9B4F800FF1E06 /* SavingAdminVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingAdminVC.swift; sourceTree = "<group>"; };
 		6E00CFAF25B9B54300FF1E06 /* SavingAdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingAdminView.swift; sourceTree = "<group>"; };
 		6E00CFB425B9B90B00FF1E06 /* SavingAdminCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingAdminCustomCell.swift; sourceTree = "<group>"; };
@@ -107,6 +108,7 @@
 		6E00CFE525BACCFE00FF1E06 /* DoneDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneDatePickerView.swift; sourceTree = "<group>"; };
 		6E00D01625BC1C5500FF1E06 /* MonthYearPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthYearPickerView.swift; sourceTree = "<group>"; };
 		6E00D02925BC20ED00FF1E06 /* DoneMonthYearPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneMonthYearPickerView.swift; sourceTree = "<group>"; };
+		6E13DB8325DFF870004FFF8F /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		6E26B37025B54C2C0025C998 /* TimeDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDataVC.swift; sourceTree = "<group>"; };
 		6E26B37825B54E110025C998 /* TimeDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDataView.swift; sourceTree = "<group>"; };
 		6E26B37D25B5539F0025C998 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
@@ -165,8 +167,8 @@
 		6EFF5B072553F715007BAAF2 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		6EFF5B092553F715007BAAF2 /* Design.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Design.swift; sourceTree = "<group>"; };
 		6EFF5B0B2553F715007BAAF2 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		7E4E7425E63B7616B46F9271 /* Pods-ForPigPyo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ForPigPyo.debug.xcconfig"; path = "Target Support Files/Pods-ForPigPyo/Pods-ForPigPyo.debug.xcconfig"; sourceTree = "<group>"; };
-		817331743512060A35C6AD95 /* Pods_ForPigPyo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ForPigPyo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4C288D4B50B71138095F169 /* Pods-ForPigPyo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ForPigPyo.release.xcconfig"; path = "Target Support Files/Pods-ForPigPyo/Pods-ForPigPyo.release.xcconfig"; sourceTree = "<group>"; };
+		E1DA0E8AF301F3BE82BC2BC0 /* Pods_ForPigPyo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ForPigPyo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,7 +176,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88CF12C0348C3923C0735665 /* Pods_ForPigPyo.framework in Frameworks */,
+				6802EBA82CFEB78D11A6CC5A /* Pods_ForPigPyo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,11 +197,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		106BDC16013824975B909E1E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E1DA0E8AF301F3BE82BC2BC0 /* Pods_ForPigPyo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		4DAD3C0F9256E88523BAE64B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				7E4E7425E63B7616B46F9271 /* Pods-ForPigPyo.debug.xcconfig */,
-				69905FD33D62068D7289E2D0 /* Pods-ForPigPyo.release.xcconfig */,
+				42ECBD6378213DFBA6934C5F /* Pods-ForPigPyo.debug.xcconfig */,
+				C4C288D4B50B71138095F169 /* Pods-ForPigPyo.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -466,12 +476,13 @@
 		6E8CFFC0255175350002D202 = {
 			isa = PBXGroup;
 			children = (
+				6E13DB8325DFF870004FFF8F /* .swiftlint.yml */,
 				6E8CFFCB255175350002D202 /* ForPigPyo */,
 				6E8CFFE5255175390002D202 /* ForPigPyoTests */,
 				6E8CFFF0255175390002D202 /* ForPigPyoUITests */,
 				6E8CFFCA255175350002D202 /* Products */,
 				4DAD3C0F9256E88523BAE64B /* Pods */,
-				AAE7274AAE7768BE1A808285 /* Frameworks */,
+				106BDC16013824975B909E1E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -706,14 +717,6 @@
 			path = LastTab;
 			sourceTree = "<group>";
 		};
-		AAE7274AAE7768BE1A808285 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				817331743512060A35C6AD95 /* Pods_ForPigPyo.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -721,12 +724,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6E8CFFF6255175390002D202 /* Build configuration list for PBXNativeTarget "ForPigPyo" */;
 			buildPhases = (
-				2446A45806E43183401BF8C6 /* [CP] Check Pods Manifest.lock */,
+				80266C11B8706709E21A1264 /* [CP] Check Pods Manifest.lock */,
 				D23AB8ADF62471C698DC003A /* [CP] Prepare Artifacts */,
 				6E8CFFC5255175350002D202 /* Sources */,
 				6E8CFFC6255175350002D202 /* Frameworks */,
 				6E8CFFC7255175350002D202 /* Resources */,
-				A88DCC0CBAB5E994FF825FCF /* [CP] Embed Pods Frameworks */,
+				6E881C2D25DFD278009D343E /* Run Script */,
+				BABA6130123BCD726F6EF7BB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -821,6 +825,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E13DB8425DFF870004FFF8F /* .swiftlint.yml in Resources */,
 				6E8CFFDC255175380002D202 /* LaunchScreen.storyboard in Resources */,
 				6EC70C9B25B2D461004D1900 /* NotoSansCJKkr-Medium.otf in Resources */,
 				6EC70C9525B2A337004D1900 /* NotoSansCJKkr-Bold.otf in Resources */,
@@ -852,7 +857,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2446A45806E43183401BF8C6 /* [CP] Check Pods Manifest.lock */ = {
+		6E881C2D25DFD278009D343E /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
+		};
+		80266C11B8706709E21A1264 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -874,7 +897,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A88DCC0CBAB5E994FF825FCF /* [CP] Embed Pods Frameworks */ = {
+		BABA6130123BCD726F6EF7BB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1133,7 +1156,7 @@
 		};
 		6E8CFFF7255175390002D202 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7E4E7425E63B7616B46F9271 /* Pods-ForPigPyo.debug.xcconfig */;
+			baseConfigurationReference = 42ECBD6378213DFBA6934C5F /* Pods-ForPigPyo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1156,7 +1179,7 @@
 		};
 		6E8CFFF8255175390002D202 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 69905FD33D62068D7289E2D0 /* Pods-ForPigPyo.release.xcconfig */;
+			baseConfigurationReference = C4C288D4B50B71138095F169 /* Pods-ForPigPyo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

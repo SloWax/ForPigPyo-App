@@ -25,7 +25,6 @@ class MyPageVC: UIViewController {
         view.tableView.register(MyPageCustomCell.self, forCellReuseIdentifier: MyPageCustomCell.identifier)
         view.tableView.register(MyPageHeaderCustomSection.self, forHeaderFooterViewReuseIdentifier: MyPageHeaderCustomSection.identifier)
         
-        
         return view
     }()
     lazy var taxPickerView: DonePickerView = {

@@ -12,9 +12,8 @@ extension Date {
     static func getPastYears(forLastNYears nYears: Int) -> Date {
         let cal = NSCalendar.current
         var date = cal.startOfDay(for: Date())
-        
         date = cal.date(byAdding: Calendar.Component.year, value: -nYears, to: date)!
-        
+
         return date
     }
 }

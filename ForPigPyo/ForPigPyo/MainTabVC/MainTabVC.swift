@@ -18,7 +18,6 @@ class MainTabVC: UITabBarController {
         let homeVC = makeNaviController(tabBarImage: "wallet", rootViewController: HomeVC())
         homeVC.title = "모두의 앱"
         
-        
         let myPageVC = makeNaviController(tabBarImage: "gingerbread", rootViewController: MyPageVC())
         myPageVC.title = "마이페이지"
         
@@ -39,8 +38,6 @@ class MainTabVC: UITabBarController {
         naviController.navigationBar.setBackgroundImage(UIImage(), for: .default)
         naviController.navigationBar.shadowImage = UIImage()
         naviController.navigationBar.isTranslucent = true
-        
-        
         
         return naviController
     }

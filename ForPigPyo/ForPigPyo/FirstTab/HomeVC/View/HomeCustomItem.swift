@@ -28,7 +28,6 @@ class HomeCustomItem: UICollectionViewCell {
         return label
     }()
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -64,7 +63,6 @@ class HomeCustomItem: UICollectionViewCell {
     }
     
     func setValue(title: String, subTitle: String) {
-        
         
         titleLabel.attributedText = title.underLine
         subTitleLabel.text = subTitle

@@ -31,7 +31,7 @@ class EmailView: UIView {
         let attrString = NSMutableAttributedString(string: view.label1.text ?? "")
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 10
-        attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attrString.length))
+        attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: attrString.length))
         view.label1.attributedText = attrString
         
         view.label2.font = Design.boldNomalTextSize

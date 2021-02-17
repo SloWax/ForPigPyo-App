@@ -43,7 +43,7 @@ class DoneMonthYearPickerView: UIView {
         let titleButton = UIBarButtonItem(title: "저축월  ", style: .plain, target: nil, action: nil)
         let backColor: UIColor = Design.textBasic.withAlphaComponent(0.5)
         titleButton.isEnabled = false
-        titleButton.setTitleTextAttributes([.foregroundColor : backColor.withAlphaComponent(0.75)], for: .disabled)
+        titleButton.setTitleTextAttributes([.foregroundColor: backColor.withAlphaComponent(0.75)], for: .disabled)
         
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let items = [flexSpace, flexSpace, titleButton, flexSpace, doneButton]

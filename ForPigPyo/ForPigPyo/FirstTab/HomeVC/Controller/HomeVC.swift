@@ -53,7 +53,6 @@ class HomeVC: UIViewController {
                                                                  subTitle: "원하는 기능을 보내주세요!",
                                                                  myPageMenu: [])])
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

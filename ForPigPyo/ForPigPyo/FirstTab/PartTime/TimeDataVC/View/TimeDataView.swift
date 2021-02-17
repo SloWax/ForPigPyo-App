@@ -248,7 +248,6 @@ class TimeDataView: UIView {
             $0.width.equalToSuperview().multipliedBy(0.22)
         }
         
-        
         let labels1and2 = [hourlyWageView, workView, overView, nightView]
         
         labels1and2.forEach {
@@ -277,7 +276,6 @@ class TimeDataView: UIView {
             $0.centerY.equalToSuperview()
             $0.leading.trailing.equalTo(dateView.label2)
         }
-        
         
         let labels3 = [workView, overView, nightView, overNightView]
         
@@ -321,16 +319,16 @@ class TimeDataView: UIView {
                 $0.trailing.equalTo(containerView.label2.snp.leading).offset(-Design.smallPadding)
             }
             
-            let attributes = [NSAttributedString.Key.foregroundColor : Design.textBasic.withAlphaComponent(0.5), .font: Design.nomalTextSize]
+            let attributes = [NSAttributedString.Key.foregroundColor: Design.textBasic.withAlphaComponent(0.5), .font: Design.nomalTextSize]
             
             if containerView == hourlyWageView {
                 
-                containerView.textField1.attributedPlaceholder = NSAttributedString(string: "시급", attributes: attributes as [NSAttributedString.Key : Any])
+                containerView.textField1.attributedPlaceholder = NSAttributedString(string: "시급", attributes: attributes as [NSAttributedString.Key: Any])
             } else {
                 
                 containerView.textFieldBundle.forEach { (textField) in
                     
-                    textField.attributedPlaceholder = NSAttributedString(string: "근무", attributes: attributes as [NSAttributedString.Key : Any])
+                    textField.attributedPlaceholder = NSAttributedString(string: "근무", attributes: attributes as [NSAttributedString.Key: Any])
                 }
             }
         }

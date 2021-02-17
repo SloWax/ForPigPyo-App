@@ -11,11 +11,10 @@ import UIKit
 
 extension String {
     var convertTime: [String] {
-        
         var hour: String = ""
         var min: String = ""
         var check: Bool = false
-        
+
         forEach {
             if "0"..."9" ~= $0, check == false {
                 hour += String($0)
@@ -32,7 +31,7 @@ extension String {
     var underLine: NSAttributedString {
         
         let lineStyle = NSUnderlineStyle.init(rawValue: 20).rawValue
-        let attributes :[NSAttributedString.Key : Any]  = [
+        let attributes: [NSAttributedString.Key: Any] = [
             NSAttributedString.Key.underlineStyle: lineStyle,
             NSAttributedString.Key.foregroundColor: Design.textBasic,
             NSAttributedString.Key.underlineColor: Design.yellow]

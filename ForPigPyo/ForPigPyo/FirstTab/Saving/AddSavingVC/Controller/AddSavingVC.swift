@@ -22,7 +22,6 @@ class AddSavingVC: UIViewController {
         return view
     }()
     
-    
     private let formatter = DateFormatter()
     private var year: String = ""
     private var month: String = ""

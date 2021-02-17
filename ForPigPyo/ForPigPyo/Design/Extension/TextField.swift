@@ -11,13 +11,12 @@ import UIKit
 // 키보드 done 버튼 생성
 
 extension UITextField {
-    
     @IBInspectable var doneAccessory: Bool {
-        get{
+        get {
             return self.doneAccessory
         }
         set (hasDone) {
-            if hasDone{
+            if hasDone {
                 addDoneButtonOnKeyboard()
             }
         }

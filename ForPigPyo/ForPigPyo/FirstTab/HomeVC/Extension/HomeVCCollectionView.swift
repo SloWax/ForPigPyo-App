@@ -25,7 +25,6 @@ extension HomeVC: UICollectionViewDataSource {
     }
 }
 
-
 extension HomeVC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -53,8 +52,7 @@ extension HomeVC: UICollectionViewDelegate {
     }
 }
 
-
-extension HomeVC:UICollectionViewDelegateFlowLayout {
+extension HomeVC: UICollectionViewDelegateFlowLayout {
     // 줄 간격
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         
