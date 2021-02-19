@@ -24,7 +24,7 @@ class EmailVC: UIViewController {
         return view
     }()
     
-    var bannerView : GADBannerView!
+    var bannerView: GADBannerView!
     var interstitial: GADInterstitial!
     
     override func viewDidLoad() {

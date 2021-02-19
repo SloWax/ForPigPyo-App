@@ -164,7 +164,6 @@ class TimeDataVC: UIViewController {
                                             totalTime: "\(totalTime[0])시간 \(totalTime[1])분",
                                             totalPay: totalPay)
         
-        
         data = model.editData(division: division.text ?? "",
                               data: &data,
                               yearIndex: yearIndex,

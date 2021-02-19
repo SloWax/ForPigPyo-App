@@ -15,9 +15,10 @@ extension HomeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
         
         picker.presentingViewController?.dismiss(animated: true)
     }
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         
-        let image = info[.originalImage] as! UIImage
+        let image = info[.originalImage] as? UIImage
         
         saveBackImage(image: image)
         backImageView.image = image

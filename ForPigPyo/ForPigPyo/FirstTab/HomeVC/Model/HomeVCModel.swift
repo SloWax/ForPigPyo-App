@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 struct HomeVCModel {
     
     let menu: [Menu]
@@ -37,4 +36,3 @@ struct HomeVCModel {
         return UserDefaults.standard.object(forKey: forkey) as? Data
     }
 }
-

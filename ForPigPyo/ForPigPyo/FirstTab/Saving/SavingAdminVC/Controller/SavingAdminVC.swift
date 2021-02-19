@@ -16,7 +16,7 @@ class SavingAdminVC: UIViewController {
         view.tableView.dataSource = self
         view.tableView.register(SavingAdminCustomCell.self, forCellReuseIdentifier: SavingAdminCustomCell.identifier)
         
-        view.addButton.addTarget(self, action: #selector(AddButton(_:)), for: .touchUpInside)
+        view.addButton.addTarget(self, action: #selector(addButton(_:)), for: .touchUpInside)
         
         return view
     }()
@@ -86,7 +86,7 @@ class SavingAdminVC: UIViewController {
         navigationController?.pushViewController(addSavingVC, animated: true)
     }
     
-    @objc private func AddButton(_ sender: UIButton) {
+    @objc private func addButton(_ sender: UIButton) {
         
         pushAddSavingVC(isEdit: false, saveIndex: 0)
     }

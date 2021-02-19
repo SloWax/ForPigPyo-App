@@ -20,11 +20,11 @@ class SetAimView: UIView {
     
     let myAimView: ContainerView = {
         let view = ContainerView()
-        let attributes = [NSAttributedString.Key.foregroundColor : Design.textBasic.withAlphaComponent(0.5), .font: Design.boldNomalTextSize]
+        let attributes = [NSAttributedString.Key.foregroundColor: Design.textBasic.withAlphaComponent(0.5), .font: Design.boldNomalTextSize]
         view.label1.text = "목표 금액:"
         view.label2.text = "원"
         
-        view.textField1.attributedPlaceholder = NSAttributedString(string: "목표 금액", attributes: attributes as [NSAttributedString.Key : Any])
+        view.textField1.attributedPlaceholder = NSAttributedString(string: "목표 금액", attributes: attributes as [NSAttributedString.Key: Any])
         
         return view
     }()
@@ -79,7 +79,6 @@ class SetAimView: UIView {
             $0.leading.trailing.equalToSuperview().inset(Design.largePadding)
             $0.height.equalTo(myAimView)
         }
-        
         
         self.addSubview(titleLabel)
         

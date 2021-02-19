@@ -20,13 +20,11 @@ extension EmailVC: MFMailComposeViewControllerDelegate {
     }
 }
 
-
 extension EmailVC: GADInterstitialDelegate {
     
-    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
+    func interstitialDidDismissScreen(_ ads: GADInterstitial) {
         // 전면광고는 매번 새로 받아야 하기 때문에 광고가 꺼진 후 새 광고를 생성
         interstitial = createAndLoadInterstitial()
         thanksAlert()
     }
 }
-

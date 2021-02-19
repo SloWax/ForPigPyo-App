@@ -30,7 +30,6 @@ extension PartTimeVC: UITableViewDataSource {
     }
 }
 
-
 extension PartTimeVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         

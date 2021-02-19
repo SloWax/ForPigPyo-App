@@ -11,7 +11,7 @@ import Foundation
 struct TimeDataVCModel {
     
     // MARK: 요일 확인
-    func getWeekDay(year:Int, month:Int, day:Int) -> String {
+    func getWeekDay(year: Int, month: Int, day: Int) -> String {
         
         let calendar = Calendar(identifier: .gregorian)
         let dateComponents: DateComponents = {
@@ -44,7 +44,7 @@ struct TimeDataVCModel {
         let convertHour: Int = min/60
         let remainderMin: Int = min%60
         
-        hour = hour + convertHour
+        hour += convertHour
         min = remainderMin
         
         return [hour, min]
