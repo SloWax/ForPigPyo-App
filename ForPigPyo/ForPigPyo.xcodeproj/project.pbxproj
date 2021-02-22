@@ -20,6 +20,8 @@
 		6E00D01725BC1C5500FF1E06 /* MonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E00D01625BC1C5500FF1E06 /* MonthYearPickerView.swift */; };
 		6E00D02A25BC20ED00FF1E06 /* DoneMonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E00D02925BC20ED00FF1E06 /* DoneMonthYearPickerView.swift */; };
 		6E13DB8425DFF870004FFF8F /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 6E13DB8325DFF870004FFF8F /* .swiftlint.yml */; };
+		6E13DB9A25E2D46B004FFF8F /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E13DB9925E2D46B004FFF8F /* LoginVC.swift */; };
+		6E13DBA925E2EBDB004FFF8F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E13DBA825E2EBDB004FFF8F /* LoginView.swift */; };
 		6E26B37125B54C2C0025C998 /* TimeDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E26B37025B54C2C0025C998 /* TimeDataVC.swift */; };
 		6E26B37925B54E110025C998 /* TimeDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E26B37825B54E110025C998 /* TimeDataView.swift */; };
 		6E26B37E25B5539F0025C998 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E26B37D25B5539F0025C998 /* ContainerView.swift */; };
@@ -109,6 +111,8 @@
 		6E00D01625BC1C5500FF1E06 /* MonthYearPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthYearPickerView.swift; sourceTree = "<group>"; };
 		6E00D02925BC20ED00FF1E06 /* DoneMonthYearPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneMonthYearPickerView.swift; sourceTree = "<group>"; };
 		6E13DB8325DFF870004FFF8F /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		6E13DB9925E2D46B004FFF8F /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		6E13DBA825E2EBDB004FFF8F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		6E26B37025B54C2C0025C998 /* TimeDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDataVC.swift; sourceTree = "<group>"; };
 		6E26B37825B54E110025C998 /* TimeDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDataView.swift; sourceTree = "<group>"; };
 		6E26B37D25B5539F0025C998 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
@@ -124,6 +128,7 @@
 		6E807C772572740500337550 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		6E807C80257288DC00337550 /* HomeVCImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVCImagePicker.swift; sourceTree = "<group>"; };
 		6E807C8525728DD600337550 /* HomeVCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVCModel.swift; sourceTree = "<group>"; };
+		6E83A82F25E2F7B5009561E2 /* ForPigPyo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ForPigPyo.entitlements; sourceTree = "<group>"; };
 		6E89CE1A25711A9200E40314 /* BMHANNA_11yrs_otf.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BMHANNA_11yrs_otf.otf; sourceTree = "<group>"; };
 		6E89CE1B25711A9200E40314 /* BMHANNAAir_otf.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BMHANNAAir_otf.otf; sourceTree = "<group>"; };
 		6E8CFFC9255175350002D202 /* ForPigPyo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForPigPyo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -330,6 +335,39 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		6E13DB9E25E2E65B004FFF8F /* LoginVC */ = {
+			isa = PBXGroup;
+			children = (
+				6E13DBA125E2E66D004FFF8F /* Model */,
+				6E13DBA025E2E66B004FFF8F /* View */,
+				6E13DB9F25E2E664004FFF8F /* Controller */,
+			);
+			path = LoginVC;
+			sourceTree = "<group>";
+		};
+		6E13DB9F25E2E664004FFF8F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6E13DB9925E2D46B004FFF8F /* LoginVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		6E13DBA025E2E66B004FFF8F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6E13DBA825E2EBDB004FFF8F /* LoginView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6E13DBA125E2E66D004FFF8F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		6E26B36C25B54BB20025C998 /* TimeDataVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -499,6 +537,7 @@
 		6E8CFFCB255175350002D202 /* ForPigPyo */ = {
 			isa = PBXGroup;
 			children = (
+				6E83A82F25E2F7B5009561E2 /* ForPigPyo.entitlements */,
 				6EA2C5862571132800E994A8 /* Design */,
 				6E8CFFCC255175350002D202 /* AppDelegate.swift */,
 				6E8C0002255175730002D202 /* MainTabVC */,
@@ -656,6 +695,7 @@
 		6EFF5AFD2553F715007BAAF2 /* FirstTab */ = {
 			isa = PBXGroup;
 			children = (
+				6E13DB9E25E2E65B004FFF8F /* LoginVC */,
 				6EFF5B0D2553F715007BAAF2 /* HomeVC */,
 				6E26B3BA25B96D380025C998 /* PartTime */,
 				6E26B3BB25B96D690025C998 /* Saving */,
@@ -960,6 +1000,7 @@
 				6E8CFFD7255175350002D202 /* ForPigPyo.xcdatamodeld in Sources */,
 				6EAAABA1257E6AE6006758BF /* PartTimeVCTableView.swift in Sources */,
 				6E00D02A25BC20ED00FF1E06 /* DoneMonthYearPickerView.swift in Sources */,
+				6E13DBA925E2EBDB004FFF8F /* LoginView.swift in Sources */,
 				6E26B3C425B971BE0025C998 /* SetAimView.swift in Sources */,
 				6E30889925541C43001D006F /* PartTimeCustomCell.swift in Sources */,
 				6E00CFD425BAA09000FF1E06 /* SavingList.swift in Sources */,
@@ -982,6 +1023,7 @@
 				6E2A807025BC29C800D4B80B /* Date.swift in Sources */,
 				6EAF7A7925BC619200F91A39 /* MyPageView.swift in Sources */,
 				6EBE4B5E25541BB000CA73E9 /* PartTimeView.swift in Sources */,
+				6E13DB9A25E2D46B004FFF8F /* LoginVC.swift in Sources */,
 				6ED0728625529266000EE881 /* MainTabVC.swift in Sources */,
 				6EFF5B122553F715007BAAF2 /* Design.swift in Sources */,
 				6E00D01725BC1C5500FF1E06 /* MonthYearPickerView.swift in Sources */,
@@ -1160,8 +1202,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ForPigPyo/ForPigPyo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 432;
+				CURRENT_PROJECT_VERSION = 453;
 				DEVELOPMENT_TEAM = 3799SNND63;
 				INFOPLIST_FILE = ForPigPyo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1169,7 +1212,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = SloWax.ForPigPyo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1183,8 +1226,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ForPigPyo/ForPigPyo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 432;
+				CURRENT_PROJECT_VERSION = 453;
 				DEVELOPMENT_TEAM = 3799SNND63;
 				INFOPLIST_FILE = ForPigPyo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1192,7 +1236,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = SloWax.ForPigPyo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
