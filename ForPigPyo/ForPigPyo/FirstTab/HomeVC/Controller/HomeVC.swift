@@ -8,6 +8,7 @@
 
 import UIKit
 import MobileCoreServices
+import AuthenticationServices
 
 class HomeVC: UIViewController {
     
@@ -53,11 +54,18 @@ class HomeVC: UIViewController {
                                                                  subTitle: "원하는 기능을 보내주세요!",
                                                                  myPageMenu: [])])
     
+    var loginAppearCount: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setView()
         setHomeView()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        checkLogin(disMiss: loginAppearCount)
     }
     
     private func setView() {
@@ -87,6 +95,35 @@ class HomeVC: UIViewController {
         indicator.snp.makeConstraints {
             
             $0.center.equalToSuperview()
+        }
+    }
+    private func checkLogin(disMiss: Int) {
+        guard disMiss == 0 else { return }
+        loginAppearCount += 1
+        
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        let userID = UserDefaults.standard.string(forKey: LoginVC.userID) ?? ""
+        
+        appleIDProvider.getCredentialState(forUserID: userID) { (credentialState, _) in
+            switch credentialState {
+            case .authorized:
+                
+                print("authorized")
+            case .revoked, .notFound :
+                
+                DispatchQueue.main.async {
+                    let loginVC = LoginVC()
+                    loginVC.modalPresentationStyle = .formSheet
+                    self.present(loginVC, animated: true)
+                }
+                print("revoked or notFound")
+            case .transferred:
+                
+                print("trans")
+            @unknown default:
+                
+                print("default")
+            }
         }
     }
     
