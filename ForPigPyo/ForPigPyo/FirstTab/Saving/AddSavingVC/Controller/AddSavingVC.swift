@@ -153,6 +153,7 @@ class AddSavingVC: UIViewController {
             
             savingVC.data = data
             savingVC.reloadData(data: savingVC.data)
+            savingVC.backupToDB()
         }
         
         navigationController?.popViewController(animated: true)

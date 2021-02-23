@@ -139,6 +139,7 @@ class SetAimVC: UIViewController {
             
             savingVC.model.saveData(data: savingVC.data ?? SavingList(aimSaving: 0, aimDate: "", data: [SavingList.Data]()))
             savingVC.reloadData(data: savingVC.data)
+            savingVC.backupToDB()
         }
         
         navigationController?.popViewController(animated: true)

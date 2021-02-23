@@ -110,6 +110,8 @@ class HomeVC: UIViewController {
                 print("authorized")
             case .revoked, .notFound :
                 
+                UserDefaults.standard.set(nil, forKey: LoginVC.userID)
+                
                 DispatchQueue.main.async {
                     let loginVC = LoginVC()
                     loginVC.modalPresentationStyle = .formSheet

@@ -179,6 +179,8 @@ class TimeDataVC: UIViewController {
                 partTimeVC.loadPartTimeValue(deduction: partTimeVC.taxIndex % partTimeVC.tax.count)
                 partTimeVC.partTimeView.emptyView.isHidden = true
                 partTimeVC.partTimeView.historyTable.reloadData()
+                
+                partTimeVC.backupToDB()
             }
         }
         

@@ -135,6 +135,7 @@ extension SavingAdminVC: UITableViewDelegate {
                 
                 savingVC.data = data
                 savingVC.reloadData(data: savingVC.data)
+                savingVC.backupToDB()
             }
         default:
             fatalError()

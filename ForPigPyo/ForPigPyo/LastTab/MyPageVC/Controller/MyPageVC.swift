@@ -105,7 +105,7 @@ extension MyPageVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return menuData.menu[section].myPageMenu.count
+        return menuData.menu[section].myPageMenu.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -121,17 +121,13 @@ extension MyPageVC: UITableViewDataSource {
         case 1:
             
             if let hour = model.loadHourly(forKey: MyPageData.myPageVCWorkHour) {
-                
                 value = "\(hour)시간"
                 if let min = model.loadHourly(forKey: MyPageData.myPageVCWorkMin) {
-                    
                     value = "\(hour)시간 \(min)분"
                 }
             } else if let min = model.loadHourly(forKey: MyPageData.myPageVCWorkMin) {
-                
                 value = "\(min)분"
             } else {
-                
                 value = nil
             }
         case 2:
@@ -139,9 +135,21 @@ extension MyPageVC: UITableViewDataSource {
             if let index = model.loadTax(forKey: MyPageData.MyPageVCTax) {
                 value = MyPageData.taxCategory[index]
             }
+        case 3:
+
+            if let userID = UserDefaults.standard.string(forKey: LoginVC.userID) {
+                value = userID
+            }
         default:
             fatalError()
         }
+        
+        guard indexPath.row != 3 else {
+            cell.setValue(image: "icloud", title: "데이터 백업", value: value, row: indexPath.row)
+            
+            return cell
+        }
+        
         cell.setValue(image: sectionIV.myPageMenu[indexPath.row].image,
                       title: sectionIV.myPageMenu[indexPath.row].title,
                       value: value,
@@ -246,6 +254,12 @@ extension MyPageVC: UITableViewDelegate {
         case 2:
             
             moveTaxPicker(offset: -self.taxPickerView.frame.height)
+        case 3:
+            
+            guard UserDefaults.standard.string(forKey: LoginVC.userID) == nil else { return }
+            let loginVC = LoginVC()
+            loginVC.modalPresentationStyle = .formSheet
+            present(loginVC, animated: true)
         default:
             fatalError()
         }

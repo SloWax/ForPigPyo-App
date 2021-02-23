@@ -8,6 +8,8 @@
 
 import UIKit
 import SnapKit
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 class PartTimeVC: UIViewController {
     
@@ -160,6 +162,17 @@ class PartTimeVC: UIViewController {
         
         present(timeDataVC, animated: true)
     }
+    func backupToDB() {
+        let firestore = Firestore.firestore()
+        
+        if let userID = UserDefaults.standard.string(forKey: LoginVC.userID) {
+            do {
+                try firestore.collection(userID).document(PartTimeVC.forkey).setData(from: data)
+            } catch let error {
+                print("Error: \(error)")
+            }
+        }
+    }
     
     @objc private func addButton(_ sender: UIButton) {
         
@@ -255,6 +268,8 @@ extension PartTimeVC: UITableViewDelegate {
         default:
             fatalError()
         }
+        
+        backupToDB()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

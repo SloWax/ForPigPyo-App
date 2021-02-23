@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 import GoogleMobileAds
 
 @UIApplicationMain
@@ -15,6 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        FirebaseApp.configure()
         
         // 광고 초기화
         GADMobileAds.sharedInstance().start(completionHandler: nil)
