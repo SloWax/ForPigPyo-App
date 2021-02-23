@@ -7,11 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6802EBA82CFEB78D11A6CC5A /* Pods_ForPigPyo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1DA0E8AF301F3BE82BC2BC0 /* Pods_ForPigPyo.framework */; };
+		0D109DF815DAD86FA08A5A10 /* Pods_ForPigPyo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 276F60824C1B64E8022B38B9 /* Pods_ForPigPyo.framework */; };
 		6E00CFA725B9B4F800FF1E06 /* SavingAdminVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E00CFA625B9B4F800FF1E06 /* SavingAdminVC.swift */; };
 		6E00CFB025B9B54300FF1E06 /* SavingAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E00CFAF25B9B54300FF1E06 /* SavingAdminView.swift */; };
 		6E00CFB525B9B90B00FF1E06 /* SavingAdminCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E00CFB425B9B90B00FF1E06 /* SavingAdminCustomCell.swift */; };
-		6E00CFBB25B9C2CC00FF1E06 /* SavingAdminVCTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E00CFBA25B9C2CC00FF1E06 /* SavingAdminVCTableView.swift */; };
 		6E00CFC725B9C89D00FF1E06 /* AddSavingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E00CFC625B9C89D00FF1E06 /* AddSavingVC.swift */; };
 		6E00CFCF25B9C8CB00FF1E06 /* SavingAddEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E00CFCE25B9C8CB00FF1E06 /* SavingAddEditView.swift */; };
 		6E00CFD425BAA09000FF1E06 /* SavingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E00CFD325BAA09000FF1E06 /* SavingList.swift */; };
@@ -34,9 +33,10 @@
 		6E26B3C425B971BE0025C998 /* SetAimView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E26B3C325B971BE0025C998 /* SetAimView.swift */; };
 		6E2A807025BC29C800D4B80B /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2A806F25BC29C800D4B80B /* Date.swift */; };
 		6E30889925541C43001D006F /* PartTimeCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E30889825541C43001D006F /* PartTimeCustomCell.swift */; };
+		6E4B8B3825E381D400B3AF09 /* ForPigPyoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8CFFE6255175390002D202 /* ForPigPyoTests.swift */; };
 		6E807C782572740500337550 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E807C772572740500337550 /* TextField.swift */; };
-		6E807C81257288DC00337550 /* HomeVCImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E807C80257288DC00337550 /* HomeVCImagePicker.swift */; };
 		6E807C8625728DD600337550 /* HomeVCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E807C8525728DD600337550 /* HomeVCModel.swift */; };
+		6E83A86425E3580B009561E2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6E83A86325E3580B009561E2 /* GoogleService-Info.plist */; };
 		6E89CE1C25711A9200E40314 /* BMHANNA_11yrs_otf.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6E89CE1A25711A9200E40314 /* BMHANNA_11yrs_otf.otf */; };
 		6E89CE1D25711A9200E40314 /* BMHANNA_11yrs_otf.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6E89CE1A25711A9200E40314 /* BMHANNA_11yrs_otf.otf */; };
 		6E89CE1E25711A9200E40314 /* BMHANNA_11yrs_otf.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6E89CE1A25711A9200E40314 /* BMHANNA_11yrs_otf.otf */; };
@@ -47,21 +47,15 @@
 		6E8CFFD7255175350002D202 /* ForPigPyo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6E8CFFD5255175350002D202 /* ForPigPyo.xcdatamodeld */; };
 		6E8CFFD9255175380002D202 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E8CFFD8255175380002D202 /* Assets.xcassets */; };
 		6E8CFFDC255175380002D202 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E8CFFDA255175380002D202 /* LaunchScreen.storyboard */; };
-		6E8CFFE7255175390002D202 /* ForPigPyoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8CFFE6255175390002D202 /* ForPigPyoTests.swift */; };
 		6E8CFFF2255175390002D202 /* ForPigPyoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8CFFF1255175390002D202 /* ForPigPyoUITests.swift */; };
 		6E9076DF25794D3B0079C164 /* EmailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9076DE25794D3B0079C164 /* EmailVC.swift */; };
 		6E9076F2257A52190079C164 /* EmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9076F1257A52190079C164 /* EmailView.swift */; };
 		6EAAAB94257E3BC9006758BF /* MyPageVCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAAAB93257E3BC9006758BF /* MyPageVCModel.swift */; };
-		6EAAAB99257E694B006758BF /* HomeVCCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAAAB98257E694B006758BF /* HomeVCCollectionView.swift */; };
-		6EAAABA1257E6AE6006758BF /* PartTimeVCTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAAABA0257E6AE6006758BF /* PartTimeVCTableView.swift */; };
-		6EAAABA9257E6B89006758BF /* EmailVCMailCompose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAAABA8257E6B89006758BF /* EmailVCMailCompose.swift */; };
-		6EAAABB4257E6BDD006758BF /* MyPageVCTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAAABB3257E6BDD006758BF /* MyPageVCTableView.swift */; };
 		6EAAABC4257E8275006758BF /* MyPageCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAAABC3257E8275006758BF /* MyPageCustomCell.swift */; };
 		6EAAABC9257E8322006758BF /* HomeCustomItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAAABC8257E8322006758BF /* HomeCustomItem.swift */; };
 		6EAAABD6257E91B8006758BF /* MyPageHeaderCustomSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAAABD5257E91B8006758BF /* MyPageHeaderCustomSection.swift */; };
 		6EAAABDE257EA989006758BF /* EmailVCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAAABDD257EA989006758BF /* EmailVCModel.swift */; };
 		6EAAABE3257FC021006758BF /* MyPageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAAABE2257FC021006758BF /* MyPageData.swift */; };
-		6EAAABE8257FD647006758BF /* MyPageVCPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAAABE7257FD647006758BF /* MyPageVCPickerView.swift */; };
 		6EAAABF92580CFEC006758BF /* DonePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAAABF82580CFEC006758BF /* DonePickerView.swift */; };
 		6EAF7A7925BC619200F91A39 /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAF7A7825BC619200F91A39 /* MyPageView.swift */; };
 		6EAF7A8625BDACEA00F91A39 /* Underline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAF7A8525BDACEA00F91A39 /* Underline.swift */; };
@@ -98,11 +92,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		42ECBD6378213DFBA6934C5F /* Pods-ForPigPyo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ForPigPyo.debug.xcconfig"; path = "Target Support Files/Pods-ForPigPyo/Pods-ForPigPyo.debug.xcconfig"; sourceTree = "<group>"; };
+		276F60824C1B64E8022B38B9 /* Pods_ForPigPyo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ForPigPyo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E00CFA625B9B4F800FF1E06 /* SavingAdminVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingAdminVC.swift; sourceTree = "<group>"; };
 		6E00CFAF25B9B54300FF1E06 /* SavingAdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingAdminView.swift; sourceTree = "<group>"; };
 		6E00CFB425B9B90B00FF1E06 /* SavingAdminCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingAdminCustomCell.swift; sourceTree = "<group>"; };
-		6E00CFBA25B9C2CC00FF1E06 /* SavingAdminVCTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingAdminVCTableView.swift; sourceTree = "<group>"; };
 		6E00CFC625B9C89D00FF1E06 /* AddSavingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSavingVC.swift; sourceTree = "<group>"; };
 		6E00CFCE25B9C8CB00FF1E06 /* SavingAddEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingAddEditView.swift; sourceTree = "<group>"; };
 		6E00CFD325BAA09000FF1E06 /* SavingList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingList.swift; sourceTree = "<group>"; };
@@ -126,9 +119,9 @@
 		6E2A806F25BC29C800D4B80B /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		6E30889825541C43001D006F /* PartTimeCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartTimeCustomCell.swift; sourceTree = "<group>"; };
 		6E807C772572740500337550 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
-		6E807C80257288DC00337550 /* HomeVCImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVCImagePicker.swift; sourceTree = "<group>"; };
 		6E807C8525728DD600337550 /* HomeVCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVCModel.swift; sourceTree = "<group>"; };
 		6E83A82F25E2F7B5009561E2 /* ForPigPyo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ForPigPyo.entitlements; sourceTree = "<group>"; };
+		6E83A86325E3580B009561E2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6E89CE1A25711A9200E40314 /* BMHANNA_11yrs_otf.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BMHANNA_11yrs_otf.otf; sourceTree = "<group>"; };
 		6E89CE1B25711A9200E40314 /* BMHANNAAir_otf.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BMHANNAAir_otf.otf; sourceTree = "<group>"; };
 		6E8CFFC9255175350002D202 /* ForPigPyo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForPigPyo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,16 +139,11 @@
 		6E9076DE25794D3B0079C164 /* EmailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVC.swift; sourceTree = "<group>"; };
 		6E9076F1257A52190079C164 /* EmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailView.swift; sourceTree = "<group>"; };
 		6EAAAB93257E3BC9006758BF /* MyPageVCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageVCModel.swift; sourceTree = "<group>"; };
-		6EAAAB98257E694B006758BF /* HomeVCCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVCCollectionView.swift; sourceTree = "<group>"; };
-		6EAAABA0257E6AE6006758BF /* PartTimeVCTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartTimeVCTableView.swift; sourceTree = "<group>"; };
-		6EAAABA8257E6B89006758BF /* EmailVCMailCompose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVCMailCompose.swift; sourceTree = "<group>"; };
-		6EAAABB3257E6BDD006758BF /* MyPageVCTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageVCTableView.swift; sourceTree = "<group>"; };
 		6EAAABC3257E8275006758BF /* MyPageCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCustomCell.swift; sourceTree = "<group>"; };
 		6EAAABC8257E8322006758BF /* HomeCustomItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCustomItem.swift; sourceTree = "<group>"; };
 		6EAAABD5257E91B8006758BF /* MyPageHeaderCustomSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageHeaderCustomSection.swift; sourceTree = "<group>"; };
 		6EAAABDD257EA989006758BF /* EmailVCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVCModel.swift; sourceTree = "<group>"; };
 		6EAAABE2257FC021006758BF /* MyPageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageData.swift; sourceTree = "<group>"; };
-		6EAAABE7257FD647006758BF /* MyPageVCPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageVCPickerView.swift; sourceTree = "<group>"; };
 		6EAAABF82580CFEC006758BF /* DonePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonePickerView.swift; sourceTree = "<group>"; };
 		6EAF7A7825BC619200F91A39 /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
 		6EAF7A8525BDACEA00F91A39 /* Underline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Underline.swift; sourceTree = "<group>"; };
@@ -172,8 +160,8 @@
 		6EFF5B072553F715007BAAF2 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		6EFF5B092553F715007BAAF2 /* Design.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Design.swift; sourceTree = "<group>"; };
 		6EFF5B0B2553F715007BAAF2 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		C4C288D4B50B71138095F169 /* Pods-ForPigPyo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ForPigPyo.release.xcconfig"; path = "Target Support Files/Pods-ForPigPyo/Pods-ForPigPyo.release.xcconfig"; sourceTree = "<group>"; };
-		E1DA0E8AF301F3BE82BC2BC0 /* Pods_ForPigPyo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ForPigPyo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		988121FD4A72D1E2116922D2 /* Pods-ForPigPyo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ForPigPyo.debug.xcconfig"; path = "Target Support Files/Pods-ForPigPyo/Pods-ForPigPyo.debug.xcconfig"; sourceTree = "<group>"; };
+		F05C8132C0C21868C092BE71 /* Pods-ForPigPyo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ForPigPyo.release.xcconfig"; path = "Target Support Files/Pods-ForPigPyo/Pods-ForPigPyo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,7 +169,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6802EBA82CFEB78D11A6CC5A /* Pods_ForPigPyo.framework in Frameworks */,
+				0D109DF815DAD86FA08A5A10 /* Pods_ForPigPyo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,19 +190,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		106BDC16013824975B909E1E /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				E1DA0E8AF301F3BE82BC2BC0 /* Pods_ForPigPyo.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		4DAD3C0F9256E88523BAE64B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				42ECBD6378213DFBA6934C5F /* Pods-ForPigPyo.debug.xcconfig */,
-				C4C288D4B50B71138095F169 /* Pods-ForPigPyo.release.xcconfig */,
+				988121FD4A72D1E2116922D2 /* Pods-ForPigPyo.debug.xcconfig */,
+				F05C8132C0C21868C092BE71 /* Pods-ForPigPyo.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -225,7 +205,6 @@
 				6E00CFAE25B9B51400FF1E06 /* Model */,
 				6E00CFAD25B9B50E00FF1E06 /* View */,
 				6E00CFAC25B9B50600FF1E06 /* Controller */,
-				6E00CFB925B9C28B00FF1E06 /* Extension */,
 			);
 			path = SavingAdminVC;
 			sourceTree = "<group>";
@@ -252,14 +231,6 @@
 			children = (
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		6E00CFB925B9C28B00FF1E06 /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				6E00CFBA25B9C2CC00FF1E06 /* SavingAdminVCTableView.swift */,
-			);
-			path = Extension;
 			sourceTree = "<group>";
 		};
 		6E00CFC225B9C85800FF1E06 /* AddSavingVC */ = {
@@ -302,7 +273,6 @@
 				6E057B2525517C160063444C /* Model */,
 				6E057B2625517C160063444C /* View */,
 				6E057B2425517C160063444C /* Controller */,
-				6ED072A725529970000EE881 /* Extension */,
 			);
 			path = MyPageVC;
 			sourceTree = "<group>";
@@ -520,7 +490,7 @@
 				6E8CFFF0255175390002D202 /* ForPigPyoUITests */,
 				6E8CFFCA255175350002D202 /* Products */,
 				4DAD3C0F9256E88523BAE64B /* Pods */,
-				106BDC16013824975B909E1E /* Frameworks */,
+				84C97652D9798BA21C547D24 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -546,6 +516,7 @@
 				6E8CFFD8255175380002D202 /* Assets.xcassets */,
 				6E8CFFDA255175380002D202 /* LaunchScreen.storyboard */,
 				6E8CFFDD255175380002D202 /* Info.plist */,
+				6E83A86325E3580B009561E2 /* GoogleService-Info.plist */,
 				6E8CFFD5255175350002D202 /* ForPigPyo.xcdatamodeld */,
 			);
 			path = ForPigPyo;
@@ -575,7 +546,6 @@
 				6E9076DC25794D120079C164 /* Model */,
 				6E9076DD25794D1C0079C164 /* View */,
 				6E9076DB25794D050079C164 /* Controller */,
-				6E9076F6257A64D30079C164 /* Extension */,
 			);
 			path = EmailVC;
 			sourceTree = "<group>";
@@ -602,22 +572,6 @@
 				6E9076F1257A52190079C164 /* EmailView.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		6E9076F6257A64D30079C164 /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				6EAAABA8257E6B89006758BF /* EmailVCMailCompose.swift */,
-			);
-			path = Extension;
-			sourceTree = "<group>";
-		};
-		6EA06BD9255C7FED0070F062 /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				6EAAABA0257E6AE6006758BF /* PartTimeVCTableView.swift */,
-			);
-			path = Extension;
 			sourceTree = "<group>";
 		};
 		6EA2C5862571132800E994A8 /* Design */ = {
@@ -651,7 +605,6 @@
 				6EBE4B5A25541BAF00CA73E9 /* Model */,
 				6EBE4B5B25541BAF00CA73E9 /* View */,
 				6EBE4B5825541BAF00CA73E9 /* Controller */,
-				6EA06BD9255C7FED0070F062 /* Extension */,
 			);
 			name = PartTimeVC;
 			path = ForPigPyo/FirstTab/PartTime/PartTimeVC;
@@ -683,15 +636,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		6ED072A725529970000EE881 /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				6EAAABB3257E6BDD006758BF /* MyPageVCTableView.swift */,
-				6EAAABE7257FD647006758BF /* MyPageVCPickerView.swift */,
-			);
-			path = Extension;
-			sourceTree = "<group>";
-		};
 		6EFF5AFD2553F715007BAAF2 /* FirstTab */ = {
 			isa = PBXGroup;
 			children = (
@@ -702,15 +646,6 @@
 				6E9076DA25794CE60079C164 /* EmailVC */,
 			);
 			path = FirstTab;
-			sourceTree = "<group>";
-		};
-		6EFF5AFE2553F715007BAAF2 /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				6EAAAB98257E694B006758BF /* HomeVCCollectionView.swift */,
-				6E807C80257288DC00337550 /* HomeVCImagePicker.swift */,
-			);
-			path = Extension;
 			sourceTree = "<group>";
 		};
 		6EFF5B062553F715007BAAF2 /* Controller */ = {
@@ -744,7 +679,6 @@
 				6EFF5B082553F715007BAAF2 /* Model */,
 				6EFF5B0A2553F715007BAAF2 /* View */,
 				6EFF5B062553F715007BAAF2 /* Controller */,
-				6EFF5AFE2553F715007BAAF2 /* Extension */,
 			);
 			path = HomeVC;
 			sourceTree = "<group>";
@@ -757,6 +691,14 @@
 			path = LastTab;
 			sourceTree = "<group>";
 		};
+		84C97652D9798BA21C547D24 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				276F60824C1B64E8022B38B9 /* Pods_ForPigPyo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -764,13 +706,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6E8CFFF6255175390002D202 /* Build configuration list for PBXNativeTarget "ForPigPyo" */;
 			buildPhases = (
-				80266C11B8706709E21A1264 /* [CP] Check Pods Manifest.lock */,
+				8746539A04DC68B48E3BBA7D /* [CP] Check Pods Manifest.lock */,
 				D23AB8ADF62471C698DC003A /* [CP] Prepare Artifacts */,
 				6E8CFFC5255175350002D202 /* Sources */,
 				6E8CFFC6255175350002D202 /* Frameworks */,
 				6E8CFFC7255175350002D202 /* Resources */,
 				6E881C2D25DFD278009D343E /* Run Script */,
-				BABA6130123BCD726F6EF7BB /* [CP] Embed Pods Frameworks */,
+				3E1E7E5EC597F4BCFB2DB100 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -867,6 +809,7 @@
 			files = (
 				6E13DB8425DFF870004FFF8F /* .swiftlint.yml in Resources */,
 				6E8CFFDC255175380002D202 /* LaunchScreen.storyboard in Resources */,
+				6E83A86425E3580B009561E2 /* GoogleService-Info.plist in Resources */,
 				6EC70C9B25B2D461004D1900 /* NotoSansCJKkr-Medium.otf in Resources */,
 				6EC70C9525B2A337004D1900 /* NotoSansCJKkr-Bold.otf in Resources */,
 				6EC70C9625B2A337004D1900 /* NotoSansCJKkr-Black.otf in Resources */,
@@ -897,6 +840,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3E1E7E5EC597F4BCFB2DB100 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ForPigPyo/Pods-ForPigPyo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ForPigPyo/Pods-ForPigPyo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ForPigPyo/Pods-ForPigPyo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		6E881C2D25DFD278009D343E /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 12;
@@ -915,7 +875,7 @@
 			shellPath = /bin/sh;
 			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
 		};
-		80266C11B8706709E21A1264 /* [CP] Check Pods Manifest.lock */ = {
+		8746539A04DC68B48E3BBA7D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -935,23 +895,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BABA6130123BCD726F6EF7BB /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ForPigPyo/Pods-ForPigPyo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ForPigPyo/Pods-ForPigPyo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ForPigPyo/Pods-ForPigPyo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D23AB8ADF62471C698DC003A /* [CP] Prepare Artifacts */ = {
@@ -979,13 +922,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E00CFE625BACCFE00FF1E06 /* DoneDatePickerView.swift in Sources */,
-				6EAAAB99257E694B006758BF /* HomeVCCollectionView.swift in Sources */,
-				6E807C81257288DC00337550 /* HomeVCImagePicker.swift in Sources */,
 				6E00CFB025B9B54300FF1E06 /* SavingAdminView.swift in Sources */,
 				6EFF5B112553F715007BAAF2 /* HomeVC.swift in Sources */,
 				6EAAABC9257E8322006758BF /* HomeCustomItem.swift in Sources */,
 				6E807C782572740500337550 /* TextField.swift in Sources */,
-				6EAAABA9257E6B89006758BF /* EmailVCMailCompose.swift in Sources */,
 				6E9076F2257A52190079C164 /* EmailView.swift in Sources */,
 				6E26B3B125B9545E0025C998 /* SavingView.swift in Sources */,
 				6EAF7A9325BDF79800F91A39 /* EmptyView.swift in Sources */,
@@ -998,7 +938,6 @@
 				6EFF5B132553F715007BAAF2 /* HomeView.swift in Sources */,
 				6E26B39825B8078C0025C998 /* TimeDataVCModel.swift in Sources */,
 				6E8CFFD7255175350002D202 /* ForPigPyo.xcdatamodeld in Sources */,
-				6EAAABA1257E6AE6006758BF /* PartTimeVCTableView.swift in Sources */,
 				6E00D02A25BC20ED00FF1E06 /* DoneMonthYearPickerView.swift in Sources */,
 				6E13DBA925E2EBDB004FFF8F /* LoginView.swift in Sources */,
 				6E26B3C425B971BE0025C998 /* SetAimView.swift in Sources */,
@@ -1014,12 +953,9 @@
 				6E26B3A925B953490025C998 /* SavingVC.swift in Sources */,
 				6EAAABD6257E91B8006758BF /* MyPageHeaderCustomSection.swift in Sources */,
 				6EAAABE3257FC021006758BF /* MyPageData.swift in Sources */,
-				6EAAABE8257FD647006758BF /* MyPageVCPickerView.swift in Sources */,
 				6ED072982552934A000EE881 /* MyPageVC.swift in Sources */,
-				6EAAABB4257E6BDD006758BF /* MyPageVCTableView.swift in Sources */,
 				6E8CFFCD255175350002D202 /* AppDelegate.swift in Sources */,
 				6E26B38F25B6865F0025C998 /* PaddingLabel.swift in Sources */,
-				6E00CFBB25B9C2CC00FF1E06 /* SavingAdminVCTableView.swift in Sources */,
 				6E2A807025BC29C800D4B80B /* Date.swift in Sources */,
 				6EAF7A7925BC619200F91A39 /* MyPageView.swift in Sources */,
 				6EBE4B5E25541BB000CA73E9 /* PartTimeView.swift in Sources */,
@@ -1041,7 +977,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E8CFFE7255175390002D202 /* ForPigPyoTests.swift in Sources */,
+				6E4B8B3825E381D400B3AF09 /* ForPigPyoTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1198,7 +1134,7 @@
 		};
 		6E8CFFF7255175390002D202 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 42ECBD6378213DFBA6934C5F /* Pods-ForPigPyo.debug.xcconfig */;
+			baseConfigurationReference = 988121FD4A72D1E2116922D2 /* Pods-ForPigPyo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1206,6 +1142,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 453;
 				DEVELOPMENT_TEAM = 3799SNND63;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC/FBLPromises.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SnapKit/SnapKit.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
+					"\"${PODS_TARGET_SRCROOT}/Sources/FBLPromises/include\"",
+				);
 				INFOPLIST_FILE = ForPigPyo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1222,7 +1166,7 @@
 		};
 		6E8CFFF8255175390002D202 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C4C288D4B50B71138095F169 /* Pods-ForPigPyo.release.xcconfig */;
+			baseConfigurationReference = F05C8132C0C21868C092BE71 /* Pods-ForPigPyo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1230,6 +1174,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 453;
 				DEVELOPMENT_TEAM = 3799SNND63;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC/FBLPromises.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SnapKit/SnapKit.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
+					"\"${PODS_TARGET_SRCROOT}/Sources/FBLPromises/include\"",
+				);
 				INFOPLIST_FILE = ForPigPyo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1251,6 +1203,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3799SNND63;
+				HEADER_SEARCH_PATHS = "${SRCROOT}/Pods/Firebase/CoreOnly/Sources";
 				INFOPLIST_FILE = ForPigPyoTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1273,6 +1226,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3799SNND63;
+				HEADER_SEARCH_PATHS = "${SRCROOT}/Pods/Firebase/CoreOnly/Sources";
 				INFOPLIST_FILE = ForPigPyoTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (

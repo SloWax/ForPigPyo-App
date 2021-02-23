@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 import AuthenticationServices
 
 class LoginVC: UIViewController {
@@ -18,6 +20,9 @@ class LoginVC: UIViewController {
         
         return view
     }()
+    
+    let partTimeModel = PartTimeVCModel()
+    let savingModel = SavingVCModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,26 +40,92 @@ class LoginVC: UIViewController {
             $0.top.leading.trailing.bottom.equalToSuperview()
         }
     }
-    
     private func setupProviderLoginView() {
         let appleLoginButton = ASAuthorizationAppleIDButton()
         appleLoginButton.addTarget(self, action: #selector(handleAuthorizationAppleIDButtonPress), for: .touchUpInside)
-        appleLoginButton.cornerRadius = 25
         loginView.addSubview(appleLoginButton)
         
         appleLoginButton.snp.makeConstraints {
             
-            $0.bottom.equalToSuperview().multipliedBy(0.75)
-            $0.leading.trailing.equalToSuperview().inset(Design.padding)
+            $0.top.equalTo(loginView.titleLabel.snp.bottom).offset(Design.padding)
+            $0.centerX.equalToSuperview()
+            $0.width.equalToSuperview().multipliedBy(0.8)
             $0.height.equalTo(appleLoginButton.snp.width).multipliedBy(0.15)
         }
+    }
+    private func dataAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "모두의 앱 시작하기:)", style: .default) { _ in
+            
+            self.dismiss(animated: true)
+        }
+        
+        alert.addAction(okButton)
+        
+        present(alert, animated: true)
+    }
+    private func loadFromDB() {
+        let firestore = Firestore.firestore()
+        
+        if let userID = UserDefaults.standard.string(forKey: LoginVC.userID) {
+            let partTimeDoc = firestore.collection(userID).document(PartTimeVC.forkey)
+            let savingDoc = firestore.collection(userID).document(SavingVC.forkey)
+            
+            [partTimeDoc, savingDoc].forEach { (doc) in
+                switch doc {
+                case partTimeDoc:
+                    doc.getDocument { (document, _ ) in
+                        let result = Result {
+                            try document?.data(as: PayList.self)
+                        }
+                        switch result {
+                        case .success(let data):
+                            if let data = data {
+                                
+                                self.partTimeModel.saveData(data: data)
+                            } else {
+                                break
+                            }
+                        case .failure:
+                            break
+                        }
+                    }
+                case savingDoc:
+                    doc.getDocument { (document, _ ) in
+                        let result = Result {
+                            try document?.data(as: SavingList.self)
+                        }
+                        switch result {
+                        case .success(let data):
+                            if let data = data {
+                                
+                                self.savingModel.saveData(data: data)
+                            } else {
+                                break
+                            }
+                        case .failure:
+                            break
+                        }
+                    }
+                default:
+                    fatalError()
+                }
+            }
+        }
+        if let tabBarVC = presentingViewController as? MainTabVC {
+            if let myPageVC = tabBarVC.viewControllers?[1].children.first as? MyPageVC {
+                myPageVC.myPageView.tableView.reloadData()
+            }
+        }
+        
+        dismiss(animated: true)
     }
     
     @objc private func handleAuthorizationAppleIDButtonPress() {
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         let request = appleIDProvider.createRequest()
         let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-        
+
         authorizationController.delegate = self
         authorizationController.presentationContextProvider = self
         authorizationController.performRequests()
@@ -73,6 +144,6 @@ extension LoginVC: ASAuthorizationControllerDelegate, ASAuthorizationControllerP
         
         UserDefaults.standard.set(userIdentifier, forKey: LoginVC.userID)
         
-        dismiss(animated: true, completion: nil)
+        loadFromDB()
     }
 }

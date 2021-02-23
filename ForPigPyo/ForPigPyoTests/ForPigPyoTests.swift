@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import ForPigPyo
+@testable import Pods_ForPigPyo
 
 class ForPigPyoTests: XCTestCase {
 

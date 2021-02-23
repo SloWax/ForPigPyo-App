@@ -8,6 +8,8 @@
 
 import UIKit
 import SnapKit
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 class PartTimeVC: UIViewController {
     
@@ -160,6 +162,17 @@ class PartTimeVC: UIViewController {
         
         present(timeDataVC, animated: true)
     }
+    func backupToDB() {
+        let firestore = Firestore.firestore()
+        
+        if let userID = UserDefaults.standard.string(forKey: LoginVC.userID) {
+            do {
+                try firestore.collection(userID).document(PartTimeVC.forkey).setData(from: data)
+            } catch let error {
+                print("Error: \(error)")
+            }
+        }
+    }
     
     @objc private func addButton(_ sender: UIButton) {
         
@@ -210,5 +223,57 @@ class PartTimeVC: UIViewController {
         
         loadPartTimeValue(deduction: taxIndex % tax.count)
         myModel.saveTax(data: taxIndex % tax.count, forKey: MyPageData.MyPageVCTax)
+    }
+}
+
+extension PartTimeVC: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        let dataCount = data?.years[yearIndex].months[monthIndex].data.count ?? 0
+        
+        if dataCount == 0 {
+            partTimeView.emptyView.isHidden = false
+        } else {
+            partTimeView.emptyView.isHidden = true
+        }
+        
+        return dataCount
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: PartTimeCustomCell.identifier, for: indexPath) as? PartTimeCustomCell else { fatalError() }
+        cell.setValue(data: data?.years[yearIndex].months[monthIndex].data[indexPath.row])
+        
+        return cell
+    }
+}
+
+extension PartTimeVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        // tableView cell delete
+        switch editingStyle {
+        case .delete:
+            
+            data?.years[yearIndex].months[monthIndex].data.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            
+            loadPartTimeValue(deduction: taxIndex % tax.count)
+            model.saveData(data: data ?? PayList(years: [PayList.Year]()))
+        default:
+            fatalError()
+        }
+        
+        backupToDB()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        presentTimeDataVC(isAdd: false, saveIndex: indexPath.row)
     }
 }

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 class SavingVC: UIViewController {
     
@@ -64,6 +66,17 @@ class SavingVC: UIViewController {
         let thisMonthSave = model.thisMonthSaveCalcu(list: data)
         
         savingView.setValue(aimSaving: aimSaving, untilSaving: untilSaving, untilDay: untilDay, thisMonthSave: thisMonthSave)
+    }
+    func backupToDB() {
+        let firestore = Firestore.firestore()
+        
+        if let userID = UserDefaults.standard.string(forKey: LoginVC.userID) {
+            do {
+                try firestore.collection(userID).document(SavingVC.forkey).setData(from: data)
+            } catch let error {
+                print("Error: \(error)")
+            }
+        }
     }
     
     @objc private func pushSetAimVC(_ sender: UIButton) {

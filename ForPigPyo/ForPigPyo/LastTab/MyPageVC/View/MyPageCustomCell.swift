@@ -106,6 +106,10 @@ class MyPageCustomCell: UITableViewCell {
         case 2:
             
             return value ?? "미설정"
+        case 3:
+            
+            guard value == nil else { return "동기화 중" }
+            return "미설정"
         default:
             fatalError()
         }
@@ -113,7 +117,7 @@ class MyPageCustomCell: UITableViewCell {
     
     func setValue(image: String, title: String?, value: String?, row: Int) {
         
-        sectionImage.image = UIImage(named: image)
+        row == 3 ? (sectionImage.image = UIImage(systemName: image)) : (sectionImage.image = UIImage(named: image))
         titleLabel.attributedText = title?.underLine
         valueLabel.text = checkValue(row: row, value: value)
     }
