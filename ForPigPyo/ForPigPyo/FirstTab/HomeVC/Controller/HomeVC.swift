@@ -41,6 +41,7 @@ class HomeVC: UIViewController {
         home.partCollection.register(HomeCustomItem.self, forCellWithReuseIdentifier: HomeCustomItem.identifier)
         return home
     }()
+    private var loginAppearCount: Int = 0
     
     let model: HomeVCModel = HomeVCModel(menu: [HomeVCModel.Menu(title: "급여 계산기",
                                                                  subTitle: "이번 달엔 얼마나 받을까?",
@@ -53,8 +54,6 @@ class HomeVC: UIViewController {
                                                 HomeVCModel.Menu(title: "새로운 기능",
                                                                  subTitle: "원하는 기능을 보내주세요!",
                                                                  myPageMenu: [])])
-    
-    var loginAppearCount: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -174,5 +173,88 @@ class HomeVC: UIViewController {
         alert.addAction(resetButton)
         
         present(alert, animated: true)
+    }
+}
+
+extension HomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+    // 줄 간격
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        
+        return Design.largestPadding
+    }
+    // 행 간격
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        
+        return Design.padding
+    }
+    // 테두리
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        return Design.edge
+    }
+    // 아이템 사이즈
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let size = (collectionView.frame.width - (Design.edge.left + Design.edge.right) - (Design.padding * (Design.partLineCount - 1))) / Design.partLineCount
+        
+        return CGSize(width: size, height: size / 5)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return model.menu.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        guard let item = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCustomItem.identifier, for: indexPath) as? HomeCustomItem else { fatalError() }
+        item.setValue(title: model.menu[indexPath.row].title,
+                      subTitle: model.menu[indexPath.row].subTitle)
+        
+        return item
+    }
+}
+
+extension HomeVC: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let item = collectionView.cellForItem(at: indexPath) as? HomeCustomItem else { fatalError() }
+        
+        switch indexPath.item {
+        case 0:
+            let partVC = PartTimeVC()
+            
+            partVC.partTimeView.titleLabel.attributedText = item.titleLabel.text?.underLine
+            navigationController?.pushViewController(partVC, animated: true)
+        case 1:
+            let savingVC = SavingVC()
+            
+            savingVC.savingView.titleLabel.attributedText = item.titleLabel.text?.underLine
+            navigationController?.pushViewController(savingVC, animated: true)
+        case 2:
+            let emailVC = EmailVC()
+            
+            emailVC.emailView.titleLabel.attributedText = item.titleLabel.text?.underLine
+            navigationController?.pushViewController(emailVC, animated: true)
+        default:
+            fatalError()
+        }
+    }
+}
+
+extension HomeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        
+        picker.presentingViewController?.dismiss(animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        
+        let image = info[.originalImage] as? UIImage
+        
+        saveBackImage(image: image)
+        backImageView.image = image
+        
+        picker.presentingViewController?.dismiss(animated: true)
     }
 }
