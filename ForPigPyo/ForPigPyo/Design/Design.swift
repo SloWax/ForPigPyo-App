@@ -23,7 +23,7 @@ struct Design {
     
     // MARK: padding
     static let padding: CGFloat = 30
-    static let edge = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+    static let edge = UIEdgeInsets(top: 20, left: 15, bottom: 20, right: 15)
     static let tableEdge = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
     static let partLineCount: CGFloat = 1
     
