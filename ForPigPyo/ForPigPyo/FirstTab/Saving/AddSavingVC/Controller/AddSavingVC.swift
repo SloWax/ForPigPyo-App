@@ -25,7 +25,7 @@ class AddSavingVC: UIViewController {
     private let formatter = DateFormatter()
     private var year: String = ""
     private var month: String = ""
-    private lazy var dateBundle = [year, month]
+    private lazy var dateBundl = [year, month]
     
     var data: SavingList?
     private let model = SavingVCModel()
@@ -59,11 +59,11 @@ class AddSavingVC: UIViewController {
             $0.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
         }
         
-        datePickerView.monthYearPicker.onDateSelected = { (year: Int, month: Int) in
-            self.formatter.dateFormat = "yyyy-MM"
+        datePickerView.monthYearPicker.onDateSelected = { [weak self] (year: Int, month: Int) in
+            self?.formatter.dateFormat = "yyyy-MM"
             
-            let date = self.formatter.date(from: "\(year)-\(month)")
-            self.setDate(date: date ?? Date())
+            let date = self?.formatter.date(from: "\(year)-\(month)")
+            self?.setDate(date: date ?? Date())
     }
         datePickerView.doneButton.action = #selector(doneDate(_:))
         view.addSubview(datePickerView)

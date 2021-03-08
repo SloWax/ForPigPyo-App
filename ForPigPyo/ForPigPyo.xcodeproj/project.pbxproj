@@ -34,6 +34,7 @@
 		6E2A807025BC29C800D4B80B /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2A806F25BC29C800D4B80B /* Date.swift */; };
 		6E30889925541C43001D006F /* PartTimeCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E30889825541C43001D006F /* PartTimeCustomCell.swift */; };
 		6E4B8B3825E381D400B3AF09 /* ForPigPyoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8CFFE6255175390002D202 /* ForPigPyoTests.swift */; };
+		6E7E879A25ED1DFD001EA45D /* LoginVCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7E879925ED1DFD001EA45D /* LoginVCModel.swift */; };
 		6E807C782572740500337550 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E807C772572740500337550 /* TextField.swift */; };
 		6E807C8625728DD600337550 /* HomeVCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E807C8525728DD600337550 /* HomeVCModel.swift */; };
 		6E83A86425E3580B009561E2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6E83A86325E3580B009561E2 /* GoogleService-Info.plist */; };
@@ -118,6 +119,7 @@
 		6E26B3C325B971BE0025C998 /* SetAimView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAimView.swift; sourceTree = "<group>"; };
 		6E2A806F25BC29C800D4B80B /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		6E30889825541C43001D006F /* PartTimeCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartTimeCustomCell.swift; sourceTree = "<group>"; };
+		6E7E879925ED1DFD001EA45D /* LoginVCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVCModel.swift; sourceTree = "<group>"; };
 		6E807C772572740500337550 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		6E807C8525728DD600337550 /* HomeVCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVCModel.swift; sourceTree = "<group>"; };
 		6E83A82F25E2F7B5009561E2 /* ForPigPyo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ForPigPyo.entitlements; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 		6E13DBA125E2E66D004FFF8F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6E7E879925ED1DFD001EA45D /* LoginVCModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -957,6 +960,7 @@
 				6E8CFFCD255175350002D202 /* AppDelegate.swift in Sources */,
 				6E26B38F25B6865F0025C998 /* PaddingLabel.swift in Sources */,
 				6E2A807025BC29C800D4B80B /* Date.swift in Sources */,
+				6E7E879A25ED1DFD001EA45D /* LoginVCModel.swift in Sources */,
 				6EAF7A7925BC619200F91A39 /* MyPageView.swift in Sources */,
 				6EBE4B5E25541BB000CA73E9 /* PartTimeView.swift in Sources */,
 				6E13DB9A25E2D46B004FFF8F /* LoginVC.swift in Sources */,
@@ -1140,7 +1144,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ForPigPyo/ForPigPyo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 453;
+				CURRENT_PROJECT_VERSION = 485;
 				DEVELOPMENT_TEAM = 3799SNND63;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1156,7 +1160,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.0;
+				MARKETING_VERSION = 2.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = SloWax.ForPigPyo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1172,7 +1176,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ForPigPyo/ForPigPyo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 453;
+				CURRENT_PROJECT_VERSION = 485;
 				DEVELOPMENT_TEAM = 3799SNND63;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1188,7 +1192,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.0;
+				MARKETING_VERSION = 2.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = SloWax.ForPigPyo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

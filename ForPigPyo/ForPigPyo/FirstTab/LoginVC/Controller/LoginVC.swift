@@ -21,6 +21,7 @@ class LoginVC: UIViewController {
         return view
     }()
     
+    let loginVCModel = LoginVCModel()
     let partTimeModel = PartTimeVCModel()
     let savingModel = SavingVCModel()
     
@@ -65,53 +66,9 @@ class LoginVC: UIViewController {
         present(alert, animated: true)
     }
     private func loadFromDB() {
-        let firestore = Firestore.firestore()
         
-        if let userID = UserDefaults.standard.string(forKey: LoginVC.userID) {
-            let partTimeDoc = firestore.collection(userID).document(PartTimeVC.forkey)
-            let savingDoc = firestore.collection(userID).document(SavingVC.forkey)
-            
-            [partTimeDoc, savingDoc].forEach { (doc) in
-                switch doc {
-                case partTimeDoc:
-                    doc.getDocument { (document, _ ) in
-                        let result = Result {
-                            try document?.data(as: PayList.self)
-                        }
-                        switch result {
-                        case .success(let data):
-                            if let data = data {
-                                
-                                self.partTimeModel.saveData(data: data)
-                            } else {
-                                break
-                            }
-                        case .failure:
-                            break
-                        }
-                    }
-                case savingDoc:
-                    doc.getDocument { (document, _ ) in
-                        let result = Result {
-                            try document?.data(as: SavingList.self)
-                        }
-                        switch result {
-                        case .success(let data):
-                            if let data = data {
-                                
-                                self.savingModel.saveData(data: data)
-                            } else {
-                                break
-                            }
-                        case .failure:
-                            break
-                        }
-                    }
-                default:
-                    fatalError()
-                }
-            }
-        }
+        loginVCModel.loadFromDB()
+        
         if let tabBarVC = presentingViewController as? MainTabVC {
             if let myPageVC = tabBarVC.viewControllers?[1].children.first as? MyPageVC {
                 myPageVC.myPageView.tableView.reloadData()
