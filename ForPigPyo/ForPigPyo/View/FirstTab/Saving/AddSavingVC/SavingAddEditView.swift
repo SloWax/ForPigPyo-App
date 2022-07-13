@@ -27,7 +27,10 @@ class SavingAddEditView: UIView {
     }()
     let saveSumView: ContainerView = {
         let view = ContainerView()
-        let attributes = [NSAttributedString.Key.foregroundColor: Design.textBasic.withAlphaComponent(0.5), .font: Design.boldNomalTextSize]
+        let attributes: [NSAttributedString.Key: Any?] = [
+            .foregroundColor: UIColor.setCustomColor(.textBasic, alpha: 0.5),
+            .font: Design.boldNomalTextSize
+        ]
         view.label1.text = "저축액:"
         view.label2.text = "원"
         
@@ -38,7 +41,7 @@ class SavingAddEditView: UIView {
     
     let saveButton: UIButton = {
         let button = UIButton(type: .system)
-        button.backgroundColor = Design.yellow
+        button.backgroundColor = .setCustomColor(.yellow)
         
         button.setTitle("저장", for: .normal)
         button.titleLabel?.font = Design.boldNomalTextSize

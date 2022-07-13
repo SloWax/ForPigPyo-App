@@ -21,7 +21,7 @@ class PartTimeView: UIView {
     
     let dateLabel: UILabel = {
         let label = UILabel()
-        label.textColor = Design.textBasic
+        label.textColor = .setCustomColor(.textBasic)
         label.font = Design.headerTextSize
         
         return label
@@ -53,9 +53,9 @@ class PartTimeView: UIView {
     }()
     let taxButton: UIButton = {
         let button = UIButton(type: .system)
-        button.tintColor = Design.textBasic
+        button.tintColor = .setCustomColor(.textBasic)
         button.titleLabel?.font = Design.boldSmallTextSize
-        button.backgroundColor = Design.gray
+        button.backgroundColor = .setCustomColor(.gray)
         button.layer.cornerRadius = Design.oneFifthCornerRadius
         
         return button
@@ -80,7 +80,7 @@ class PartTimeView: UIView {
         button.tintColor = .systemBackground
         button.setTitle("근무 추가", for: .normal)
         button.titleLabel?.font = Design.boldNomalTextSize
-        button.backgroundColor = Design.yellow
+        button.backgroundColor = .setCustomColor(.yellow)
         button.layer.cornerRadius = Design.cornerRadius
         
         return button

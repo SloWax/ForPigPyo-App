@@ -29,7 +29,7 @@ extension UITextField {
         
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneButtonAction))
-        done.tintColor = Design.textBasic
+        done.tintColor = .setCustomColor(.textBasic)
         
         let items = [flexSpace, done]
         doneToolbar.items = items

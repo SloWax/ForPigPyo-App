@@ -10,16 +10,6 @@ import UIKit
 import Foundation
 
 struct Design {
-    // MARK: backgroundColor
-    static let purple: UIColor = UIColor(displayP3Red: 203/255, green: 166/255, blue: 249/255, alpha: 1)
-    static let lightGray: UIColor = UIColor(displayP3Red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
-    static let gray: UIColor = UIColor(displayP3Red: 221/255, green: 221/255, blue: 221/255, alpha: 1)
-    static let yellow: UIColor = UIColor(displayP3Red: 255/255, green: 209/255, blue: 0/255, alpha: 1)
-    
-    // MARK: textColor
-    static let textBasic: UIColor = UIColor(displayP3Red: 57/255, green: 57/255, blue: 57/255, alpha: 1)
-    static let textRedSun: UIColor = UIColor(displayP3Red: 237/255, green: 99/255, blue: 99/255, alpha: 1)
-    static let textBlueSat: UIColor = UIColor(displayP3Red: 111/255, green: 116/255, blue: 234/255, alpha: 1)
     
     // MARK: padding
     static let padding: CGFloat = 30

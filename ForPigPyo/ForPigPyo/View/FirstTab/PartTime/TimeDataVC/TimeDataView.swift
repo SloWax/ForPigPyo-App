@@ -23,7 +23,7 @@ class TimeDataView: UIView {
     let dismissButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "xmark"), for: .normal)
-        button.tintColor = Design.textBasic
+        button.tintColor = .setCustomColor(.textBasic)
         
         return button
     }()
@@ -109,23 +109,23 @@ class TimeDataView: UIView {
         return label
     }()
     let previewLabel: PaddingLabel = {
-    let label = PaddingLabel(padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: Design.largePadding))
-    label.text = "0 원"
-    label.backgroundColor = Design.lightGray
-    label.layer.cornerRadius = Design.cornerRadius
-    label.layer.borderColor = Design.yellow.cgColor
-    label.layer.borderWidth = 2
-    label.clipsToBounds = true
-    label.textAlignment = .right
-    
-    return label
-}()
+        let label = PaddingLabel(padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: Design.largePadding))
+        label.text = "0 원"
+        label.backgroundColor = .setCustomColor(.lightGray)
+        label.layer.cornerRadius = Design.cornerRadius
+        label.layer.borderColor = UIColor.setCustomColor(.yellow).cgColor
+        label.layer.borderWidth = 2
+        label.clipsToBounds = true
+        label.textAlignment = .right
+        
+        return label
+    }()
     let saveButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("저장", for: .normal)
         button.titleLabel?.font = Design.boldNomalTextSize
         button.layer.cornerRadius = Design.cornerRadius
-        button.backgroundColor = Design.yellow
+        button.backgroundColor = .setCustomColor(.yellow)
         button.tintColor = .systemBackground
         
         return button
@@ -319,7 +319,10 @@ class TimeDataView: UIView {
                 $0.trailing.equalTo(containerView.label2.snp.leading).offset(-Design.smallPadding)
             }
             
-            let attributes = [NSAttributedString.Key.foregroundColor: Design.textBasic.withAlphaComponent(0.5), .font: Design.nomalTextSize]
+            let attributes: [NSAttributedString.Key: Any?] = [
+                .foregroundColor: UIColor.setCustomColor(.textBasic, alpha: 0.5),
+                .font: Design.nomalTextSize
+            ]
             
             if containerView == hourlyWageView {
                 

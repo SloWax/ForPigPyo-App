@@ -20,7 +20,7 @@ class DoneMonthYearPickerView: UIView {
         let button = UIBarButtonItem()
         button.title = "Done"
         button.style = .done
-        button.tintColor = Design.textBasic
+        button.tintColor = .setCustomColor(.textBasic)
         
         return button
     }()
@@ -41,9 +41,9 @@ class DoneMonthYearPickerView: UIView {
     
     private func setDoneButton() {
         let titleButton = UIBarButtonItem(title: "저축월  ", style: .plain, target: nil, action: nil)
-        let backColor: UIColor = Design.textBasic.withAlphaComponent(0.5)
+        let backColor: UIColor = .setCustomColor(.textBasic, alpha: 0.5)
         titleButton.isEnabled = false
-        titleButton.setTitleTextAttributes([.foregroundColor: backColor.withAlphaComponent(0.75)], for: .disabled)
+        titleButton.setTitleTextAttributes([.foregroundColor: backColor], for: .disabled)
         
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let items = [flexSpace, flexSpace, titleButton, flexSpace, doneButton]

@@ -18,14 +18,14 @@ class SavingView: UIView {
     }()
     let setAimButton: UIButton = {
         let button = UIButton(type: .system)
-        button.backgroundColor = Design.lightGray
+        button.backgroundColor = .setCustomColor(.lightGray)
         
         button.setTitle("목표 설정", for: .normal)
         button.titleLabel?.font = Design.boldSmallTextSize
-        button.tintColor = Design.textBasic
+        button.tintColor = .setCustomColor(.textBasic)
         
         button.layer.cornerRadius = Design.twentyCornerRadius
-        button.layer.borderColor = Design.yellow.cgColor
+        button.layer.borderColor = UIColor.setCustomColor(.yellow).cgColor
         button.layer.borderWidth = 2
         
         return button
@@ -67,7 +67,7 @@ class SavingView: UIView {
     
     let savingAdminButton: UIButton = {
         let button = UIButton(type: .system)
-        button.backgroundColor = Design.yellow
+        button.backgroundColor = .setCustomColor(.yellow)
         
         button.setTitle("저축액 관리하기", for: .normal)
         button.titleLabel?.font = Design.boldNomalTextSize

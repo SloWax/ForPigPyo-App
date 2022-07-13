@@ -20,7 +20,7 @@ class EmptyView: UIView {
     private let explainLabel: UILabel = {
         let label = UILabel()
         label.font = Design.boldNomalTextSize
-        label.textColor = Design.textBasic
+        label.textColor = .setCustomColor(.textBasic)
         label.textAlignment = .center
         label.numberOfLines = 0
         

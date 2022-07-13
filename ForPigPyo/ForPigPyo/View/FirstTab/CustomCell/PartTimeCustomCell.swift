@@ -89,7 +89,7 @@ class PartTimeCustomCell: UITableViewCell {
     private func setDate() {
         
         [dateLabel, weekDayLabel].forEach {
-            $0.textColor = Design.textBasic
+            $0.textColor = .setCustomColor(.textBasic)
             $0.font = Design.boldSmallTextSize
         }
         
@@ -164,7 +164,7 @@ class PartTimeCustomCell: UITableViewCell {
         
         [overTime, nightTime, overNightTime].forEach {
             
-            $0.textColor = Design.textBasic
+            $0.textColor = .setCustomColor(.textBasic)
             $0.font = Design.boldSmallTextSize
         }
         
@@ -193,7 +193,7 @@ class PartTimeCustomCell: UITableViewCell {
         
         [hourlyWageValue, totalWorkValue, dayPayValue].forEach {
             
-            $0.textColor = Design.textBasic
+            $0.textColor = .setCustomColor(.textBasic)
             $0.font = Design.boldSmallTextSize
         }
         
@@ -262,13 +262,13 @@ class PartTimeCustomCell: UITableViewCell {
         switch weakDay {
         case "일":
             
-            label.textColor = Design.textRedSun
+            label.textColor = .setCustomColor(.textRed)
         case "토":
             
-            label.textColor = Design.textBlueSat
+            label.textColor = .setCustomColor(.textBlue)
         default:
             
-            label.textColor = Design.textBasic
+            label.textColor = .setCustomColor(.textBasic)
         }
     }
     

@@ -45,7 +45,7 @@ class EmailView: UIView {
         button.tintColor = .systemBackground
         button.setTitle("email 보내기", for: .normal)
         button.titleLabel?.font = Design.boldNomalTextSize
-        button.backgroundColor = Design.yellow
+        button.backgroundColor = .setCustomColor(.yellow)
         button.layer.cornerRadius = Design.cornerRadius
         
         return button

@@ -16,19 +16,19 @@ class MyPageCustomCell: UITableViewCell {
     
     private let sectionImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.tintColor = Design.textBasic
+        imageView.tintColor = .setCustomColor(.textBasic)
         
         return imageView
     }()
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = Design.textBasic
+        label.textColor = .setCustomColor(.textBasic)
         
         return label
     }()
     private let valueLabel: UILabel = {
         let label = UILabel()
-        label.textColor = Design.textBasic
+        label.textColor = .setCustomColor(.textBasic)
         label.text = "미설정"
         
         return label
@@ -38,7 +38,7 @@ class MyPageCustomCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         self.selectionStyle = .none
-        contentView.backgroundColor = Design.lightGray
+        contentView.backgroundColor = .setCustomColor(.lightGray)
         
         setSectionImage()
         setTitleLabel()

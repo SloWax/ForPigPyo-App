@@ -32,9 +32,10 @@ extension String {
         
         let lineStyle = NSUnderlineStyle.init(rawValue: 20).rawValue
         let attributes: [NSAttributedString.Key: Any] = [
-            NSAttributedString.Key.underlineStyle: lineStyle,
-            NSAttributedString.Key.foregroundColor: Design.textBasic,
-            NSAttributedString.Key.underlineColor: Design.yellow]
+            .underlineStyle: lineStyle,
+            .foregroundColor: UIColor.setCustomColor(.textBasic),
+            .underlineColor: UIColor.setCustomColor(.yellow)
+        ]
 
         let attributedString = NSAttributedString(string: self, attributes: attributes)
         

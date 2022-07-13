@@ -48,7 +48,7 @@ class SavingAdminView: UIView {
         button.tintColor = .systemBackground
         button.setTitle("저축 추가", for: .normal)
         button.titleLabel?.font = Design.boldNomalTextSize
-        button.backgroundColor = Design.yellow
+        button.backgroundColor = .setCustomColor(.yellow)
         button.layer.cornerRadius = Design.cornerRadius
         
         return button

@@ -23,7 +23,7 @@ class MainTabVC: UITabBarController {
         
         viewControllers = [homeVC, myPageVC]
         
-        tabBar.tintColor = Design.textBasic
+        tabBar.tintColor = .setCustomColor(.textBasic)
     }
     
     func makeNaviController(tabBarImage: String, rootViewController: UIViewController = UIViewController()) -> UINavigationController {
@@ -32,7 +32,7 @@ class MainTabVC: UITabBarController {
         
         naviController.tabBarItem.image = UIImage(named: tabBarImage)
         
-        naviController.navigationBar.tintColor = Design.textBasic
+        naviController.navigationBar.tintColor = .setCustomColor(.textBasic)
         naviController.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: Design.boldNomalTextSize ?? UIFont()]
         
         naviController.navigationBar.setBackgroundImage(UIImage(), for: .default)

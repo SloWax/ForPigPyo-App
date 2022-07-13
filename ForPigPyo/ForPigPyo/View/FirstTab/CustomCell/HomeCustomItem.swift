@@ -17,13 +17,13 @@ class HomeCustomItem: UICollectionViewCell {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = Design.textBasic
+        label.textColor = .setCustomColor(.textBasic)
         
         return label
     }()
     let subTitleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = Design.textBasic
+        label.textColor = .setCustomColor(.textBasic)
         
         return label
     }()
@@ -37,7 +37,7 @@ class HomeCustomItem: UICollectionViewCell {
     }
     private func setItem() {
         
-        self.backgroundColor = Design.lightGray
+        self.backgroundColor = .setCustomColor(.lightGray)
     }
     private func setTitleLabel() {
         
