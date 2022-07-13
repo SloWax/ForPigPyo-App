@@ -714,6 +714,7 @@
 				6E8CFFC6255175350002D202 /* Frameworks */,
 				6E8CFFC7255175350002D202 /* Resources */,
 				6E881C2D25DFD278009D343E /* Run Script */,
+				7D9C9C67CD5AAC3FCC38A480 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -858,6 +859,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
+		};
+		7D9C9C67CD5AAC3FCC38A480 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ForPigPyo/Pods-ForPigPyo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ForPigPyo/Pods-ForPigPyo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ForPigPyo/Pods-ForPigPyo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		8746539A04DC68B48E3BBA7D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
