@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		0D109DF815DAD86FA08A5A10 /* Pods_ForPigPyo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 276F60824C1B64E8022B38B9 /* Pods_ForPigPyo.framework */; };
+		3447A932287EA732003D1B0D /* PartTimeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3447A92B287EA732003D1B0D /* PartTimeVC.swift */; };
+		3447A933287EA732003D1B0D /* PartTimeVCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3447A92D287EA732003D1B0D /* PartTimeVCModel.swift */; };
+		3447A934287EA732003D1B0D /* PayList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3447A92E287EA732003D1B0D /* PayList.swift */; };
+		3447A935287EA732003D1B0D /* PartTimeCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3447A930287EA732003D1B0D /* PartTimeCustomCell.swift */; };
+		3447A936287EA732003D1B0D /* PartTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3447A931287EA732003D1B0D /* PartTimeView.swift */; };
 		6E00CFA725B9B4F800FF1E06 /* SavingAdminVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E00CFA625B9B4F800FF1E06 /* SavingAdminVC.swift */; };
 		6E00CFB025B9B54300FF1E06 /* SavingAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E00CFAF25B9B54300FF1E06 /* SavingAdminView.swift */; };
 		6E00CFB525B9B90B00FF1E06 /* SavingAdminCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E00CFB425B9B90B00FF1E06 /* SavingAdminCustomCell.swift */; };
@@ -32,7 +37,6 @@
 		6E26B3B625B96D260025C998 /* SetAimVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E26B3B525B96D260025C998 /* SetAimVC.swift */; };
 		6E26B3C425B971BE0025C998 /* SetAimView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E26B3C325B971BE0025C998 /* SetAimView.swift */; };
 		6E2A807025BC29C800D4B80B /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2A806F25BC29C800D4B80B /* Date.swift */; };
-		6E30889925541C43001D006F /* PartTimeCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E30889825541C43001D006F /* PartTimeCustomCell.swift */; };
 		6E4B8B3825E381D400B3AF09 /* ForPigPyoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8CFFE6255175390002D202 /* ForPigPyoTests.swift */; };
 		6E7E879A25ED1DFD001EA45D /* LoginVCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7E879925ED1DFD001EA45D /* LoginVCModel.swift */; };
 		6E807C782572740500337550 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E807C772572740500337550 /* TextField.swift */; };
@@ -61,10 +65,6 @@
 		6EAF7A7925BC619200F91A39 /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAF7A7825BC619200F91A39 /* MyPageView.swift */; };
 		6EAF7A8625BDACEA00F91A39 /* Underline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAF7A8525BDACEA00F91A39 /* Underline.swift */; };
 		6EAF7A9325BDF79800F91A39 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAF7A9225BDF79800F91A39 /* EmptyView.swift */; };
-		6EBE4B5D25541BB000CA73E9 /* PartTimeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBE4B5925541BAF00CA73E9 /* PartTimeVC.swift */; };
-		6EBE4B5E25541BB000CA73E9 /* PartTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBE4B5C25541BAF00CA73E9 /* PartTimeView.swift */; };
-		6EC1736A255C9B870023F365 /* PayList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC17369255C9B870023F365 /* PayList.swift */; };
-		6EC1736F255CAFC30023F365 /* PartTimeVCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC1736E255CAFC30023F365 /* PartTimeVCModel.swift */; };
 		6EC70C9525B2A337004D1900 /* NotoSansCJKkr-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6EC70C9325B2A336004D1900 /* NotoSansCJKkr-Bold.otf */; };
 		6EC70C9625B2A337004D1900 /* NotoSansCJKkr-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6EC70C9425B2A337004D1900 /* NotoSansCJKkr-Black.otf */; };
 		6EC70C9B25B2D461004D1900 /* NotoSansCJKkr-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6EC70C9A25B2D461004D1900 /* NotoSansCJKkr-Medium.otf */; };
@@ -94,6 +94,11 @@
 
 /* Begin PBXFileReference section */
 		276F60824C1B64E8022B38B9 /* Pods_ForPigPyo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ForPigPyo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3447A92B287EA732003D1B0D /* PartTimeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartTimeVC.swift; sourceTree = "<group>"; };
+		3447A92D287EA732003D1B0D /* PartTimeVCModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartTimeVCModel.swift; sourceTree = "<group>"; };
+		3447A92E287EA732003D1B0D /* PayList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayList.swift; sourceTree = "<group>"; };
+		3447A930287EA732003D1B0D /* PartTimeCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartTimeCustomCell.swift; sourceTree = "<group>"; };
+		3447A931287EA732003D1B0D /* PartTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartTimeView.swift; sourceTree = "<group>"; };
 		6E00CFA625B9B4F800FF1E06 /* SavingAdminVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingAdminVC.swift; sourceTree = "<group>"; };
 		6E00CFAF25B9B54300FF1E06 /* SavingAdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingAdminView.swift; sourceTree = "<group>"; };
 		6E00CFB425B9B90B00FF1E06 /* SavingAdminCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingAdminCustomCell.swift; sourceTree = "<group>"; };
@@ -118,7 +123,6 @@
 		6E26B3B525B96D260025C998 /* SetAimVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAimVC.swift; sourceTree = "<group>"; };
 		6E26B3C325B971BE0025C998 /* SetAimView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAimView.swift; sourceTree = "<group>"; };
 		6E2A806F25BC29C800D4B80B /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
-		6E30889825541C43001D006F /* PartTimeCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartTimeCustomCell.swift; sourceTree = "<group>"; };
 		6E7E879925ED1DFD001EA45D /* LoginVCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVCModel.swift; sourceTree = "<group>"; };
 		6E807C772572740500337550 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		6E807C8525728DD600337550 /* HomeVCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVCModel.swift; sourceTree = "<group>"; };
@@ -150,10 +154,6 @@
 		6EAF7A7825BC619200F91A39 /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
 		6EAF7A8525BDACEA00F91A39 /* Underline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Underline.swift; sourceTree = "<group>"; };
 		6EAF7A9225BDF79800F91A39 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
-		6EBE4B5925541BAF00CA73E9 /* PartTimeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartTimeVC.swift; sourceTree = "<group>"; };
-		6EBE4B5C25541BAF00CA73E9 /* PartTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartTimeView.swift; sourceTree = "<group>"; };
-		6EC17369255C9B870023F365 /* PayList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayList.swift; sourceTree = "<group>"; };
-		6EC1736E255CAFC30023F365 /* PartTimeVCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartTimeVCModel.swift; sourceTree = "<group>"; };
 		6EC70C9325B2A336004D1900 /* NotoSansCJKkr-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Bold.otf"; sourceTree = "<group>"; };
 		6EC70C9425B2A337004D1900 /* NotoSansCJKkr-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Black.otf"; sourceTree = "<group>"; };
 		6EC70C9A25B2D461004D1900 /* NotoSansCJKkr-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Medium.otf"; sourceTree = "<group>"; };
@@ -192,6 +192,124 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3447A91E287EA4DF003D1B0D /* App */ = {
+			isa = PBXGroup;
+			children = (
+				6E8CFFCC255175350002D202 /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		3447A91F287EA4EE003D1B0D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3447A927287EA690003D1B0D /* CustomUI */,
+				6E8C0002255175730002D202 /* MainTabVC */,
+				6EFF5AFD2553F715007BAAF2 /* FirstTab */,
+				6EFF5B182553F72B007BAAF2 /* LastTab */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3447A921287EA51D003D1B0D /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				6E83A82F25E2F7B5009561E2 /* ForPigPyo.entitlements */,
+				6E8CFFD8255175380002D202 /* Assets.xcassets */,
+				6E8CFFDA255175380002D202 /* LaunchScreen.storyboard */,
+				6E8CFFDD255175380002D202 /* Info.plist */,
+				6E83A86325E3580B009561E2 /* GoogleService-Info.plist */,
+				6E8CFFD5255175350002D202 /* ForPigPyo.xcdatamodeld */,
+			);
+			name = Resource;
+			sourceTree = "<group>";
+		};
+		3447A922287EA55F003D1B0D /* Base */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		3447A923287EA577003D1B0D /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				6E00CFD325BAA09000FF1E06 /* SavingList.swift */,
+				3447A92E287EA732003D1B0D /* PayList.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		3447A924287EA57A003D1B0D /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				6E807C772572740500337550 /* TextField.swift */,
+				6E26B39F25B83B190025C998 /* String.swift */,
+				6E2A806F25BC29C800D4B80B /* Date.swift */,
+				6EAF7A8525BDACEA00F91A39 /* Underline.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		3447A925287EA581003D1B0D /* Util */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		3447A926287EA589003D1B0D /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		3447A927287EA690003D1B0D /* CustomUI */ = {
+			isa = PBXGroup;
+			children = (
+				6E26B38225B553A60025C998 /* Font */,
+				6EFF5B092553F715007BAAF2 /* Design.swift */,
+				6E26B37D25B5539F0025C998 /* ContainerView.swift */,
+				6E26B38E25B6865F0025C998 /* PaddingLabel.swift */,
+				6EAAABF82580CFEC006758BF /* DonePickerView.swift */,
+				6E00CFE525BACCFE00FF1E06 /* DoneDatePickerView.swift */,
+				6E00D01625BC1C5500FF1E06 /* MonthYearPickerView.swift */,
+				6E00D02925BC20ED00FF1E06 /* DoneMonthYearPickerView.swift */,
+				6EAF7A9225BDF79800F91A39 /* EmptyView.swift */,
+			);
+			path = CustomUI;
+			sourceTree = "<group>";
+		};
+		3447A928287EA702003D1B0D /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				6E00CFB425B9B90B00FF1E06 /* SavingAdminCustomCell.swift */,
+				3447A930287EA732003D1B0D /* PartTimeCustomCell.swift */,
+				6EAAABC8257E8322006758BF /* HomeCustomItem.swift */,
+			);
+			path = CustomCell;
+			sourceTree = "<group>";
+		};
+		3447A929287EA732003D1B0D /* PartTimeVC */ = {
+			isa = PBXGroup;
+			children = (
+				3447A92B287EA732003D1B0D /* PartTimeVC.swift */,
+				3447A92D287EA732003D1B0D /* PartTimeVCModel.swift */,
+				3447A931287EA732003D1B0D /* PartTimeView.swift */,
+			);
+			path = PartTimeVC;
+			sourceTree = "<group>";
+		};
+		3447A937287EA94E003D1B0D /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				6EAAABD5257E91B8006758BF /* MyPageHeaderCustomSection.swift */,
+				6EAAABC3257E8275006758BF /* MyPageCustomCell.swift */,
+			);
+			path = CustomCell;
+			sourceTree = "<group>";
+		};
 		4DAD3C0F9256E88523BAE64B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,175 +322,50 @@
 		6E00CFAB25B9B4FC00FF1E06 /* SavingAdminVC */ = {
 			isa = PBXGroup;
 			children = (
-				6E00CFAE25B9B51400FF1E06 /* Model */,
-				6E00CFAD25B9B50E00FF1E06 /* View */,
-				6E00CFAC25B9B50600FF1E06 /* Controller */,
-			);
-			path = SavingAdminVC;
-			sourceTree = "<group>";
-		};
-		6E00CFAC25B9B50600FF1E06 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
+				6E00CFAF25B9B54300FF1E06 /* SavingAdminView.swift */,
 				6E00CFA625B9B4F800FF1E06 /* SavingAdminVC.swift */,
 			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		6E00CFAD25B9B50E00FF1E06 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				6E00CFAF25B9B54300FF1E06 /* SavingAdminView.swift */,
-				6E00CFB425B9B90B00FF1E06 /* SavingAdminCustomCell.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		6E00CFAE25B9B51400FF1E06 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
+			path = SavingAdminVC;
 			sourceTree = "<group>";
 		};
 		6E00CFC225B9C85800FF1E06 /* AddSavingVC */ = {
 			isa = PBXGroup;
 			children = (
-				6E00CFC525B9C87B00FF1E06 /* Model */,
-				6E00CFC425B9C87600FF1E06 /* View */,
-				6E00CFC325B9C86E00FF1E06 /* Controller */,
+				6E00CFC625B9C89D00FF1E06 /* AddSavingVC.swift */,
+				6E00CFCE25B9C8CB00FF1E06 /* SavingAddEditView.swift */,
 			);
 			path = AddSavingVC;
-			sourceTree = "<group>";
-		};
-		6E00CFC325B9C86E00FF1E06 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				6E00CFC625B9C89D00FF1E06 /* AddSavingVC.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		6E00CFC425B9C87600FF1E06 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				6E00CFCE25B9C8CB00FF1E06 /* SavingAddEditView.swift */,
-				6E00D02925BC20ED00FF1E06 /* DoneMonthYearPickerView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		6E00CFC525B9C87B00FF1E06 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		6E057B2325517C160063444C /* MyPageVC */ = {
 			isa = PBXGroup;
 			children = (
-				6E057B2525517C160063444C /* Model */,
-				6E057B2625517C160063444C /* View */,
-				6E057B2425517C160063444C /* Controller */,
-			);
-			path = MyPageVC;
-			sourceTree = "<group>";
-		};
-		6E057B2425517C160063444C /* Controller */ = {
-			isa = PBXGroup;
-			children = (
 				6ED072972552934A000EE881 /* MyPageVC.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		6E057B2525517C160063444C /* Model */ = {
-			isa = PBXGroup;
-			children = (
+				6EAF7A7825BC619200F91A39 /* MyPageView.swift */,
 				6EAAAB93257E3BC9006758BF /* MyPageVCModel.swift */,
 				6EAAABE2257FC021006758BF /* MyPageData.swift */,
 			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		6E057B2625517C160063444C /* View */ = {
-			isa = PBXGroup;
-			children = (
-				6EAAABC3257E8275006758BF /* MyPageCustomCell.swift */,
-				6EAAABD5257E91B8006758BF /* MyPageHeaderCustomSection.swift */,
-				6EAAABF82580CFEC006758BF /* DonePickerView.swift */,
-				6EAF7A7825BC619200F91A39 /* MyPageView.swift */,
-			);
-			path = View;
+			path = MyPageVC;
 			sourceTree = "<group>";
 		};
 		6E13DB9E25E2E65B004FFF8F /* LoginVC */ = {
 			isa = PBXGroup;
 			children = (
-				6E13DBA125E2E66D004FFF8F /* Model */,
-				6E13DBA025E2E66B004FFF8F /* View */,
-				6E13DB9F25E2E664004FFF8F /* Controller */,
-			);
-			path = LoginVC;
-			sourceTree = "<group>";
-		};
-		6E13DB9F25E2E664004FFF8F /* Controller */ = {
-			isa = PBXGroup;
-			children = (
+				6E7E879925ED1DFD001EA45D /* LoginVCModel.swift */,
+				6E13DBA825E2EBDB004FFF8F /* LoginView.swift */,
 				6E13DB9925E2D46B004FFF8F /* LoginVC.swift */,
 			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		6E13DBA025E2E66B004FFF8F /* View */ = {
-			isa = PBXGroup;
-			children = (
-				6E13DBA825E2EBDB004FFF8F /* LoginView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		6E13DBA125E2E66D004FFF8F /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				6E7E879925ED1DFD001EA45D /* LoginVCModel.swift */,
-			);
-			path = Model;
+			path = LoginVC;
 			sourceTree = "<group>";
 		};
 		6E26B36C25B54BB20025C998 /* TimeDataVC */ = {
 			isa = PBXGroup;
 			children = (
-				6E26B36D25B54BF00025C998 /* Model */,
-				6E26B36E25B54BF80025C998 /* View */,
-				6E26B36F25B54BFF0025C998 /* Controller */,
-			);
-			path = TimeDataVC;
-			sourceTree = "<group>";
-		};
-		6E26B36D25B54BF00025C998 /* Model */ = {
-			isa = PBXGroup;
-			children = (
 				6E26B39725B8078C0025C998 /* TimeDataVCModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		6E26B36E25B54BF80025C998 /* View */ = {
-			isa = PBXGroup;
-			children = (
 				6E26B37825B54E110025C998 /* TimeDataView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		6E26B36F25B54BFF0025C998 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
 				6E26B37025B54C2C0025C998 /* TimeDataVC.swift */,
 			);
-			path = Controller;
+			path = TimeDataVC;
 			sourceTree = "<group>";
 		};
 		6E26B38225B553A60025C998 /* Font */ = {
@@ -390,42 +383,17 @@
 		6E26B3A425B952EB0025C998 /* SavingVC */ = {
 			isa = PBXGroup;
 			children = (
-				6E26B3A725B9531E0025C998 /* Model */,
-				6E26B3A625B953160025C998 /* View */,
-				6E26B3A525B953070025C998 /* Controller */,
-			);
-			path = SavingVC;
-			sourceTree = "<group>";
-		};
-		6E26B3A525B953070025C998 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
+				6E00CFD825BAADA100FF1E06 /* SavingVCModel.swift */,
+				6E26B3B025B9545E0025C998 /* SavingView.swift */,
 				6E26B3A825B953490025C998 /* SavingVC.swift */,
 			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		6E26B3A625B953160025C998 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				6E26B3B025B9545E0025C998 /* SavingView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		6E26B3A725B9531E0025C998 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				6E00CFD325BAA09000FF1E06 /* SavingList.swift */,
-				6E00CFD825BAADA100FF1E06 /* SavingVCModel.swift */,
-			);
-			path = Model;
+			path = SavingVC;
 			sourceTree = "<group>";
 		};
 		6E26B3BA25B96D380025C998 /* PartTime */ = {
 			isa = PBXGroup;
 			children = (
-				6EBE4B5725541BAF00CA73E9 /* PartTimeVC */,
+				3447A929287EA732003D1B0D /* PartTimeVC */,
 				6E26B36C25B54BB20025C998 /* TimeDataVC */,
 			);
 			path = PartTime;
@@ -445,35 +413,10 @@
 		6E26B3BF25B96DA10025C998 /* SetAimVC */ = {
 			isa = PBXGroup;
 			children = (
-				6E26B3C225B96DBE0025C998 /* Model */,
-				6E26B3C125B96DB80025C998 /* View */,
-				6E26B3C025B96DB00025C998 /* Controller */,
-			);
-			path = SetAimVC;
-			sourceTree = "<group>";
-		};
-		6E26B3C025B96DB00025C998 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
+				6E26B3C325B971BE0025C998 /* SetAimView.swift */,
 				6E26B3B525B96D260025C998 /* SetAimVC.swift */,
 			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		6E26B3C125B96DB80025C998 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				6E26B3C325B971BE0025C998 /* SetAimView.swift */,
-				6E00CFE525BACCFE00FF1E06 /* DoneDatePickerView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		6E26B3C225B96DBE0025C998 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
+			path = SetAimVC;
 			sourceTree = "<group>";
 		};
 		6E8C0002255175730002D202 /* MainTabVC */ = {
@@ -510,17 +453,14 @@
 		6E8CFFCB255175350002D202 /* ForPigPyo */ = {
 			isa = PBXGroup;
 			children = (
-				6E83A82F25E2F7B5009561E2 /* ForPigPyo.entitlements */,
-				6EA2C5862571132800E994A8 /* Design */,
-				6E8CFFCC255175350002D202 /* AppDelegate.swift */,
-				6E8C0002255175730002D202 /* MainTabVC */,
-				6EFF5AFD2553F715007BAAF2 /* FirstTab */,
-				6EFF5B182553F72B007BAAF2 /* LastTab */,
-				6E8CFFD8255175380002D202 /* Assets.xcassets */,
-				6E8CFFDA255175380002D202 /* LaunchScreen.storyboard */,
-				6E8CFFDD255175380002D202 /* Info.plist */,
-				6E83A86325E3580B009561E2 /* GoogleService-Info.plist */,
-				6E8CFFD5255175350002D202 /* ForPigPyo.xcdatamodeld */,
+				3447A91E287EA4DF003D1B0D /* App */,
+				3447A922287EA55F003D1B0D /* Base */,
+				3447A923287EA577003D1B0D /* Entity */,
+				3447A924287EA57A003D1B0D /* Extension */,
+				3447A91F287EA4EE003D1B0D /* View */,
+				3447A925287EA581003D1B0D /* Util */,
+				3447A926287EA589003D1B0D /* Service */,
+				3447A921287EA51D003D1B0D /* Resource */,
 			);
 			path = ForPigPyo;
 			sourceTree = "<group>";
@@ -546,97 +486,11 @@
 		6E9076DA25794CE60079C164 /* EmailVC */ = {
 			isa = PBXGroup;
 			children = (
-				6E9076DC25794D120079C164 /* Model */,
-				6E9076DD25794D1C0079C164 /* View */,
-				6E9076DB25794D050079C164 /* Controller */,
-			);
-			path = EmailVC;
-			sourceTree = "<group>";
-		};
-		6E9076DB25794D050079C164 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				6E9076DE25794D3B0079C164 /* EmailVC.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		6E9076DC25794D120079C164 /* Model */ = {
-			isa = PBXGroup;
-			children = (
 				6EAAABDD257EA989006758BF /* EmailVCModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		6E9076DD25794D1C0079C164 /* View */ = {
-			isa = PBXGroup;
-			children = (
+				6E9076DE25794D3B0079C164 /* EmailVC.swift */,
 				6E9076F1257A52190079C164 /* EmailView.swift */,
 			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		6EA2C5862571132800E994A8 /* Design */ = {
-			isa = PBXGroup;
-			children = (
-				6E26B38225B553A60025C998 /* Font */,
-				6EFF5B092553F715007BAAF2 /* Design.swift */,
-				6E26B37D25B5539F0025C998 /* ContainerView.swift */,
-				6E26B38E25B6865F0025C998 /* PaddingLabel.swift */,
-				6E00D01625BC1C5500FF1E06 /* MonthYearPickerView.swift */,
-				6EAF7A9225BDF79800F91A39 /* EmptyView.swift */,
-				6EAAABEC2580CBFA006758BF /* Extension */,
-			);
-			path = Design;
-			sourceTree = "<group>";
-		};
-		6EAAABEC2580CBFA006758BF /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				6E807C772572740500337550 /* TextField.swift */,
-				6E26B39F25B83B190025C998 /* String.swift */,
-				6E2A806F25BC29C800D4B80B /* Date.swift */,
-				6EAF7A8525BDACEA00F91A39 /* Underline.swift */,
-			);
-			path = Extension;
-			sourceTree = "<group>";
-		};
-		6EBE4B5725541BAF00CA73E9 /* PartTimeVC */ = {
-			isa = PBXGroup;
-			children = (
-				6EBE4B5A25541BAF00CA73E9 /* Model */,
-				6EBE4B5B25541BAF00CA73E9 /* View */,
-				6EBE4B5825541BAF00CA73E9 /* Controller */,
-			);
-			name = PartTimeVC;
-			path = ForPigPyo/FirstTab/PartTime/PartTimeVC;
-			sourceTree = SOURCE_ROOT;
-		};
-		6EBE4B5825541BAF00CA73E9 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				6EBE4B5925541BAF00CA73E9 /* PartTimeVC.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		6EBE4B5A25541BAF00CA73E9 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				6EC17369255C9B870023F365 /* PayList.swift */,
-				6EC1736E255CAFC30023F365 /* PartTimeVCModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		6EBE4B5B25541BAF00CA73E9 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				6EBE4B5C25541BAF00CA73E9 /* PartTimeView.swift */,
-				6E30889825541C43001D006F /* PartTimeCustomCell.swift */,
-			);
-			path = View;
+			path = EmailVC;
 			sourceTree = "<group>";
 		};
 		6EFF5AFD2553F715007BAAF2 /* FirstTab */ = {
@@ -647,41 +501,17 @@
 				6E26B3BA25B96D380025C998 /* PartTime */,
 				6E26B3BB25B96D690025C998 /* Saving */,
 				6E9076DA25794CE60079C164 /* EmailVC */,
+				3447A928287EA702003D1B0D /* CustomCell */,
 			);
 			path = FirstTab;
-			sourceTree = "<group>";
-		};
-		6EFF5B062553F715007BAAF2 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				6EFF5B072553F715007BAAF2 /* HomeVC.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		6EFF5B082553F715007BAAF2 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				6E807C8525728DD600337550 /* HomeVCModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		6EFF5B0A2553F715007BAAF2 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				6EFF5B0B2553F715007BAAF2 /* HomeView.swift */,
-				6EAAABC8257E8322006758BF /* HomeCustomItem.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		6EFF5B0D2553F715007BAAF2 /* HomeVC */ = {
 			isa = PBXGroup;
 			children = (
-				6EFF5B082553F715007BAAF2 /* Model */,
-				6EFF5B0A2553F715007BAAF2 /* View */,
-				6EFF5B062553F715007BAAF2 /* Controller */,
+				6E807C8525728DD600337550 /* HomeVCModel.swift */,
+				6EFF5B0B2553F715007BAAF2 /* HomeView.swift */,
+				6EFF5B072553F715007BAAF2 /* HomeVC.swift */,
 			);
 			path = HomeVC;
 			sourceTree = "<group>";
@@ -689,6 +519,7 @@
 		6EFF5B182553F72B007BAAF2 /* LastTab */ = {
 			isa = PBXGroup;
 			children = (
+				3447A937287EA94E003D1B0D /* CustomCell */,
 				6E057B2325517C160063444C /* MyPageVC */,
 			);
 			path = LastTab;
@@ -912,29 +743,28 @@
 				6EAAABC9257E8322006758BF /* HomeCustomItem.swift in Sources */,
 				6E807C782572740500337550 /* TextField.swift in Sources */,
 				6E9076F2257A52190079C164 /* EmailView.swift in Sources */,
+				3447A935287EA732003D1B0D /* PartTimeCustomCell.swift in Sources */,
 				6E26B3B125B9545E0025C998 /* SavingView.swift in Sources */,
 				6EAF7A9325BDF79800F91A39 /* EmptyView.swift in Sources */,
 				6E00CFA725B9B4F800FF1E06 /* SavingAdminVC.swift in Sources */,
 				6E807C8625728DD600337550 /* HomeVCModel.swift in Sources */,
+				3447A932287EA732003D1B0D /* PartTimeVC.swift in Sources */,
 				6E26B3B625B96D260025C998 /* SetAimVC.swift in Sources */,
 				6EAAABF92580CFEC006758BF /* DonePickerView.swift in Sources */,
 				6EAAAB94257E3BC9006758BF /* MyPageVCModel.swift in Sources */,
-				6EC1736F255CAFC30023F365 /* PartTimeVCModel.swift in Sources */,
 				6EFF5B132553F715007BAAF2 /* HomeView.swift in Sources */,
 				6E26B39825B8078C0025C998 /* TimeDataVCModel.swift in Sources */,
 				6E8CFFD7255175350002D202 /* ForPigPyo.xcdatamodeld in Sources */,
 				6E00D02A25BC20ED00FF1E06 /* DoneMonthYearPickerView.swift in Sources */,
 				6E13DBA925E2EBDB004FFF8F /* LoginView.swift in Sources */,
 				6E26B3C425B971BE0025C998 /* SetAimView.swift in Sources */,
-				6E30889925541C43001D006F /* PartTimeCustomCell.swift in Sources */,
 				6E00CFD425BAA09000FF1E06 /* SavingList.swift in Sources */,
 				6EAAABC4257E8275006758BF /* MyPageCustomCell.swift in Sources */,
 				6E26B37925B54E110025C998 /* TimeDataView.swift in Sources */,
-				6EBE4B5D25541BB000CA73E9 /* PartTimeVC.swift in Sources */,
 				6EAAABDE257EA989006758BF /* EmailVCModel.swift in Sources */,
+				3447A933287EA732003D1B0D /* PartTimeVCModel.swift in Sources */,
 				6E26B37E25B5539F0025C998 /* ContainerView.swift in Sources */,
 				6E00CFCF25B9C8CB00FF1E06 /* SavingAddEditView.swift in Sources */,
-				6EC1736A255C9B870023F365 /* PayList.swift in Sources */,
 				6E26B3A925B953490025C998 /* SavingVC.swift in Sources */,
 				6EAAABD6257E91B8006758BF /* MyPageHeaderCustomSection.swift in Sources */,
 				6EAAABE3257FC021006758BF /* MyPageData.swift in Sources */,
@@ -944,17 +774,18 @@
 				6E2A807025BC29C800D4B80B /* Date.swift in Sources */,
 				6E7E879A25ED1DFD001EA45D /* LoginVCModel.swift in Sources */,
 				6EAF7A7925BC619200F91A39 /* MyPageView.swift in Sources */,
-				6EBE4B5E25541BB000CA73E9 /* PartTimeView.swift in Sources */,
 				6E13DB9A25E2D46B004FFF8F /* LoginVC.swift in Sources */,
 				6ED0728625529266000EE881 /* MainTabVC.swift in Sources */,
 				6EFF5B122553F715007BAAF2 /* Design.swift in Sources */,
 				6E00D01725BC1C5500FF1E06 /* MonthYearPickerView.swift in Sources */,
 				6E26B3A025B83B190025C998 /* String.swift in Sources */,
+				3447A936287EA732003D1B0D /* PartTimeView.swift in Sources */,
 				6E00CFD925BAADA100FF1E06 /* SavingVCModel.swift in Sources */,
 				6EAF7A8625BDACEA00F91A39 /* Underline.swift in Sources */,
 				6E9076DF25794D3B0079C164 /* EmailVC.swift in Sources */,
 				6E00CFB525B9B90B00FF1E06 /* SavingAdminCustomCell.swift in Sources */,
 				6E00CFC725B9C89D00FF1E06 /* AddSavingVC.swift in Sources */,
+				3447A934287EA732003D1B0D /* PayList.swift in Sources */,
 				6E26B37125B54C2C0025C998 /* TimeDataVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
