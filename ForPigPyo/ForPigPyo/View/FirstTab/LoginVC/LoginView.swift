@@ -19,7 +19,7 @@ class LoginView: UIView {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = Design.headerTextSize
+        label.font = .setCustomFont(font: .black, size: 26)
         label.attributedText = "모두의 앱 로그인".underLine
         
         return label

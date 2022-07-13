@@ -12,7 +12,7 @@ class MyPageView: UIView {
 
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = Design.boldNomalTextSize
+        label.font = .setCustomFont(font: .bold, size: 20)
         label.attributedText = "내 정보".underLine
         
         return label

@@ -14,7 +14,7 @@ class EmailView: UIView {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = Design.headerTextSize
+        label.font = .setCustomFont(font: .black, size: 26)
         
         return label
     }()
@@ -23,7 +23,7 @@ class EmailView: UIView {
         let view = ContainerView()
         view.layer.cornerRadius = Design.cornerRadius
         
-        view.label1.font = Design.boldNomalTextSize
+        view.label1.font = .setCustomFont(font: .bold, size: 20)
         view.label1.numberOfLines = 0
         view.label1.text = """
 원하는 기능을 메일에 적어서 보내주세요. 짬짬이 개발해 추가하겠습니다!
@@ -34,7 +34,7 @@ class EmailView: UIView {
         attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: attrString.length))
         view.label1.attributedText = attrString
         
-        view.label2.font = Design.boldNomalTextSize
+        view.label2.font = .setCustomFont(font: .bold, size: 20)
         view.label2.text = "- 모두의 개발진"
         
         return view
@@ -44,7 +44,7 @@ class EmailView: UIView {
         let button = UIButton(type: .system)
         button.tintColor = .systemBackground
         button.setTitle("email 보내기", for: .normal)
-        button.titleLabel?.font = Design.boldNomalTextSize
+        button.titleLabel?.font = .setCustomFont(font: .bold, size: 20)
         button.backgroundColor = .setCustomColor(.yellow)
         button.layer.cornerRadius = Design.cornerRadius
         

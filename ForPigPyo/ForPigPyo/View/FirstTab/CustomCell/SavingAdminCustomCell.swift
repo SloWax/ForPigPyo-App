@@ -20,7 +20,7 @@ class SavingAdminCustomCell: UITableViewCell {
         
         view.label3.text = "10,000 원"
         
-        view.labelBundle.forEach { $0.font = Design.boldNomalTextSize }
+        view.labelBundle.forEach { $0.font = .setCustomFont(font: .bold, size: 20) }
         
         return view
     }()

@@ -17,7 +17,7 @@ class MyPageHeaderCustomSection: UITableViewHeaderFooterView {
     private let headerLabel: UILabel = {
         let label = UILabel()
         label.textColor = .setCustomColor(.textBasic)
-        label.font = Design.boldNomalTextSize
+        label.font = .setCustomFont(font: .bold, size: 20)
         
         return label
     }()

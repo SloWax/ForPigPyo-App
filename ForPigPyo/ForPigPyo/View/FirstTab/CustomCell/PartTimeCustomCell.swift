@@ -90,7 +90,7 @@ class PartTimeCustomCell: UITableViewCell {
         
         [dateLabel, weekDayLabel].forEach {
             $0.textColor = .setCustomColor(.textBasic)
-            $0.font = Design.boldSmallTextSize
+            $0.font = .setCustomFont(font: .bold, size: 14)
         }
         
         contentView.addSubview(dateLabel)
@@ -112,7 +112,7 @@ class PartTimeCustomCell: UITableViewCell {
     
     private func setContainerView() {
         
-        containerView.labelBundle.forEach { $0.font = Design.boldSmallTextSize }
+        containerView.labelBundle.forEach { $0.font = .setCustomFont(font: .bold, size: 14) }
         
         contentView.addSubview(containerView)
         
@@ -165,7 +165,7 @@ class PartTimeCustomCell: UITableViewCell {
         [overTime, nightTime, overNightTime].forEach {
             
             $0.textColor = .setCustomColor(.textBasic)
-            $0.font = Design.boldSmallTextSize
+            $0.font = .setCustomFont(font: .bold, size: 14)
         }
         
         containerView.addSubview(overTime)
@@ -194,7 +194,7 @@ class PartTimeCustomCell: UITableViewCell {
         [hourlyWageValue, totalWorkValue, dayPayValue].forEach {
             
             $0.textColor = .setCustomColor(.textBasic)
-            $0.font = Design.boldSmallTextSize
+            $0.font = .setCustomFont(font: .bold, size: 14)
         }
         
         containerView.addSubview(hourlyWageValue)

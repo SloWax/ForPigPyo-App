@@ -12,7 +12,7 @@ class SavingAddEditView: UIView {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = Design.headerTextSize
+        label.font = .setCustomFont(font: .black, size: 26)
         
         return label
     }()
@@ -29,7 +29,7 @@ class SavingAddEditView: UIView {
         let view = ContainerView()
         let attributes: [NSAttributedString.Key: Any?] = [
             .foregroundColor: UIColor.setCustomColor(.textBasic, alpha: 0.5),
-            .font: Design.boldNomalTextSize
+            .font: UIFont.setCustomFont(font: .bold, size: 20)
         ]
         view.label1.text = "저축액:"
         view.label2.text = "원"
@@ -44,7 +44,7 @@ class SavingAddEditView: UIView {
         button.backgroundColor = .setCustomColor(.yellow)
         
         button.setTitle("저장", for: .normal)
-        button.titleLabel?.font = Design.boldNomalTextSize
+        button.titleLabel?.font = .setCustomFont(font: .bold, size: 20)
         button.tintColor = .systemBackground
         
         button.layer.cornerRadius = Design.cornerRadius
@@ -106,7 +106,7 @@ class SavingAddEditView: UIView {
             
             containerView.labelBundle.forEach {
                 
-                $0.font = Design.boldNomalTextSize
+                $0.font = .setCustomFont(font: .bold, size: 20)
                 
                 $0.snp.makeConstraints {
                     
@@ -134,7 +134,7 @@ class SavingAddEditView: UIView {
         
         saveDateView.buttonBundle.forEach {
             
-            $0.titleLabel?.font = Design.boldNomalTextSize
+            $0.titleLabel?.font = .setCustomFont(font: .bold, size: 20)
             
             $0.snp.makeConstraints {
                 

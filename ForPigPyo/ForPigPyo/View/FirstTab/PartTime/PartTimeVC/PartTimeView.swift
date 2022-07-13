@@ -14,7 +14,7 @@ class PartTimeView: UIView {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = Design.headerTextSize
+        label.font = .setCustomFont(font: .black, size: 26)
         
         return label
     }()
@@ -22,7 +22,7 @@ class PartTimeView: UIView {
     let dateLabel: UILabel = {
         let label = UILabel()
         label.textColor = .setCustomColor(.textBasic)
-        label.font = Design.headerTextSize
+        label.font = .setCustomFont(font: .black, size: 26)
         
         return label
     }()
@@ -44,17 +44,17 @@ class PartTimeView: UIView {
     let containerView: ContainerView = {
         let view = ContainerView()
         view.label1.attributedText = "이번 달에는 얼마를 받을까요?".underLine
-        view.label1.font = Design.boldSmallTextSize
+        view.label1.font = .setCustomFont(font: .bold, size: 14)
         
         view.label2.text = "총 급여: 0 원"
-        view.label2.font = Design.boldNomalTextSize
+        view.label2.font = .setCustomFont(font: .bold, size: 20)
         
         return view
     }()
     let taxButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = .setCustomColor(.textBasic)
-        button.titleLabel?.font = Design.boldSmallTextSize
+        button.titleLabel?.font = .setCustomFont(font: .bold, size: 14)
         button.backgroundColor = .setCustomColor(.gray)
         button.layer.cornerRadius = Design.oneFifthCornerRadius
         
@@ -79,7 +79,7 @@ class PartTimeView: UIView {
         let button = UIButton(type: .system)
         button.tintColor = .systemBackground
         button.setTitle("근무 추가", for: .normal)
-        button.titleLabel?.font = Design.boldNomalTextSize
+        button.titleLabel?.font = .setCustomFont(font: .bold, size: 20)
         button.backgroundColor = .setCustomColor(.yellow)
         button.layer.cornerRadius = Design.cornerRadius
         

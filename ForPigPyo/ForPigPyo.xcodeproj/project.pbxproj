@@ -15,6 +15,7 @@
 		3447A936287EA732003D1B0D /* PartTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3447A931287EA732003D1B0D /* PartTimeView.swift */; };
 		3447A939287EAB6F003D1B0D /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3447A938287EAB6F003D1B0D /* Extension+UIColor.swift */; };
 		3447A93B287EABFF003D1B0D /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3447A93A287EABFF003D1B0D /* Colors.xcassets */; };
+		3447A93D287EB3F6003D1B0D /* Extension+UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3447A93C287EB3F6003D1B0D /* Extension+UIFont.swift */; };
 		6E00CFA725B9B4F800FF1E06 /* SavingAdminVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E00CFA625B9B4F800FF1E06 /* SavingAdminVC.swift */; };
 		6E00CFB025B9B54300FF1E06 /* SavingAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E00CFAF25B9B54300FF1E06 /* SavingAdminView.swift */; };
 		6E00CFB525B9B90B00FF1E06 /* SavingAdminCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E00CFB425B9B90B00FF1E06 /* SavingAdminCustomCell.swift */; };
@@ -103,6 +104,7 @@
 		3447A931287EA732003D1B0D /* PartTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartTimeView.swift; sourceTree = "<group>"; };
 		3447A938287EAB6F003D1B0D /* Extension+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
 		3447A93A287EABFF003D1B0D /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		3447A93C287EB3F6003D1B0D /* Extension+UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIFont.swift"; sourceTree = "<group>"; };
 		6E00CFA625B9B4F800FF1E06 /* SavingAdminVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingAdminVC.swift; sourceTree = "<group>"; };
 		6E00CFAF25B9B54300FF1E06 /* SavingAdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingAdminView.swift; sourceTree = "<group>"; };
 		6E00CFB425B9B90B00FF1E06 /* SavingAdminCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingAdminCustomCell.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 				6E2A806F25BC29C800D4B80B /* Extension+Date.swift */,
 				6EAF7A8525BDACEA00F91A39 /* Extension+Underline.swift */,
 				3447A938287EAB6F003D1B0D /* Extension+UIColor.swift */,
+				3447A93C287EB3F6003D1B0D /* Extension+UIFont.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -766,6 +769,7 @@
 				6E00D02A25BC20ED00FF1E06 /* DoneMonthYearPickerView.swift in Sources */,
 				6E13DBA925E2EBDB004FFF8F /* LoginView.swift in Sources */,
 				6E26B3C425B971BE0025C998 /* SetAimView.swift in Sources */,
+				3447A93D287EB3F6003D1B0D /* Extension+UIFont.swift in Sources */,
 				6E00CFD425BAA09000FF1E06 /* SavingList.swift in Sources */,
 				6EAAABC4257E8275006758BF /* MyPageCustomCell.swift in Sources */,
 				6E26B37925B54E110025C998 /* TimeDataView.swift in Sources */,

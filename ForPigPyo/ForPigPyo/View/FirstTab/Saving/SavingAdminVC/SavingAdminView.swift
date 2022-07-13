@@ -12,7 +12,7 @@ class SavingAdminView: UIView {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = Design.headerTextSize
+        label.font = .setCustomFont(font: .black, size: 26)
         label.attributedText = "저축액 관리하기".underLine
         
         return label
@@ -21,10 +21,10 @@ class SavingAdminView: UIView {
     let containerView: ContainerView = {
         let view = ContainerView()
         view.label1.attributedText = "지금까지 얼마나 모았을까요?".underLine
-        view.label1.font = Design.boldSmallTextSize
+        view.label1.font = .setCustomFont(font: .bold, size: 14)
         
         view.label2.text = "0 원"
-        view.label2.font = Design.boldNomalTextSize
+        view.label2.font = .setCustomFont(font: .bold, size: 20)
         
         return view
     }()
@@ -47,7 +47,7 @@ class SavingAdminView: UIView {
         let button = UIButton(type: .system)
         button.tintColor = .systemBackground
         button.setTitle("저축 추가", for: .normal)
-        button.titleLabel?.font = Design.boldNomalTextSize
+        button.titleLabel?.font = .setCustomFont(font: .bold, size: 20)
         button.backgroundColor = .setCustomColor(.yellow)
         button.layer.cornerRadius = Design.cornerRadius
         

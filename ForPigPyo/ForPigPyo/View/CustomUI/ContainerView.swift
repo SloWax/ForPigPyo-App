@@ -78,14 +78,13 @@ class ContainerView: UIView {
         self.layer.cornerRadius = Design.cornerRadius
         
         labelBundle.forEach {
-            
             $0.textColor = .setCustomColor(.textBasic)
             
             self.addSubview($0)
         }
+        
         textFieldBundle.forEach {
-            
-            $0.font = Design.nomalTextSize
+            $0.font = .setCustomFont(font: .black, size: 19)
             $0.textColor = .setCustomColor(.textBasic)
             $0.textAlignment = .right
             
@@ -94,8 +93,8 @@ class ContainerView: UIView {
             
             self.addSubview($0)
         }
+        
         buttonBundle.forEach {
-            
             $0.tintColor = .setCustomColor(.textBasic, alpha: 0.5)
             
             self.addSubview($0)

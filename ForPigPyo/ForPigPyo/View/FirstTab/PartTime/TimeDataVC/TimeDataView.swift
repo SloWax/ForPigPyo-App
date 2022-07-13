@@ -29,7 +29,7 @@ class TimeDataView: UIView {
     }()
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = Design.boldNomalTextSize
+        label.font = .setCustomFont(font: .bold, size: 20)
         
         return label
     }()
@@ -123,7 +123,7 @@ class TimeDataView: UIView {
     let saveButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("저장", for: .normal)
-        button.titleLabel?.font = Design.boldNomalTextSize
+        button.titleLabel?.font = .setCustomFont(font: .bold, size: 20)
         button.layer.cornerRadius = Design.cornerRadius
         button.backgroundColor = .setCustomColor(.yellow)
         button.tintColor = .systemBackground
@@ -231,7 +231,7 @@ class TimeDataView: UIView {
         allContainerView.forEach { (containerView) in
             containerView.labelBundle.forEach { (label) in
                 
-                label.font = Design.boldNomalTextSize
+                label.font = .setCustomFont(font: .bold, size: 20)
             }
         }
         
@@ -321,7 +321,7 @@ class TimeDataView: UIView {
             
             let attributes: [NSAttributedString.Key: Any?] = [
                 .foregroundColor: UIColor.setCustomColor(.textBasic, alpha: 0.5),
-                .font: Design.nomalTextSize
+                .font: UIFont.setCustomFont(font: .black, size: 19)
             ]
             
             if containerView == hourlyWageView {
@@ -363,7 +363,7 @@ class TimeDataView: UIView {
         
         [totalLabel, previewLabel].forEach {
             
-            $0.font = Design.boldNomalTextSize
+            $0.font = .setCustomFont(font: .bold, size: 20)
             motherScrollView.addSubview($0)
         }
         

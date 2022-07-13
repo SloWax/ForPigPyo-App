@@ -12,7 +12,7 @@ class SavingView: UIView {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = Design.headerTextSize
+        label.font = .setCustomFont(font: .black, size: 26)
         
         return label
     }()
@@ -21,7 +21,7 @@ class SavingView: UIView {
         button.backgroundColor = .setCustomColor(.lightGray)
         
         button.setTitle("목표 설정", for: .normal)
-        button.titleLabel?.font = Design.boldSmallTextSize
+        button.titleLabel?.font = .setCustomFont(font: .bold, size: 14)
         button.tintColor = .setCustomColor(.textBasic)
         
         button.layer.cornerRadius = Design.twentyCornerRadius
@@ -70,7 +70,7 @@ class SavingView: UIView {
         button.backgroundColor = .setCustomColor(.yellow)
         
         button.setTitle("저축액 관리하기", for: .normal)
-        button.titleLabel?.font = Design.boldNomalTextSize
+        button.titleLabel?.font = .setCustomFont(font: .bold, size: 20)
         button.tintColor = .systemBackground
         
         button.layer.cornerRadius = Design.cornerRadius
@@ -144,14 +144,14 @@ class SavingView: UIView {
         
         allContainerView.forEach { (containerView) in
             
-            containerView.label1.font = Design.boldSmallTextSize
+            containerView.label1.font = .setCustomFont(font: .bold, size: 14)
             
             containerView.label1.snp.makeConstraints {
                 $0.top.equalToSuperview().offset(Design.nomalPadding)
                 $0.leading.equalToSuperview().inset(Design.largestPadding)
             }
             
-            containerView.label2.font = Design.boldNomalTextSize
+            containerView.label2.font = .setCustomFont(font: .bold, size: 20)
             
             containerView.label2.snp.makeConstraints {
                 
