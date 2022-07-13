@@ -6,12 +6,6 @@ target 'ForPigPyo' do
   use_frameworks!
 
   # Pods for ForPigPyo
-	pod 'SwiftLint'
-	pod 'SnapKit', '~> 5.0.0'
-	pod 'Google-Mobile-Ads-SDK'
-
-	pod 'Firebase/Analytics'
-	pod 'Firebase/Firestore'
-	pod 'FirebaseFirestoreSwift'
+	
 
 end
