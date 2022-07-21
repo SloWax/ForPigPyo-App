@@ -94,6 +94,7 @@ class MyPageVC: BaseVC {
     }
     
     private func bind() {
+        
     }
     
     func moveTaxPicker(offset: CGFloat) {
