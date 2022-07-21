@@ -30,9 +30,4 @@ struct HomeVCModel {
         
         UserDefaults.standard.set(data, forKey: forkey)
     }
-    
-    func loadBackImage(forkey: String) -> Data? {
-        
-        return UserDefaults.standard.object(forKey: forkey) as? Data
-    }
 }

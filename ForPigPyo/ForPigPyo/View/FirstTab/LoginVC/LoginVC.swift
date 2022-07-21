@@ -71,7 +71,7 @@ class LoginVC: UIViewController {
         
         if let tabBarVC = presentingViewController as? MainTabVC {
             if let myPageVC = tabBarVC.viewControllers?[1].children.first as? MyPageVC {
-                myPageVC.myPageView.tableView.reloadData()
+                myPageVC.myPageView.tvList.reloadData()
             }
         }
         

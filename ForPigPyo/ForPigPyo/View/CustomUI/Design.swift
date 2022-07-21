@@ -11,7 +11,7 @@ import Foundation
 
 struct Design {
     
-    // MARK: padding
+    // padding
     static let padding: CGFloat = 30
     static let edge = UIEdgeInsets(top: 20, left: 15, bottom: 20, right: 15)
     static let tableEdge = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
@@ -22,7 +22,7 @@ struct Design {
     static let largePadding: CGFloat = 15
     static let largestPadding: CGFloat = 20
     
-    // MARK: border
+    // border
     static let qurterBorderWidth: CGFloat = 0.25
     static let halfBorderWidth: CGFloat = 0.5
     static let oneFifthCornerRadius: CGFloat = 5

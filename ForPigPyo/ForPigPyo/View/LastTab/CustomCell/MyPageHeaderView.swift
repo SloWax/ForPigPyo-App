@@ -1,5 +1,5 @@
 //
-//  MyPageHeaderCustomSection.swift
+//  MyPageHeaderView.swift
 //  ForPigPyo
 //
 //  Created by 표건욱 on 2020/12/08.

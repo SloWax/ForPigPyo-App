@@ -9,24 +9,25 @@
 import UIKit
 import SnapKit
 
-class MyPageVC: UIViewController {
+class MyPageVC: BaseVC {
     
-    let backImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.backgroundColor = .systemBackground
+//    let backImageView: UIImageView = {
+//        let imageView = UIImageView()
+//        imageView.backgroundColor = .systemBackground
+//
+//        return imageView
+//    }()
+//    lazy var myPageView: MyPageView = {
+    private let myPageView = MyPageView()
+    private var vm: MyPageVM!
         
-        return imageView
-    }()
-    lazy var myPageView: MyPageView = {
-        let view = MyPageView()
+//        view.tableView.dataSource = self
+//        view.tableView.delegate = self
+//        view.tableView.register(MyPageCustomCell.self, forCellReuseIdentifier: MyPageCustomCell.identifier)
+//        view.tableView.register(MyPageHeaderCustomSection.self, forHeaderFooterViewReuseIdentifier: MyPageHeaderCustomSection.identifier)
         
-        view.tableView.dataSource = self
-        view.tableView.delegate = self
-        view.tableView.register(MyPageCustomCell.self, forCellReuseIdentifier: MyPageCustomCell.identifier)
-        view.tableView.register(MyPageHeaderCustomSection.self, forHeaderFooterViewReuseIdentifier: MyPageHeaderCustomSection.identifier)
-        
-        return view
-    }()
+//        return view
+//    }()
     lazy var taxPickerView: DonePickerView = {
         let picker = DonePickerView()
         picker.pickerView.dataSource = self
@@ -42,35 +43,45 @@ class MyPageVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setView()
+        initialize()
+        bind()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         if let partVC = tabBarController?.viewControllers?[0].children.last as? PartTimeVC {
             
             taxPickerView.pickerView.selectRow((partVC.taxIndex % partVC.tax.count) + 1, inComponent: 0, animated: true)
-            myPageView.tableView.reloadData()
+            myPageView.tvList.reloadData()
         }
     }
-    // set View
-    private func setView() {
+    
+    private func setInputs() -> MyPageVM {
+        return MyPageVM()
+    }
+    
+    private func initialize() {
         
-        navigationItem.title = "마이 페이지"
+        title = "마이 페이지"
         
-        view.addSubview(backImageView)
+        view = myPageView
         
-        backImageView.snp.makeConstraints {
-            
-            $0.top.leading.trailing.bottom.equalToSuperview()
-        }
+        vm = setInputs()
         
-        view.addSubview(myPageView)
+//        view.addSubview(backImageView)
         
-        myPageView.snp.makeConstraints {
-            
-            $0.top.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
-        }
+//        backImageView.snp.makeConstraints {
+//
+//            $0.top.leading.trailing.bottom.equalToSuperview()
+//        }
+        
+//        view.addSubview(myPageView)
+//
+//        myPageView.snp.makeConstraints {
+//
+//            $0.top.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
+//        }
         
         taxPickerView.doneButton.action = #selector(taxPickerDone(_:))
         view.addSubview(taxPickerView)
@@ -82,6 +93,9 @@ class MyPageVC: UIViewController {
         }
     }
     
+    private func bind() {
+    }
+    
     func moveTaxPicker(offset: CGFloat) {
         // pickerView animation
         UIView.animate(withDuration: 0.25) {
@@ -89,7 +103,7 @@ class MyPageVC: UIViewController {
             self.constraint?.update(offset: offset)
             self.view.layoutIfNeeded()
         }
-        myPageView.tableView.reloadData()
+        myPageView.tvList.reloadData()
     }
     @objc func textCountLimit(_ sender: UITextField) {
         
@@ -182,19 +196,19 @@ extension MyPageVC: UITableViewDelegate {
             let okButton = UIAlertAction(title: "저장", style: .default) { (_ ) in
                 
                 self.model.saveHourly(data: alert.textFields?[0].text ?? "", forKey: MyPageData.myPageVCHourly)
-                self.myPageView.tableView.reloadData()
+                self.myPageView.tvList.reloadData()
                 
                 alert.textFields?[0].resignFirstResponder()
             }
             
             alert.addTextField { (textField) in
                 
-                let formatter: NumberFormatter = {
+//                let formatter: NumberFormatter = {
                     let formatter = NumberFormatter()
                     formatter.numberStyle = .decimal
                     
-                    return formatter
-                }()
+//                    return formatter
+//                }()
                 let value = self.model.loadHourly(forKey: MyPageData.myPageVCHourly)
                 let intValue = Int(value ?? "") ?? 0
                 let placeholder = formatter.string(from: NSNumber(value: intValue)) ?? ""
@@ -225,7 +239,7 @@ extension MyPageVC: UITableViewDelegate {
                                         forKeyHour: MyPageData.myPageVCWorkHour,
                                         forKeyMin: MyPageData.myPageVCWorkMin)
                 
-                self.myPageView.tableView.reloadData()
+                self.myPageView.tvList.reloadData()
                 
                 (0...1).forEach { (index) in
                     
@@ -302,6 +316,6 @@ extension MyPageVC: UIPickerViewDelegate {
             partVC.loadPartTimeValue(deduction: partVC.taxIndex % partVC.tax.count)
         }
         
-        myPageView.tableView.reloadData()
+        myPageView.tvList.reloadData()
     }
 }

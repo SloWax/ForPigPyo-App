@@ -73,7 +73,7 @@ class MonthYearPickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataS
         self.selectRow(15, inComponent: 0, animated: false)
     }
     
-    // MARK: UIPicker Delegate / Data Source
+    // UIPicker Delegate / Data Source
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2
