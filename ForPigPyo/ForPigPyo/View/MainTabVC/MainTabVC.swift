@@ -18,7 +18,7 @@ class MainTabVC: UITabBarController {
         let homeVC = makeNaviController(tabBarImage: "wallet", rootViewController: HomeVC())
         homeVC.title = "모두의 앱"
         
-        let myPageVC = makeNaviController(tabBarImage: "gingerbread", rootViewController: MyPageVC())
+        let myPageVC = makeNaviController(tabBarImage: "gingerbread", rootViewController: NewMyPageVC())
         myPageVC.title = "마이페이지"
         
         viewControllers = [homeVC, myPageVC]

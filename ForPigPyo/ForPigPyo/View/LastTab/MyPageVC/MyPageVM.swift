@@ -14,20 +14,43 @@ import RxCocoa
 
 class MyPageVM: BaseVM {
     struct Input {
-        
+        // Void
+        let bindMenu = PublishRelay<MyPageModel.Menu>()
     }
     
     struct Output {
-        
+        // Void
+        let bindMenu = PublishRelay<MyPageModel.Menu>()
     }
     
     let input: Input
     let output: Output
     
     init(input: Input = Input(), output: Output = Output()) {
+        
         self.input = input
         self.output = output
+        
         super.init()
         
+        self.input
+            .bindMenu
+            .bind(to: self.output.bindMenu)
+            .disposed(by: bag)
     }
+}
+
+struct MyPageModel {
+    enum Menu {
+        case wage
+        case hour
+        case tax
+        case backup
+    }
+}
+
+enum TaxCase: String, CaseIterable {
+    case free = "미공제"
+    case withholding = "3.3%"
+    case insurance = "4대보험"
 }

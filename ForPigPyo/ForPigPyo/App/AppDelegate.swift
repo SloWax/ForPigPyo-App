@@ -25,13 +25,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // HomeVC 리스트별 마이페이지 메뉴 불러오기
         let mainTabVC = MainTabVC()
         
-        if let homeVC = mainTabVC.viewControllers?[0].children[0] as? HomeVC {
-            
-            if let myPageVC = mainTabVC.viewControllers?[(mainTabVC.viewControllers?.count ?? 2) - 1].children[0] as? MyPageVC {
-                
-                myPageVC.menuData = homeVC.model
-            }
-        }
+//        if let homeVC = mainTabVC.viewControllers?[0].children[0] as? HomeVC {
+//            
+//            if let myPageVC = mainTabVC.viewControllers?[(mainTabVC.viewControllers?.count ?? 2) - 1].children[0] as? MyPageVC {
+//                
+//                myPageVC.menuData = homeVC.model
+//            }
+//        }
         
         // firebase에 저장된 정보가 있을 경우 불러오기
         let loginVCModel = LoginVCModel()

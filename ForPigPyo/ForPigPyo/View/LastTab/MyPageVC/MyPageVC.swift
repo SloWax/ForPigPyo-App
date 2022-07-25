@@ -6,28 +6,13 @@
 //  Copyright © 2020 SloWax. All rights reserved.
 //
 
-import UIKit
 import SnapKit
 
 class MyPageVC: BaseVC {
     
-//    let backImageView: UIImageView = {
-//        let imageView = UIImageView()
-//        imageView.backgroundColor = .systemBackground
-//
-//        return imageView
-//    }()
-//    lazy var myPageView: MyPageView = {
-    private let myPageView = MyPageView()
+    let myPageView = MyPageView()
     private var vm: MyPageVM!
-        
-//        view.tableView.dataSource = self
-//        view.tableView.delegate = self
-//        view.tableView.register(MyPageCustomCell.self, forCellReuseIdentifier: MyPageCustomCell.identifier)
-//        view.tableView.register(MyPageHeaderCustomSection.self, forHeaderFooterViewReuseIdentifier: MyPageHeaderCustomSection.identifier)
-        
-//        return view
-//    }()
+    
     lazy var taxPickerView: DonePickerView = {
         let picker = DonePickerView()
         picker.pickerView.dataSource = self
@@ -69,25 +54,10 @@ class MyPageVC: BaseVC {
         
         vm = setInputs()
         
-//        view.addSubview(backImageView)
-        
-//        backImageView.snp.makeConstraints {
-//
-//            $0.top.leading.trailing.bottom.equalToSuperview()
-//        }
-        
-//        view.addSubview(myPageView)
-//
-//        myPageView.snp.makeConstraints {
-//
-//            $0.top.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
-//        }
-        
         taxPickerView.doneButton.action = #selector(taxPickerDone(_:))
         view.addSubview(taxPickerView)
         
         taxPickerView.snp.makeConstraints {
-            
             constraint = $0.top.equalTo(view.snp_bottomMargin).constraint
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
         }
@@ -318,5 +288,180 @@ extension MyPageVC: UIPickerViewDelegate {
         }
         
         myPageView.tvList.reloadData()
+    }
+}
+
+
+
+import UIKit
+import RxSwift
+import RxCocoa
+import RxOptional
+
+
+class NewMyPageVC: BaseVC {
+    private let myPageView = NewMyPageView()
+    private var vm: MyPageVM!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        initialize()
+        bind()
+    }
+    
+    private func setInputs() -> MyPageVM {
+        return MyPageVM()
+    }
+    
+    private func initialize() {
+        title = "마이 페이지"
+        
+        view = myPageView
+        
+        vm = setInputs()
+    }
+    
+    private func bind() {
+        myPageView.btnWage
+            .rx
+            .tap
+            .map { .wage }
+            .bind(to: vm.input.bindMenu)
+            .disposed(by: bag)
+        
+        myPageView.btnHour
+            .rx
+            .tap
+            .map { .hour }
+            .bind(to: vm.input.bindMenu)
+            .disposed(by: bag)
+        
+        myPageView.btnTax
+            .rx
+            .tap
+            .map { .tax }
+            .bind(to: vm.input.bindMenu)
+            .disposed(by: bag)
+        
+        myPageView.btnBackup
+            .rx
+            .tap
+            .map { .backup }
+            .bind(to: vm.input.bindMenu)
+            .disposed(by: bag)
+        
+        vm.output
+            .bindMenu
+            .bind { [weak self] menu in
+                guard let self = self else { return }
+                
+                switch menu {
+                case .wage   : self.setWage()
+                case .hour   : self.setHour()
+                case .tax    : self.setTax()
+                case .backup : self.setBackup()
+                }
+            }.disposed(by: bag)
+    }
+    
+    func setWage() {
+        let alert = UIAlertController(
+            title: "나의 시급 설정",
+            message: "급여 계산기에서 근무를 추가할 때\n시급이 자동 입력됩니다:)",
+            preferredStyle: .alert
+        )
+        
+        let noButton = UIAlertAction(title: "취소", style: .default) { (_ ) in
+            
+            alert.textFields?[0].resignFirstResponder()
+        }
+        
+        let okButton = UIAlertAction(title: "저장", style: .default) { (_ ) in
+            
+//                        self.model.saveHourly(data: alert.textFields?[0].text ?? "", forKey: MyPageData.myPageVCHourly)
+//                        self.myPageView.tvList.reloadData()
+            
+            alert.textFields?[0].resignFirstResponder()
+        }
+        
+        alert.addTextField { (textField) in
+            
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .decimal
+
+//                        let value = self.model.loadHourly(forKey: MyPageData.myPageVCHourly)
+//                        let intValue = Int(value ?? "") ?? 0
+//                        let placeholder = formatter.string(from: NSNumber(value: intValue)) ?? ""
+//
+//                        textField.placeholder = "\(placeholder) 원"
+            textField.keyboardType = .numberPad
+            textField.doneAccessory = true
+        }
+        alert.addAction(noButton)
+        alert.addAction(okButton)
+        
+        self.present(alert, animated: true)
+    }
+    func setHour() {
+        let alert = UIAlertController(
+            title: "근무 시간 설정",
+            message: "급여 계산기에서 근무를 추가할 때\n근무시간이 자동 입력됩니다:)",
+            preferredStyle: .alert
+        )
+        
+        let noButton = UIAlertAction(title: "취소", style: .default) { (_ ) in
+            
+            (0...1).forEach { (index) in
+                
+                alert.textFields?[index].resignFirstResponder()
+            }
+        }
+        let okButton = UIAlertAction(title: "저장", style: .default) { (_ ) in
+            
+            let textFields = alert.textFields
+//                        self.model.saveWorkTime(
+//                            hour: textFields?[0].text ?? "",
+//                            min: textFields?[1].text ?? "",
+//                            forKeyHour: MyPageData.myPageVCWorkHour,
+//                            forKeyMin: MyPageData.myPageVCWorkMin
+//                        )
+//
+//                        self.myPageView.tvList.reloadData()
+            
+            (0...1).forEach { (index) in
+                
+                alert.textFields?[index].resignFirstResponder()
+            }
+        }
+        
+        alert.addTextField { (textField) in
+            
+            textField.placeholder = "시간"
+            textField.keyboardType = .numberPad
+            textField.doneAccessory = true
+//                        textField.addTarget(self, action: #selector(self.textCountLimit(_:)), for: .editingChanged)
+        }
+        alert.addTextField { (textField) in
+            
+            textField.placeholder = "분"
+            textField.keyboardType = .numberPad
+            textField.doneAccessory = true
+//                        textField.addTarget(self, action: #selector(self.textCountLimit(_:)), for: .editingChanged)
+        }
+        alert.addAction(noButton)
+        alert.addAction(okButton)
+        
+        self.present(alert, animated: true)
+    }
+    func setTax() {
+//        moveTaxPicker(offset: -self.taxPickerView.frame.height)
+    }
+    func setBackup() {
+        guard UserDefaults.standard.string(forKey: LoginVC.userID) == nil else { return }
+        let loginVC = LoginVC()
+        loginVC.modalPresentationStyle = .formSheet
+        
+        self.present(loginVC, animated: true)
     }
 }

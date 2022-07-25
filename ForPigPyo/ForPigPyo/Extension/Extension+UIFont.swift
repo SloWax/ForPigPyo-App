@@ -11,7 +11,8 @@ import UIKit
 extension UIFont {
     // 폰트 설정
     class func setCustomFont(font: Name, size: CGFloat) -> UIFont {
-        return UIFont(name: font.rawValue, size: size)!
+        guard let font = UIFont(name: font.rawValue, size: size) else { fatalError() }
+        return font
     }
     
     // 폰트 굵기
