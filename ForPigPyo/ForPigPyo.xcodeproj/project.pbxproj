@@ -24,6 +24,10 @@
 		34D3DCFE288E8E1900D29433 /* PyoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D3DCFD288E8E1900D29433 /* PyoButton.swift */; };
 		34D3DD00288E8EF900D29433 /* Extension+UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D3DCFF288E8EF900D29433 /* Extension+UIButton.swift */; };
 		34D3DD02288E9B1F00D29433 /* Extension+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D3DD01288E9B1F00D29433 /* Extension+UIImage.swift */; };
+		34D3DD042893AB4C00D29433 /* Extension+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D3DD032893AB4C00D29433 /* Extension+UIViewController.swift */; };
+		34D3DD062893ABB400D29433 /* BaseNavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D3DD052893ABB400D29433 /* BaseNavigationVC.swift */; };
+		34D3DD082893AC3000D29433 /* Extension+UINavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D3DD072893AC3000D29433 /* Extension+UINavigation.swift */; };
+		34D3DD0A2893B14800D29433 /* UserInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D3DD092893B14800D29433 /* UserInfoManager.swift */; };
 		34E3931028892DC500552616 /* Extension+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E3930F28892DC500552616 /* Extension+UIView.swift */; };
 		34E3931228894C6A00552616 /* MyPageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E3931128894C6A00552616 /* MyPageVM.swift */; };
 		34E3931628894CDA00552616 /* BaseVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E3931328894CDA00552616 /* BaseVM.swift */; };
@@ -127,6 +131,10 @@
 		34D3DCFD288E8E1900D29433 /* PyoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PyoButton.swift; sourceTree = "<group>"; };
 		34D3DCFF288E8EF900D29433 /* Extension+UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIButton.swift"; sourceTree = "<group>"; };
 		34D3DD01288E9B1F00D29433 /* Extension+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIImage.swift"; sourceTree = "<group>"; };
+		34D3DD032893AB4C00D29433 /* Extension+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIViewController.swift"; sourceTree = "<group>"; };
+		34D3DD052893ABB400D29433 /* BaseNavigationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationVC.swift; sourceTree = "<group>"; };
+		34D3DD072893AC3000D29433 /* Extension+UINavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UINavigation.swift"; sourceTree = "<group>"; };
+		34D3DD092893B14800D29433 /* UserInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoManager.swift; sourceTree = "<group>"; };
 		34E3930F28892DC500552616 /* Extension+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIView.swift"; sourceTree = "<group>"; };
 		34E3931128894C6A00552616 /* MyPageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageVM.swift; sourceTree = "<group>"; };
 		34E3931328894CDA00552616 /* BaseVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseVM.swift; sourceTree = "<group>"; };
@@ -264,9 +272,10 @@
 			isa = PBXGroup;
 			children = (
 				34E3931428894CDA00552616 /* BaseVC.swift */,
+				34D3DD052893ABB400D29433 /* BaseNavigationVC.swift */,
+				34D3DCF7288E8BCD00D29433 /* BaseModalVC.swift */,
 				34E3931528894CDA00552616 /* BaseView.swift */,
 				34E3931328894CDA00552616 /* BaseVM.swift */,
-				34D3DCF7288E8BCD00D29433 /* BaseModalVC.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -292,6 +301,8 @@
 				34E3930F28892DC500552616 /* Extension+UIView.swift */,
 				34D3DCF0288E65D500D29433 /* Extension+UIStackView.swift */,
 				34D3DCFF288E8EF900D29433 /* Extension+UIButton.swift */,
+				34D3DD032893AB4C00D29433 /* Extension+UIViewController.swift */,
+				34D3DD072893AC3000D29433 /* Extension+UINavigation.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -300,6 +311,7 @@
 			isa = PBXGroup;
 			children = (
 				34E3931928894D1F00552616 /* Paser.swift */,
+				34D3DD092893B14800D29433 /* UserInfoManager.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -826,6 +838,7 @@
 				34D3DCF8288E8BCD00D29433 /* BaseModalVC.swift in Sources */,
 				34D3DD00288E8EF900D29433 /* Extension+UIButton.swift in Sources */,
 				6EAF7A9325BDF79800F91A39 /* EmptyView.swift in Sources */,
+				34D3DD082893AC3000D29433 /* Extension+UINavigation.swift in Sources */,
 				6E00CFA725B9B4F800FF1E06 /* SavingAdminVC.swift in Sources */,
 				34E3931A28894D1F00552616 /* Paser.swift in Sources */,
 				6E807C8625728DD600337550 /* HomeVCModel.swift in Sources */,
@@ -836,7 +849,9 @@
 				6EAAABF92580CFEC006758BF /* DonePickerView.swift in Sources */,
 				6EAAAB94257E3BC9006758BF /* MyPageVCModel.swift in Sources */,
 				6EFF5B132553F715007BAAF2 /* HomeView.swift in Sources */,
+				34D3DD042893AB4C00D29433 /* Extension+UIViewController.swift in Sources */,
 				6E26B39825B8078C0025C998 /* TimeDataVCModel.swift in Sources */,
+				34D3DD062893ABB400D29433 /* BaseNavigationVC.swift in Sources */,
 				34E3931728894CDA00552616 /* BaseVC.swift in Sources */,
 				6E8CFFD7255175350002D202 /* ForPigPyo.xcdatamodeld in Sources */,
 				6E00D02A25BC20ED00FF1E06 /* DoneMonthYearPickerView.swift in Sources */,
@@ -852,6 +867,7 @@
 				6E26B37E25B5539F0025C998 /* ContainerView.swift in Sources */,
 				34E3931028892DC500552616 /* Extension+UIView.swift in Sources */,
 				34D3DCF1288E65D500D29433 /* Extension+UIStackView.swift in Sources */,
+				34D3DD0A2893B14800D29433 /* UserInfoManager.swift in Sources */,
 				6E00CFCF25B9C8CB00FF1E06 /* SavingAddEditView.swift in Sources */,
 				34E3931228894C6A00552616 /* MyPageVM.swift in Sources */,
 				6E26B3A925B953490025C998 /* SavingVC.swift in Sources */,

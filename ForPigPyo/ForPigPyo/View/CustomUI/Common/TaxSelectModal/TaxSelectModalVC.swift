@@ -28,14 +28,15 @@ class TaxSelectModalVC: BaseModalVC {
     private let taxSelectModalView = TaxSelectModalView()
     private var vm: TaxSelectModalVM!
     
-    private let stringPickerAdapter = RxPickerViewStringAdapter<[[Int]]>(
+    private let stringPickerAdapter = RxPickerViewStringAdapter<[TaxCase]>(
         components: [],
-        numberOfComponents: { _, _, components in components.count },
-        numberOfRowsInComponent: { _, _, items, index -> Int in
-            return items[index].count
+        numberOfComponents: { _, _, _ in 1 },
+        numberOfRowsInComponent: { _, _, items, _ -> Int in
+            return items.count
         },
-        titleForRow: { _, _, items, row, component -> String? in
-            component == 1 ? "\(items[component][row])R" : "\(items[component][row])"
+        titleForRow: { _, _, items, row, _ -> String? in
+//            component == 1 ? "\(items[component][row])R" : "\(items[component][row])"
+            items[row].rawValue
         }
     )
     
@@ -66,7 +67,7 @@ class TaxSelectModalVC: BaseModalVC {
     private func initialize() {
         view = taxSelectModalView
         
-//        taxSelectModalView.setValue(title: textTitle, confirmTitle: confirmTitle)
+        taxSelectModalView.setValue(title: textTitle, confirmTitle: confirmTitle)
         
         vm = setInputs()
     }
@@ -83,11 +84,12 @@ class TaxSelectModalVC: BaseModalVC {
                 self.dismiss(animated: false)
             }.disposed(by: bag)
         
-//        taxSelectModalView.pvPicker // Picker value bind vm
-//            .rx
-//            .itemSelected
-//            .bind(to: vm.input.inputTire)
-//            .disposed(by: bag)
+        taxSelectModalView.pvPicker // Picker value bind vm
+            .rx
+            .itemSelected
+            .map { $0.row }
+            .bind(to: vm.input.index)
+            .disposed(by: bag)
         
         taxSelectModalView.btnConfirm // 확인
             .rx
@@ -95,33 +97,25 @@ class TaxSelectModalVC: BaseModalVC {
             .bind(to: vm.input.setConfirm)
             .disposed(by: bag)
         
-//        vm.output
-//            .tireStandard // 타이어 규격
-//            .bind(to: taxSelectModalView.pvPicker
-//                    .rx
-//                    .items(adapter: stringPickerAdapter)
-//            ).disposed(by: bag)
+        vm.output
+            .taxCases // 세금 유형
+            .bind(to: taxSelectModalView.pvPicker
+                    .rx
+                    .items(adapter: stringPickerAdapter)
+            ).disposed(by: bag)
         
-//        vm.output
-//            .tireStandard // picker 중앙
-//            .bind { [weak self] standard in
-//                guard let self = self else { return }
-//
-//                self.taxSelectModalView.setCenterRow(standard)
-//            }.disposed(by: bag)
-        
-//        vm.output
-//            .outputTire // 타이어 넘기기
-//            .bind { [weak self] tire in
-//                guard let self = self else { return }
-//
-//                if let callBack = self.onTire {
-//                    callBack(tire)
-//                }
-//
-//                self.clearBag(vm: self.vm)
-//                self.dismiss(animated: false)
-//            }.disposed(by: bag)
+        vm.output
+            .outputTax // 공제율 넘기기
+            .bind { [weak self] tax in
+                guard let self = self else { return }
+
+                if let callBack = self.onTax {
+                    callBack(tax)
+                }
+
+                self.clearBag(vm: self.vm)
+                self.dismiss(animated: false)
+            }.disposed(by: bag)
     }
 }
 

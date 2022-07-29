@@ -20,6 +20,7 @@ class MyPageVM: BaseVM {
     
     struct Output {
         // Void
+        let bindMyInfo = PublishRelay<String>()
         let bindMenu = PublishRelay<MyPageModel.Menu>()
     }
     
@@ -37,6 +38,14 @@ class MyPageVM: BaseVM {
             .bindMenu
             .bind(to: self.output.bindMenu)
             .disposed(by: bag)
+        
+        UserInfoManager.shared.tax
+            .bind { [weak self] tax in
+                guard let self = self else { return }
+                
+                let tax = tax?.rawValue ?? "미설정"
+                self.output.bindMyInfo.accept(tax)
+            }.disposed(by: bag)
     }
 }
 

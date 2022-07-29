@@ -30,7 +30,7 @@ class TaxSelectModalView: BaseView {
     private let vevPicker = UIVisualEffectView()
     let pvPicker = UIPickerView()
     
-    let btnConfirm = UIButton().then {
+    let btnConfirm = PyoButton().then {
         $0.titleLabel?.font = .setCustomFont(font: .medium, size: 16)
     }
     
@@ -71,9 +71,9 @@ class TaxSelectModalView: BaseView {
         }
         
         vevPicker.snp.makeConstraints { make in
-            make.top.equalTo(lblTitle.snp.bottom).offset(28)
+            make.top.equalTo(lblTitle.snp.bottom)
             make.left.right.equalTo(self).inset(20)
-            make.height.equalTo(176)
+            make.height.equalTo(120)
         }
         
         pvPicker.snp.makeConstraints { make in
@@ -81,7 +81,7 @@ class TaxSelectModalView: BaseView {
         }
         
         btnConfirm.snp.makeConstraints { make in
-            make.top.equalTo(vevPicker.snp.bottom).offset(28)
+            make.top.equalTo(vevPicker.snp.bottom)
             make.left.right.equalTo(viewMother).inset(20)
             make.bottom.equalTo(viewMother).inset(28)
             make.height.equalTo(48)
@@ -92,11 +92,5 @@ class TaxSelectModalView: BaseView {
         lblTitle.text = title
         
         btnConfirm.setTitle(confirmTitle, for: .normal)
-    }
-    
-    func setCenterRow(_ list: [[Int]]) {
-        list.enumerated().forEach { row, items in
-            pvPicker.selectRow(items.count / 2, inComponent: row, animated: false)
-        }
     }
 }

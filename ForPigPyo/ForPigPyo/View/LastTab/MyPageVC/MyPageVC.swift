@@ -352,6 +352,14 @@ class NewMyPageVC: BaseVC {
             .disposed(by: bag)
         
         vm.output
+            .bindMyInfo
+            .bind { [weak self] tax in
+                guard let self = self else { return }
+                
+                self.myPageView.btnTax.setValue(value: tax)
+            }.disposed(by: bag)
+        
+        vm.output
             .bindMenu
             .bind { [weak self] menu in
                 guard let self = self else { return }
@@ -455,7 +463,12 @@ class NewMyPageVC: BaseVC {
         self.present(alert, animated: true)
     }
     func setTax() {
-//        moveTaxPicker(offset: -self.taxPickerView.frame.height)
+        let modal = TaxSelectModalVC(
+            title: "세금 설정",
+            onTax: { UserInfoManager.shared.tax.accept($0) }
+        )
+        
+        self.presentVC(modal)
     }
     func setBackup() {
         guard UserDefaults.standard.string(forKey: LoginVC.userID) == nil else { return }
