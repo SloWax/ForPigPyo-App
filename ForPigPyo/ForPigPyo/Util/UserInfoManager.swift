@@ -29,14 +29,6 @@ class UserInfoManager {
             .disposed(by: bag)
     }
     
-//    func getTax() -> TaxCase? {
-//        self.tax.value
-//    }
-//
-//    func setTax(_ index: TaxCase?) {
-//        self.tax.accept(index)
-//    }
-    
     // 세금 index 저장
     private func saveTax(_ tax: TaxCase?) {
         UserDefaults.standard.set(tax?.rawValue, forKey: "MyPageVCTax")

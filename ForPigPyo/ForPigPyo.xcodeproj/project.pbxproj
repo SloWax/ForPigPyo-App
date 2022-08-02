@@ -28,6 +28,9 @@
 		34D3DD062893ABB400D29433 /* BaseNavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D3DD052893ABB400D29433 /* BaseNavigationVC.swift */; };
 		34D3DD082893AC3000D29433 /* Extension+UINavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D3DD072893AC3000D29433 /* Extension+UINavigation.swift */; };
 		34D3DD0A2893B14800D29433 /* UserInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D3DD092893B14800D29433 /* UserInfoManager.swift */; };
+		34D3DD0D28992DF900D29433 /* WorkingTimeModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D3DD0C28992DF900D29433 /* WorkingTimeModalVC.swift */; };
+		34D3DD0F28992E0900D29433 /* WorkingTimeModalVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D3DD0E28992E0900D29433 /* WorkingTimeModalVM.swift */; };
+		34D3DD1128992E0F00D29433 /* WorkingTimeModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D3DD1028992E0F00D29433 /* WorkingTimeModalView.swift */; };
 		34E3931028892DC500552616 /* Extension+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E3930F28892DC500552616 /* Extension+UIView.swift */; };
 		34E3931228894C6A00552616 /* MyPageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E3931128894C6A00552616 /* MyPageVM.swift */; };
 		34E3931628894CDA00552616 /* BaseVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E3931328894CDA00552616 /* BaseVM.swift */; };
@@ -135,6 +138,9 @@
 		34D3DD052893ABB400D29433 /* BaseNavigationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationVC.swift; sourceTree = "<group>"; };
 		34D3DD072893AC3000D29433 /* Extension+UINavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UINavigation.swift"; sourceTree = "<group>"; };
 		34D3DD092893B14800D29433 /* UserInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoManager.swift; sourceTree = "<group>"; };
+		34D3DD0C28992DF900D29433 /* WorkingTimeModalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingTimeModalVC.swift; sourceTree = "<group>"; };
+		34D3DD0E28992E0900D29433 /* WorkingTimeModalVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingTimeModalVM.swift; sourceTree = "<group>"; };
+		34D3DD1028992E0F00D29433 /* WorkingTimeModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingTimeModalView.swift; sourceTree = "<group>"; };
 		34E3930F28892DC500552616 /* Extension+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIView.swift"; sourceTree = "<group>"; };
 		34E3931128894C6A00552616 /* MyPageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageVM.swift; sourceTree = "<group>"; };
 		34E3931328894CDA00552616 /* BaseVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseVM.swift; sourceTree = "<group>"; };
@@ -381,6 +387,7 @@
 		34D3DCF3288E8B4200D29433 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				34D3DD0B28992D8000D29433 /* WorkingTimeModal */,
 				34D3DCF4288E8B5200D29433 /* TaxSelectModal */,
 			);
 			path = Common;
@@ -394,6 +401,16 @@
 				34D3DCFB288E8C5000D29433 /* TaxSelectModalView.swift */,
 			);
 			path = TaxSelectModal;
+			sourceTree = "<group>";
+		};
+		34D3DD0B28992D8000D29433 /* WorkingTimeModal */ = {
+			isa = PBXGroup;
+			children = (
+				34D3DD0C28992DF900D29433 /* WorkingTimeModalVC.swift */,
+				34D3DD0E28992E0900D29433 /* WorkingTimeModalVM.swift */,
+				34D3DD1028992E0F00D29433 /* WorkingTimeModalView.swift */,
+			);
+			path = WorkingTimeModal;
 			sourceTree = "<group>";
 		};
 		4DAD3C0F9256E88523BAE64B /* Pods */ = {
@@ -869,9 +886,11 @@
 				34D3DCF1288E65D500D29433 /* Extension+UIStackView.swift in Sources */,
 				34D3DD0A2893B14800D29433 /* UserInfoManager.swift in Sources */,
 				6E00CFCF25B9C8CB00FF1E06 /* SavingAddEditView.swift in Sources */,
+				34D3DD1128992E0F00D29433 /* WorkingTimeModalView.swift in Sources */,
 				34E3931228894C6A00552616 /* MyPageVM.swift in Sources */,
 				6E26B3A925B953490025C998 /* SavingVC.swift in Sources */,
 				6EAAABD6257E91B8006758BF /* MyPageHeaderView.swift in Sources */,
+				34D3DD0D28992DF900D29433 /* WorkingTimeModalVC.swift in Sources */,
 				6EAAABE3257FC021006758BF /* MyPageData.swift in Sources */,
 				6ED072982552934A000EE881 /* MyPageVC.swift in Sources */,
 				34D3DD02288E9B1F00D29433 /* Extension+UIImage.swift in Sources */,
@@ -891,6 +910,7 @@
 				34E3931C28895DA700552616 /* Snippets.swift in Sources */,
 				6E9076DF25794D3B0079C164 /* EmailVC.swift in Sources */,
 				6E00CFB525B9B90B00FF1E06 /* SavingAdminCustomCell.swift in Sources */,
+				34D3DD0F28992E0900D29433 /* WorkingTimeModalVM.swift in Sources */,
 				6E00CFC725B9C89D00FF1E06 /* AddSavingVC.swift in Sources */,
 				34E3931828894CDA00552616 /* BaseView.swift in Sources */,
 				3447A934287EA732003D1B0D /* PayList.swift in Sources */,

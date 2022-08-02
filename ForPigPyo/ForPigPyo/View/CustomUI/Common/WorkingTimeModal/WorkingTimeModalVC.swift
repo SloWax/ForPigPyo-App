@@ -1,8 +1,8 @@
 //
-//  TaxSelectModalVC.swift
+//  WorkingTimeModalVC.swift
 //  ForPigPyo
 //
-//  Created by 표건욱 on 2022/07/25.
+//  Created by 표건욱 on 2022/08/02.
 //  Copyright © 2022 SloWax. All rights reserved.
 //
 
@@ -15,18 +15,15 @@ import RxOptional
 import RxDataSources
 
 
-typealias OnTax = (TaxCase) -> Void
-
-
-class TaxSelectModalVC: BaseModalVC {
+class WorkingTimeModalVC: BaseModalVC {
     
     private let textTitle: String
     private let confirmTitle: String
     
     private var onTax: OnTax?
     
-    private let taxSelectModalView = TaxSelectModalView()
-    private var vm: TaxSelectModalVM!
+    private let taxSelectModalView = WorkingTimeModalView()
+    private var vm: WorkingTimeModalVM!
     
     private let stringPickerAdapter = RxPickerViewStringAdapter<[TaxCase]>(
         components: [],
