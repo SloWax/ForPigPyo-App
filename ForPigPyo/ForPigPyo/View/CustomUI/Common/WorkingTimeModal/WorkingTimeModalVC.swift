@@ -56,8 +56,8 @@ class WorkingTimeModalVC: BaseModalVC {
         bind()
     }
     
-    private func setInputs() -> TaxSelectModalVM {
-        return TaxSelectModalVM()
+    private func setInputs() -> WorkingTimeModalVM {
+        return WorkingTimeModalVM()
     }
     
     private func initialize() {
