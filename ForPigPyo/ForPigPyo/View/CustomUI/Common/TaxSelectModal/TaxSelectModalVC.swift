@@ -21,6 +21,7 @@ typealias OnTax = (TaxCase) -> Void
 class TaxSelectModalVC: BaseModalVC {
     
     private let textTitle: String
+    private let textSubTitle: String?
     private let confirmTitle: String
     
     private var onTax: OnTax?
@@ -39,9 +40,10 @@ class TaxSelectModalVC: BaseModalVC {
         }
     )
     
-    init(title: String, confirmTitle: String = "확인", onTax: OnTax? = nil) {
+    init(title: String, subTitle: String? = nil, confirmTitle: String = "확인", onTax: OnTax? = nil) {
         
         self.textTitle = title
+        self.textSubTitle = subTitle
         self.confirmTitle = confirmTitle
         self.onTax = onTax
         
@@ -66,7 +68,11 @@ class TaxSelectModalVC: BaseModalVC {
     private func initialize() {
         view = taxSelectModalView
         
-        taxSelectModalView.setValue(title: textTitle, confirmTitle: confirmTitle)
+        taxSelectModalView.setValue(
+            title: textTitle,
+            subTitle: textSubTitle,
+            confirmTitle: confirmTitle
+        )
         
         vm = setInputs()
     }

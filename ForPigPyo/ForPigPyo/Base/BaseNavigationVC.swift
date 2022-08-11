@@ -1,9 +1,10 @@
 //
 //  BaseNavigationVC.swift
-//  Carsuri
+//  ForPigPyo
 //
-//  Created by 홍서진 on 2021/11/24.
-//
+//  Created by 표건욱 on 2022/07/29.
+//  Copyright © 2022 SloWax. All rights reserved.
+
 
 import UIKit
 
@@ -17,21 +18,9 @@ enum NavigationType {
 
 class BaseNavigationVC: UINavigationController {
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        if let _ = self.topViewController as? MainTabVC {
-            return .darkContent
-        } else {
-            if #available(iOS 13.0, *) {
-                return .darkContent
-            } else {
-                // Fallback on earlier versions
-                return .default
-            }
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupNavigationBarAppearance()
     }
     
@@ -43,12 +32,9 @@ class BaseNavigationVC: UINavigationController {
         appearance.setBackIndicatorImage(image, transitionMaskImage: image)
 
         navigationBar.tintColor = .black
-        navigationBar.standardAppearance = appearance;
+        navigationBar.standardAppearance = appearance
         navigationBar.clipsToBounds = true
         
-        // ios 15...
         navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance
-        
-        //https://developer.apple.com/documentation/uikit/uinavigationcontroller/customizing_your_app_s_navigation_bar
     }
 }

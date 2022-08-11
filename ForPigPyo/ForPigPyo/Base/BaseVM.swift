@@ -1,8 +1,9 @@
 //
 //  BaseVM.swift
-//  ANCHOREER
+//  ForPigPyo
 //
-//  Created by 표건욱 on 2022/04/10.
+//  Created by 표건욱 on 2022/07/21.
+//  Copyright © 2022 SloWax. All rights reserved.
 //
 
 import Foundation

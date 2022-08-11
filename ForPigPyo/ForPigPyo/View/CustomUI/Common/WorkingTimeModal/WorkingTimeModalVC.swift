@@ -15,32 +15,40 @@ import RxOptional
 import RxDataSources
 
 
+typealias OnWorkingTime = ((hour: Int, min: Int)) -> Void
+
+
 class WorkingTimeModalVC: BaseModalVC {
     
     private let textTitle: String
+    private let textSubTitle: String?
     private let confirmTitle: String
     
-    private var onTax: OnTax?
+    private var onWorkingTime: OnWorkingTime?
     
-    private let taxSelectModalView = WorkingTimeModalView()
+    private let workingTimeModalView = WorkingTimeModalView()
     private var vm: WorkingTimeModalVM!
     
-    private let stringPickerAdapter = RxPickerViewStringAdapter<[TaxCase]>(
+    private let stringPickerAdapter = RxPickerViewStringAdapter<[[Int]]>(
         components: [],
-        numberOfComponents: { _, _, _ in 1 },
-        numberOfRowsInComponent: { _, _, items, _ -> Int in
-            return items.count
+        numberOfComponents: { _, _, components in components.count },
+        numberOfRowsInComponent: { _, _, items, row -> Int in
+            return items[row].count
         },
-        titleForRow: { _, _, items, row, _ -> String? in
-            items[row].rawValue
+        titleForRow: { _, _, items, row, component -> String? in
+            var value = "\(items[component][row])"
+            component == 0 ? (value += " 시간") : (value += " 분")
+            
+            return value
         }
     )
     
-    init(title: String, confirmTitle: String = "확인", onTax: OnTax? = nil) {
+    init(title: String, subTitle: String? = nil, confirmTitle: String = "확인", onWorkingTime: OnWorkingTime? = nil) {
         
         self.textTitle = title
+        self.textSubTitle = subTitle
         self.confirmTitle = confirmTitle
-        self.onTax = onTax
+        self.onWorkingTime = onWorkingTime
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -61,15 +69,19 @@ class WorkingTimeModalVC: BaseModalVC {
     }
     
     private func initialize() {
-        view = taxSelectModalView
+        view = workingTimeModalView
         
-        taxSelectModalView.setValue(title: textTitle, confirmTitle: confirmTitle)
+        workingTimeModalView.setValue(
+            title: textTitle,
+            subTitle: textSubTitle,
+            confirmTitle: confirmTitle
+        )
         
         vm = setInputs()
     }
     
     private func bind() {
-        taxSelectModalView.viewDismiss // 빈 공간 tap dismiss
+        workingTimeModalView.viewDismiss // 빈 공간 tap dismiss
             .rx
             .tapGesture()
             .when(.recognized)
@@ -80,33 +92,33 @@ class WorkingTimeModalVC: BaseModalVC {
                 self.dismiss(animated: false)
             }.disposed(by: bag)
         
-        taxSelectModalView.pvPicker // Picker value bind vm
+        workingTimeModalView.pvPicker // Picker value bind vm
             .rx
             .itemSelected
-            .map { $0.row }
+            .map { ($0.component, $0.row) }
             .bind(to: vm.input.index)
             .disposed(by: bag)
         
-        taxSelectModalView.btnConfirm // 확인
+        workingTimeModalView.btnConfirm // 확인
             .rx
             .tap
-            .bind(to: vm.input.setConfirm)
+            .bind(to: vm.input.bindConfirm)
             .disposed(by: bag)
         
         vm.output
-            .taxCases // 세금 유형
-            .bind(to: taxSelectModalView.pvPicker
+            .times // 근무시간
+            .bind(to: workingTimeModalView.pvPicker
                     .rx
                     .items(adapter: stringPickerAdapter)
             ).disposed(by: bag)
         
         vm.output
-            .outputTax // 공제율 넘기기
-            .bind { [weak self] tax in
+            .bindConfirm // 근무시간 넘기기
+            .bind { [weak self] workingTime in
                 guard let self = self else { return }
 
-                if let callBack = self.onTax {
-                    callBack(tax)
+                if let callBack = self.onWorkingTime {
+                    callBack(workingTime)
                 }
 
                 self.clearBag(vm: self.vm)

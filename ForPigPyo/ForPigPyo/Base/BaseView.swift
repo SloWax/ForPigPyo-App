@@ -1,8 +1,9 @@
 //
 //  BaseView.swift
-//  ANCHOREER
+//  ForPigPyo
 //
-//  Created by 표건욱 on 2022/04/09.
+//  Created by 표건욱 on 2022/07/21.
+//  Copyright © 2022 SloWax. All rights reserved.
 //
 
 import UIKit

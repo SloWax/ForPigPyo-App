@@ -22,6 +22,12 @@ extension UITextField {
         }
     }
     
+    func addLeftPadding(_ padding: CGFloat = 10) {
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: padding, height: self.frame.height))
+        self.leftView = paddingView
+        self.leftViewMode = ViewMode.always
+    }
+    
     private func addDoneButtonOnKeyboard() {
         
         let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))

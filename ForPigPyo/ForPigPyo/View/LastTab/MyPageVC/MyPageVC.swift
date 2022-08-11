@@ -323,6 +323,11 @@ class NewMyPageVC: BaseVC {
     }
     
     private func bind() {
+        self.rx
+            .viewWillAppear
+            .bind(to: vm.input.viewWillAppear)
+            .disposed(by: bag)
+        
         myPageView.btnWage
             .rx
             .tap
@@ -352,7 +357,15 @@ class NewMyPageVC: BaseVC {
             .disposed(by: bag)
         
         vm.output
-            .bindMyInfo
+            .bindMyWorkingTime
+            .bind { [weak self] workingTime in
+                guard let self = self else { return }
+
+                self.myPageView.btnHour.setValue(value: workingTime)
+            }.disposed(by: bag)
+        
+        vm.output
+            .bindMyTax
             .bind { [weak self] tax in
                 guard let self = self else { return }
                 
@@ -374,100 +387,51 @@ class NewMyPageVC: BaseVC {
     }
     
     private func setWage() {
-        let alert = UIAlertController(
-            title: "나의 시급 설정",
-            message: "급여 계산기에서 근무를 추가할 때\n시급이 자동 입력됩니다:)",
-            preferredStyle: .alert
-        )
-        
-        let noButton = UIAlertAction(title: "취소", style: .default) { (_ ) in
-            
-            alert.textFields?[0].resignFirstResponder()
-        }
-        
-        let okButton = UIAlertAction(title: "저장", style: .default) { (_ ) in
+//        let alert = UIAlertController(
+//            title: "나의 시급 설정",
+//            message: "급여 계산기에서 근무를 추가할 때\n시급이 자동 입력됩니다:)",
+//            preferredStyle: .alert
+//        )
+//
+//        let noButton = UIAlertAction(title: "취소", style: .default) { (_ ) in
+//
+//            alert.textFields?[0].resignFirstResponder()
+//        }
+//
+//        let okButton = UIAlertAction(title: "저장", style: .default) { (_ ) in
             
 //                        self.model.saveHourly(data: alert.textFields?[0].text ?? "", forKey: MyPageData.myPageVCHourly)
 //                        self.myPageView.tvList.reloadData()
             
-            alert.textFields?[0].resignFirstResponder()
-        }
-        
-        alert.addTextField { (textField) in
-            
-            let formatter = NumberFormatter()
-            formatter.numberStyle = .decimal
+//            alert.textFields?[0].resignFirstResponder()
+//        }
+//
+//        alert.addTextField { (textField) in
+//
+//            let formatter = NumberFormatter()
+//            formatter.numberStyle = .decimal
 
 //                        let value = self.model.loadHourly(forKey: MyPageData.myPageVCHourly)
 //                        let intValue = Int(value ?? "") ?? 0
 //                        let placeholder = formatter.string(from: NSNumber(value: intValue)) ?? ""
 //
 //                        textField.placeholder = "\(placeholder) 원"
-            textField.keyboardType = .numberPad
-            textField.doneAccessory = true
-        }
-        alert.addAction(noButton)
-        alert.addAction(okButton)
-        
-        self.present(alert, animated: true)
-    }
-    private func setWorkingTime() {
-        let modal = WorkingTimeModalVC(
-            title: "근무 시간 설정",
-//            "급여 계산기에서 근무를 추가할 때\n근무시간이 자동 입력됩니다:)"
-            onTax: { UserInfoManager.shared.tax.accept($0) }
-        )
-        
-        self.presentVC(modal)
-//        let alert = UIAlertController(
-//            title: "근무 시간 설정",
-//            message: "급여 계산기에서 근무를 추가할 때\n근무시간이 자동 입력됩니다:)",
-//            preferredStyle: .alert
-//        )
-//
-//        let noButton = UIAlertAction(title: "취소", style: .default) { (_ ) in
-//
-//            (0...1).forEach { (index) in
-//
-//                alert.textFields?[index].resignFirstResponder()
-//            }
-//        }
-//        let okButton = UIAlertAction(title: "저장", style: .default) { (_ ) in
-//
-//            let textFields = alert.textFields
-//                        self.model.saveWorkTime(
-//                            hour: textFields?[0].text ?? "",
-//                            min: textFields?[1].text ?? "",
-//                            forKeyHour: MyPageData.myPageVCWorkHour,
-//                            forKeyMin: MyPageData.myPageVCWorkMin
-//                        )
-//
-//                        self.myPageView.tvList.reloadData()
-//
-//            (0...1).forEach { (index) in
-//
-//                alert.textFields?[index].resignFirstResponder()
-//            }
-//        }
-//
-//        alert.addTextField { (textField) in
-//
-//            textField.placeholder = "시간"
 //            textField.keyboardType = .numberPad
 //            textField.doneAccessory = true
-//                        textField.addTarget(self, action: #selector(self.textCountLimit(_:)), for: .editingChanged)
-//        }
-//        alert.addTextField { (textField) in
-//
-//            textField.placeholder = "분"
-//            textField.keyboardType = .numberPad
-//            textField.doneAccessory = true
-//                        textField.addTarget(self, action: #selector(self.textCountLimit(_:)), for: .editingChanged)
 //        }
 //        alert.addAction(noButton)
 //        alert.addAction(okButton)
 //
 //        self.present(alert, animated: true)
+    }
+    private func setWorkingTime() {
+        let modal = WorkingTimeModalVC(
+            title: "근무 시간 설정",
+            subTitle: "급여 계산기에서 근무를 추가할 때\n시간이 자동 입력됩니다:)",
+            onWorkingTime: { UserInfoManager.shared.workingTime.accept($0) }
+        )
+        
+        self.presentVC(modal)
     }
     private func setTax() {
         let modal = TaxSelectModalVC(
@@ -478,7 +442,8 @@ class NewMyPageVC: BaseVC {
         self.presentVC(modal)
     }
     private func setBackup() {
-        guard UserDefaults.standard.string(forKey: LoginVC.userID) == nil else { return }
+        guard UserDefaults.standard.string(forKey: LoginVC.userID).isNil else { return }
+        
         let loginVC = LoginVC()
         loginVC.modalPresentationStyle = .formSheet
         

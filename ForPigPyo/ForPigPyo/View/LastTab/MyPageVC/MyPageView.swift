@@ -157,7 +157,7 @@ class PyoMenuButton: UIButton {
     
     private func setLayout() {
         ivImage.snp.makeConstraints {
-            $0.top.left.bottom.equalTo(self).inset(10)
+            $0.top.bottom.equalTo(self).inset(10)
             $0.left.equalTo(self).inset(15)
             $0.width.equalTo(self.snp.width).multipliedBy(0.14)
             $0.height.equalTo(ivImage.snp.width).multipliedBy(1.2)

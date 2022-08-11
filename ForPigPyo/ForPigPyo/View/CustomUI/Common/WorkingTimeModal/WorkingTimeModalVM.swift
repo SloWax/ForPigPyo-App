@@ -15,16 +15,19 @@ class WorkingTimeModalVM: BaseVM {
     
     struct Input {
         // Void
-        let index = BehaviorRelay<Int>(value: 0)
-        let setConfirm = PublishRelay<Void>()
+        let index = PublishRelay<(component: Int, row: Int)>()
+        let bindConfirm = PublishRelay<Void>()
+        
+        // Data
+        let selectedTime = BehaviorRelay<(hour: Int, min: Int)>(value: (0, 0))
     }
     
     struct Output {
         // Void
-        let outputTax = PublishRelay<TaxCase>()
+        let bindConfirm = PublishRelay<(hour: Int, min: Int)>()
         
         // Data
-        let taxCases = BehaviorRelay<[TaxCase]>(value: TaxCase.allCases)
+        let times = BehaviorRelay<[[Int]]>(value: [Array(0...23), Array(0...59)])
     }
     
     let input: Input
@@ -38,13 +41,27 @@ class WorkingTimeModalVM: BaseVM {
         super.init()
         
         self.input
-            .setConfirm // 공제율 넘기기
+            .index
+            .bind { [weak self] index in
+                guard let self = self else { return }
+                
+                let times = self.output.times.value
+                let selectValue = times[index.component][index.row]
+                
+                var selectedTime = self.input.selectedTime.value
+                let isHour = index.component == 0
+                
+                isHour ? (selectedTime.hour = selectValue) : (selectedTime.min = selectValue)
+                self.input.selectedTime.accept(selectedTime)
+            }.disposed(by: bag)
+        
+        self.input
+            .bindConfirm // 근무시간 넘기기
             .bind { [weak self] in
                 guard let self = self else { return }
                 
-                let row = self.input.index.value
-                let tax = self.output.taxCases.value[row]
-                self.output.outputTax.accept(tax)
+                let workingTime = self.input.selectedTime.value
+                self.output.bindConfirm.accept(workingTime)
             }.disposed(by: bag)
     }
 }

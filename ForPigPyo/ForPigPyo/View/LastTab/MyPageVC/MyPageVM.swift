@@ -10,17 +10,21 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import RxOptional
 
 
 class MyPageVM: BaseVM {
     struct Input {
         // Void
+        let viewWillAppear = PublishRelay<Void>()
         let bindMenu = PublishRelay<MyPageModel.Menu>()
     }
     
     struct Output {
         // Void
-        let bindMyInfo = PublishRelay<String>()
+        let bindMyHourlyPay = PublishRelay<String>()
+        let bindMyWorkingTime = PublishRelay<String>()
+        let bindMyTax = PublishRelay<String>()
         let bindMenu = PublishRelay<MyPageModel.Menu>()
     }
     
@@ -35,17 +39,36 @@ class MyPageVM: BaseVM {
         super.init()
         
         self.input
+            .viewWillAppear
+            .bind { UserInfoManager.shared.loadInfo() }
+            .disposed(by: bag)
+        
+        self.input
             .bindMenu
             .bind(to: self.output.bindMenu)
             .disposed(by: bag)
         
-        UserInfoManager.shared.tax
-            .bind { [weak self] tax in
-                guard let self = self else { return }
+        UserInfoManager.shared.hourlyPay
+            .map { $0 == 0 ? "미설정" : ($0.comma.won) }
+            .bind(to: self.output.bindMyHourlyPay)
+            .disposed(by: bag)
+        
+        UserInfoManager.shared.workingTime
+            .map { workingTime in
+                var text = ""
                 
-                let tax = tax?.rawValue ?? "미설정"
-                self.output.bindMyInfo.accept(tax)
-            }.disposed(by: bag)
+                if workingTime.hour > 0 { text = "\(workingTime.hour)시간" }
+                if workingTime.min > 0 { text += " \(workingTime.min)분" }
+                if text.count == 0 { text = "미설정" }
+                
+                return text
+            }.bind(to: self.output.bindMyWorkingTime)
+            .disposed(by: bag)
+        
+        UserInfoManager.shared.tax
+            .map { $0.rawValue }
+            .bind(to: self.output.bindMyTax)
+            .disposed(by: bag)
     }
 }
 

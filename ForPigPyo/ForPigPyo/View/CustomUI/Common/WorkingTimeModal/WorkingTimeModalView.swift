@@ -27,6 +27,13 @@ class WorkingTimeModalView: BaseView {
         $0.textAlignment = .center
     }
     
+    private let lblSubTitle = UILabel().then {
+        $0.textColor = .setCustomColor(.textBasic)
+        $0.font = .setCustomFont(font: .medium, size: 14)
+        $0.textAlignment = .center
+        $0.numberOfLines = 0
+    }
+    
     private let vevPicker = UIVisualEffectView()
     let pvPicker = UIPickerView()
     
@@ -50,7 +57,7 @@ class WorkingTimeModalView: BaseView {
         
         vevPicker.contentView.addSubview(pvPicker)
         
-        let views = [lblTitle, vevPicker, btnConfirm]
+        let views = [lblTitle, lblSubTitle, vevPicker, btnConfirm]
         viewMother.addSubviews(views)
         
         self.addSubviews([viewDismiss, viewMother])
@@ -70,8 +77,13 @@ class WorkingTimeModalView: BaseView {
             make.left.right.equalTo(self)
         }
         
-        vevPicker.snp.makeConstraints { make in
+        lblSubTitle.snp.makeConstraints { make in
             make.top.equalTo(lblTitle.snp.bottom)
+            make.left.right.equalTo(self)
+        }
+        
+        vevPicker.snp.makeConstraints { make in
+            make.top.equalTo(lblSubTitle.snp.bottom)
             make.left.right.equalTo(self).inset(20)
             make.height.equalTo(120)
         }
@@ -88,8 +100,9 @@ class WorkingTimeModalView: BaseView {
         }
     }
     
-    func setValue(title: String?, confirmTitle: String?) {
+    func setValue(title: String?, subTitle: String?, confirmTitle: String?) {
         lblTitle.text = title
+        lblSubTitle.text = subTitle
         
         btnConfirm.setTitle(confirmTitle, for: .normal)
     }

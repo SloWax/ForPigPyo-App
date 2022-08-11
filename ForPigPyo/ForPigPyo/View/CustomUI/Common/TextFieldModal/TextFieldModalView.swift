@@ -1,8 +1,8 @@
 //
-//  TaxSelectModalView.swift
+//  TextFieldModalView.swift
 //  ForPigPyo
 //
-//  Created by 표건욱 on 2022/07/25.
+//  Created by 표건욱 on 2022/08/11.
 //  Copyright © 2022 SloWax. All rights reserved.
 //
 
@@ -11,22 +11,26 @@ import SnapKit
 import Then
 
 
-class TaxSelectModalView: BaseView {
+class TextFieldModalView: BaseView {
     
     let viewDismiss = UIView()
     
     private let viewMother = UIView().then {
-        $0.addShadow(offset: .top)
+        $0.addShadow(offset: .top, opacity: 0.3)
         $0.backgroundColor = .white
-        $0.layer.cornerRadius = 10
+        $0.layer.cornerRadius = 12
     }
     
+    private let svTitle = UIStackView().then {
+        $0.axis = .vertical
+        $0.spacing = 4
+    }
     private let lblTitle = UILabel().then {
         $0.textColor = .setCustomColor(.textBasic)
         $0.font = .setCustomFont(font: .bold, size: 18)
         $0.textAlignment = .center
+        $0.numberOfLines = 0
     }
-    
     private let lblSubTitle = UILabel().then {
         $0.textColor = .setCustomColor(.textBasic)
         $0.font = .setCustomFont(font: .medium, size: 14)
@@ -34,12 +38,19 @@ class TaxSelectModalView: BaseView {
         $0.numberOfLines = 0
     }
     
-    private let vevPicker = UIVisualEffectView()
-    let pvPicker = UIPickerView()
+    let tfInput = UITextField().then {
+        $0.addLeftPadding()
+        $0.textColor = .setCustomColor(.textBasic)
+        $0.font = .setCustomFont(font: .medium, size: 16)
+        $0.borderWidth = 1
+        $0.borderColor = .setCustomColor(.lightGray)
+    }
     
     let btnConfirm = PyoButton().then {
         $0.titleLabel?.font = .setCustomFont(font: .medium, size: 16)
     }
+    
+    var confirmInset: Constraint?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -55,10 +66,9 @@ class TaxSelectModalView: BaseView {
     private func setUP() {
         self.backgroundColor = .clear
         
-        vevPicker.contentView.addSubview(pvPicker)
+        svTitle.addArrangedSubviews([lblTitle, lblSubTitle])
         
-        let views = [lblTitle, lblSubTitle, vevPicker, btnConfirm]
-        viewMother.addSubviews(views)
+        viewMother.addSubviews([svTitle, tfInput, btnConfirm])
         
         self.addSubviews([viewDismiss, viewMother])
     }
@@ -72,38 +82,41 @@ class TaxSelectModalView: BaseView {
             make.left.right.bottom.equalTo(self)
         }
         
-        lblTitle.snp.makeConstraints { make in
+        svTitle.snp.makeConstraints { make in
             make.top.equalTo(viewMother).inset(28)
-            make.left.right.equalTo(self)
+            make.left.right.equalTo(viewMother).inset(20)
         }
         
-        lblSubTitle.snp.makeConstraints { make in
-            make.top.equalTo(lblTitle.snp.bottom)
-            make.left.right.equalTo(self)
-        }
-        
-        vevPicker.snp.makeConstraints { make in
-            make.top.equalTo(lblSubTitle.snp.bottom)
+        tfInput.snp.makeConstraints { make in
+            make.top.equalTo(svTitle.snp.bottom).offset(20)
             make.left.right.equalTo(self).inset(20)
-            make.height.equalTo(120)
-        }
-        
-        pvPicker.snp.makeConstraints { make in
-            make.edges.equalTo(vevPicker)
+            make.height.equalTo(48)
         }
         
         btnConfirm.snp.makeConstraints { make in
-            make.top.equalTo(vevPicker.snp.bottom)
+            make.top.equalTo(tfInput.snp.bottom).offset(20)
             make.left.right.equalTo(viewMother).inset(20)
-            make.bottom.equalTo(viewMother).inset(28)
+            confirmInset = make.bottom.equalTo(viewMother).inset(28).constraint
             make.height.equalTo(48)
         }
     }
     
-    func setValue(title: String?, subTitle: String?, confirmTitle: String?) {
+    func setValue(title: String?, subTitle: String?, titleAlign: NSTextAlignment = .center,
+                  placeholder: String?, tfType: UIKeyboardType = .default,
+                  confirmTitle: String? , isFirstRespondse : Bool = false ) {
         lblTitle.text = title
-        lblSubTitle.text = subTitle
+        lblTitle.textAlignment = titleAlign
+        
+        subTitle.isNil ?
+        lblSubTitle.removeFromSuperview() : (lblSubTitle.text = subTitle)
+        
+        tfInput.placeholder = placeholder
+        tfInput.keyboardType = tfType
         
         btnConfirm.setTitle(confirmTitle, for: .normal)
+        
+        if isFirstRespondse {
+            self.tfInput.becomeFirstResponder()
+        }
     }
 }

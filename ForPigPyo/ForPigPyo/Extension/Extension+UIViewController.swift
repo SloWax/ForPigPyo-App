@@ -26,4 +26,23 @@ extension UIViewController {
             completion?()
         }
     }
+    
+    // 키보드 높이 가져오기
+    func getKeyBoardHeight(_ notification: Notification) -> CGFloat {
+        let userInfo = notification.userInfo! as NSDictionary
+        guard let keyboardFrame = userInfo.value(forKey: UIResponder.keyboardFrameEndUserInfoKey) as? NSValue else { return 0 }
+        
+        let keyboardRectangle = keyboardFrame.cgRectValue
+        let keyboardHeight = keyboardRectangle.height
+        
+        return keyboardHeight
+    }
+    
+    // 키보드 애니메이션 속도
+    func getKeyBoardDuration(_ notification: Notification) -> Double {
+        let userInfo = notification.userInfo! as NSDictionary
+        guard let duration = userInfo.value(forKey: UIResponder.keyboardAnimationDurationUserInfoKey) as? Double else { return 0 }
+        
+        return duration
+    }
 }
