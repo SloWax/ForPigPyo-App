@@ -6,9 +6,6 @@
 //  Copyright © 2021 SloWax. All rights reserved.
 //
 
-import UIKit
-import FirebaseFirestore
-import FirebaseFirestoreSwift
 import AuthenticationServices
 
 class LoginVC: UIViewController {
@@ -44,6 +41,7 @@ class LoginVC: UIViewController {
     private func setupProviderLoginView() {
         let appleLoginButton = ASAuthorizationAppleIDButton()
         appleLoginButton.addTarget(self, action: #selector(handleAuthorizationAppleIDButtonPress), for: .touchUpInside)
+        
         loginView.addSubview(appleLoginButton)
         
         appleLoginButton.snp.makeConstraints {
@@ -102,5 +100,47 @@ extension LoginVC: ASAuthorizationControllerDelegate, ASAuthorizationControllerP
         UserDefaults.standard.set(userIdentifier, forKey: LoginVC.userID)
         
         loadFromDB()
+    }
+}
+
+
+import UIKit
+import RxSwift
+import RxCocoa
+import RxOptional
+import RxGesture
+import FirebaseFirestore
+import FirebaseFirestoreSwift
+
+
+class NewLoginVC: BaseVC {
+    private let loginView = NewLoginView()
+    private var vm: LoginVM!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        initialize()
+        bind()
+    }
+    
+    private func setInputs() -> LoginVM {
+        return LoginVM()
+    }
+    
+    private func initialize() {
+        view = loginView
+        
+        vm = setInputs()
+    }
+    
+    private func bind() {
+        loginView.btnApple
+            .rx
+            .tapGesture()
+            .when(.recognized)
+            .map { _ in Void() }
+            .bind(to: SocialManager.shared.apple)
+            .disposed(by: bag)
     }
 }

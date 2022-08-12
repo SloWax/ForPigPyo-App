@@ -144,7 +144,8 @@ class MyPageVC: BaseVC {
     }
     
     private func setBackup() {
-        let vc = LoginVC()
+//        let vc = LoginVC()
+        let vc = NewLoginVC()
         
         self.presentVC(vc, modal: .formSheet)
     }

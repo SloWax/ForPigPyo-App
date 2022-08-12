@@ -46,7 +46,7 @@ class MyPageVM: BaseVM {
         
         self.input
             .bindMenu
-            .filter { $0 == .backup ? !UserInfoManager.shared.getBackup().isNil : true }
+            .filter { $0 == .backup ? !UserInfoManager.shared.getLogin().isNil : true }
             .bind(to: self.output.bindMenu)
             .disposed(by: bag)
         
@@ -72,7 +72,7 @@ class MyPageVM: BaseVM {
             .bind(to: self.output.bindMyTax)
             .disposed(by: bag)
         
-        UserInfoManager.shared.backup
+        UserInfoManager.shared.login
             .map { $0.isNil ? "미설정" : "동기화 중" }
             .bind(to: self.output.bindMyBackup)
             .disposed(by: bag)

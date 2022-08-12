@@ -16,7 +16,7 @@ import RxOptional
 typealias WorkingTime = (hour: Int, min: Int)
 
 
-class UserInfoManager {
+class UserInfoManager: NSObject {
     
     static let shared = UserInfoManager()
     
@@ -25,10 +25,12 @@ class UserInfoManager {
     let hourlyPay = PublishRelay<Int>()
     let workingTime = PublishRelay<WorkingTime>()
     let tax = PublishRelay<TaxCase>()
-    let backup = PublishRelay<String?>()
+    let login = PublishRelay<String?>()
     
     
-    init() {
+    override init() {
+        super.init()
+        
         self.hourlyPay
             .bind { [weak self] in self?.saveHourlyPay(sum: $0) }
             .disposed(by: bag)
@@ -39,6 +41,10 @@ class UserInfoManager {
         
         self.tax
             .bind { [weak self] in self?.saveTax($0) }
+            .disposed(by: bag)
+        
+        self.login
+            .bind { [weak self] in self?.saveLogin($0) }
             .disposed(by: bag)
     }
     
@@ -53,6 +59,10 @@ class UserInfoManager {
     
     private func saveTax(_ tax: TaxCase?) {
         UserDefaults.standard.set(tax?.rawValue, forKey: "MyPageVCTax")
+    }
+    
+    private func saveLogin(_ identifier: String?) {
+        UserDefaults.standard.set(identifier, forKey: "userID")
     }
     
     func getHourlyPay() -> Int {
@@ -71,7 +81,7 @@ class UserInfoManager {
         return TaxCase(rawValue: tax) ?? .free
     }
     
-    func getBackup() -> String? {
+    func getLogin() -> String? {
         return UserDefaults.standard.string(forKey: "userID")
     }
     
@@ -85,7 +95,7 @@ class UserInfoManager {
         let defaultTax = getTax()
         tax.accept(defaultTax)
         
-        let isBackup = getBackup()
-        backup.accept(isBackup)
+        let isLogin = getLogin()
+        login.accept(isLogin)
     }
 }

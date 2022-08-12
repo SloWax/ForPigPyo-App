@@ -25,7 +25,7 @@ class EmailVC: UIViewController {
     }()
     
     var bannerView: GADBannerView!
-    var interstitial: GADInterstitial!
+    var interstitial: GADInterstitialAd!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +35,7 @@ class EmailVC: UIViewController {
     // set View
     private func setView() {
         
-        interstitial = createAndLoadInterstitial()
+//        interstitial = createAndLoadInterstitial()
         
         view.addSubview(backImageView)
         
@@ -73,17 +73,17 @@ class EmailVC: UIViewController {
         
         return bannerView
     }
-    func createAndLoadInterstitial() -> GADInterstitial {
-        // 전면광고 초기화
-        let interstitial = GADInterstitial(adUnitID: EmailVCModel.fullAdsId)
-        interstitial.delegate = self
-        interstitial.load(GADRequest())
-        
-        return interstitial
-    }
+//    func createAndLoadInterstitial() -> GADInterstitialAd {
+//        // 전면광고 초기화
+//        let interstitial = GADInterstitialAd(adUnitID: EmailVCModel.fullAdsId)
+//        interstitial.delegate = self
+//        interstitial.load(GADRequest())
+//
+//        return interstitial
+//    }
     func checkAds() {
-        // 전면광고가 준비되었을 경우 present, else tanksAlert
-        interstitial.isReady ? interstitial.present(fromRootViewController: self) : thanksAlert()
+//        // 전면광고가 준비되었을 경우 present, else tanksAlert
+//        interstitial.isReady ? interstitial.present(fromRootViewController: self) : thanksAlert()
     }
     func thanksAlert() {
         // email을 보내고 창을 dismiss 하면 감사인사 ^^
@@ -125,15 +125,15 @@ extension EmailVC: MFMailComposeViewControllerDelegate {
         // 메일 dismiss 후 광고 check
         controller.dismiss(animated: true)
         
-        checkAds()
+//        checkAds()
     }
 }
 
-extension EmailVC: GADInterstitialDelegate {
+extension EmailVC: GADBannerViewDelegate {
     
-    func interstitialDidDismissScreen(_ ads: GADInterstitial) {
+    func interstitialDidDismissScreen(_ ads: GADInterstitialAd) {
         // 전면광고는 매번 새로 받아야 하기 때문에 광고가 꺼진 후 새 광고를 생성
-        interstitial = createAndLoadInterstitial()
+//        interstitial = createAndLoadInterstitial()
         thanksAlert()
     }
 }
