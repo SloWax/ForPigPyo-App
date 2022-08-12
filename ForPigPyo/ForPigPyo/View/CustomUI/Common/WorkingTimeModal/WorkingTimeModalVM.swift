@@ -9,22 +9,25 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import RxOptional
 
 
 class WorkingTimeModalVM: BaseVM {
     
     struct Input {
         // Void
+        let viewWillAppear = PublishRelay<Void>()
         let index = PublishRelay<(component: Int, row: Int)>()
         let bindConfirm = PublishRelay<Void>()
         
         // Data
-        let selectedTime = BehaviorRelay<(hour: Int, min: Int)>(value: (0, 0))
+        let selectedTime = BehaviorRelay<WorkingTime>(value: (0, 0))
     }
     
     struct Output {
         // Void
-        let bindConfirm = PublishRelay<(hour: Int, min: Int)>()
+        let bindDefaultRow = PublishRelay<[(component: Int, row: Int)]>()
+        let bindConfirm = PublishRelay<WorkingTime>()
         
         // Data
         let times = BehaviorRelay<[[Int]]>(value: [Array(0...23), Array(0...59)])
@@ -39,6 +42,32 @@ class WorkingTimeModalVM: BaseVM {
         self.output = output
         
         super.init()
+        
+        self.input
+            .viewWillAppear
+            .bind { [weak self] in
+                guard let self = self else { return }
+                
+                let times = self.output.times.value
+                let defaultTime = UserInfoManager.shared.getWorkingTime()
+                let hour = defaultTime.hour
+                let min = defaultTime.min
+                
+                var rows: [(component: Int, row: Int)] = []
+                
+                if let row = times.first?.firstIndex(of: hour), hour > 0 {
+                    rows.append((0, row))
+                }
+                
+                if let row = times.last?.firstIndex(of: min), min > 0 {
+                    rows.append((1, row))
+                }
+                
+                guard rows.isNotEmpty else { return }
+                
+                self.input.selectedTime.accept((hour, min))
+                self.output.bindDefaultRow.accept(rows)
+            }.disposed(by: bag)
         
         self.input
             .index
@@ -56,7 +85,7 @@ class WorkingTimeModalVM: BaseVM {
             }.disposed(by: bag)
         
         self.input
-            .bindConfirm // 근무시간 넘기기
+            .bindConfirm
             .bind { [weak self] in
                 guard let self = self else { return }
                 

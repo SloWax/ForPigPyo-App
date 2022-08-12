@@ -15,7 +15,7 @@ import RxOptional
 import RxDataSources
 
 
-typealias OnWorkingTime = ((hour: Int, min: Int)) -> Void
+typealias OnWorkingTime = (WorkingTime) -> Void
 
 
 class WorkingTimeModalVC: BaseModalVC {
@@ -43,7 +43,9 @@ class WorkingTimeModalVC: BaseModalVC {
         }
     )
     
-    init(title: String, subTitle: String? = nil, confirmTitle: String = "확인", onWorkingTime: OnWorkingTime? = nil) {
+    init(title: String, subTitle: String? = nil,
+         confirmTitle: String = "확인",
+         onWorkingTime: OnWorkingTime? = nil) {
         
         self.textTitle = title
         self.textSubTitle = subTitle
@@ -81,6 +83,11 @@ class WorkingTimeModalVC: BaseModalVC {
     }
     
     private func bind() {
+        self.rx
+            .viewWillAppear
+            .bind(to: vm.input.viewWillAppear)
+            .disposed(by: bag)
+        
         workingTimeModalView.viewDismiss // 빈 공간 tap dismiss
             .rx
             .tapGesture()
@@ -113,10 +120,18 @@ class WorkingTimeModalVC: BaseModalVC {
             ).disposed(by: bag)
         
         vm.output
+            .bindDefaultRow // 기본설정 row
+            .bind { [weak self] defaultRow in
+                guard let self = self else { return }
+                
+                self.workingTimeModalView.setDefaultRow(defaultRow)
+            }.disposed(by: bag)
+        
+        vm.output
             .bindConfirm // 근무시간 넘기기
             .bind { [weak self] workingTime in
                 guard let self = self else { return }
-
+                
                 if let callBack = self.onWorkingTime {
                     callBack(workingTime)
                 }

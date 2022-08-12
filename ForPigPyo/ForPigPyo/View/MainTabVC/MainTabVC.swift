@@ -14,10 +14,18 @@ class MainTabVC: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let homeVC = makeNaviController(tabBarImage: "wallet", rootViewController: HomeVC())
+        let homeVC = makeNaviController(
+            tabBarImage: "wallet",
+            rootViewController: HomeVC()
+        )
+        
         homeVC.title = "모두의 앱"
         
-        let myPageVC = makeNaviController(tabBarImage: "gingerbread", rootViewController: NewMyPageVC())
+        let myPageVC = makeNaviController(
+            tabBarImage: "gingerbread",
+            rootViewController: MyPageVC()
+        )
+        
         myPageVC.title = "마이페이지"
         
         viewControllers = [homeVC, myPageVC]

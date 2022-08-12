@@ -78,6 +78,11 @@ class TaxSelectModalVC: BaseModalVC {
     }
     
     private func bind() {
+        self.rx
+            .viewWillAppear
+            .bind(to: vm.input.viewWillAppear)
+            .disposed(by: bag)
+        
         taxSelectModalView.viewDismiss // 빈 공간 tap dismiss
             .rx
             .tapGesture()
@@ -93,13 +98,13 @@ class TaxSelectModalVC: BaseModalVC {
             .rx
             .itemSelected
             .map { $0.row }
-            .bind(to: vm.input.index)
+            .bind(to: vm.input.selectedIndex)
             .disposed(by: bag)
         
         taxSelectModalView.btnConfirm // 확인
             .rx
             .tap
-            .bind(to: vm.input.setConfirm)
+            .bind(to: vm.input.bindConfirm)
             .disposed(by: bag)
         
         vm.output
@@ -108,6 +113,14 @@ class TaxSelectModalVC: BaseModalVC {
                     .rx
                     .items(adapter: stringPickerAdapter)
             ).disposed(by: bag)
+        
+        vm.output
+            .bindDefaultRow // 기본설정 row
+            .bind { [weak self] defaultRow in
+                guard let self = self else { return }
+                
+                self.taxSelectModalView.setDefaultRow(defaultRow)
+            }.disposed(by: bag)
         
         vm.output
             .outputTax // 공제율 넘기기

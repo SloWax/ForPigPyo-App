@@ -12,54 +12,6 @@ import SnapKit
 
 
 class MyPageView: BaseView {
-
-    private let lblTitle = UILabel().then {
-        $0.attributedText = "내 정보".underLine
-        $0.font = .setCustomFont(font: .bold, size: 20)
-    }
-    
-    let tvList = UITableView().then {
-        $0.backgroundColor = .clear
-        $0.separatorStyle = .none
-//        $0.dataSource = self
-//        $0.delegate = self
-        $0.register(MyPageCustomCell.self, forCellReuseIdentifier: MyPageCustomCell.identifier)
-        $0.register(MyPageHeaderView.self, forHeaderFooterViewReuseIdentifier: MyPageHeaderView.identifier)
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        setUP()
-        setLayout()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func setUP() {
-        let views = [lblTitle, tvList]
-        
-        self.addSubviews(views)
-    }
-    
-    private func setLayout() {
-        lblTitle.snp.makeConstraints {
-            $0.top.equalTo(self.snp.bottom).multipliedBy(0.1)
-            $0.leading.equalToSuperview().inset(Design.largePadding)
-        }
-        
-        tvList.snp.makeConstraints {
-            $0.top.equalTo(lblTitle.snp.bottom).offset(Design.nomalPadding)
-            $0.leading.trailing.bottom.equalTo(self)
-        }
-    }
-}
-
-
-
-class NewMyPageView: BaseView {
     
     private let lblTitle = UILabel().then {
         $0.attributedText = "내 정보".underLine
@@ -71,19 +23,19 @@ class NewMyPageView: BaseView {
         $0.spacing = 10
     }
     
-    let btnWage = PyoMenuButton().then {
+    let btnWage = PyoMyMenuButton().then {
         $0.setValue(image: "hourly", title: "나의 시급 설정")
     }
     
-    let btnHour = PyoMenuButton().then {
+    let btnHour = PyoMyMenuButton().then {
         $0.setValue(image: "worktime", title: "근무 시간 설정")
     }
     
-    let btnTax = PyoMenuButton().then {
+    let btnTax = PyoMyMenuButton().then {
         $0.setValue(image: "tax", title: "기본 세금 설정")
     }
     
-    let btnBackup = PyoMenuButton().then {
+    let btnBackup = PyoMyMenuButton().then {
         $0.setValue(image: "icloud", title: "데이터 백업")
     }
     
@@ -120,7 +72,7 @@ class NewMyPageView: BaseView {
 }
 
 
-class PyoMenuButton: UIButton {
+final class PyoMyMenuButton: UIButton {
     
     private let ivImage = UIImageView().then {
         $0.tintColor = .setCustomColor(.textBasic)
@@ -157,10 +109,9 @@ class PyoMenuButton: UIButton {
     
     private func setLayout() {
         ivImage.snp.makeConstraints {
-            $0.top.bottom.equalTo(self).inset(10)
-            $0.left.equalTo(self).inset(15)
+            $0.top.left.bottom.equalTo(self).inset(15)
             $0.width.equalTo(self.snp.width).multipliedBy(0.14)
-            $0.height.equalTo(ivImage.snp.width).multipliedBy(1.2)
+            $0.height.equalTo(ivImage.snp.width)
         }
         
         lblTitle.snp.makeConstraints {

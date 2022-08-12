@@ -22,22 +22,22 @@ class TextFieldModalVC: BaseModalVC {
     
     private let placeholder: String?
     private let tfType: UIKeyboardType
-    private let validSum: Int?
+    private let validSum: (min: Int, max: Int)?
     private let validPattern: String?
     private let textLimit: Int?
-    private let textMin : Int?
+    private let textMin: Int?
+    private let isFirstRespondse: Bool
     
     private let confirmTitle: String?
     
     private let onInput: OnInput?
     
     private let textFieldModalView = TextFieldModalView()
-    private var isFirstRespondse : Bool = false
     
     init(title: String, subTitle: String? = nil, titleAlign: NSTextAlignment = .center,
          placeholder: String? = nil, tfType: UIKeyboardType = .default,
-         validSum: Int? = nil, validPattern: String? = nil, textLimit: Int? = nil,
-         textMin : Int? = nil, isFirstRespondse : Bool = false ,
+         validSum: (min: Int, max: Int)? = nil, validPattern: String? = nil, textLimit: Int? = nil,
+         textMin: Int? = nil, isFirstRespondse: Bool = false ,
          confirmTitle: String = "확인", onInput: OnInput? = nil) {
         
         self.textTitle = title
@@ -100,10 +100,10 @@ class TextFieldModalVC: BaseModalVC {
             .bind { [weak self] text in
                 guard let self = self else { return }
                 
-                var isSum: Bool, isValid: Bool, isMin: Bool = true
+                var isSum: Bool = true, isValid: Bool = true, isMin: Bool = true
                 
                 if let validSum = self.validSum, let textInt = Int(text) {
-                    isSum = (1945 < textInt) && (textInt <= validSum)
+                    isSum = (validSum.min <= textInt) && (textInt <= validSum.max)
                 }
                 
                 if let validation = self.validPattern {
@@ -148,7 +148,7 @@ class TextFieldModalVC: BaseModalVC {
                 let duration = self.getKeyBoardDuration(notification)
                 let keyboardHeight = self.getKeyBoardHeight(notification)
                 let bottomInset = self.view.safeAreaInsets.bottom
-                let inset = keyboardHeight + bottomInset
+                let inset = keyboardHeight + bottomInset + 28
                 
                 UIView.animate(withDuration: duration) { [weak self] in
                     guard let self = self else { return }
@@ -178,4 +178,3 @@ class TextFieldModalVC: BaseModalVC {
             .disposed(by: bag)
     }
 }
-

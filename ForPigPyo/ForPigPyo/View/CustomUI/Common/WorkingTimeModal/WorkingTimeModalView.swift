@@ -106,4 +106,10 @@ class WorkingTimeModalView: BaseView {
         
         btnConfirm.setTitle(confirmTitle, for: .normal)
     }
+    
+    func setDefaultRow(_ rows: [(component: Int, row: Int)]) {
+        rows.forEach {
+            pvPicker.selectRow($0.row, inComponent: $0.component, animated: false)
+        }
+    }
 }

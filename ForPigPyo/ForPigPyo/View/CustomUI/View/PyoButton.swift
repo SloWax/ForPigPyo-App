@@ -22,7 +22,7 @@ class PyoButton: UIButton {
             nor: .setCustomColor(.yellow)
         )
         self.setBackgroundColor(
-            dis: .setCustomColor(.gray),
+            dis: .setCustomColor(.lightGray),
             nor: .setCustomColor(.yellow)
         )
     }

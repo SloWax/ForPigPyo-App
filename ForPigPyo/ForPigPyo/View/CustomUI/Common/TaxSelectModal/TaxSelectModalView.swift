@@ -106,4 +106,8 @@ class TaxSelectModalView: BaseView {
         
         btnConfirm.setTitle(confirmTitle, for: .normal)
     }
+    
+    func setDefaultRow(_ row: Int) {
+        pvPicker.selectRow(row, inComponent: 0, animated: false)
+    }
 }

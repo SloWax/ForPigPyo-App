@@ -62,7 +62,7 @@ extension String {
     }
     
     func isValidation(_ pattern: String) -> Bool { // Validation
-        let predicate = NSPredicate(format:"SELF MATCHES %@", pattern)
+        let predicate = NSPredicate(format: "SELF MATCHES %@", pattern)
         return predicate.evaluate(with: self)
     }
     

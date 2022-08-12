@@ -25,6 +25,7 @@ class MyPageVM: BaseVM {
         let bindMyHourlyPay = PublishRelay<String>()
         let bindMyWorkingTime = PublishRelay<String>()
         let bindMyTax = PublishRelay<String>()
+        let bindMyBackup = PublishRelay<String>()
         let bindMenu = PublishRelay<MyPageModel.Menu>()
     }
     
@@ -45,6 +46,7 @@ class MyPageVM: BaseVM {
         
         self.input
             .bindMenu
+            .filter { $0 == .backup ? !UserInfoManager.shared.getBackup().isNil : true }
             .bind(to: self.output.bindMenu)
             .disposed(by: bag)
         
@@ -69,20 +71,10 @@ class MyPageVM: BaseVM {
             .map { $0.rawValue }
             .bind(to: self.output.bindMyTax)
             .disposed(by: bag)
+        
+        UserInfoManager.shared.backup
+            .map { $0.isNil ? "미설정" : "동기화 중" }
+            .bind(to: self.output.bindMyBackup)
+            .disposed(by: bag)
     }
-}
-
-struct MyPageModel {
-    enum Menu {
-        case wage
-        case hour
-        case tax
-        case backup
-    }
-}
-
-enum TaxCase: String, CaseIterable {
-    case free = "미공제"
-    case withholding = "3.3%"
-    case insurance = "4대보험"
 }

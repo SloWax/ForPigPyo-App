@@ -13,6 +13,9 @@ import RxCocoa
 import RxOptional
 
 
+typealias WorkingTime = (hour: Int, min: Int)
+
+
 class UserInfoManager {
     
     static let shared = UserInfoManager()
@@ -20,8 +23,9 @@ class UserInfoManager {
     private let bag = DisposeBag()
     
     let hourlyPay = PublishRelay<Int>()
-    let workingTime = PublishRelay<(hour: Int, min: Int)>()
+    let workingTime = PublishRelay<WorkingTime>()
     let tax = PublishRelay<TaxCase>()
+    let backup = PublishRelay<String?>()
     
     
     init() {
@@ -42,45 +46,46 @@ class UserInfoManager {
         UserDefaults.standard.set(sum, forKey: "MyPageVCHourly")
     }
     
-    private func loadHourlyPay() -> Int {
-        return UserDefaults.standard.integer(forKey: "MyPageVCHourly")
-    }
-    
-    private func saveWorkingTime(_ time: (hour: Int, min: Int)?) {
+    private func saveWorkingTime(_ time: WorkingTime?) {
         UserDefaults.standard.set(time?.hour, forKey: "myPageVCWorkHour")
         UserDefaults.standard.set(time?.min, forKey: "myPageVCWorkMin")
     }
     
-    private func loadWorkingTime() -> (hour: Int, min: Int) {
+    private func saveTax(_ tax: TaxCase?) {
+        UserDefaults.standard.set(tax?.rawValue, forKey: "MyPageVCTax")
+    }
+    
+    func getHourlyPay() -> Int {
+        return UserDefaults.standard.integer(forKey: "MyPageVCHourly")
+    }
+    
+    func getWorkingTime() -> WorkingTime {
         let hour = UserDefaults.standard.integer(forKey: "myPageVCWorkHour")
         let min = UserDefaults.standard.integer(forKey: "myPageVCWorkMin")
         
         return (hour, min)
     }
     
-    // 세금 index 저장
-    private func saveTax(_ tax: TaxCase?) {
-        UserDefaults.standard.set(tax?.rawValue, forKey: "MyPageVCTax")
+    func getTax() -> TaxCase {
+        let tax = UserDefaults.standard.string(forKey: "MyPageVCTax") ?? "미공제"
+        return TaxCase(rawValue: tax) ?? .free
     }
     
-    // 세금 index 불러오기
-    private func loadTax() -> TaxCase? {
-        let tax = UserDefaults.standard.object(forKey: "MyPageVCTax")
-        
-        guard let tax = tax as? String else { return nil }
-        
-        return TaxCase(rawValue: tax)
+    func getBackup() -> String? {
+        return UserDefaults.standard.string(forKey: "userID")
     }
     
     func loadInfo() {
-        let defaultHourlyPay = loadHourlyPay()
+        let defaultHourlyPay = getHourlyPay()
         hourlyPay.accept(defaultHourlyPay)
         
-        let defaultWorkingTime = loadWorkingTime()
+        let defaultWorkingTime = getWorkingTime()
         workingTime.accept(defaultWorkingTime)
         
-        if let defaultTax = loadTax() {
-            tax.accept(defaultTax)
-        }
+        let defaultTax = getTax()
+        tax.accept(defaultTax)
+        
+        let isBackup = getBackup()
+        backup.accept(isBackup)
     }
 }

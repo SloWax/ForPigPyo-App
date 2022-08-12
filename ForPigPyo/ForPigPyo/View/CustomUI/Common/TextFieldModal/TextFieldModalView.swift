@@ -103,7 +103,7 @@ class TextFieldModalView: BaseView {
     
     func setValue(title: String?, subTitle: String?, titleAlign: NSTextAlignment = .center,
                   placeholder: String?, tfType: UIKeyboardType = .default,
-                  confirmTitle: String? , isFirstRespondse : Bool = false ) {
+                  confirmTitle: String?, isFirstRespondse: Bool = false ) {
         lblTitle.text = title
         lblTitle.textAlignment = titleAlign
         
@@ -115,8 +115,8 @@ class TextFieldModalView: BaseView {
         
         btnConfirm.setTitle(confirmTitle, for: .normal)
         
-        if isFirstRespondse {
-            self.tfInput.becomeFirstResponder()
-        }
+        guard isFirstRespondse else { return }
+        
+        tfInput.becomeFirstResponder()
     }
 }
