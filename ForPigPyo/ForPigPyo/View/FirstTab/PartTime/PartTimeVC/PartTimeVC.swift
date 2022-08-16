@@ -165,7 +165,7 @@ class PartTimeVC: UIViewController {
     func backupToDB() {
         let firestore = Firestore.firestore()
         
-        if let userID = UserDefaults.standard.string(forKey: LoginVC.userID) {
+        if let userID = UserDefaults.standard.string(forKey: "userID") {
             do {
                 try firestore.collection(userID).document(PartTimeVC.forkey).setData(from: data)
             } catch let error {

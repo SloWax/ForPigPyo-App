@@ -41,12 +41,12 @@ class SocialManager: NSObject {
 }
 
 extension SocialManager: ASAuthorizationControllerDelegate {
+    
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         guard let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential else { return }
         
         let userIdentifier = appleIDCredential.user
-        UserInfoManager.shared.login.accept(userIdentifier)
         
-//        loadFromDB()
+        UserInfoManager.shared.login.accept(userIdentifier)
     }
 }

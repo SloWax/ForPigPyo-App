@@ -118,7 +118,7 @@ class HomeVC: UIViewController {
         loginAppearCount += 1
         
         let appleIDProvider = ASAuthorizationAppleIDProvider()
-        let userID = UserDefaults.standard.string(forKey: LoginVC.userID) ?? ""
+        let userID = UserDefaults.standard.string(forKey: "userID") ?? ""
         
         appleIDProvider.getCredentialState(forUserID: userID) { (credentialState, _) in
             switch credentialState {
@@ -127,7 +127,7 @@ class HomeVC: UIViewController {
                 print("authorized")
             case .revoked, .notFound :
                 
-                UserDefaults.standard.set(nil, forKey: LoginVC.userID)
+                UserDefaults.standard.set(nil, forKey: "userID")
                 
                 DispatchQueue.main.async {
                     let loginVC = LoginVC()
