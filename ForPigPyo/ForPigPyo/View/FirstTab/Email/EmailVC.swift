@@ -67,7 +67,7 @@ class EmailVC: UIViewController {
         // 배너광고 초기화
         let bannerView = GADBannerView()
         bannerView.adSize = GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(view.frame.width)
-        bannerView.adUnitID = EmailVCModel.bannerAdsId
+        bannerView.adUnitID = SDKIdentifier.adMobBanner.key
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
         
@@ -135,5 +135,37 @@ extension EmailVC: GADBannerViewDelegate {
         // 전면광고는 매번 새로 받아야 하기 때문에 광고가 꺼진 후 새 광고를 생성
 //        interstitial = createAndLoadInterstitial()
         thanksAlert()
+    }
+}
+
+
+import UIKit
+import RxSwift
+import RxCocoa
+import MessageUI
+import GoogleMobileAds
+
+
+class NewEmailVC: BaseVC {
+    private let emailView = NewEmailView()
+    private var vm: EmailVM!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        initialize()
+        bind()
+    }
+    
+    private func setInputs() -> EmailVM {
+        return EmailVM()
+    }
+    
+    private func initialize() {
+        vm = setInputs()
+    }
+    
+    private func bind() {
+        
     }
 }

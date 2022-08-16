@@ -49,7 +49,7 @@ class LoginVC: BaseVC {
             .bind { [weak self] login in
                 guard let self = self else { return }
                 
-                print("loginInfo: \(login ?? "nil")") // 수정예정
+                print(login ?? "nil") // 수정예정
                 self.clearBag(vm: self.vm)
                 self.dismiss(animated: true)
             }.disposed(by: bag)
