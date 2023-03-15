@@ -63,6 +63,7 @@ class EmailVC: UIViewController {
         }
     }
     
+//<<<<<<< HEAD:ForPigPyo/ForPigPyo/View/FirstTab/EmailVC/EmailVC.swift
 //    private func createAndLoadBannerView() -> GADBannerView {
 //        // 배너광고 초기화
 //        let bannerView = GADBannerView()
@@ -73,6 +74,18 @@ class EmailVC: UIViewController {
 //
 //        return bannerView
 //    }
+//=======
+//    private func createAndLoadBannerView() -> GADBannerView {
+//        // 배너광고 초기화
+//        let bannerView = GADBannerView()
+//        bannerView.adSize = GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(view.frame.width)
+//        bannerView.adUnitID = SDKIdentifier.adMobBanner.key
+//        bannerView.rootViewController = self
+//        bannerView.load(GADRequest())
+//
+//        return bannerView
+//    }
+//>>>>>>> 08681b9fc6f919d86b658e1031c816edabe9daa6:ForPigPyo/ForPigPyo/View/FirstTab/Email/EmailVC.swift
 //    func createAndLoadInterstitial() -> GADInterstitialAd {
 //        // 전면광고 초기화
 //        let interstitial = GADInterstitialAd(adUnitID: EmailVCModel.fullAdsId)
@@ -129,6 +142,7 @@ extension EmailVC: MFMailComposeViewControllerDelegate {
     }
 }
 
+//<<<<<<< HEAD:ForPigPyo/ForPigPyo/View/FirstTab/EmailVC/EmailVC.swift
 //extension EmailVC: GADBannerViewDelegate {
 //
 //    func interstitialDidDismissScreen(_ ads: GADInterstitialAd) {
@@ -137,3 +151,45 @@ extension EmailVC: MFMailComposeViewControllerDelegate {
 //        thanksAlert()
 //    }
 //}
+//=======
+//extension EmailVC: GADBannerViewDelegate {
+//
+//    func interstitialDidDismissScreen(_ ads: GADInterstitialAd) {
+//        // 전면광고는 매번 새로 받아야 하기 때문에 광고가 꺼진 후 새 광고를 생성
+////        interstitial = createAndLoadInterstitial()
+//        thanksAlert()
+//    }
+//}
+
+
+import UIKit
+import RxSwift
+import RxCocoa
+import MessageUI
+//import GoogleMobileAds
+
+
+class NewEmailVC: BaseVC {
+    private let emailView = NewEmailView()
+    private var vm: EmailVM!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        initialize()
+        bind()
+    }
+    
+    private func setInputs() -> EmailVM {
+        return EmailVM()
+    }
+    
+    private func initialize() {
+        vm = setInputs()
+    }
+    
+    private func bind() {
+        
+    }
+}
+//>>>>>>> 08681b9fc6f919d86b658e1031c816edabe9daa6:ForPigPyo/ForPigPyo/View/FirstTab/Email/EmailVC.swift

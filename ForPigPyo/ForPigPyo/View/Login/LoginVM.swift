@@ -13,21 +13,25 @@ import RxCocoa
 
 
 class LoginVM: BaseVM {
-    struct Input {
-        
-    }
+    struct Input { }
     
     struct Output {
-        
+        let bindCompLogin = PublishRelay<String?>()
     }
     
     let input: Input
     let output: Output
     
     init(input: Input = Input(), output: Output = Output()) {
+        
         self.input = input
         self.output = output
+        
         super.init()
         
+        UserInfoManager.shared
+            .login
+            .bind(to: self.output.bindCompLogin)
+            .disposed(by: bag)
     }
 }

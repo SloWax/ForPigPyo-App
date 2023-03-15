@@ -13,7 +13,7 @@ struct LoginVCModel {
     func loadFromDB() {
         let firestore = Firestore.firestore()
         
-        if let userID = UserDefaults.standard.string(forKey: LoginVC.userID) {
+        if let userID = UserDefaults.standard.string(forKey: "userID") {
             let partTimeDoc = firestore.collection(userID).document(PartTimeVC.forkey)
             let savingDoc = firestore.collection(userID).document(SavingVC.forkey)
             
