@@ -8,37 +8,41 @@ post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
       config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET'
+      config.build_settings['CODE_SIGNING_ALLOWED'] = 'NO'
     end
   end
 end
 
+# Available Pods
+def available_pods
+  
+  # Pods for ForPigPyo
+  
+  #Rx
+  pod 'Moya/RxSwift', '~> 15.0.0'
+  pod 'RxCocoa', '~> 6.2.0'
+  pod 'RxGesture', '~> 4.0.2'
+  pod 'RxDataSources', '~> 5.0'
+  pod 'RxOptional'
+  
+  #util
+  #  pod 'SwiftLint'
+  pod 'Then'
+  pod 'SnapKit', '~> 5.0.0'
+  
+  #Google
+  pod 'Firebase/Core'
+  pod 'Firebase/Firestore'
+  pod 'FirebaseFirestoreSwift'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Crashlytics'
+  #  pod 'Google-Mobile-Ads-SDK'
+end
+
 target 'ForPigPyo' do
+  available_pods
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-  
   # CocoaPods 경고 제거
   inhibit_all_warnings!
-
-  # Pods for ForPigPyo
-	
-	#Rx
-	pod 'Moya/RxSwift', '~> 15.0.0'
-	pod 'RxCocoa', '~> 6.2.0'
-	pod 'RxGesture', '~> 4.0.2'
-	pod 'RxDataSources', '~> 5.0'
-	pod 'RxOptional'
-	
-	#util
-	pod 'SwiftLint'
-	pod 'Then'
-	pod 'SnapKit', '~> 5.0.0'
-
-	#Google
-	pod 'Firebase/Core'
-	pod 'Firebase/Firestore'
-	pod 'FirebaseFirestoreSwift'
-	pod 'Firebase/Analytics'
-	pod 'Firebase/Crashlytics'
-	pod 'Google-Mobile-Ads-SDK'
-
 end

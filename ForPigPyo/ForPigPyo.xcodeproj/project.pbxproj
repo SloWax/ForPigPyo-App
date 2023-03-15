@@ -57,7 +57,6 @@
 		6E00CFE625BACCFE00FF1E06 /* DoneDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E00CFE525BACCFE00FF1E06 /* DoneDatePickerView.swift */; };
 		6E00D01725BC1C5500FF1E06 /* MonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E00D01625BC1C5500FF1E06 /* MonthYearPickerView.swift */; };
 		6E00D02A25BC20ED00FF1E06 /* DoneMonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E00D02925BC20ED00FF1E06 /* DoneMonthYearPickerView.swift */; };
-		6E13DB8425DFF870004FFF8F /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 6E13DB8325DFF870004FFF8F /* .swiftlint.yml */; };
 		6E13DB9A25E2D46B004FFF8F /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E13DB9925E2D46B004FFF8F /* LoginVC.swift */; };
 		6E13DBA925E2EBDB004FFF8F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E13DBA825E2EBDB004FFF8F /* LoginView.swift */; };
 		6E26B37125B54C2C0025C998 /* TimeDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E26B37025B54C2C0025C998 /* TimeDataVC.swift */; };
@@ -176,7 +175,6 @@
 		6E00CFE525BACCFE00FF1E06 /* DoneDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneDatePickerView.swift; sourceTree = "<group>"; };
 		6E00D01625BC1C5500FF1E06 /* MonthYearPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthYearPickerView.swift; sourceTree = "<group>"; };
 		6E00D02925BC20ED00FF1E06 /* DoneMonthYearPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneMonthYearPickerView.swift; sourceTree = "<group>"; };
-		6E13DB8325DFF870004FFF8F /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		6E13DB9925E2D46B004FFF8F /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		6E13DBA825E2EBDB004FFF8F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		6E26B37025B54C2C0025C998 /* TimeDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDataVC.swift; sourceTree = "<group>"; };
@@ -578,7 +576,6 @@
 		6E8CFFC0255175350002D202 = {
 			isa = PBXGroup;
 			children = (
-				6E13DB8325DFF870004FFF8F /* .swiftlint.yml */,
 				6E8CFFCB255175350002D202 /* ForPigPyo */,
 				6E8CFFE5255175390002D202 /* ForPigPyoTests */,
 				6E8CFFF0255175390002D202 /* ForPigPyoUITests */,
@@ -787,7 +784,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E13DB8425DFF870004FFF8F /* .swiftlint.yml in Resources */,
 				6E8CFFDC255175380002D202 /* LaunchScreen.storyboard in Resources */,
 				6E83A86425E3580B009561E2 /* GoogleService-Info.plist in Resources */,
 				6EC70C9B25B2D461004D1900 /* NotoSansCJKkr-Medium.otf in Resources */,
@@ -837,7 +833,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
+			shellScript = "
+";
 		};
 		7D9C9C67CD5AAC3FCC38A480 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

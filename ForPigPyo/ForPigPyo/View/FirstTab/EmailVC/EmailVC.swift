@@ -8,7 +8,7 @@
 
 import UIKit
 import MessageUI
-import GoogleMobileAds
+//import GoogleMobileAds
 
 class EmailVC: UIViewController {
     
@@ -24,8 +24,8 @@ class EmailVC: UIViewController {
         return view
     }()
     
-    var bannerView: GADBannerView!
-    var interstitial: GADInterstitialAd!
+//    var bannerView: GADBannerView!
+//    var interstitial: GADInterstitialAd!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,14 +44,14 @@ class EmailVC: UIViewController {
             $0.top.leading.trailing.bottom.equalToSuperview()
         }
         
-        bannerView = createAndLoadBannerView()
-        view.addSubview(bannerView)
-        
-        bannerView.snp.makeConstraints {
+//        bannerView = createAndLoadBannerView()
+//        view.addSubview(bannerView)
+//
+//        bannerView.snp.makeConstraints {
             
-            $0.centerX.equalToSuperview()
-            $0.bottom.equalTo(view.safeAreaLayoutGuide)
-        }
+//            $0.centerX.equalToSuperview()
+//            $0.bottom.equalTo(view.safeAreaLayoutGuide)
+//        }
         
         emailView.emailButton.addTarget(self, action: #selector(presentEmail(_:)), for: .touchUpInside)
         view.addSubview(emailView)
@@ -59,20 +59,20 @@ class EmailVC: UIViewController {
         emailView.snp.makeConstraints {
             
             $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-            $0.bottom.equalTo(bannerView.snp.top)
+//            $0.bottom.equalTo(bannerView.snp.top)
         }
     }
     
-    private func createAndLoadBannerView() -> GADBannerView {
-        // 배너광고 초기화
-        let bannerView = GADBannerView()
-        bannerView.adSize = GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(view.frame.width)
-        bannerView.adUnitID = EmailVCModel.bannerAdsId
-        bannerView.rootViewController = self
-        bannerView.load(GADRequest())
-        
-        return bannerView
-    }
+//    private func createAndLoadBannerView() -> GADBannerView {
+//        // 배너광고 초기화
+//        let bannerView = GADBannerView()
+//        bannerView.adSize = GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(view.frame.width)
+//        bannerView.adUnitID = EmailVCModel.bannerAdsId
+//        bannerView.rootViewController = self
+//        bannerView.load(GADRequest())
+//
+//        return bannerView
+//    }
 //    func createAndLoadInterstitial() -> GADInterstitialAd {
 //        // 전면광고 초기화
 //        let interstitial = GADInterstitialAd(adUnitID: EmailVCModel.fullAdsId)
@@ -129,11 +129,11 @@ extension EmailVC: MFMailComposeViewControllerDelegate {
     }
 }
 
-extension EmailVC: GADBannerViewDelegate {
-    
-    func interstitialDidDismissScreen(_ ads: GADInterstitialAd) {
-        // 전면광고는 매번 새로 받아야 하기 때문에 광고가 꺼진 후 새 광고를 생성
-//        interstitial = createAndLoadInterstitial()
-        thanksAlert()
-    }
-}
+//extension EmailVC: GADBannerViewDelegate {
+//
+//    func interstitialDidDismissScreen(_ ads: GADInterstitialAd) {
+//        // 전면광고는 매번 새로 받아야 하기 때문에 광고가 꺼진 후 새 광고를 생성
+////        interstitial = createAndLoadInterstitial()
+//        thanksAlert()
+//    }
+//}
