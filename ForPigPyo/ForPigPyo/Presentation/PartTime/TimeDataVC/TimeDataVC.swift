@@ -171,7 +171,7 @@ class TimeDataVC: UIViewController {
                               saveIndex: division.tag,
                               value: value)
         
-        if let mainTabVC = presentingViewController as? MainTabVC {
+        if let mainTabVC = presentingViewController as? MainTC {
             if let partTimeVC = mainTabVC.children[0].children[1] as? PartTimeVC {
                 
                 partTimeVC.data = data

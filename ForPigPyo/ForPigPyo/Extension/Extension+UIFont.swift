@@ -11,7 +11,7 @@ import UIKit
 extension UIFont {
     // 폰트 설정
     class func setCustomFont(font: Name, size: CGFloat) -> UIFont {
-        guard let font = UIFont(name: font.rawValue, size: size) else { fatalError() }
+        guard let font = UIFont(name: font.rawValue, size: size) else { fatalError("Not found Font: \(font.rawValue)") }
         return font
     }
     
@@ -20,5 +20,6 @@ extension UIFont {
         case black   = "NotoSansCJKkr-Black"
         case bold    = "NotoSansCJKkr-Bold"
         case medium  = "NotoSansCJKkr-Medium"
+        case regular = "NotoSansCJKkr-Regular"
     }
 }

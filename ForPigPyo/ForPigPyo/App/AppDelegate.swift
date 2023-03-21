@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        GADMobileAds.sharedInstance().start(completionHandler: nil)
         
         // HomeVC 리스트별 마이페이지 메뉴 불러오기
-        let mainTabVC = MainTabVC()
+        let mainTC = MainTC()
         
 //        if let homeVC = mainTabVC.viewControllers?[0].children[0] as? HomeVC {
 //            
@@ -34,12 +34,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        }
         
         // firebase에 저장된 정보가 있을 경우 불러오기
-        let loginVCModel = LoginVCModel()
-        loginVCModel.loadFromDB()
+//        let loginVCModel = LoginVCModel()
+//        loginVCModel.loadFromDB()
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.overrideUserInterfaceStyle = .light
-        window?.rootViewController = mainTabVC
+        window?.rootViewController = mainTC
         window?.makeKeyAndVisible()
         
         return true

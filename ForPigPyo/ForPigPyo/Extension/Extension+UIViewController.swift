@@ -18,7 +18,7 @@ extension UIViewController {
             vc.modalPresentationStyle = modal
         }
         
-        if let navi = vc as? BaseNavigationVC {
+        if let navi = vc as? BaseNC {
             navi.rootViewController?.title = title
         }
         

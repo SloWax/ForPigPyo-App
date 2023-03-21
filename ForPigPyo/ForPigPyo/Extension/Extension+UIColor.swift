@@ -23,8 +23,18 @@ extension UIColor {
         )
     }
     
+    func toImage(width: CGFloat = 1.0, height: CGFloat = 1.0) -> UIImage {
+        let size = CGSize(width: width, height: height)
+        
+        return UIGraphicsImageRenderer(size: size).image { rendererContext in
+            self.setFill()
+            rendererContext.fill(CGRect(origin: .zero, size: size))
+        }
+    }
+    
     class func setCustomColor(_ code: ColorCode, alpha: CGFloat = 1) -> UIColor {
         guard let color = UIColor(named: code.rawValue) else { fatalError("Not found color: \(code.rawValue)") }
+        
         return color.withAlphaComponent(alpha)
     }
 }
@@ -38,7 +48,16 @@ enum ColorCode: String {
     case yellow    = "#FFD100"
 
     // text
-    case textBasic = "#393939"
     case textRed   = "#ED6363"
     case textBlue  = "#6F74EA"
+    
+    // Grays
+    case white                 = "#FFFFFF"
+    case gray1                 = "#F5F5F5"
+    case gray2                 = "#DBDBDB"
+    case gray4                 = "#B8B8B8"
+    case gray6                 = "#808080"
+    case gray8                 = "#555555"
+    case textBasic             = "#393939"
+    case black                 = "#000000"
 }

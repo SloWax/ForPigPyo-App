@@ -1,5 +1,5 @@
 //
-//  BaseNavigationVC.swift
+//  BaseNC.swift
 //  ForPigPyo
 //
 //  Created by 표건욱 on 2022/07/29.
@@ -16,7 +16,7 @@ enum NavigationType {
     case fullScreen
 }
 
-class BaseNavigationVC: UINavigationController {
+class BaseNC: UINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -129,11 +129,11 @@ class HomeVC: UIViewController {
                 
                 UserDefaults.standard.set(nil, forKey: "userID")
                 
-                DispatchQueue.main.async {
-                    let loginVC = LoginVC()
-                    loginVC.modalPresentationStyle = .formSheet
-                    self.present(loginVC, animated: true)
-                }
+//                DispatchQueue.main.async {
+//                    let loginVC = LoginVC()
+//                    loginVC.modalPresentationStyle = .formSheet
+//                    self.present(loginVC, animated: true)
+//                }
                 print("revoked or notFound")
             case .transferred:
                 
