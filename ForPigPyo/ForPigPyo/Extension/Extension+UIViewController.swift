@@ -9,6 +9,16 @@
 import UIKit
 
 extension UIViewController {
+    // 기본 push
+    func pushVC(_ vc: UIViewController, animated: Bool = true, title: String? = nil) {
+        if self is BaseMainVC {
+            vc.hidesBottomBarWhenPushed = true
+        }
+        
+        vc.title = title
+        self.navigationController?.pushViewController(vc, animated: animated)
+    }
+    
     // 기본 present
     func presentVC(_ vc: UIViewController, _ animated: Bool = true, modal: UIModalPresentationStyle = .fullScreen, title: String = "", completion: (() -> Void)? = nil) {
         switch vc {

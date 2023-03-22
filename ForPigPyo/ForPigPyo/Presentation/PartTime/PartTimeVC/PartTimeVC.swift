@@ -11,7 +11,7 @@ import SnapKit
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
-class PartTimeVC: UIViewController {
+class PartTimeVC: BaseMainVC {
     
     static let forkey: String = "PartTimeVC"
     
@@ -84,23 +84,26 @@ class PartTimeVC: UIViewController {
     }
     private func setView() {
         
-        view.addSubview(backImageView)
+//        view.addSubview(backImageView)
+//        
+//        backImageView.snp.makeConstraints {
+//            
+//            $0.top.leading.trailing.bottom.equalToSuperview()
+//        }
+//        
+//        partTimeView.setButtonTitle(title: tax[taxIndex])
+//        partTimeView.taxButton.addTarget(self, action: #selector(changeDeduction(_:)), for: .touchUpInside)
+//        view.addSubview(partTimeView)
+//        
+//        partTimeView.snp.makeConstraints {
+//            
+//            $0.top.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
+//        }
+//        
+//        loadPartTimeValue(deduction: taxIndex % tax.count)
         
-        backImageView.snp.makeConstraints {
-            
-            $0.top.leading.trailing.bottom.equalToSuperview()
-        }
-        
-        partTimeView.setButtonTitle(title: tax[taxIndex])
-        partTimeView.taxButton.addTarget(self, action: #selector(changeDeduction(_:)), for: .touchUpInside)
-        view.addSubview(partTimeView)
-        
-        partTimeView.snp.makeConstraints {
-            
-            $0.top.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
-        }
-        
-        loadPartTimeValue(deduction: taxIndex % tax.count)
+        let newView = newPartTimeView()
+        view = newView
     }
     
     func loadPartTimeValue(deduction: Int) {
@@ -158,9 +161,10 @@ class PartTimeVC: UIViewController {
                                   value: value)
         }
         
-        timeDataVC.modalPresentationStyle = .fullScreen
-        
-        present(timeDataVC, animated: true)
+//        timeDataVC.modalPresentationStyle = .fullScreen
+//
+//        present(timeDataVC, animated: true)
+        pushVC(timeDataVC)
     }
     func backupToDB() {
         let firestore = Firestore.firestore()

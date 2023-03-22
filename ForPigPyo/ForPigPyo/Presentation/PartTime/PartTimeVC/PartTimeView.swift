@@ -7,15 +7,17 @@
 //
 
 import UIKit
+import SnapKit
+import Then
 
-// PartTimeVC 전체 View
 
 class PartTimeView: UIView {
     
     let titleLabel: UILabel = {
         let label = UILabel()
+        label.attributedText = "이번 달엔 얼마나 받을까?".underLine
         label.font = .setCustomFont(font: .black, size: 26)
-        
+
         return label
     }()
     
@@ -182,6 +184,173 @@ class PartTimeView: UIView {
     func setButtonTitle(title: String) {
         
         taxButton.setTitle(title, for: .normal)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+class newPartTimeView: BaseView {
+    
+    private let lblTitle = UILabel().then {
+        $0.attributedText = "이번 달엔 얼마나 받을까?".underLine
+        $0.font = .setCustomFont(font: .black, size: 26)
+    }
+    
+    private let lblDate = UILabel().then {
+        $0.text = "test"
+        $0.textColor = .setCustomColor(.textBasic)
+        $0.font = .setCustomFont(font: .black, size: 26)
+    }
+    
+    let btnPrevius = UIButton(type: .system).then {
+        let image = UIImage(systemName: "arrow.left")
+        $0.setImage(image, for: .normal)
+        $0.tintColor = .black
+    }
+    
+    let btnNext = UIButton(type: .system).then {
+        let image = UIImage(systemName: "arrow.right")
+        $0.setImage(image, for: .normal)
+        $0.tintColor = .black
+    }
+    
+    let viewStatus = StatusView()
+    
+    let tvList = UITableView().then {
+        $0.backgroundColor = .clear
+        $0.separatorColor = .clear
+    }
+    
+    private let viewEmpty = EmptyView().then {
+        $0.setValue(explain: "근무 추가를 눌러서 급여\n관리를 시작해보세요:)")
+    }
+    
+    let btnAdd = UIButton(type: .system).then {
+        $0.tintColor = .setCustomColor(.white)
+        $0.setTitle("근무 추가", for: .normal)
+        $0.titleLabel?.font = .setCustomFont(font: .bold, size: 20)
+        $0.backgroundColor = .setCustomColor(.yellow)
+        $0.cornerRadius = 25
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        setUP()
+        setLayout()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setUP() {
+        let views = [lblTitle, lblDate, btnPrevius, btnNext,
+                     viewStatus, tvList, viewEmpty, btnAdd]
+        
+        self.addSubviews(views)
+    }
+    
+    private func setLayout() {
+        lblTitle.snp.makeConstraints {
+            $0.top.left.equalTo(self.safeAreaLayoutGuide).inset(15)
+        }
+        
+        lblDate.snp.makeConstraints {
+            $0.centerX.equalTo(self)
+            $0.top.equalTo(lblTitle.snp.bottom).offset(15)
+        }
+        
+        btnPrevius.snp.makeConstraints {
+            $0.centerY.equalTo(lblDate)
+            $0.left.equalTo(self).inset(15)
+        }
+        
+        btnNext.snp.makeConstraints {
+            $0.centerY.equalTo(lblDate)
+            $0.right.equalTo(self).inset(15)
+        }
+        
+        viewStatus.snp.makeConstraints {
+            $0.top.equalTo(lblDate.snp.bottom).offset(30)
+            $0.left.right.equalTo(self).inset(15)
+        }
+        
+        tvList.snp.makeConstraints {
+            $0.top.equalTo(viewStatus.snp.bottom).offset(10)
+            $0.left.right.bottom.equalTo(self)
+        }
+        
+        viewEmpty.snp.makeConstraints {
+            $0.edges.equalTo(tvList)
+        }
+        
+        btnAdd.snp.makeConstraints {
+            $0.width.equalTo(self).multipliedBy(0.26)
+            $0.height.equalTo(btnAdd.snp.width).multipliedBy(0.5)
+            $0.right.bottom.equalTo(self.safeAreaLayoutGuide).inset(15)
+        }
+    }
+    
+    func setValue(year: Int, month: Int, totalPay: String) {
+        
+//        dateLabel.text = "\(year)년 \(month)월"
+//        containerView.label2.text = "총 급여: \(totalPay) 원"
+    }
+    func setButtonTitle(title: String) {
+        
+//        taxButton.setTitle(title, for: .normal)
+    }
+}
+
+class StatusView: UIView {
+    
+    private let lblTitle = UILabel().then {
+        $0.attributedText = "이번 달에는 얼마를 받을까요?".underLine
+        $0.textColor = .setCustomColor(.textBasic)
+        $0.font = .setCustomFont(font: .bold, size: 14)
+    }
+    
+    private let lblValue = UILabel().then {
+        $0.text = "총 급여: 0 원"
+        $0.textColor = .setCustomColor(.textBasic)
+        $0.font = .setCustomFont(font: .bold, size: 20)
+    }
+        
+    let btnTax = UIButton(type: .system).then {
+        $0.tintColor = .setCustomColor(.textBasic)
+        $0.titleLabel?.font = .setCustomFont(font: .bold, size: 14)
+        $0.backgroundColor = .setCustomColor(.gray1)
+        $0.layer.cornerRadius = 15
+    }
+    
+    override init(frame: CGRect) {
+        super .init(frame: frame)
+        
+        self.backgroundColor = .setCustomColor(.lightGray)
+        self.layer.cornerRadius = 15
+        
+        let views = [lblTitle, lblValue, btnTax]
+        self.addSubviews(views)
+        
+        lblTitle.snp.makeConstraints {
+            $0.top.left.equalTo(self).offset(15)
+//            $0.leading.equalTo(self).inset(20)
+        }
+        
+        btnTax.snp.makeConstraints {
+            $0.centerY.equalTo(lblTitle)
+            $0.right.equalTo(self).inset(15)
+            $0.width.equalTo(self).multipliedBy(0.15)
+            $0.height.equalTo(btnTax.snp.width).multipliedBy(0.37)
+        }
+        
+        lblValue.snp.makeConstraints {
+            $0.top.equalTo(lblTitle.snp.bottom).offset(5)
+            $0.right.equalTo(btnTax)
+            $0.bottom.equalTo(self).inset(15)
+        }
     }
     
     required init?(coder: NSCoder) {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TimeDataVC: UIViewController {
+class TimeDataVC: BaseSceneVC {
     
     let timeDataView: TimeDataView = {
         let view = TimeDataView()

@@ -26,15 +26,8 @@ class BaseNC: UINavigationController {
     
     private func setupNavigationBarAppearance() {
         let image = UIImage(named: "btn_back_28")
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = .clear
-        appearance.setBackIndicatorImage(image, transitionMaskImage: image)
-
         navigationBar.tintColor = .black
-        navigationBar.standardAppearance = appearance
-        navigationBar.clipsToBounds = true
-        
-        navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance
+        navigationBar.backIndicatorImage = image
+        navigationBar.backIndicatorTransitionMaskImage = image
     }
 }
