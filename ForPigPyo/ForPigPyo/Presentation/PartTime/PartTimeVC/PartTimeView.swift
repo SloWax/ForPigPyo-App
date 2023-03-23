@@ -197,13 +197,12 @@ class newPartTimeView: BaseView {
         $0.font = .setCustomFont(font: .black, size: 26)
     }
     
-    private let lblDate = UILabel().then {
-        $0.text = "test"
-        $0.textColor = .setCustomColor(.textBasic)
-        $0.font = .setCustomFont(font: .black, size: 26)
+    let btnDate = UIButton(type: .system).then {
+        $0.setTitleColor(.setCustomColor(.textBasic), for: .normal)
+        $0.titleLabel?.font = .setCustomFont(font: .black, size: 26)
     }
     
-    let btnPrevius = UIButton(type: .system).then {
+    let btnPrevious = UIButton(type: .system).then {
         let image = UIImage(systemName: "arrow.left")
         $0.setImage(image, for: .normal)
         $0.tintColor = .black
@@ -227,8 +226,8 @@ class newPartTimeView: BaseView {
     }
     
     let btnAdd = UIButton(type: .system).then {
-        $0.tintColor = .setCustomColor(.white)
         $0.setTitle("근무 추가", for: .normal)
+        $0.setTitleColor(.setCustomColor(.white), for: .normal)
         $0.titleLabel?.font = .setCustomFont(font: .bold, size: 20)
         $0.backgroundColor = .setCustomColor(.yellow)
         $0.cornerRadius = 25
@@ -246,7 +245,7 @@ class newPartTimeView: BaseView {
     }
     
     private func setUP() {
-        let views = [lblTitle, lblDate, btnPrevius, btnNext,
+        let views = [lblTitle, btnDate, btnPrevious, btnNext,
                      viewStatus, tvList, viewEmpty, btnAdd]
         
         self.addSubviews(views)
@@ -257,23 +256,23 @@ class newPartTimeView: BaseView {
             $0.top.left.equalTo(self.safeAreaLayoutGuide).inset(15)
         }
         
-        lblDate.snp.makeConstraints {
+        btnDate.snp.makeConstraints {
             $0.centerX.equalTo(self)
             $0.top.equalTo(lblTitle.snp.bottom).offset(15)
         }
         
-        btnPrevius.snp.makeConstraints {
-            $0.centerY.equalTo(lblDate)
+        btnPrevious.snp.makeConstraints {
+            $0.centerY.equalTo(btnDate)
             $0.left.equalTo(self).inset(15)
         }
         
         btnNext.snp.makeConstraints {
-            $0.centerY.equalTo(lblDate)
+            $0.centerY.equalTo(btnDate)
             $0.right.equalTo(self).inset(15)
         }
         
         viewStatus.snp.makeConstraints {
-            $0.top.equalTo(lblDate.snp.bottom).offset(30)
+            $0.top.equalTo(btnDate.snp.bottom).offset(30)
             $0.left.right.equalTo(self).inset(15)
         }
         
@@ -293,15 +292,18 @@ class newPartTimeView: BaseView {
         }
     }
     
-    func setValue(year: Int, month: Int, totalPay: String) {
+    func setValue(_ value: (date: String, wage: Int, tax: String)) {
         
 //        dateLabel.text = "\(year)년 \(month)월"
 //        containerView.label2.text = "총 급여: \(totalPay) 원"
+        
+        btnDate.setTitle(value.date, for: .normal)
+        viewStatus.setValue(wage: value.wage, tax: value.tax)
     }
-    func setButtonTitle(title: String) {
+//    func setButtonTitle(title: String) {
         
 //        taxButton.setTitle(title, for: .normal)
-    }
+//    }
 }
 
 class StatusView: UIView {
@@ -313,7 +315,6 @@ class StatusView: UIView {
     }
     
     private let lblValue = UILabel().then {
-        $0.text = "총 급여: 0 원"
         $0.textColor = .setCustomColor(.textBasic)
         $0.font = .setCustomFont(font: .bold, size: 20)
     }
@@ -355,5 +356,10 @@ class StatusView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setValue(wage: Int, tax: String) {
+        lblValue.text = "총 급여: \(wage) 원"
+        btnTax.setTitle(tax, for: .normal)
     }
 }

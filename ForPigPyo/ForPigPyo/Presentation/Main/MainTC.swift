@@ -43,7 +43,7 @@ class MainTC: UITabBarController {
         
         let viewController = [
 //            TabBarVC(vc: HomeVC(), itme: UITabBarItem(
-            TabBarVC(vc: PartTimeVC(), itme: UITabBarItem(
+            TabBarVC(vc: newPartTimeVC(), itme: UITabBarItem(
                 title: "모두의 앱",
                 image: UIImage(named: "wallet"),
                 tag: 0

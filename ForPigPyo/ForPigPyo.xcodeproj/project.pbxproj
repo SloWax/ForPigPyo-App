@@ -60,6 +60,7 @@
 		6E00D02A25BC20ED00FF1E06 /* DoneMonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E00D02925BC20ED00FF1E06 /* DoneMonthYearPickerView.swift */; };
 		6E13DB9A25E2D46B004FFF8F /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E13DB9925E2D46B004FFF8F /* LoginVC.swift */; };
 		6E13DBA925E2EBDB004FFF8F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E13DBA825E2EBDB004FFF8F /* LoginView.swift */; };
+		6E1A4B1829CC4B49004E4D6D /* PartTimeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1A4B1729CC4B49004E4D6D /* PartTimeVM.swift */; };
 		6E26B37125B54C2C0025C998 /* TimeDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E26B37025B54C2C0025C998 /* TimeDataVC.swift */; };
 		6E26B37925B54E110025C998 /* TimeDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E26B37825B54E110025C998 /* TimeDataView.swift */; };
 		6E26B37E25B5539F0025C998 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E26B37D25B5539F0025C998 /* ContainerView.swift */; };
@@ -176,6 +177,7 @@
 		6E00D02925BC20ED00FF1E06 /* DoneMonthYearPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneMonthYearPickerView.swift; sourceTree = "<group>"; };
 		6E13DB9925E2D46B004FFF8F /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		6E13DBA825E2EBDB004FFF8F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		6E1A4B1729CC4B49004E4D6D /* PartTimeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartTimeVM.swift; sourceTree = "<group>"; };
 		6E26B37025B54C2C0025C998 /* TimeDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDataVC.swift; sourceTree = "<group>"; };
 		6E26B37825B54E110025C998 /* TimeDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDataView.swift; sourceTree = "<group>"; };
 		6E26B37D25B5539F0025C998 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
@@ -374,9 +376,10 @@
 		3447A929287EA732003D1B0D /* PartTimeVC */ = {
 			isa = PBXGroup;
 			children = (
-				3447A92B287EA732003D1B0D /* PartTimeVC.swift */,
-				3447A92D287EA732003D1B0D /* PartTimeVCModel.swift */,
 				3447A931287EA732003D1B0D /* PartTimeView.swift */,
+				3447A92B287EA732003D1B0D /* PartTimeVC.swift */,
+				6E1A4B1729CC4B49004E4D6D /* PartTimeVM.swift */,
+				3447A92D287EA732003D1B0D /* PartTimeVCModel.swift */,
 			);
 			path = PartTimeVC;
 			sourceTree = "<group>";
@@ -907,6 +910,7 @@
 				6E807C8625728DD600337550 /* HomeVCModel.swift in Sources */,
 				34DCEB3A28A62A3C00CD9545 /* Case.swift in Sources */,
 				3447A939287EAB6F003D1B0D /* Extension+UIColor.swift in Sources */,
+				6E1A4B1829CC4B49004E4D6D /* PartTimeVM.swift in Sources */,
 				3447A932287EA732003D1B0D /* PartTimeVC.swift in Sources */,
 				34DCEB3E28A644D100CD9545 /* SocialManager.swift in Sources */,
 				34D3DCFA288E8C4A00D29433 /* TaxSelectModalVM.swift in Sources */,

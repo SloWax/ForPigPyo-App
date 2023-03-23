@@ -281,3 +281,80 @@ extension PartTimeVC: UITableViewDelegate {
         presentTimeDataVC(isAdd: false, saveIndex: indexPath.row)
     }
 }
+
+
+import UIKit
+import RxSwift
+import RxCocoa
+import RxOptional
+
+
+class newPartTimeVC: BaseMainVC {
+    private let partTimeView = newPartTimeView()
+    private var vm: PartTimeVM!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        initialize()
+        bind()
+    }
+    
+    private func setInputs() -> PartTimeVM {
+        let inputs = PartTimeVM()
+        
+        return inputs
+    }
+    
+    private func initialize() {
+        vm = setInputs()
+        
+        view = partTimeView
+    }
+    
+    private func bind() {
+        self.rx
+            .viewWillAppear
+            .bind(to: vm.input.bindViewWillAppear)
+            .disposed(by: vm.bag)
+        
+        partTimeView.btnDate // 현재로 돌아오기
+            .rx
+            .tap
+            .map { 0 }
+            .bind(to: vm.input.bindMove)
+            .disposed(by: vm.bag)
+        
+        partTimeView.btnPrevious // 이전달
+            .rx
+            .tap
+            .map { -1 }
+            .bind(to: vm.input.bindMove)
+            .disposed(by: vm.bag)
+        
+        partTimeView.btnNext // 다음달
+            .rx
+            .tap
+            .map { 1 }
+            .bind(to: vm.input.bindMove)
+            .disposed(by: vm.bag)
+        
+        partTimeView.btnAdd // 근무기록 추가
+            .rx
+            .tap
+            .bind { [weak self] in
+                guard let self = self else { return }
+                
+                let timeDataVC = TimeDataVC()
+                self.pushVC(timeDataVC)
+            }.disposed(by: vm.bag)
+        
+        vm.output
+            .bindValue // 날짜, 임금 값 전달
+            .bind { [weak self] value in
+                guard let self = self else { return }
+                
+                self.partTimeView.setValue(value)
+            }.disposed(by: vm.bag)
+    }
+}
