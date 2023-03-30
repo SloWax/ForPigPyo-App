@@ -13,7 +13,7 @@ import RxCocoa
 import RxOptional
 
 
-class MyPageVC: BaseVC {
+class MyPageVC: BaseMainVC {
     private let myPageView = MyPageView()
     private var vm: MyPageVM!
     
@@ -40,35 +40,35 @@ class MyPageVC: BaseVC {
         self.rx
             .viewWillAppear
             .bind(to: vm.input.viewWillAppear)
-            .disposed(by: bag)
+            .disposed(by: vm.bag)
         
         myPageView.btnWage
             .rx
             .tap
             .map { .wage }
             .bind(to: vm.input.bindMenu)
-            .disposed(by: bag)
+            .disposed(by: vm.bag)
         
         myPageView.btnHour
             .rx
             .tap
             .map { .hour }
             .bind(to: vm.input.bindMenu)
-            .disposed(by: bag)
+            .disposed(by: vm.bag)
         
         myPageView.btnTax
             .rx
             .tap
             .map { .tax }
             .bind(to: vm.input.bindMenu)
-            .disposed(by: bag)
+            .disposed(by: vm.bag)
         
         myPageView.btnBackup
             .rx
             .tap
             .map { .backup }
             .bind(to: vm.input.bindMenu)
-            .disposed(by: bag)
+            .disposed(by: vm.bag)
         
         vm.output
             .bindMyHourlyPay
@@ -76,7 +76,7 @@ class MyPageVC: BaseVC {
                 guard let self = self else { return }
                 
                 self.myPageView.btnWage.setValue(value: hourlyPay)
-            }.disposed(by: bag)
+            }.disposed(by: vm.bag)
         
         vm.output
             .bindMyWorkingTime
@@ -84,7 +84,7 @@ class MyPageVC: BaseVC {
                 guard let self = self else { return }
 
                 self.myPageView.btnHour.setValue(value: workingTime)
-            }.disposed(by: bag)
+            }.disposed(by: vm.bag)
         
         vm.output
             .bindMyTax
@@ -92,7 +92,7 @@ class MyPageVC: BaseVC {
                 guard let self = self else { return }
                 
                 self.myPageView.btnTax.setValue(value: tax)
-            }.disposed(by: bag)
+            }.disposed(by: vm.bag)
         
         vm.output
             .bindMenu
@@ -105,7 +105,7 @@ class MyPageVC: BaseVC {
                 case .tax    : self.setTax()
                 case .backup : self.setBackup()
                 }
-            }.disposed(by: bag)
+            }.disposed(by: vm.bag)
     }
     
     private func setWage() {

@@ -15,8 +15,6 @@ class BaseVC: UIViewController {
         print("<<<<<< END \(Self.self) >>>>>>")
     }
     
-    var bag = DisposeBag()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -72,7 +70,6 @@ class BaseVC: UIViewController {
     
     func clearBag(vm: BaseVM = BaseVM()) {
         vm.clearBag()
-        bag = DisposeBag()
     }
     
     @objc func leftMenu() { }

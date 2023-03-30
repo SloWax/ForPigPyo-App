@@ -60,7 +60,7 @@
 		6E00D02A25BC20ED00FF1E06 /* DoneMonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E00D02925BC20ED00FF1E06 /* DoneMonthYearPickerView.swift */; };
 		6E13DB9A25E2D46B004FFF8F /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E13DB9925E2D46B004FFF8F /* LoginVC.swift */; };
 		6E13DBA925E2EBDB004FFF8F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E13DBA825E2EBDB004FFF8F /* LoginView.swift */; };
-		6E1A4B1829CC4B49004E4D6D /* PartTimeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1A4B1729CC4B49004E4D6D /* PartTimeVM.swift */; };
+		6E1A4B1829CC4B49004E4D6D /* TimeCardVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1A4B1729CC4B49004E4D6D /* TimeCardVM.swift */; };
 		6E26B37125B54C2C0025C998 /* TimeDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E26B37025B54C2C0025C998 /* TimeDataVC.swift */; };
 		6E26B37925B54E110025C998 /* TimeDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E26B37825B54E110025C998 /* TimeDataView.swift */; };
 		6E26B37E25B5539F0025C998 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E26B37D25B5539F0025C998 /* ContainerView.swift */; };
@@ -76,6 +76,9 @@
 		6E5236E429C9B4890065022B /* NotoSansCJKkr-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6E5236E329C9B4890065022B /* NotoSansCJKkr-Regular.otf */; };
 		6E5236E729CB0BCC0065022B /* BaseMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5236E629CB0BCC0065022B /* BaseMainVC.swift */; };
 		6E5236E929CB0BDE0065022B /* BaseSceneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5236E829CB0BDE0065022B /* BaseSceneVC.swift */; };
+		6E65872029D5D9CD00A7B568 /* TimeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E65871F29D5D9CD00A7B568 /* TimeCardView.swift */; };
+		6E65872229D5DA1600A7B568 /* TimeCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E65872129D5DA1600A7B568 /* TimeCardVC.swift */; };
+		6E65872429D5DB0900A7B568 /* TimeCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E65872329D5DB0900A7B568 /* TimeCardCell.swift */; };
 		6E7E879A25ED1DFD001EA45D /* LoginVCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7E879925ED1DFD001EA45D /* LoginVCModel.swift */; };
 		6E807C782572740500337550 /* Extension+UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E807C772572740500337550 /* Extension+UITextField.swift */; };
 		6E807C8625728DD600337550 /* HomeVCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E807C8525728DD600337550 /* HomeVCModel.swift */; };
@@ -177,7 +180,7 @@
 		6E00D02925BC20ED00FF1E06 /* DoneMonthYearPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneMonthYearPickerView.swift; sourceTree = "<group>"; };
 		6E13DB9925E2D46B004FFF8F /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		6E13DBA825E2EBDB004FFF8F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		6E1A4B1729CC4B49004E4D6D /* PartTimeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartTimeVM.swift; sourceTree = "<group>"; };
+		6E1A4B1729CC4B49004E4D6D /* TimeCardVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCardVM.swift; sourceTree = "<group>"; };
 		6E26B37025B54C2C0025C998 /* TimeDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDataVC.swift; sourceTree = "<group>"; };
 		6E26B37825B54E110025C998 /* TimeDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDataView.swift; sourceTree = "<group>"; };
 		6E26B37D25B5539F0025C998 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
@@ -192,6 +195,9 @@
 		6E5236E329C9B4890065022B /* NotoSansCJKkr-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansCJKkr-Regular.otf"; path = "../../../../../../기획/font/NotoSansCJKkr/NotoSansCJKkr-Regular.otf"; sourceTree = "<group>"; };
 		6E5236E629CB0BCC0065022B /* BaseMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMainVC.swift; sourceTree = "<group>"; };
 		6E5236E829CB0BDE0065022B /* BaseSceneVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSceneVC.swift; sourceTree = "<group>"; };
+		6E65871F29D5D9CD00A7B568 /* TimeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCardView.swift; sourceTree = "<group>"; };
+		6E65872129D5DA1600A7B568 /* TimeCardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCardVC.swift; sourceTree = "<group>"; };
+		6E65872329D5DB0900A7B568 /* TimeCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCardCell.swift; sourceTree = "<group>"; };
 		6E7E879925ED1DFD001EA45D /* LoginVCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVCModel.swift; sourceTree = "<group>"; };
 		6E807C772572740500337550 /* Extension+UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UITextField.swift"; sourceTree = "<group>"; };
 		6E807C8525728DD600337550 /* HomeVCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVCModel.swift; sourceTree = "<group>"; };
@@ -378,7 +384,6 @@
 			children = (
 				3447A931287EA732003D1B0D /* PartTimeView.swift */,
 				3447A92B287EA732003D1B0D /* PartTimeVC.swift */,
-				6E1A4B1729CC4B49004E4D6D /* PartTimeVM.swift */,
 				3447A92D287EA732003D1B0D /* PartTimeVCModel.swift */,
 			);
 			path = PartTimeVC;
@@ -551,6 +556,7 @@
 		6E26B3BA25B96D380025C998 /* PartTime */ = {
 			isa = PBXGroup;
 			children = (
+				6E65871E29D5D98200A7B568 /* TimeCard */,
 				3447A929287EA732003D1B0D /* PartTimeVC */,
 				6E26B36C25B54BB20025C998 /* TimeDataVC */,
 				6E5236E529C9BDAA0065022B /* CustomCell */,
@@ -582,8 +588,19 @@
 			isa = PBXGroup;
 			children = (
 				3447A930287EA732003D1B0D /* PartTimeCustomCell.swift */,
+				6E65872329D5DB0900A7B568 /* TimeCardCell.swift */,
 			);
 			path = CustomCell;
+			sourceTree = "<group>";
+		};
+		6E65871E29D5D98200A7B568 /* TimeCard */ = {
+			isa = PBXGroup;
+			children = (
+				6E65871F29D5D9CD00A7B568 /* TimeCardView.swift */,
+				6E65872129D5DA1600A7B568 /* TimeCardVC.swift */,
+				6E1A4B1729CC4B49004E4D6D /* TimeCardVM.swift */,
+			);
+			path = TimeCard;
 			sourceTree = "<group>";
 		};
 		6E8C0002255175730002D202 /* Main */ = {
@@ -910,13 +927,14 @@
 				6E807C8625728DD600337550 /* HomeVCModel.swift in Sources */,
 				34DCEB3A28A62A3C00CD9545 /* Case.swift in Sources */,
 				3447A939287EAB6F003D1B0D /* Extension+UIColor.swift in Sources */,
-				6E1A4B1829CC4B49004E4D6D /* PartTimeVM.swift in Sources */,
+				6E1A4B1829CC4B49004E4D6D /* TimeCardVM.swift in Sources */,
 				3447A932287EA732003D1B0D /* PartTimeVC.swift in Sources */,
 				34DCEB3E28A644D100CD9545 /* SocialManager.swift in Sources */,
 				34D3DCFA288E8C4A00D29433 /* TaxSelectModalVM.swift in Sources */,
 				34DCEB3428A4FBB000CD9545 /* TextFieldModalVC.swift in Sources */,
 				6E26B3B625B96D260025C998 /* SetAimVC.swift in Sources */,
 				34DCEB3C28A6423400CD9545 /* LoginVM.swift in Sources */,
+				6E65872429D5DB0900A7B568 /* TimeCardCell.swift in Sources */,
 				6EAAABF92580CFEC006758BF /* DonePickerView.swift in Sources */,
 				6EAAAB94257E3BC9006758BF /* MyPageVCModel.swift in Sources */,
 				6EFF5B132553F715007BAAF2 /* HomeView.swift in Sources */,
@@ -927,6 +945,7 @@
 				34E3931728894CDA00552616 /* BaseVC.swift in Sources */,
 				6E8CFFD7255175350002D202 /* ForPigPyo.xcdatamodeld in Sources */,
 				6E00D02A25BC20ED00FF1E06 /* DoneMonthYearPickerView.swift in Sources */,
+				6E65872229D5DA1600A7B568 /* TimeCardVC.swift in Sources */,
 				6E13DBA925E2EBDB004FFF8F /* LoginView.swift in Sources */,
 				6E26B3C425B971BE0025C998 /* SetAimView.swift in Sources */,
 				3447A93D287EB3F6003D1B0D /* Extension+UIFont.swift in Sources */,
@@ -964,6 +983,7 @@
 				6E00D01725BC1C5500FF1E06 /* MonthYearPickerView.swift in Sources */,
 				6E5236E929CB0BDE0065022B /* BaseSceneVC.swift in Sources */,
 				6E26B3A025B83B190025C998 /* Extension+String.swift in Sources */,
+				6E65872029D5D9CD00A7B568 /* TimeCardView.swift in Sources */,
 				34DCEB3028A4EF0A00CD9545 /* Extension+Int.swift in Sources */,
 				3447A936287EA732003D1B0D /* PartTimeView.swift in Sources */,
 				6E00CFD925BAADA100FF1E06 /* SavingVCModel.swift in Sources */,

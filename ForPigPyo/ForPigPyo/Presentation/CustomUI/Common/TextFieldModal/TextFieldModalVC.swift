@@ -89,6 +89,7 @@ class TextFieldModalVC: BaseModalVC {
             .bind { [weak self] _ in
                 guard let self = self else { return }
                 
+                self.bag = DisposeBag()
                 self.dismiss(animated: false)
             }.disposed(by: bag)
         
@@ -136,6 +137,7 @@ class TextFieldModalVC: BaseModalVC {
                     callBack(text)
                 }
                 
+                self.bag = DisposeBag()
                 self.dismiss(animated: false)
             }.disposed(by: bag)
         

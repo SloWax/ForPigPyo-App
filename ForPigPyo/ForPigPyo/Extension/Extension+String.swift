@@ -29,7 +29,7 @@ extension String {
     }
     
     var won: String {
-        return "\(self) 원"
+        return "\(self)원"
     }
     
     var underLine: NSAttributedString {

@@ -8,5 +8,8 @@
 
 
 import UIKit
+import RxSwift
 
-class BaseModalVC: BaseVC { }
+class BaseModalVC: BaseVC {
+    var bag = DisposeBag()
+}

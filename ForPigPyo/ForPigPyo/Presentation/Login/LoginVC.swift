@@ -42,7 +42,7 @@ class LoginVC: BaseVC {
             .when(.recognized)
             .map { _ in Void() }
             .bind(to: SocialManager.shared.apple)
-            .disposed(by: bag)
+            .disposed(by: vm.bag)
         
         vm.output
             .bindCompLogin
@@ -52,6 +52,6 @@ class LoginVC: BaseVC {
                 print(login ?? "nil") // 수정예정
                 self.clearBag(vm: self.vm)
                 self.dismiss(animated: true)
-            }.disposed(by: bag)
+            }.disposed(by: vm.bag)
     }
 }

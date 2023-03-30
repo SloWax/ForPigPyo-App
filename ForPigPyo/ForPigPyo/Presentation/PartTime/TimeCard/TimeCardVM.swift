@@ -1,5 +1,5 @@
 //
-//  PartTimeVM.swift
+//  TimeCardVM.swift
 //  ForPigPyo
 //
 //  Created by 표건욱 on 2023/03/23.
@@ -12,14 +12,16 @@ import RxSwift
 import RxCocoa
 
 
-class PartTimeVM: BaseVM {
+class TimeCardVM: BaseVM {
     struct Input {
-        let bindViewWillAppear = PublishRelay<Void>()
+        let bindRefresh = PublishRelay<Void>()
         let bindMove = PublishRelay<Int>()
     }
     
     struct Output {
         let bindValue = PublishRelay<(date: String, wage: Int, tax: String)>()
+//        let bindList = BehaviorRelay<[Int]>(value: [0,1,1,2])
+        let bindList = BehaviorRelay<[Int]>(value: [])
     }
     
     let input: Input
@@ -36,7 +38,7 @@ class PartTimeVM: BaseVM {
         initCalendar()
         
         self.input
-            .bindViewWillAppear
+            .bindRefresh
             .bind { [weak self] in
                 guard let self = self else { return }
                 
@@ -55,17 +57,17 @@ class PartTimeVM: BaseVM {
         self.input
             .bindMove
             .bind { [weak self] index in
-                guard let self = self else { return }
+                guard let self = self,
+                      let month = self.components.month else { return }
                 
-                index == 0 ? self.initCalendar() : (self.components.month! += index)
+                index == 0 ? self.initCalendar() : (self.components.month = month + index)
                 
-                self.input.bindViewWillAppear.accept(Void())
+                self.input.bindRefresh.accept(Void())
             }.disposed(by: bag)
     }
     
     private func initCalendar() {
         components.year = calendar.component(.year, from: Date())
         components.month = calendar.component(.month, from: Date())
-        components.day = calendar.component(.day, from: Date())
     }
 }
