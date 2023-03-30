@@ -277,7 +277,7 @@
 			children = (
 				3447A927287EA690003D1B0D /* CustomUI */,
 				6E8C0002255175730002D202 /* Main */,
-				6E26B3BA25B96D380025C998 /* PartTime */,
+				6E26B3BA25B96D380025C998 /* PunchIn */,
 				6E13DB9E25E2E65B004FFF8F /* Login */,
 				6E057B2325517C160063444C /* MyPage */,
 			);
@@ -392,6 +392,7 @@
 		3447A937287EA94E003D1B0D /* CustomCell */ = {
 			isa = PBXGroup;
 			children = (
+				3447A930287EA732003D1B0D /* PartTimeCustomCell.swift */,
 				6EAAABD5257E91B8006758BF /* MyPageHeaderView.swift */,
 				6EAAABC3257E8275006758BF /* MyPageCustomCell.swift */,
 			);
@@ -460,6 +461,7 @@
 				6E7E879925ED1DFD001EA45D /* LoginVCModel.swift */,
 				6EAAAB93257E3BC9006758BF /* MyPageVCModel.swift */,
 				6EAAABE2257FC021006758BF /* MyPageData.swift */,
+				3447A929287EA732003D1B0D /* PartTimeVC */,
 				3447A937287EA94E003D1B0D /* CustomCell */,
 			);
 			path = Deprecated;
@@ -553,15 +555,14 @@
 			path = SavingVC;
 			sourceTree = "<group>";
 		};
-		6E26B3BA25B96D380025C998 /* PartTime */ = {
+		6E26B3BA25B96D380025C998 /* PunchIn */ = {
 			isa = PBXGroup;
 			children = (
 				6E65871E29D5D98200A7B568 /* TimeCard */,
-				3447A929287EA732003D1B0D /* PartTimeVC */,
 				6E26B36C25B54BB20025C998 /* TimeDataVC */,
 				6E5236E529C9BDAA0065022B /* CustomCell */,
 			);
-			path = PartTime;
+			path = PunchIn;
 			sourceTree = "<group>";
 		};
 		6E26B3BB25B96D690025C998 /* Saving */ = {
@@ -587,7 +588,6 @@
 		6E5236E529C9BDAA0065022B /* CustomCell */ = {
 			isa = PBXGroup;
 			children = (
-				3447A930287EA732003D1B0D /* PartTimeCustomCell.swift */,
 				6E65872329D5DB0900A7B568 /* TimeCardCell.swift */,
 			);
 			path = CustomCell;
