@@ -109,7 +109,7 @@ class TimeDataView: UIView {
         return label
     }()
     let previewLabel: PaddingLabel = {
-        let label = PaddingLabel(padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: Design.largePadding))
+        let label = PaddingLabel(withInsets: 0, 0, 0, 15)
         label.text = "0 원"
         label.backgroundColor = .setCustomColor(.lightGray)
         label.layer.cornerRadius = Design.cornerRadius
