@@ -46,7 +46,7 @@ class TextFieldModalView: BaseView {
         $0.borderColor = .setCustomColor(.lightGray)
     }
     
-    let btnConfirm = PyoButton().then {
+    let btnConfirm = PyoButton(type: .system).then {
         $0.titleLabel?.font = .setCustomFont(font: .medium, size: 16)
     }
     

@@ -37,7 +37,7 @@ class TaxSelectModalView: BaseView {
     private let vevPicker = UIVisualEffectView()
     let pvPicker = UIPickerView()
     
-    let btnConfirm = PyoButton().then {
+    let btnConfirm = PyoButton(type: .system).then {
         $0.titleLabel?.font = .setCustomFont(font: .medium, size: 16)
     }
     

@@ -128,6 +128,7 @@ class MyPageVC: BaseMainVC {
         let modal = WorkingTimeModalVC(
             title: "근무 시간 설정",
             subTitle: "급여 계산기에서 근무를 추가할 때\n시간이 자동 입력됩니다:)",
+            defaultTime: UserInfoManager.shared.getWorkingTime(),
             onWorkingTime: { UserInfoManager.shared.workingTime.accept($0) }
         )
         

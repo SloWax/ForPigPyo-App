@@ -28,14 +28,13 @@ class TimeCardStatusView: UIView {
         $0.tintColor = .setCustomColor(.textBasic)
         $0.titleLabel?.font = .setCustomFont(font: .bold, size: 14)
         $0.backgroundColor = .setCustomColor(.gray1)
-        $0.layer.cornerRadius = 15
+        $0.cornerRadius = 5
     }
     
     override init(frame: CGRect) {
         super .init(frame: frame)
         
         self.backgroundColor = .setCustomColor(.lightGray)
-        self.layer.cornerRadius = 15
         
         let views = [lblTitle, lblValue, btnTax]
         self.addSubviews(views)

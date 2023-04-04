@@ -68,8 +68,8 @@ class TimeCardVC: BaseMainVC {
             .bind { [weak self] in
                 guard let self = self else { return }
                 
-                let timeDataVC = PunchInVC()
-                self.pushVC(timeDataVC)
+                let punchInVC = PunchInVC(type: .create)
+                self.pushVC(punchInVC)
             }.disposed(by: vm.bag)
         
         vm.output

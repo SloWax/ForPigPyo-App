@@ -27,7 +27,7 @@ class WorkingTimeModalVC: BaseModalVC {
     private var onWorkingTime: OnWorkingTime?
     
     private let workingTimeModalView = WorkingTimeModalView()
-    private var vm: WorkingTimeModalVM!
+    private let vm: WorkingTimeModalVM
     
     private let stringPickerAdapter = RxPickerViewStringAdapter<[[Int]]>(
         components: [],
@@ -45,11 +45,13 @@ class WorkingTimeModalVC: BaseModalVC {
     
     init(title: String, subTitle: String? = nil,
          confirmTitle: String = "확인",
+         defaultTime: WorkingTime,
          onWorkingTime: OnWorkingTime? = nil) {
         
         self.textTitle = title
         self.textSubTitle = subTitle
         self.confirmTitle = confirmTitle
+        self.vm = WorkingTimeModalVM(defaultTime: defaultTime)
         self.onWorkingTime = onWorkingTime
         
         super.init(nibName: nil, bundle: nil)
@@ -66,10 +68,6 @@ class WorkingTimeModalVC: BaseModalVC {
         bind()
     }
     
-    private func setInputs() -> WorkingTimeModalVM {
-        return WorkingTimeModalVM()
-    }
-    
     private func initialize() {
         view = workingTimeModalView
         
@@ -78,8 +76,6 @@ class WorkingTimeModalVC: BaseModalVC {
             subTitle: textSubTitle,
             confirmTitle: confirmTitle
         )
-        
-        vm = setInputs()
     }
     
     private func bind() {

@@ -20,15 +20,15 @@ class PunchInView: BaseView {
     }
     
     let btnDate = PunchInContainerButton().then {
-        $0.setDefault(
+        $0.setValue(
             title: "근무일:",
-            rightValue: "근무",
+            rightValue: "1",
             rightUnit: "일"
         )
     }
     
     let btnWage = PunchInContainerButton().then {
-        $0.setDefault(
+        $0.setValue(
             title: "시급:",
             centerValue: "시급",
             centerUnit: "원"
@@ -36,7 +36,7 @@ class PunchInView: BaseView {
     }
     
     let btnWork = PunchInContainerButton().then {
-        $0.setDefault(
+        $0.setValue(
             title: "근무:",
             centerValue: "근무",
             centerUnit: "시간",
@@ -46,7 +46,7 @@ class PunchInView: BaseView {
     }
     
     let btnOver = PunchInContainerButton().then {
-        $0.setDefault(
+        $0.setValue(
             title: "특근:",
             centerValue: "근무",
             centerUnit: "시간",
@@ -56,7 +56,7 @@ class PunchInView: BaseView {
     }
     
     let btnNight = PunchInContainerButton().then {
-        $0.setDefault(
+        $0.setValue(
             title: "야근:",
             centerValue: "근무",
             centerUnit: "시간",
@@ -66,7 +66,7 @@ class PunchInView: BaseView {
     }
     
     let btnOverNight = PunchInContainerButton().then {
-        $0.setDefault(
+        $0.setValue(
             title: "야/특근:",
             centerValue: "근무",
             centerUnit: "시간",
@@ -76,7 +76,7 @@ class PunchInView: BaseView {
     }
     
     let btnTotal = PunchInContainerButton().then {
-        $0.setDefault(
+        $0.setValue(
             title: "총 근무:",
             centerValue: "0",
             centerUnit: "시간",
@@ -94,18 +94,20 @@ class PunchInView: BaseView {
     private let lblPreview = PaddingLabel(withInsets: 0, 0, 0, 15).then {
         $0.text = "0 원"
         $0.font = .setCustomFont(font: .bold, size: 20)
-        $0.backgroundColor = .setCustomColor(.lightGray)
-//        $0.layer.cornerRadius = Design.cornerRadius
-        $0.layer.borderColor = UIColor.setCustomColor(.yellow).cgColor
-        $0.layer.borderWidth = 2
-        $0.clipsToBounds = true
         $0.textAlignment = .right
+        $0.backgroundColor = .setCustomColor(.lightGray)
+        $0.clipsToBounds = true
+        $0.borderColor = .setCustomColor(.yellow)
+        $0.borderWidth = 2
+        $0.cornerRadius = 25
     }
     
-    let btnSave = PyoButton().then {
+    let btnSave = PyoButton(type: .system).then {
         $0.setTitle("저장", for: .normal)
+        $0.titleLabel?.font = .setCustomFont(font: .bold, size: 20)
+        $0.cornerRadius = 25
     }
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -164,7 +166,7 @@ class PunchInView: BaseView {
             make.right.equalTo(self).inset(15)
             make.width.equalTo(self).multipliedBy(0.16)
             make.height.equalTo(btnSave.snp.width)
-            make.bottom.equalTo(svMother)//.inset(55)
+            make.bottom.equalTo(svMother)
         }
         
         lblPreview.snp.makeConstraints { make in
@@ -179,43 +181,52 @@ class PunchInView: BaseView {
         }
     }
     
-//    func setValue(title: String, date: String?, hourly: String?, workHour: String?, workMin: String?, saveIndex: Int, value: PayList.Year.Month.Data?) {
-//
-//        titleLabel.attributedText = title.underLine
-//
-//        if let value = value {
-//
-//            titleLabel.tag = saveIndex
-//
-//            dateView.textField1.text = "\(value.date)"
-//            hourlyWageView.textField1.text = "\(value.hourlyWage)"
-//
-//            workView.textField1.text = "\(value.workingTime)"
-//            workView.textField2.text = "\(value.workingTimeMin)"
-//
-//            overView.textField1.text = "\(value.overTime)"
-//            overView.textField2.text = "\(value.overTimeMin)"
-//
-//            nightView.textField1.text = "\(value.nightTime)"
-//            nightView.textField2.text = "\(value.nightTimeMin)"
-//
-//            overNightView.textField1.text = "\(value.overNightTime)"
-//            overNightView.textField2.text = "\(value.overNightTimeMin)"
-//
-//            totalView.label2.text = "\(value.totalTime.convertTime[0]) 시간"
-//            totalView.label3.text = "\(value.totalTime.convertTime[1]) 분"
-//
-//            let formatter = NumberFormatter()
-//            formatter.numberStyle = .decimal
-//
-//            previewLabel.text = "\(formatter.string(from: value.totalPay as NSNumber) ?? "0") 원"
-//
-//            return
-//        }
-//
-//        dateView.textField1.text = date
-//        hourlyWageView.textField1.text = hourly
-//        workView.textField1.text = workHour
-//        workView.textField2.text = workMin
-//    }
+    func setDateValue(_ date: Int) {
+        btnDate.textColor(isEmpty: false)
+        btnDate.setValue(rightValue: "\(date)")
+    }
+    
+    func setWageValue(_ wage: Int) {
+        let isZero = wage == 0
+        let value = isZero ? "시급" : wage.comma
+        
+        btnWage.textColor(isEmpty: isZero)
+        btnWage.setValue(centerValue: value)
+    }
+    
+    func setTimeValue(type: PunchInVM.TimeType, data: WorkingTime) {
+        let isZero = (data.hour == 0) && (data.min == 0)
+        let hour = isZero ? "근무" : "\(data.hour)"
+        let min = isZero ? "근무" : "\(data.min)"
+        
+        switch type {
+        case .work:
+            
+            btnWork.textColor(isEmpty: isZero)
+            btnWork.setValue(centerValue: hour, rightValue: min)
+        case .over:
+            
+            btnOver.textColor(isEmpty: isZero)
+            btnOver.setValue(centerValue: hour, rightValue: min)
+        case .night:
+            
+            btnNight.textColor(isEmpty: isZero)
+            btnNight.setValue(centerValue: hour, rightValue: min)
+        case .overNight:
+            
+            btnOverNight.textColor(isEmpty: isZero)
+            btnOverNight.setValue(centerValue: hour, rightValue: min)
+        }
+    }
+    
+    func setTotalValue(data: WorkingTime) {
+        let isZero = (data.hour == 0) && (data.min == 0)
+        
+        btnTotal.textColor(isEmpty: isZero)
+        btnTotal.setValue(centerValue: "\(data.hour)", rightValue: "\(data.min)")
+    }
+    
+    func setDayPay(_ pay: Int) {
+        lblPreview.text = pay.comma.won
+    }
 }

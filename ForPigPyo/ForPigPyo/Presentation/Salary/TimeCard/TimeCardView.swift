@@ -36,7 +36,9 @@ class TimeCardView: BaseView {
         $0.tintColor = .black
     }
     
-    let viewStatus = TimeCardStatusView()
+    let viewStatus = TimeCardStatusView().then {
+        $0.cornerRadius = 25
+    }
     
     private let viewEmpty = EmptyView().then {
         $0.setValue(explain: "근무 추가를 눌러서 급여\n관리를 시작해보세요:)")
@@ -50,11 +52,9 @@ class TimeCardView: BaseView {
         $0.register(TimeCardCell.self, forCellReuseIdentifier: TimeCardCell.id)
     }
     
-    let btnAdd = UIButton(type: .system).then {
+    let btnAdd = PyoButton(type: .system).then {
         $0.setTitle("근무 추가", for: .normal)
-        $0.setTitleColor(.setCustomColor(.white), for: .normal)
         $0.titleLabel?.font = .setCustomFont(font: .bold, size: 20)
-        $0.backgroundColor = .setCustomColor(.yellow)
         $0.cornerRadius = 25
     }
     

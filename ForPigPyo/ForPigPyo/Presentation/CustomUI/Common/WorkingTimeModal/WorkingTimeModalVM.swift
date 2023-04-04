@@ -36,7 +36,8 @@ class WorkingTimeModalVM: BaseVM {
     let input: Input
     let output: Output
     
-    init(input: Input = Input(), output: Output = Output()) {
+    init(input: Input = Input(), output: Output = Output(),
+         defaultTime: WorkingTime) {
         
         self.input = input
         self.output = output
@@ -49,7 +50,6 @@ class WorkingTimeModalVM: BaseVM {
                 guard let self = self else { return }
                 
                 let times = self.output.times.value
-                let defaultTime = UserInfoManager.shared.getWorkingTime()
                 let hour = defaultTime.hour
                 let min = defaultTime.min
                 

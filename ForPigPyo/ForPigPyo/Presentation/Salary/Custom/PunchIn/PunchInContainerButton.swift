@@ -40,7 +40,7 @@ class PunchInContainerButton: UIButton {
         super.init(frame: frame)
         
         self.backgroundColor = .setCustomColor(.lightGray)
-//        self.layer.cornerRadius = Design.cornerRadius
+        self.cornerRadius = 25
         
         setUP()
         setLayout()
@@ -73,7 +73,7 @@ class PunchInContainerButton: UIButton {
         
         lblCenterUnit.snp.makeConstraints { make in
             make.centerY.equalTo(self)
-            make.left.equalTo(self.snp.right).multipliedBy(0.37)
+            make.left.equalTo(self.snp.right).multipliedBy(0.4)
         }
         
         lblCenterValue.snp.makeConstraints { make in
@@ -83,7 +83,7 @@ class PunchInContainerButton: UIButton {
         
         lblRightUnit.snp.makeConstraints { make in
             make.centerY.equalTo(self)
-            make.left.equalTo(self.snp.right).multipliedBy(0.74)
+            make.left.equalTo(self.snp.right).multipliedBy(0.8)
         }
         
         lblRightValue.snp.makeConstraints { make in
@@ -92,13 +92,33 @@ class PunchInContainerButton: UIButton {
         }
     }
     
-    func setDefault(title: String, centerValue: String? = nil, centerUnit: String? = nil, rightValue: String? = nil, rightUnit: String? = nil) {
-        lblTitle.text = title
+    func textColor(isEmpty: Bool) {
+        lblCenterValue.textColor = isEmpty ? .setCustomColor(.gray6) : .setCustomColor(.textBasic)
+        lblRightValue.textColor = isEmpty ? .setCustomColor(.gray6) : .setCustomColor(.textBasic)
+    }
+    
+    func setValue(title: String? = nil,
+                  centerValue: String? = nil, centerUnit: String? = nil,
+                  rightValue: String? = nil, rightUnit: String? = nil
+    ) {
+        if let value = title {
+            lblTitle.text = value
+        }
         
-        lblCenterValue.text = centerValue
-        lblCenterUnit.text = centerUnit
+        if let value = centerValue {
+            lblCenterValue.text = value
+        }
         
-        lblRightValue.text = rightValue
-        lblRightUnit.text = rightUnit
+        if let value = centerUnit {
+            lblCenterUnit.text = value
+        }
+        
+        if let value = rightValue {
+            lblRightValue.text = value
+        }
+        
+        if let value = rightUnit {
+            lblRightUnit.text = value
+        }
     }
 }

@@ -1,9 +1,9 @@
 //
-//  WorkingTimeModalView.swift
+//  PunchInModalView.swift
 //  ForPigPyo
 //
-//  Created by 표건욱 on 2022/08/02.
-//  Copyright © 2022 SloWax. All rights reserved.
+//  Created by 표건욱 on 2023/04/04.
+//  Copyright © 2023 SloWax. All rights reserved.
 //
 
 import UIKit
@@ -11,14 +11,29 @@ import SnapKit
 import Then
 
 
-class WorkingTimeModalView: BaseView {
+class PunchInModalView: UIView {
     
-    let viewDismiss = UIView()
+    let btnDismiss = UIButton().then {
+        let image = UIImage(named: "xmark")
+        $0.setImage(image, for: .normal)
+        $0.tintColor = .setCustomColor(.textBasic)
+    }
     
-    private let viewMother = UIView().then {
-        $0.addShadow(offset: .top)
-        $0.backgroundColor = .white
-        $0.layer.cornerRadius = 10
+    private let svButtons = UIStackView().then {
+        $0.axis = .horizontal
+        $0.spacing = 5
+    }
+    
+    let btnPrevious = UIButton().then {
+        let image = UIImage(named: "btn_chevron_left")
+        $0.setImage(image, for: .normal)
+        $0.tintColor = .setCustomColor(.textBasic)
+    }
+    
+    let btnNext = UIButton().then {
+        let image = UIImage(named: "btn_chevron_right")
+        $0.setImage(image, for: .normal)
+        $0.tintColor = .setCustomColor(.textBasic)
     }
     
     private let lblTitle = UILabel().then {
@@ -53,27 +68,41 @@ class WorkingTimeModalView: BaseView {
     }
     
     private func setUP() {
-        self.backgroundColor = .clear
+        self.addShadow(offset: .top)
+        self.backgroundColor = .white
+        self.cornerRadius = 10
+        
+        svButtons.addArrangedSubviews([btnPrevious, btnNext])
         
         vevPicker.contentView.addSubview(pvPicker)
         
-        let views = [lblTitle, lblSubTitle, vevPicker, btnConfirm]
-        viewMother.addSubviews(views)
+        let views = [
+            btnDismiss, svButtons,
+            lblTitle, lblSubTitle,
+            vevPicker, btnConfirm
+        ]
         
-        self.addSubviews([viewDismiss, viewMother])
+        self.addSubviews(views)
     }
     
     private func setLayout() {
-        viewDismiss.snp.makeConstraints { make in
-            make.edges.equalTo(self)
+        btnDismiss.snp.makeConstraints { make in
+            make.top.left.equalTo(self).inset(15)
+            make.width.height.equalTo(28)
         }
         
-        viewMother.snp.makeConstraints { make in
-            make.left.right.bottom.equalTo(self)
+        svButtons.snp.makeConstraints { make in
+            make.top.right.equalTo(self).inset(15)
+        }
+        
+        [btnPrevious, btnNext].forEach {
+            $0.snp.makeConstraints { make in
+                make.width.height.equalTo(28)
+            }
         }
         
         lblTitle.snp.makeConstraints { make in
-            make.top.equalTo(viewMother).inset(28)
+            make.top.equalTo(self).inset(28)
             make.left.right.equalTo(self)
         }
         
@@ -94,8 +123,8 @@ class WorkingTimeModalView: BaseView {
         
         btnConfirm.snp.makeConstraints { make in
             make.top.equalTo(vevPicker.snp.bottom)
-            make.left.right.equalTo(viewMother).inset(20)
-            make.bottom.equalTo(viewMother).inset(28)
+            make.left.right.equalTo(self).inset(20)
+            make.bottom.equalTo(self).inset(28)
             make.height.equalTo(48)
         }
     }
