@@ -16,6 +16,7 @@ class TimeCardVM: BaseVM {
     struct Input {
         let bindRefresh = PublishRelay<Void>()
         let bindMove = PublishRelay<Int>()
+        let bindChangeTax = PublishRelay<Void>()
     }
     
     struct Output {
@@ -27,27 +28,26 @@ class TimeCardVM: BaseVM {
     let input: Input
     let output: Output
     
-    private let calendar = Calendar.current
-    private var components = DateComponents()
-    
     init(input: Input = Input(), output: Output = Output()) {
         self.input = input
         self.output = output
         super.init()
-        
-        initCalendar()
         
         self.input
             .bindRefresh
             .bind { [weak self] in
                 guard let self = self else { return }
                 
-                let currentDate = self.calendar
-                    .date(from: self.components)?
-                    .toString() ?? ""
+                let currentDate = UserInfoManager.shared
+                    .getSelectedDate()
+                    .toString()
                 
-                let wage = 0
-                let tax = "미공제"
+                let wage = UserInfoManager.shared
+                    .getWage()
+                
+                let tax = UserInfoManager.shared
+                    .getTax()
+                    .rawValue
                 
                 let value = (currentDate, wage, tax)
                 
@@ -56,18 +56,21 @@ class TimeCardVM: BaseVM {
         
         self.input
             .bindMove
-            .bind { [weak self] index in
-                guard let self = self,
-                      let month = self.components.month else { return }
+            .map { UserInfoManager.shared.date.accept($0) }
+            .bind(to: self.input.bindRefresh)
+            .disposed(by: bag)
+        
+        self.input
+            .bindChangeTax
+            .map {
+                let currentTax = UserInfoManager.shared.getTax()
+                let taxCase = TaxCase.allCases
+                let taxIndex = taxCase.firstIndex(of: currentTax) ?? 0
+                let nextIndex = (taxIndex + 1) % taxCase.count
+                let nextTax = taxCase[nextIndex]
                 
-                index == 0 ? self.initCalendar() : (self.components.month = month + index)
-                
-                self.input.bindRefresh.accept(Void())
-            }.disposed(by: bag)
-    }
-    
-    private func initCalendar() {
-        components.year = calendar.component(.year, from: Date())
-        components.month = calendar.component(.month, from: Date())
+                return UserInfoManager.shared.tax.accept(nextTax)
+            }.bind(to: self.input.bindRefresh)
+            .disposed(by: bag)
     }
 }

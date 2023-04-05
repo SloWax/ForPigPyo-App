@@ -52,20 +52,26 @@ class PunchInVC: BaseSceneVC {
     private func bind() {
         self.rx
             .viewWillAppear
-            .bind(to: vm.input.viewWillAppear)
+            .bind(to: vm.input.loadData)
             .disposed(by: vm.bag)
         
-//        punchInView.btnDate // 날짜
-//            .rx
-//            .tap
-//            .bind(onNext: <#T##(Void) -> Void#>)
-//            .disposed(by: vm.bag)
+        punchInView.btnDate // 날짜
+            .rx
+            .tap
+            .bind { [weak self] in
+                guard let self = self else { return }
+                
+                self.callTodayModal()
+            }.disposed(by: vm.bag)
         
-//        punchInView.btnWage // 시급
-//            .rx
-//            .tap
-//            .bind(onNext: <#T##(Void) -> Void#>)
-//            .disposed(by: vm.bag)
+        punchInView.btnWage // 시급
+            .rx
+            .tap
+            .bind { [weak self] in
+                guard let self = self else { return }
+                
+                self.callWageModal()
+            }.disposed(by: vm.bag)
         
         punchInView.btnWork // 근무
             .rx
@@ -73,7 +79,7 @@ class PunchInVC: BaseSceneVC {
             .bind { [weak self] in
                 guard let self = self else { return }
                 
-                self.callWorkingTimeModal(.work)
+                self.callWorkTimeModal(.work)
             }.disposed(by: vm.bag)
         
         punchInView.btnOver // 특근
@@ -82,7 +88,7 @@ class PunchInVC: BaseSceneVC {
             .bind { [weak self] in
                 guard let self = self else { return }
                 
-                self.callWorkingTimeModal(.over)
+                self.callWorkTimeModal(.over)
             }.disposed(by: vm.bag)
         
         punchInView.btnNight // 야근
@@ -91,7 +97,7 @@ class PunchInVC: BaseSceneVC {
             .bind { [weak self] in
                 guard let self = self else { return }
                 
-                self.callWorkingTimeModal(.night)
+                self.callWorkTimeModal(.night)
             }.disposed(by: vm.bag)
         
         punchInView.btnOverNight // 야/특근
@@ -100,7 +106,7 @@ class PunchInVC: BaseSceneVC {
             .bind { [weak self] in
                 guard let self = self else { return }
                 
-                self.callWorkingTimeModal(.overNight)
+                self.callWorkTimeModal(.overNight)
             }.disposed(by: vm.bag)
         
         punchInView.btnSave // 저장
@@ -174,11 +180,49 @@ class PunchInVC: BaseSceneVC {
             }.disposed(by: vm.bag)
     }
     
-    private func callWorkingTimeModal(_ type: PunchInVM.TimeType) {
+    private func callTodayModal() {
+        let workDay = vm.output.bindDate.value
+        
+        let modal = OnlyDayModalVC(
+            title: "근무일",
+            defaultDay: workDay,
+            onSelectedDay: { [weak self] day in
+                guard let self = self else { return }
+                
+                self.vm.input.bindDate.accept(day)
+            }
+        )
+        
+        presentVC(modal)
+    }
+    
+    private func callWageModal() {
+        let placeholder = vm.output.bindWage.value.comma
+        
+        let modal = TextFieldModalVC(
+            title: "시급",
+            placeholder: "\(placeholder) 원",
+            tfType: .numberPad,
+            validSum: (min: 0, max: Int.max),
+            isFirstRespondse: true,
+            onInput: { [weak self] in
+                guard let self = self else { return }
+                
+                let wage = Int($0) ?? 0
+                self.vm.input.bindWage.accept(wage)
+            }
+        )
+        
+        presentVC(modal)
+    }
+    
+    private func callWorkTimeModal(_ type: PunchInVM.EventType) {
         let title: String
         let defaultTime: WorkingTime
         
         switch type {
+        case .wage:
+            return
         case .work:
             title = "근무"
             defaultTime = vm.output.bindWork.value
@@ -193,14 +237,14 @@ class PunchInVC: BaseSceneVC {
             defaultTime = vm.output.bindOverNight.value
         }
         
-        let modal = WorkingTimeModalVC(
+        let modal = WorkTimeModalVC(
             title: title,
             defaultTime: defaultTime,
-            onWorkingTime: { [weak self] time in
+            onWorkTime: { [weak self] time in
                 guard let self = self else { return }
                 
                 let data = (type, time)
-                self.vm.input.bindWorkingTime.accept(data)
+                self.vm.input.bindWorkTime.accept(data)
             }
         )
         

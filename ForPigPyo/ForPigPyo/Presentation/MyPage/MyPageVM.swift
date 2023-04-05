@@ -14,19 +14,27 @@ import RxOptional
 
 
 class MyPageVM: BaseVM {
+    
+    enum Menu {
+        case wage
+        case hour
+        case tax
+        case backup
+    }
+    
     struct Input {
         // Void
-        let viewWillAppear = PublishRelay<Void>()
-        let bindMenu = PublishRelay<MyPageModel.Menu>()
+        let bindRefresh = PublishRelay<Void>()
+        let bindMenu = PublishRelay<Menu>()
     }
     
     struct Output {
         // Void
-        let bindMyHourlyPay = PublishRelay<String>()
-        let bindMyWorkingTime = PublishRelay<String>()
+        let bindMyWage = PublishRelay<String>()
+        let bindMyWorkTime = PublishRelay<String>()
         let bindMyTax = PublishRelay<String>()
         let bindMyBackup = PublishRelay<String>()
-        let bindMenu = PublishRelay<MyPageModel.Menu>()
+        let bindMenu = PublishRelay<Menu>()
     }
     
     let input: Input
@@ -40,7 +48,7 @@ class MyPageVM: BaseVM {
         super.init()
         
         self.input
-            .viewWillAppear
+            .bindRefresh
             .bind { UserInfoManager.shared.loadInfo() }
             .disposed(by: bag)
         
@@ -50,12 +58,14 @@ class MyPageVM: BaseVM {
             .bind(to: self.output.bindMenu)
             .disposed(by: bag)
         
-        UserInfoManager.shared.hourlyPay
+        UserInfoManager.shared
+            .wage
             .map { $0 == 0 ? "미설정" : ($0.comma.won) }
-            .bind(to: self.output.bindMyHourlyPay)
+            .bind(to: self.output.bindMyWage)
             .disposed(by: bag)
         
-        UserInfoManager.shared.workingTime
+        UserInfoManager.shared
+            .workTime
             .map { workingTime in
                 var text = ""
                 
@@ -64,15 +74,17 @@ class MyPageVM: BaseVM {
                 if text.count == 0 { text = "미설정" }
                 
                 return text
-            }.bind(to: self.output.bindMyWorkingTime)
+            }.bind(to: self.output.bindMyWorkTime)
             .disposed(by: bag)
         
-        UserInfoManager.shared.tax
+        UserInfoManager.shared
+            .tax
             .map { $0.rawValue }
             .bind(to: self.output.bindMyTax)
             .disposed(by: bag)
         
-        UserInfoManager.shared.login
+        UserInfoManager.shared
+            .login
             .map { $0.isNil ? "미설정" : "동기화 중" }
             .bind(to: self.output.bindMyBackup)
             .disposed(by: bag)

@@ -62,6 +62,12 @@ class TimeCardVC: BaseMainVC {
             .bind(to: vm.input.bindMove)
             .disposed(by: vm.bag)
         
+        timeCardView.viewStatus.btnTax // 세금 설정
+            .rx
+            .controlEvent(.touchDown)
+            .bind(to: vm.input.bindChangeTax)
+            .disposed(by: vm.bag)
+        
         timeCardView.btnAdd // 근무기록 추가
             .rx
             .tap

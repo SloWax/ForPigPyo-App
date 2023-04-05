@@ -13,30 +13,39 @@ import RxCocoa
 import RxOptional
 
 
-typealias WorkingTime = (hour: Int, min: Int)
-
-
 class UserInfoManager: NSObject {
     
     static let shared = UserInfoManager()
     
     private let bag = DisposeBag()
+    private let calendar = Calendar.current
+    private var components = DateComponents()
     
-    let hourlyPay = PublishRelay<Int>()
-    let workingTime = PublishRelay<WorkingTime>()
+    let date = PublishRelay<Int>()
+    let wage = PublishRelay<Int>()
+    let workTime = PublishRelay<WorkingTime>()
     let tax = PublishRelay<TaxCase>()
     let login = PublishRelay<String?>()
-    
     
     override init() {
         super.init()
         
-        self.hourlyPay
-            .bind { [weak self] in self?.saveHourlyPay(sum: $0) }
+        self.initCalendar()
+        
+        self.date
+            .bind { [weak self] index in
+                guard let self = self,
+                      let month = self.components.month else { return }
+                
+                index == 0 ? self.initCalendar() : (self.components.month = month + index)
+            }.disposed(by: bag)
+        
+        self.wage
+            .bind { [weak self] in self?.saveWage($0) }
             .disposed(by: bag)
         
-        self.workingTime
-            .bind { [weak self] in self?.saveWorkingTime($0) }
+        self.workTime
+            .bind { [weak self] in self?.saveWorkTime($0) }
             .disposed(by: bag)
         
         self.tax
@@ -48,11 +57,11 @@ class UserInfoManager: NSObject {
             .disposed(by: bag)
     }
     
-    private func saveHourlyPay(sum: Int) {
+    private func saveWage(_ sum: Int) {
         UserDefaults.standard.set(sum, forKey: "MyPageVCHourly")
     }
     
-    private func saveWorkingTime(_ time: WorkingTime?) {
+    private func saveWorkTime(_ time: WorkingTime?) {
         UserDefaults.standard.set(time?.hour, forKey: "myPageVCWorkHour")
         UserDefaults.standard.set(time?.min, forKey: "myPageVCWorkMin")
     }
@@ -65,11 +74,11 @@ class UserInfoManager: NSObject {
         UserDefaults.standard.set(identifier, forKey: "userID")
     }
     
-    func getHourlyPay() -> Int {
+    func getWage() -> Int {
         return UserDefaults.standard.integer(forKey: "MyPageVCHourly")
     }
     
-    func getWorkingTime() -> WorkingTime {
+    func getWorkTime() -> WorkingTime {
         let hour = UserDefaults.standard.integer(forKey: "myPageVCWorkHour")
         let min = UserDefaults.standard.integer(forKey: "myPageVCWorkMin")
         
@@ -85,12 +94,21 @@ class UserInfoManager: NSObject {
         return UserDefaults.standard.string(forKey: "userID")
     }
     
+    func getSelectedDate() -> Date {
+        return calendar.date(from: components) ?? Date()
+    }
+    
+    func initCalendar() {
+        components.year = calendar.component(.year, from: Date())
+        components.month = calendar.component(.month, from: Date())
+    }
+    
     func loadInfo() {
-        let defaultHourlyPay = getHourlyPay()
-        hourlyPay.accept(defaultHourlyPay)
+        let defaultHourlyPay = getWage()
+        wage.accept(defaultHourlyPay)
         
-        let defaultWorkingTime = getWorkingTime()
-        workingTime.accept(defaultWorkingTime)
+        let defaultWorkingTime = getWorkTime()
+        workTime.accept(defaultWorkingTime)
         
         let defaultTax = getTax()
         tax.accept(defaultTax)

@@ -1,5 +1,5 @@
 //
-//  WorkingTimeModalVM.swift
+//  WorkTimeModalVM.swift
 //  ForPigPyo
 //
 //  Created by 표건욱 on 2022/08/02.
@@ -12,16 +12,13 @@ import RxCocoa
 import RxOptional
 
 
-class WorkingTimeModalVM: BaseVM {
+class WorkTimeModalVM: BaseVM {
     
     struct Input {
         // Void
         let viewWillAppear = PublishRelay<Void>()
         let index = PublishRelay<(component: Int, row: Int)>()
         let bindConfirm = PublishRelay<Void>()
-        
-        // Data
-        let selectedTime = BehaviorRelay<WorkingTime>(value: (0, 0))
     }
     
     struct Output {
@@ -35,6 +32,8 @@ class WorkingTimeModalVM: BaseVM {
     
     let input: Input
     let output: Output
+    
+    private var selectedTime: WorkingTime = (0, 0)
     
     init(input: Input = Input(), output: Output = Output(),
          defaultTime: WorkingTime) {
@@ -65,7 +64,7 @@ class WorkingTimeModalVM: BaseVM {
                 
                 guard rows.isNotEmpty else { return }
                 
-                self.input.selectedTime.accept((hour, min))
+                self.selectedTime = (hour, min)
                 self.output.bindDefaultRow.accept(rows)
             }.disposed(by: bag)
         
@@ -77,11 +76,8 @@ class WorkingTimeModalVM: BaseVM {
                 let times = self.output.times.value
                 let selectValue = times[index.component][index.row]
                 
-                var selectedTime = self.input.selectedTime.value
                 let isHour = index.component == 0
-                
-                isHour ? (selectedTime.hour = selectValue) : (selectedTime.min = selectValue)
-                self.input.selectedTime.accept(selectedTime)
+                isHour ? (self.selectedTime.hour = selectValue) : (self.selectedTime.min = selectValue)
             }.disposed(by: bag)
         
         self.input
@@ -89,8 +85,7 @@ class WorkingTimeModalVM: BaseVM {
             .bind { [weak self] in
                 guard let self = self else { return }
                 
-                let workingTime = self.input.selectedTime.value
-                self.output.bindConfirm.accept(workingTime)
+                self.output.bindConfirm.accept(self.selectedTime)
             }.disposed(by: bag)
     }
 }

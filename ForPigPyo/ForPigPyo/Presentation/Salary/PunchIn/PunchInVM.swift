@@ -19,7 +19,8 @@ class PunchInVM: BaseVM {
         case edit
     }
     
-    enum TimeType {
+    enum EventType {
+        case wage
         case work
         case over
         case night
@@ -27,10 +28,10 @@ class PunchInVM: BaseVM {
     }
     
     struct Input {
-        let viewWillAppear = PublishRelay<Void>()
+        let loadData = PublishRelay<Void>()
         let bindDate = BehaviorRelay<Int>(value: 0)
         let bindWage = BehaviorRelay<Int>(value: 0)
-        let bindWorkingTime = PublishRelay<(type: TimeType, time: WorkingTime)>()
+        let bindWorkTime = PublishRelay<(type: EventType, time: WorkingTime)>()
         let bindSave = PublishRelay<Void>()
     }
     
@@ -57,7 +58,7 @@ class PunchInVM: BaseVM {
         super.init()
         
         self.input
-            .viewWillAppear
+            .loadData
             .bind { [weak self] in
                 guard let self = self,
                       self.output.bindDate.value == 0 else { return }
@@ -69,19 +70,35 @@ class PunchInVM: BaseVM {
                 
                 self.output.bindDate.accept(today)
                 
-                let wage = UserInfoManager.shared.getHourlyPay()
+                let wage = UserInfoManager.shared.getWage()
                 self.output.bindWage.accept(wage)
                 
-                let work = UserInfoManager.shared.getWorkingTime()
-                self.input.bindWorkingTime.accept((.work, work))
+                let work = UserInfoManager.shared.getWorkTime()
+                self.input.bindWorkTime.accept((.work, work))
             }.disposed(by: bag)
         
         self.input
-            .bindWorkingTime
+            .bindDate
+            .bind(to: self.output.bindDate)
+            .disposed(by: bag)
+        
+        self.input
+            .bindWage
+            .map { [weak self] wage in
+                guard let self = self else { return }
+                
+                self.output.bindWage.accept(wage)
+            }.map { (.wage, (0, 0)) }
+            .bind(to: self.input.bindWorkTime)
+            .disposed(by: bag)
+        
+        self.input
+            .bindWorkTime
             .bind { [weak self] data in
                 guard let self = self else { return }
                 
                 switch data.type {
+                case .wage      : break
                 case .work      : self.output.bindWork.accept(data.time)
                 case .over      : self.output.bindOver.accept(data.time)
                 case .night     : self.output.bindNight.accept(data.time)
@@ -117,6 +134,8 @@ class PunchInVM: BaseVM {
                 self.output.bindDayPay.accept(Int(dayPay))
             }.disposed(by: bag)
         
+//        self.input
+//            .bindSave
     }
     
     private func convertTime(_ time: WorkingTime) -> Float {

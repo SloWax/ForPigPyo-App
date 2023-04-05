@@ -1,11 +1,10 @@
 //
-//  WorkingTimeModalVC.swift
+//  OnlyDayModalVC.swift
 //  ForPigPyo
 //
-//  Created by 표건욱 on 2022/08/02.
-//  Copyright © 2022 SloWax. All rights reserved.
+//  Created by 표건욱 on 2023/04/06.
+//  Copyright © 2023 SloWax. All rights reserved.
 //
-
 
 import UIKit
 import RxSwift
@@ -15,44 +14,36 @@ import RxOptional
 import RxDataSources
 
 
-typealias OnWorkingTime = (WorkingTime) -> Void
-
-
-class WorkingTimeModalVC: BaseModalVC {
+class OnlyDayModalVC: BaseModalVC {
     
     private let textTitle: String
     private let textSubTitle: String?
     private let confirmTitle: String
     
-    private var onWorkingTime: OnWorkingTime?
+    private var onSelectedDay: ((Int) -> Void)?
     
-    private let workingTimeModalView = WorkingTimeModalView()
-    private let vm: WorkingTimeModalVM
+    private let onlyDayModalView = OnlyDayModalView()
+    private let vm: OnlyDayModalVM
     
-    private let stringPickerAdapter = RxPickerViewStringAdapter<[[Int]]>(
+    private let stringPickerAdapter = RxPickerViewStringAdapter<[Int]>(
         components: [],
-        numberOfComponents: { _, _, components in components.count },
-        numberOfRowsInComponent: { _, _, items, row -> Int in
-            return items[row].count
-        },
+        numberOfComponents: { _, _, _ in 1 },
+        numberOfRowsInComponent: { _, _, items, _ -> Int in items.count },
         titleForRow: { _, _, items, row, component -> String? in
-            var value = "\(items[component][row])"
-            component == 0 ? (value += " 시간") : (value += " 분")
-            
-            return value
+            return "\(items[row]) 일"
         }
     )
     
     init(title: String, subTitle: String? = nil,
          confirmTitle: String = "확인",
-         defaultTime: WorkingTime,
-         onWorkingTime: OnWorkingTime? = nil) {
+         defaultDay: Int,
+         onSelectedDay: ((Int) -> Void)? = nil) {
         
         self.textTitle = title
         self.textSubTitle = subTitle
         self.confirmTitle = confirmTitle
-        self.vm = WorkingTimeModalVM(defaultTime: defaultTime)
-        self.onWorkingTime = onWorkingTime
+        self.vm = OnlyDayModalVM(defaultDay: defaultDay)
+        self.onSelectedDay = onSelectedDay
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -69,9 +60,9 @@ class WorkingTimeModalVC: BaseModalVC {
     }
     
     private func initialize() {
-        view = workingTimeModalView
+        view = onlyDayModalView
         
-        workingTimeModalView.setValue(
+        onlyDayModalView.setValue(
             title: textTitle,
             subTitle: textSubTitle,
             confirmTitle: confirmTitle
@@ -81,10 +72,10 @@ class WorkingTimeModalVC: BaseModalVC {
     private func bind() {
         self.rx
             .viewWillAppear
-            .bind(to: vm.input.viewWillAppear)
+            .bind(to: vm.input.loadData)
             .disposed(by: bag)
         
-        workingTimeModalView.viewDismiss // 빈 공간 tap dismiss
+        onlyDayModalView.viewDismiss // 빈 공간 tap dismiss
             .rx
             .tapGesture()
             .when(.recognized)
@@ -95,22 +86,22 @@ class WorkingTimeModalVC: BaseModalVC {
                 self.dismiss(animated: false)
             }.disposed(by: bag)
         
-        workingTimeModalView.pvPicker // Picker value bind vm
+        onlyDayModalView.pvPicker // Picker value bind vm
             .rx
             .itemSelected
-            .map { ($0.component, $0.row) }
-            .bind(to: vm.input.index)
+            .map { $0.row }
+            .bind(to: vm.input.bindIndex)
             .disposed(by: bag)
         
-        workingTimeModalView.btnConfirm // 확인
+        onlyDayModalView.btnConfirm // 확인
             .rx
             .tap
             .bind(to: vm.input.bindConfirm)
             .disposed(by: bag)
         
         vm.output
-            .times // 근무시간
-            .bind(to: workingTimeModalView.pvPicker
+            .days // 근무일
+            .bind(to: onlyDayModalView.pvPicker
                     .rx
                     .items(adapter: stringPickerAdapter)
             ).disposed(by: bag)
@@ -120,16 +111,16 @@ class WorkingTimeModalVC: BaseModalVC {
             .bind { [weak self] defaultRow in
                 guard let self = self else { return }
                 
-                self.workingTimeModalView.setDefaultRow(defaultRow)
+                self.onlyDayModalView.setDefaultRow(defaultRow)
             }.disposed(by: bag)
         
         vm.output
             .bindConfirm // 근무시간 넘기기
-            .bind { [weak self] workingTime in
+            .bind { [weak self] day in
                 guard let self = self else { return }
                 
-                if let callBack = self.onWorkingTime {
-                    callBack(workingTime)
+                if let callBack = self.onSelectedDay {
+                    callBack(day)
                 }
 
                 self.clearBag(vm: self.vm)

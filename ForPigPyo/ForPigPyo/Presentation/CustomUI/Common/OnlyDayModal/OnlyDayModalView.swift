@@ -1,9 +1,9 @@
 //
-//  WorkingTimeModalView.swift
+//  OnlyDayModalView.swift
 //  ForPigPyo
 //
-//  Created by 표건욱 on 2022/08/02.
-//  Copyright © 2022 SloWax. All rights reserved.
+//  Created by 표건욱 on 2023/04/06.
+//  Copyright © 2023 SloWax. All rights reserved.
 //
 
 import UIKit
@@ -11,7 +11,7 @@ import SnapKit
 import Then
 
 
-class WorkingTimeModalView: BaseView {
+class OnlyDayModalView: BaseView {
     
     let viewDismiss = UIView()
     
@@ -107,9 +107,7 @@ class WorkingTimeModalView: BaseView {
         btnConfirm.setTitle(confirmTitle, for: .normal)
     }
     
-    func setDefaultRow(_ rows: [(component: Int, row: Int)]) {
-        rows.forEach {
-            pvPicker.selectRow($0.row, inComponent: $0.component, animated: false)
-        }
+    func setDefaultRow(_ data: (component: Int, row: Int)) {
+        pvPicker.selectRow(data.row, inComponent: data.component, animated: false)
     }
 }

@@ -42,7 +42,6 @@ class MainTC: UITabBarController {
         tabBar.standardAppearance = tabBarAppearance
         
         let viewController = [
-//            TabBarVC(vc: HomeVC(), itme: UITabBarItem(
             TabBarVC(vc: TimeCardVC(), itme: UITabBarItem(
                 title: "티끌 기록",
                 image: UIImage(named: "wallet"),

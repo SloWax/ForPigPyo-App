@@ -39,7 +39,7 @@ class MyPageVC: BaseMainVC {
     private func bind() {
         self.rx
             .viewWillAppear
-            .bind(to: vm.input.viewWillAppear)
+            .bind(to: vm.input.bindRefresh)
             .disposed(by: vm.bag)
         
         myPageView.btnWage
@@ -71,7 +71,7 @@ class MyPageVC: BaseMainVC {
             .disposed(by: vm.bag)
         
         vm.output
-            .bindMyHourlyPay
+            .bindMyWage
             .bind { [weak self] hourlyPay in
                 guard let self = self else { return }
                 
@@ -79,7 +79,7 @@ class MyPageVC: BaseMainVC {
             }.disposed(by: vm.bag)
         
         vm.output
-            .bindMyWorkingTime
+            .bindMyWorkTime
             .bind { [weak self] workingTime in
                 guard let self = self else { return }
 
@@ -109,7 +109,7 @@ class MyPageVC: BaseMainVC {
     }
     
     private func setWage() {
-        let placeholder = UserInfoManager.shared.getHourlyPay().comma
+        let placeholder = UserInfoManager.shared.getWage().comma
         
         let modal = TextFieldModalVC(
             title: "나의 시급 설정",
@@ -118,18 +118,18 @@ class MyPageVC: BaseMainVC {
             tfType: .numberPad,
             validSum: (min: 0, max: Int.max),
             isFirstRespondse: true,
-            onInput: { UserInfoManager.shared.hourlyPay.accept(Int($0) ?? 0) }
+            onInput: { UserInfoManager.shared.wage.accept(Int($0) ?? 0) }
         )
         
         self.presentVC(modal)
     }
     
     private func setWorkingTime() {
-        let modal = WorkingTimeModalVC(
+        let modal = WorkTimeModalVC(
             title: "근무 시간 설정",
             subTitle: "급여 계산기에서 근무를 추가할 때\n시간이 자동 입력됩니다:)",
-            defaultTime: UserInfoManager.shared.getWorkingTime(),
-            onWorkingTime: { UserInfoManager.shared.workingTime.accept($0) }
+            defaultTime: UserInfoManager.shared.getWorkTime(),
+            onWorkTime: { UserInfoManager.shared.workTime.accept($0) }
         )
         
         self.presentVC(modal)

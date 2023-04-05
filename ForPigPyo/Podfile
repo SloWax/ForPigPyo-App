@@ -36,7 +36,6 @@ def available_pods
   pod 'FirebaseFirestoreSwift'
   pod 'Firebase/Analytics'
   pod 'Firebase/Crashlytics'
-  #  pod 'Google-Mobile-Ads-SDK'
 end
 
 target 'ForPigPyo' do

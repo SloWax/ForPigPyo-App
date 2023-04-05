@@ -194,12 +194,15 @@ class PunchInView: BaseView {
         btnWage.setValue(centerValue: value)
     }
     
-    func setTimeValue(type: PunchInVM.TimeType, data: WorkingTime) {
+    func setTimeValue(type: PunchInVM.EventType, data: WorkingTime) {
         let isZero = (data.hour == 0) && (data.min == 0)
         let hour = isZero ? "근무" : "\(data.hour)"
         let min = isZero ? "근무" : "\(data.min)"
         
         switch type {
+        case .wage:
+            
+            break
         case .work:
             
             btnWork.textColor(isEmpty: isZero)
