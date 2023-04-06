@@ -106,6 +106,7 @@ class PunchInView: BaseView {
         $0.setTitle("저장", for: .normal)
         $0.titleLabel?.font = .setCustomFont(font: .bold, size: 20)
         $0.cornerRadius = 25
+        $0.isEnabled = false
     }
     
     override init(frame: CGRect) {
@@ -194,7 +195,7 @@ class PunchInView: BaseView {
         btnWage.setValue(centerValue: value)
     }
     
-    func setTimeValue(type: PunchInVM.EventType, data: WorkingTime) {
+    func setTimeValue(type: PunchInVM.EventType, data: WorkTime) {
         let isZero = (data.hour == 0) && (data.min == 0)
         let hour = isZero ? "근무" : "\(data.hour)"
         let min = isZero ? "근무" : "\(data.min)"
@@ -222,7 +223,7 @@ class PunchInView: BaseView {
         }
     }
     
-    func setTotalValue(data: WorkingTime) {
+    func setTotalValue(data: WorkTime) {
         let isZero = (data.hour == 0) && (data.min == 0)
         
         btnTotal.textColor(isEmpty: isZero)
@@ -231,5 +232,9 @@ class PunchInView: BaseView {
     
     func setDayPay(_ pay: Int) {
         lblPreview.text = pay.comma.won
+    }
+    
+    func btnSaveIsEnabled(_ isEnabled: Bool) {
+        btnSave.isEnabled = isEnabled
     }
 }

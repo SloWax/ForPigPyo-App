@@ -24,7 +24,7 @@ class WorkTimeModalVM: BaseVM {
     struct Output {
         // Void
         let bindDefaultRow = PublishRelay<[(component: Int, row: Int)]>()
-        let bindConfirm = PublishRelay<WorkingTime>()
+        let bindConfirm = PublishRelay<WorkTime>()
         
         // Data
         let times = BehaviorRelay<[[Int]]>(value: [Array(0...23), Array(0...59)])
@@ -33,10 +33,10 @@ class WorkTimeModalVM: BaseVM {
     let input: Input
     let output: Output
     
-    private var selectedTime: WorkingTime = (0, 0)
+    private var selectedTime: WorkTime = (0, 0)
     
     init(input: Input = Input(), output: Output = Output(),
-         defaultTime: WorkingTime) {
+         defaultTime: WorkTime) {
         
         self.input = input
         self.output = output

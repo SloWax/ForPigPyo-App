@@ -49,7 +49,7 @@ class OnlyDayModalVM: BaseVM {
                 guard let self = self else { return }
                 
                 let calendar = Calendar.current
-                let date = UserInfoManager.shared.getSelectedDate()
+                let date = UserInfoManager.shared.getTimeCardDate()
                 
                 let days = [Int](calendar.range(of: .day, in: .month, for: date)!)
                 

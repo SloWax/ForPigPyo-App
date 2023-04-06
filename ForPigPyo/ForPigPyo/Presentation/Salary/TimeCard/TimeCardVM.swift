@@ -21,8 +21,7 @@ class TimeCardVM: BaseVM {
     
     struct Output {
         let bindValue = PublishRelay<(date: String, wage: Int, tax: String)>()
-//        let bindList = BehaviorRelay<[Int]>(value: [0,1,1,2])
-        let bindList = BehaviorRelay<[Int]>(value: [])
+        let bindList = BehaviorRelay<[AttendanceModel]>(value: [])
     }
     
     let input: Input
@@ -39,7 +38,7 @@ class TimeCardVM: BaseVM {
                 guard let self = self else { return }
                 
                 let currentDate = UserInfoManager.shared
-                    .getSelectedDate()
+                    .getTimeCardDate()
                     .toString()
                 
                 let wage = UserInfoManager.shared

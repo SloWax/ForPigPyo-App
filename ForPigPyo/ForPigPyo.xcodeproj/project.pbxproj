@@ -75,6 +75,7 @@
 		6E5236E429C9B4890065022B /* NotoSansCJKkr-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6E5236E329C9B4890065022B /* NotoSansCJKkr-Regular.otf */; };
 		6E5236E729CB0BCC0065022B /* BaseMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5236E629CB0BCC0065022B /* BaseMainVC.swift */; };
 		6E5236E929CB0BDE0065022B /* BaseSceneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5236E829CB0BDE0065022B /* BaseSceneVC.swift */; };
+		6E6529F629DF34C600A71164 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6529F529DF34C600A71164 /* DataManager.swift */; };
 		6E65872029D5D9CD00A7B568 /* TimeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E65871F29D5D9CD00A7B568 /* TimeCardView.swift */; };
 		6E65872229D5DA1600A7B568 /* TimeCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E65872129D5DA1600A7B568 /* TimeCardVC.swift */; };
 		6E65872429D5DB0900A7B568 /* TimeCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E65872329D5DB0900A7B568 /* TimeCardCell.swift */; };
@@ -204,6 +205,7 @@
 		6E5236E329C9B4890065022B /* NotoSansCJKkr-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansCJKkr-Regular.otf"; path = "../../../../../../기획/font/NotoSansCJKkr/NotoSansCJKkr-Regular.otf"; sourceTree = "<group>"; };
 		6E5236E629CB0BCC0065022B /* BaseMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMainVC.swift; sourceTree = "<group>"; };
 		6E5236E829CB0BDE0065022B /* BaseSceneVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSceneVC.swift; sourceTree = "<group>"; };
+		6E6529F529DF34C600A71164 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		6E65871F29D5D9CD00A7B568 /* TimeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCardView.swift; sourceTree = "<group>"; };
 		6E65872129D5DA1600A7B568 /* TimeCardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCardVC.swift; sourceTree = "<group>"; };
 		6E65872329D5DB0900A7B568 /* TimeCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCardCell.swift; sourceTree = "<group>"; };
@@ -494,6 +496,7 @@
 		34DCEB4128AB927F00CD9545 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				6E6529F529DF34C600A71164 /* DataManager.swift */,
 				34D3DD092893B14800D29433 /* UserInfoManager.swift */,
 				34DCEB3D28A644D100CD9545 /* SocialManager.swift */,
 			);
@@ -998,6 +1001,7 @@
 				6E00CFA725B9B4F800FF1E06 /* SavingAdminVC.swift in Sources */,
 				34E3931A28894D1F00552616 /* Paser.swift in Sources */,
 				6E807C8625728DD600337550 /* HomeVCModel.swift in Sources */,
+				6E6529F629DF34C600A71164 /* DataManager.swift in Sources */,
 				6EB2950329DDF0C1004C7AD4 /* OnlyDayModalView.swift in Sources */,
 				34DCEB3A28A62A3C00CD9545 /* Case.swift in Sources */,
 				3447A939287EAB6F003D1B0D /* Extension+UIColor.swift in Sources */,

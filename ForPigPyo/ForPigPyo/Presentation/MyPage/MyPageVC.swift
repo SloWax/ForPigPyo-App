@@ -80,10 +80,10 @@ class MyPageVC: BaseMainVC {
         
         vm.output
             .bindMyWorkTime
-            .bind { [weak self] workingTime in
+            .bind { [weak self] workTime in
                 guard let self = self else { return }
 
-                self.myPageView.btnHour.setValue(value: workingTime)
+                self.myPageView.btnHour.setValue(value: workTime)
             }.disposed(by: vm.bag)
         
         vm.output
@@ -101,7 +101,7 @@ class MyPageVC: BaseMainVC {
                 
                 switch menu {
                 case .wage   : self.setWage()
-                case .hour   : self.setWorkingTime()
+                case .hour   : self.setWorkTime()
                 case .tax    : self.setTax()
                 case .backup : self.setBackup()
                 }
@@ -124,7 +124,7 @@ class MyPageVC: BaseMainVC {
         self.presentVC(modal)
     }
     
-    private func setWorkingTime() {
+    private func setWorkTime() {
         let modal = WorkTimeModalVC(
             title: "근무 시간 설정",
             subTitle: "급여 계산기에서 근무를 추가할 때\n시간이 자동 입력됩니다:)",

@@ -8,8 +8,8 @@
 
 import Foundation
 
-typealias WorkingTime = (hour: Int, min: Int)
-typealias OnWorkTime = (WorkingTime) -> Void
+typealias WorkTime = (hour: Int, min: Int)
+typealias OnWorkTime = (WorkTime) -> Void
 
 // 세금 유형
 enum TaxCase: String, CaseIterable {

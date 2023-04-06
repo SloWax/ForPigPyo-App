@@ -66,11 +66,11 @@ class MyPageVM: BaseVM {
         
         UserInfoManager.shared
             .workTime
-            .map { workingTime in
+            .map { workTime in
                 var text = ""
                 
-                if workingTime.hour > 0 { text = "\(workingTime.hour)시간" }
-                if workingTime.min > 0 { text += " \(workingTime.min)분" }
+                if workTime.hour > 0 { text = "\(workTime.hour)시간" }
+                if workTime.min > 0 { text += " \(workTime.min)분" }
                 if text.count == 0 { text = "미설정" }
                 
                 return text

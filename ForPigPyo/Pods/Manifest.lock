@@ -339,6 +339,11 @@ PODS:
   - nanopb/decode (1.30906.0)
   - nanopb/encode (1.30906.0)
   - PromisesObjC (1.2.12)
+  - Realm (10.25.1):
+    - Realm/Headers (= 10.25.1)
+  - Realm/Headers (10.25.1)
+  - RealmSwift (10.25.1):
+    - Realm (= 10.25.1)
   - RxCocoa (6.2.0):
     - RxRelay (= 6.2.0)
     - RxSwift (= 6.2.0)
@@ -365,6 +370,7 @@ DEPENDENCIES:
   - Firebase/Firestore
   - FirebaseFirestoreSwift
   - Moya/RxSwift (~> 15.0.0)
+  - RealmSwift (~> 10)
   - RxCocoa (~> 6.2.0)
   - RxDataSources (~> 5.0)
   - RxGesture (~> 4.0.2)
@@ -395,6 +401,8 @@ SPEC REPOS:
     - Moya
     - nanopb
     - PromisesObjC
+    - Realm
+    - RealmSwift
     - RxCocoa
     - RxDataSources
     - RxGesture
@@ -426,6 +434,8 @@ SPEC CHECKSUMS:
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
+  Realm: 1a6e9b4f6983711655d8c0bcb6d2d29c3afbb1f3
+  RealmSwift: e72669550d27082aa4fad5d176f5076cfe806245
   RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
   RxDataSources: aa47cc1ed6c500fa0dfecac5c979b723542d79cf
   RxGesture: f3efb47ed2d26a8082f7b660d4a59970e275a7f8
@@ -435,6 +445,6 @@ SPEC CHECKSUMS:
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
 
-PODFILE CHECKSUM: 0529a946fb44b22388ffb75072d9ff08931d85b9
+PODFILE CHECKSUM: a2b2c8977e497a23c8f4b0ab6e49c30098d7bede
 
 COCOAPODS: 1.11.2

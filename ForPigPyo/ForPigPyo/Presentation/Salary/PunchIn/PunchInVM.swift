@@ -29,21 +29,23 @@ class PunchInVM: BaseVM {
     
     struct Input {
         let loadData = PublishRelay<Void>()
-        let bindDate = BehaviorRelay<Int>(value: 0)
-        let bindWage = BehaviorRelay<Int>(value: 0)
-        let bindWorkTime = PublishRelay<(type: EventType, time: WorkingTime)>()
+        let bindDate = PublishRelay<Int>()
+        let bindWage = PublishRelay<Int>()
+        let bindWorkTime = PublishRelay<(type: EventType, time: WorkTime)>()
         let bindSave = PublishRelay<Void>()
     }
     
     struct Output {
         let bindDate = BehaviorRelay<Int>(value: 0)
         let bindWage = BehaviorRelay<Int>(value: 0)
-        let bindWork = BehaviorRelay<WorkingTime>(value: (0, 0))
-        let bindOver = BehaviorRelay<WorkingTime>(value: (0, 0))
-        let bindNight = BehaviorRelay<WorkingTime>(value: (0, 0))
-        let bindOverNight = BehaviorRelay<WorkingTime>(value: (0, 0))
-        let bindTotal = BehaviorRelay<WorkingTime>(value: (0, 0))
+        let bindWork = BehaviorRelay<WorkTime>(value: (0, 0))
+        let bindOver = BehaviorRelay<WorkTime>(value: (0, 0))
+        let bindNight = BehaviorRelay<WorkTime>(value: (0, 0))
+        let bindOverNight = BehaviorRelay<WorkTime>(value: (0, 0))
+        let bindTotal = BehaviorRelay<WorkTime>(value: (0, 0))
         let bindDayPay = BehaviorRelay<Int>(value: 0)
+        let bindBtnSaveIsEnabled = PublishRelay<Bool>()
+        let bindSave = PublishRelay<Void>()
     }
     
     let input: Input
@@ -132,13 +134,48 @@ class PunchInVM: BaseVM {
                     }
                 
                 self.output.bindDayPay.accept(Int(dayPay))
+                
+                let saveIsEnabled = dayPay > 0
+                
+                self.output.bindBtnSaveIsEnabled.accept(saveIsEnabled)
             }.disposed(by: bag)
         
-//        self.input
-//            .bindSave
+        self.input
+            .bindSave
+            .bind { [weak self] in
+                guard let self = self else { return }
+                
+                let timeCardDate = UserInfoManager.shared.getTimeCardDate()
+                
+                self.components.year = self.calendar.component(.year, from: timeCardDate)
+                self.components.month = self.calendar.component(.month, from: timeCardDate)
+                self.components.day = self.output.bindDate.value
+                
+                let selectedDate = self.calendar.date(from: self.components)
+                let wage = self.output.bindWage.value
+                let workTime = self.output.bindWork.value
+                let overTime = self.output.bindOver.value
+                let nightTime = self.output.bindNight.value
+                let overNightTime = self.output.bindOverNight.value
+                let total = self.output.bindTotal.value
+                let dayPay = self.output.bindDayPay.value
+                
+                let attendance = AttendanceModel(
+                    date: selectedDate ?? Date(),
+                    wage: wage,
+                    workTime: workTime,
+                    overTime: overTime,
+                    nightTime: nightTime,
+                    overNightTime: overNightTime,
+                    total: total,
+                    dayPay: dayPay
+                )
+                
+                print(attendance)
+            }.disposed(by: bag)
     }
     
-    private func convertTime(_ time: WorkingTime) -> Float {
+    private func convertTime(_ time: WorkTime) -> Float {
         let hour = Float(time.hour)
         let min = Float(time.min / 60)
         return  hour + min

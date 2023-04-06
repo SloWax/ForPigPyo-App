@@ -178,6 +178,21 @@ class PunchInVC: BaseSceneVC {
                 
                 self.punchInView.setDayPay(pay)
             }.disposed(by: vm.bag)
+        
+        vm.output
+            .bindBtnSaveIsEnabled // 저장 isEnabled
+            .bind { [weak self] isEnabled in
+                guard let self = self else { return }
+                
+                self.punchInView.btnSaveIsEnabled(isEnabled)
+            }.disposed(by: vm.bag)
+        
+        vm.output
+            .bindSave // 저장 완료
+            .bind { [weak self] in
+                guard let self = self else { return }
+                
+            }.disposed(by: vm.bag)
     }
     
     private func callTodayModal() {
@@ -218,7 +233,7 @@ class PunchInVC: BaseSceneVC {
     
     private func callWorkTimeModal(_ type: PunchInVM.EventType) {
         let title: String
-        let defaultTime: WorkingTime
+        let defaultTime: WorkTime
         
         switch type {
         case .wage:

@@ -23,7 +23,7 @@ class UserInfoManager: NSObject {
     
     let date = PublishRelay<Int>()
     let wage = PublishRelay<Int>()
-    let workTime = PublishRelay<WorkingTime>()
+    let workTime = PublishRelay<WorkTime>()
     let tax = PublishRelay<TaxCase>()
     let login = PublishRelay<String?>()
     
@@ -61,7 +61,7 @@ class UserInfoManager: NSObject {
         UserDefaults.standard.set(sum, forKey: "MyPageVCHourly")
     }
     
-    private func saveWorkTime(_ time: WorkingTime?) {
+    private func saveWorkTime(_ time: WorkTime?) {
         UserDefaults.standard.set(time?.hour, forKey: "myPageVCWorkHour")
         UserDefaults.standard.set(time?.min, forKey: "myPageVCWorkMin")
     }
@@ -78,7 +78,7 @@ class UserInfoManager: NSObject {
         return UserDefaults.standard.integer(forKey: "MyPageVCHourly")
     }
     
-    func getWorkTime() -> WorkingTime {
+    func getWorkTime() -> WorkTime {
         let hour = UserDefaults.standard.integer(forKey: "myPageVCWorkHour")
         let min = UserDefaults.standard.integer(forKey: "myPageVCWorkMin")
         
@@ -94,7 +94,7 @@ class UserInfoManager: NSObject {
         return UserDefaults.standard.string(forKey: "userID")
     }
     
-    func getSelectedDate() -> Date {
+    func getTimeCardDate() -> Date {
         return calendar.date(from: components) ?? Date()
     }
     

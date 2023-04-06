@@ -21,7 +21,7 @@ class WorkTimeModalVC: BaseModalVC {
     private let textSubTitle: String?
     private let confirmTitle: String
     
-    private var onWorkingTime: OnWorkTime?
+    private var onWorkTime: OnWorkTime?
     
     private let workTimeModalView = WorkTimeModalView()
     private let vm: WorkTimeModalVM
@@ -42,14 +42,14 @@ class WorkTimeModalVC: BaseModalVC {
     
     init(title: String, subTitle: String? = nil,
          confirmTitle: String = "확인",
-         defaultTime: WorkingTime,
+         defaultTime: WorkTime,
          onWorkTime: OnWorkTime? = nil) {
         
         self.textTitle = title
         self.textSubTitle = subTitle
         self.confirmTitle = confirmTitle
         self.vm = WorkTimeModalVM(defaultTime: defaultTime)
-        self.onWorkingTime = onWorkTime
+        self.onWorkTime = onWorkTime
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -122,11 +122,11 @@ class WorkTimeModalVC: BaseModalVC {
         
         vm.output
             .bindConfirm // 근무시간 넘기기
-            .bind { [weak self] workingTime in
+            .bind { [weak self] workTime in
                 guard let self = self else { return }
                 
-                if let callBack = self.onWorkingTime {
-                    callBack(workingTime)
+                if let callBack = self.onWorkTime {
+                    callBack(workTime)
                 }
 
                 self.clearBag(vm: self.vm)
