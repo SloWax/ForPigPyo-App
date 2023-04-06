@@ -94,7 +94,7 @@ class TimeCardVC: BaseMainVC {
                        cellType: TimeCardCell.self)
             ) { (row, data, cell) in
                 
-//                cell.setValue(data)
+                cell.setValue(data)
             }.disposed(by: vm.bag)
         
         vm.output

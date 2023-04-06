@@ -7,91 +7,101 @@
 //
 
 
-//import RealmSwift
-//
-//protocol Persistable {
-//    associatedtype ManagedObject : RealmSwift.Object
-//
-//    init(managedObject : ManagedObject)
-//
-//    func managedObject() -> ManagedObject
-//}
-//
-//// 즐겨찾기 Manager
-//class FavoriteManager {
-//    static let shared = FavoriteManager()
-//
-//    let realm = try! Realm()
-//
-//    func create(_ data: MovieListDto.Response.Item) {
-//        let movie = data.managedObject()
-//
-//        try! realm.write {
-//            realm.add(movie)
-//        }
-//    }
-//
-//    func retrieve() -> [MovieListDto.Response.Item] {
-//        let favoriteObjects = realm.objects(RealmItemModel.self)
-//        var favoriteList = [MovieListDto.Response.Item]()
-//
-//        favoriteObjects.forEach { item in
-//            let convertItem = MovieListDto.Response.Item(managedObject: item)
-//            favoriteList.append(convertItem)
-//        }
-//
-//        return favoriteList
-//    }
-//
-//    func delete(_ data: MovieListDto.Response.Item) {
-//        let favoriteObjects = realm.objects(RealmItemModel.self)
-//        let toDelete = data.managedObject()
-//
-//        if let deleteIndex = favoriteObjects.firstIndex(where: { $0.link == toDelete.link }) {
-//            try! realm.write {
-//                realm.delete(favoriteObjects[deleteIndex])
-//            }
-//        }
-//    }
-//}
-//
-//// 즐겨찾기 DB 모델 정의
-//class RealmItemModel : Object {
-//    @objc dynamic var title: String = ""
-//    @objc dynamic var link: String = ""
-//    @objc dynamic var image: String? = nil
-//    @objc dynamic var subtitle: String = ""
-//    @objc dynamic var pubDate: String = ""
-//    @objc dynamic var director: String = ""
-//    @objc dynamic var actor: String = ""
-//    @objc dynamic var userRating: String = ""
-//}
-//
-//// Realm에 사용하기 위한 struct <-> class Convert
-//extension MovieListDto.Response.Item: Persistable {
-//
-//    init(managedObject: RealmItemModel) {
-//        self.title = managedObject.title
-//        self.link = managedObject.link
-//        self.image = managedObject.image
-//        self.subtitle = managedObject.subtitle
-//        self.pubDate = managedObject.pubDate
-//        self.director = managedObject.director
-//        self.actor = managedObject.actor
-//        self.userRating = managedObject.userRating
-//    }
-//
-//    func managedObject() -> RealmItemModel {
-//        let module = RealmItemModel()
-//        module.title = self.title
-//        module.link = self.link
-//        module.image = self.image
-//        module.subtitle = self.subtitle
-//        module.pubDate = self.pubDate
-//        module.director = self.director
-//        module.actor = self.actor
-//        module.userRating = self.userRating
-//
-//        return module
-//    }
-//}
+import RealmSwift
+
+
+protocol Persistable {
+    associatedtype ManagedObject : RealmSwift.Object
+
+    init(managedObject : ManagedObject)
+
+    func managedObject() -> ManagedObject
+}
+
+
+class DataManager {
+    static let shared = DataManager()
+    
+    let realm = try! Realm()
+    
+    func create(_ data: TimeCardModel.Attendance) {
+        let attendance = data.managedObject()
+        
+        try! realm.write {
+            realm.add(attendance)
+        }
+    }
+    
+    func retrieve() -> [TimeCardModel.Attendance] {
+        let objects = realm.objects(RealmItemModel.self)
+        var timeCard = [TimeCardModel.Attendance]()
+        
+        objects.forEach { item in
+            let convertItem = TimeCardModel.Attendance(managedObject: item)
+            timeCard.append(convertItem)
+        }
+        
+        return timeCard
+    }
+    
+    func delete(_ data: TimeCardModel.Attendance) {
+        let objects = realm.objects(RealmItemModel.self)
+        let toDelete = data.managedObject()
+        
+        if let deleteIndex = objects.firstIndex(where: { $0.id == toDelete.id }) {
+            try! realm.write {
+                realm.delete(objects[deleteIndex])
+            }
+        }
+    }
+}
+
+
+class RealmItemModel: Object {
+    @objc dynamic var id = Date()
+    @objc dynamic var date = Date()
+    @objc dynamic var wage = 0
+    @objc dynamic var workTime = 0
+    @objc dynamic var overTime = 0
+    @objc dynamic var nightTime = 0
+    @objc dynamic var overNightTime = 0
+    @objc dynamic var total = 0
+    @objc dynamic var dayPay = 0
+}
+
+
+extension TimeCardModel.Attendance: Persistable {
+
+    init(managedObject: RealmItemModel) {
+        self.id = managedObject.id
+        self.date = managedObject.date
+        self.wage = managedObject.wage
+        self.workTime = managedObject.workTime.splitTime
+        self.overTime = managedObject.overTime.splitTime
+        self.nightTime = managedObject.nightTime.splitTime
+        self.overNightTime = managedObject.overNightTime.splitTime
+        self.total = managedObject.total.splitTime
+        self.dayPay = managedObject.dayPay
+    }
+
+    func managedObject() -> RealmItemModel {
+        let module = RealmItemModel()
+        
+        module.id = self.id
+        module.date = self.date
+        module.wage = self.wage
+        module.workTime = combineTime(self.workTime)
+        module.overTime = combineTime(self.overTime)
+        module.nightTime = combineTime(self.nightTime)
+        module.overNightTime = combineTime(self.overNightTime)
+        module.total = combineTime(self.total)
+        module.dayPay = self.dayPay
+        
+        return module
+    }
+    
+    private func combineTime(_ time: WorkTime) -> Int {
+        let result = (time.hour * 60) + time.min
+        return result
+    }
+}

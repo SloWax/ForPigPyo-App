@@ -20,8 +20,8 @@ class TimeCardVM: BaseVM {
     }
     
     struct Output {
-        let bindValue = PublishRelay<(date: String, wage: Int, tax: String)>()
-        let bindList = BehaviorRelay<[AttendanceModel]>(value: [])
+        let bindValue = PublishRelay<(date: String, totalPay: Int, tax: String)>()
+        let bindList = BehaviorRelay<[TimeCardModel.Attendance]>(value: [])
     }
     
     let input: Input
@@ -37,18 +37,26 @@ class TimeCardVM: BaseVM {
             .bind { [weak self] in
                 guard let self = self else { return }
                 
-                let currentDate = UserInfoManager.shared
+                let date = UserInfoManager.shared
                     .getTimeCardDate()
-                    .toString()
                 
-                let wage = UserInfoManager.shared
-                    .getWage()
+                let list = DataManager.shared.retrieve()
+                    .filter { $0.date.toString() == date.toString() }
+                
+                self.output.bindList.accept(list)
+                
+                let currentDate = date.toString()
+                
+                let totalPay = list
+                    .reduce(into: 0) { result, attendance in
+                        result += attendance.dayPay
+                    }
                 
                 let tax = UserInfoManager.shared
                     .getTax()
                     .rawValue
                 
-                let value = (currentDate, wage, tax)
+                let value = (currentDate, totalPay, tax)
                 
                 self.output.bindValue.accept(value)
             }.disposed(by: bag)

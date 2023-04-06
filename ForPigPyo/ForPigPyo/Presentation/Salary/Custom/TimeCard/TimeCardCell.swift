@@ -150,6 +150,10 @@ class TimeCardCell: UITableViewCell {
             $0.right.equalTo(lblTotalValue)
         }
     }
+    
+    func setValue(_ data: TimeCardModel.Attendance) {
+        
+    }
         
 //
 //    private func setTimeText(label: UILabel, data: PayList.Year.Month.Data?) {

@@ -8,15 +8,20 @@
 
 import Foundation
 
-struct AttendanceModel {
-    let date: Date
-    let wage: Int
+struct TimeCardModel {
     
-    let workTime: WorkTime
-    let overTime: WorkTime
-    let nightTime: WorkTime
-    let overNightTime: WorkTime
-    let total: WorkTime
-    
-    let dayPay: Int
+    struct Attendance {
+        let id: Date
+        
+        let date: Date
+        let wage: Int
+        
+        let workTime: WorkTime
+        let overTime: WorkTime
+        let nightTime: WorkTime
+        let overNightTime: WorkTime
+        let total: WorkTime
+        
+        let dayPay: Int
+    }
 }

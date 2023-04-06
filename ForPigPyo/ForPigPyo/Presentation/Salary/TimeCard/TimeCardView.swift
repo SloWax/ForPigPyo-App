@@ -119,9 +119,9 @@ class TimeCardView: BaseView {
         }
     }
     
-    func setValue(_ value: (date: String, wage: Int, tax: String)) {
+    func setValue(_ value: (date: String, totalPay: Int, tax: String)) {
         btnDate.setTitle(value.date, for: .normal)
-        viewStatus.setValue(wage: value.wage, tax: value.tax)
+        viewStatus.setValue(wage: value.totalPay, tax: value.tax)
     }
     
     func setHiddenEmpty(_ isHidden: Bool) {

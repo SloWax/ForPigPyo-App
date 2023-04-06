@@ -123,7 +123,7 @@ class PunchInVM: BaseVM {
                 let dayPay = [work, over, night, overNight]
                     .map { self.convertTime($0) }
                     .enumerated()
-                    .reduce(into: Float(0)) { result, time in
+                    .reduce(into: Double(0)) { result, time in
                         switch time.offset {
                         case 0  : result += self.calcuPay(time.element, multiple: 1)
                         case 1  : result += self.calcuPay(time.element, multiple: 1.5)
@@ -142,7 +142,7 @@ class PunchInVM: BaseVM {
         
         self.input
             .bindSave
-            .bind { [weak self] in
+            .map { [weak self] in
                 guard let self = self else { return }
                 
                 let timeCardDate = UserInfoManager.shared.getTimeCardDate()
@@ -160,7 +160,8 @@ class PunchInVM: BaseVM {
                 let total = self.output.bindTotal.value
                 let dayPay = self.output.bindDayPay.value
                 
-                let attendance = AttendanceModel(
+                let attendance = TimeCardModel.Attendance(
+                    id: Date(),
                     date: selectedDate ?? Date(),
                     wage: wage,
                     workTime: workTime,
@@ -171,18 +172,19 @@ class PunchInVM: BaseVM {
                     dayPay: dayPay
                 )
                 
-                print(attendance)
-            }.disposed(by: bag)
+                DataManager.shared.create(attendance)
+            }.bind(to: self.output.bindSave)
+            .disposed(by: bag)
     }
     
-    private func convertTime(_ time: WorkTime) -> Float {
-        let hour = Float(time.hour)
-        let min = Float(time.min / 60)
+    private func convertTime(_ time: WorkTime) -> Double {
+        let hour = Double(time.hour)
+        let min = Double(time.min) / Double(60)
         return  hour + min
     }
     
-    private func calcuPay(_ time: Float, multiple: Float) -> Float {
-        let wage = Float(output.bindWage.value)
+    private func calcuPay(_ time: Double, multiple: Double) -> Double {
+        let wage = Double(output.bindWage.value)
         return time * wage * multiple
     }
 }

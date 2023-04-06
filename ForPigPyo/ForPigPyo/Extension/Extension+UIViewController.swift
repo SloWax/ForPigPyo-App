@@ -37,6 +37,10 @@ extension UIViewController {
         }
     }
     
+    func popVC(_ animated: Bool = true) {
+        self.navigationController?.popViewController(animated: animated)
+    }
+    
     // 키보드 높이 가져오기
     func getKeyBoardHeight(_ notification: Notification) -> CGFloat {
         let userInfo = notification.userInfo! as NSDictionary
