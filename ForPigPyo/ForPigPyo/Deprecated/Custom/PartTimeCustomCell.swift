@@ -261,10 +261,10 @@ class PartTimeCustomCell: UITableViewCell {
         switch weakDay {
         case "일":
             
-            label.textColor = .setCustomColor(.textRed)
+            label.textColor = .setCustomColor(.primaryRed)
         case "토":
             
-            label.textColor = .setCustomColor(.textBlue)
+            label.textColor = .setCustomColor(.primaryBlue)
         default:
             
             label.textColor = .setCustomColor(.textBasic)

@@ -49,6 +49,7 @@ class TimeCardView: BaseView {
         $0.separatorColor = .clear
         $0.showsVerticalScrollIndicator = false
         $0.showsHorizontalScrollIndicator = false
+        $0.contentInset.bottom = 80
         $0.register(TimeCardCell.self, forCellReuseIdentifier: TimeCardCell.id)
     }
     
@@ -119,9 +120,9 @@ class TimeCardView: BaseView {
         }
     }
     
-    func setValue(_ value: (date: String, totalPay: Int, tax: String)) {
+    func setValue(_ value: (date: String, tax: TaxCase, totalPay: Int)) {
         btnDate.setTitle(value.date, for: .normal)
-        viewStatus.setValue(wage: value.totalPay, tax: value.tax)
+        viewStatus.setValue(wage: value.totalPay, tax: value.tax.rawValue)
     }
     
     func setHiddenEmpty(_ isHidden: Bool) {

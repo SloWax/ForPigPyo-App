@@ -22,4 +22,12 @@ extension Int {
         
         return (hour, min)
     }
+    
+    func sumTax(_ tax: TaxCase) -> Int {
+        switch tax {
+        case .free        : return self
+        case .withHolding : return Int(Double(self) * 0.967)
+        case .insurance   : return Int(Double(self) * 0.906)
+        }
+    }
 }

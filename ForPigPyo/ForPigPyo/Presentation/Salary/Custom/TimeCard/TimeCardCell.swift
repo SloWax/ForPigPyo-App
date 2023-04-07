@@ -21,6 +21,7 @@ class TimeCardCell: UITableViewCell {
     
     private let viewContainer = UIView().then {
         $0.backgroundColor = .setCustomColor(.lightGray)
+        $0.cornerRadius = 25
     }
     
     private let lblOver = UILabel().then { $0.text = "특근:" }
@@ -54,6 +55,12 @@ class TimeCardCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        lblDate.textColor = .setCustomColor(.textBasic)
     }
     
     private func setUP() {
@@ -152,72 +159,39 @@ class TimeCardCell: UITableViewCell {
     }
     
     func setValue(_ data: TimeCardModel.Attendance) {
+        let date = data.date
+        lblDate.text = date.toString(dateFormat: "d일 (eee)")
         
+        switch date.toString(dateFormat: "e") {
+        case "1": lblDate.textColor = .setCustomColor(.primaryRed)
+        case "7": lblDate.textColor = .setCustomColor(.primaryBlue)
+        default: break
+        }
+        
+        let overHour = data.overTime.hour
+        let overMin = data.overTime.min
+        let overValue = overMin == 0 ? "\(overHour)시간" : "\(overHour)시간 \(overMin)분"
+        lblOverValue.text = overValue
+        
+        let nightHour = data.nightTime.hour
+        let nightMin = data.nightTime.min
+        let nightValue = nightMin == 0 ? "\(nightHour)시간" : "\(overHour)시간 \(overMin)분"
+        lblNightValue.text = nightValue
+        
+        let overNightHour = data.overNightTime.hour
+        let overNightMin = data.overNightTime.min
+        let overNightValue = overNightMin == 0 ? "\(overNightHour)시간" : "\(overNightHour)시간 \(overNightMin)분"
+        lblOverNightValue.text = overNightValue
+        
+        let wage = data.wage.comma.won
+        lblWageValue.text = wage
+        
+        let totalHour = data.total.hour
+        let totalMin = data.total.min
+        let totalValue = totalMin == 0 ? "\(totalHour)시간" : "\(totalHour)시간 \(totalMin)분"
+        lblTotalValue.text = totalValue
+        
+        let dayPay = data.dayPay.comma.won
+        lblDayPayValue.text = dayPay
     }
-        
-//
-//    private func setTimeText(label: UILabel, data: PayList.Year.Month.Data?) {
-//
-//        switch label {
-//        case overTime:
-//            let overTimeMin = data?.overTimeMin ?? 0
-//
-//            if overTimeMin == 0 {
-//
-//                overTime.text = "\(data?.overTime ?? 0)시간"
-//            } else {
-//                overTime.text = "\(data?.overTime ?? 0)시간 \(overTimeMin)분"
-//            }
-//
-//        case nightTime :
-//            let nightTimeMin = data?.nightTimeMin ?? 0
-//
-//            if nightTimeMin == 0 {
-//
-//                nightTime.text = "\(data?.nightTime ?? 0)시간"
-//            } else {
-//                nightTime.text = "\(data?.nightTime ?? 0)시간 \(nightTimeMin)분"
-//            }
-//        case overNightTime :
-//            let overNightTimeMin = data?.overNightTimeMin ?? 0
-//
-//            if overNightTimeMin == 0 {
-//
-//                overNightTime.text = "\(data?.overNightTime ?? 0)시간"
-//            } else {
-//                overNightTime.text = "\(data?.overNightTime ?? 0)시간 \(overNightTimeMin)분"
-//            }
-//        default:
-//            fatalError()
-//        }
-//    }
-//    private func setWeekLabelColor(label: UILabel, weakDay: String?) {
-//
-//        switch weakDay {
-//        case "일":
-//
-//            label.textColor = .setCustomColor(.textRed)
-//        case "토":
-//
-//            label.textColor = .setCustomColor(.textBlue)
-//        default:
-//
-//            label.textColor = .setCustomColor(.textBasic)
-//        }
-//    }
-//    func setValue(data: PayList.Year.Month.Data?) {
-//
-//        let formatter = NumberFormatter()
-//        formatter.numberStyle = .decimal
-//
-//        dateLabel.text = "\(String(format: "%02d", data?.date ?? 0))일"
-//
-//        [overTime, nightTime, overNightTime].forEach { (label) in
-//            setTimeText(label: label, data: data)
-//        }
-//
-//        hourlyWageValue.text = "\(formatter.string(from: (data?.hourlyWage ?? 0) as NSNumber) ?? "0")원"
-//        totalWorkValue.text = "\(data?.totalTime ?? "0 시간 0 분")"
-//        dayPayValue.text = "\(formatter.string(from: (data?.totalPay ?? 0) as NSNumber) ?? "0")원"
-//    }
 }

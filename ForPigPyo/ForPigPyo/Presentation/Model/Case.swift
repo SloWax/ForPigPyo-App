@@ -14,6 +14,6 @@ typealias OnWorkTime = (WorkTime) -> Void
 // 세금 유형
 enum TaxCase: String, CaseIterable {
     case free = "미공제"
-    case withholding = "3.3%"
+    case withHolding = "3.3%"
     case insurance = "4대보험"
 }

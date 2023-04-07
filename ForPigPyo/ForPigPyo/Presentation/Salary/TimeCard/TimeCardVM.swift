@@ -17,10 +17,13 @@ class TimeCardVM: BaseVM {
         let bindRefresh = PublishRelay<Void>()
         let bindMove = PublishRelay<Int>()
         let bindChangeTax = PublishRelay<Void>()
+        let bindPunchIn = PublishRelay<Int?>()
+        let bindDelete = PublishRelay<Int>()
     }
     
     struct Output {
-        let bindValue = PublishRelay<(date: String, totalPay: Int, tax: String)>()
+        let bindValue = PublishRelay<(date: String, tax: TaxCase, totalPay: Int)>()
+        let bindPunchIn = PublishRelay<TimeCardModel.Attendance?>()
         let bindList = BehaviorRelay<[TimeCardModel.Attendance]>(value: [])
     }
     
@@ -42,21 +45,19 @@ class TimeCardVM: BaseVM {
                 
                 let list = DataManager.shared.retrieve()
                     .filter { $0.date.toString() == date.toString() }
+                    .sorted { $0.date > $1.date }
                 
                 self.output.bindList.accept(list)
                 
                 let currentDate = date.toString()
                 
+                let tax = UserInfoManager.shared.getTax()
+                
                 let totalPay = list
-                    .reduce(into: 0) { result, attendance in
-                        result += attendance.dayPay
-                    }
+                    .reduce(into: 0) { $0 += $1.dayPay }
+                    .sumTax(tax)
                 
-                let tax = UserInfoManager.shared
-                    .getTax()
-                    .rawValue
-                
-                let value = (currentDate, totalPay, tax)
+                let value = (currentDate, tax, totalPay)
                 
                 self.output.bindValue.accept(value)
             }.disposed(by: bag)
@@ -77,6 +78,32 @@ class TimeCardVM: BaseVM {
                 let nextTax = taxCase[nextIndex]
                 
                 return UserInfoManager.shared.tax.accept(nextTax)
+            }.bind(to: self.input.bindRefresh)
+            .disposed(by: bag)
+        
+        self.input
+            .bindPunchIn
+            .bind { [weak self] index in
+                guard let self = self else { return }
+                
+                var data: TimeCardModel.Attendance?
+                
+                if let index = index {
+                    let list = self.output.bindList.value
+                    data = list[index]
+                }
+                
+                self.output.bindPunchIn.accept(data)
+            }.disposed(by: bag)
+        
+        self.input
+            .bindDelete
+            .map { [weak self] index in
+                guard let self  = self else { return }
+                
+                let data = self.output.bindList.value[index]
+                
+                DataManager.shared.delete(data)
             }.bind(to: self.input.bindRefresh)
             .disposed(by: bag)
     }

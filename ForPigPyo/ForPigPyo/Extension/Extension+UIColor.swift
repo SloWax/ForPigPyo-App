@@ -48,8 +48,8 @@ enum ColorCode: String {
     case yellow    = "#FFD100"
 
     // text
-    case textRed   = "#ED6363"
-    case textBlue  = "#6F74EA"
+    case primaryRed   = "#ED6363"
+    case primaryBlue  = "#6F74EA"
     
     // Grays
     case white                 = "#FFFFFF"

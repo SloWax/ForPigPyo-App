@@ -15,14 +15,17 @@ import RxOptional
 
 class PunchInVC: BaseSceneVC {
     private let punchInView = PunchInView()
-    private var vm: PunchInVM!
+    private let vm: PunchInVM
     
-    init(type: PunchInVM.RouteType) {
+    init(_ data: TimeCardModel.Attendance?) {
+        
+        self.vm = PunchInVM(data: data)
+        
         super.init(nibName: nil, bundle: nil)
         
-        switch type {
-        case .create : setNavigationTitle(title: "근무 추가하기")
-        case .edit   : setNavigationTitle(title: "근무 수정하기")
+        switch data.isNil {
+        case true : setNavigationTitle(title: "근무 추가하기")
+        case false: setNavigationTitle(title: "근무 수정하기")
         }
     }
     
@@ -37,15 +40,7 @@ class PunchInVC: BaseSceneVC {
         bind()
     }
     
-    private func setInputs() -> PunchInVM {
-        let inputs = PunchInVM()
-        
-        return inputs
-    }
-    
     private func initialize() {
-        vm = setInputs()
-        
         view = punchInView
     }
     

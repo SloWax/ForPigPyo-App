@@ -68,15 +68,26 @@ class TimeCardVC: BaseMainVC {
             .bind(to: vm.input.bindChangeTax)
             .disposed(by: vm.bag)
         
+        timeCardView.tvList // 근무기록 수정
+            .rx
+            .itemSelected
+            .map { $0.row }
+            .bind(to: vm.input.bindPunchIn)
+            .disposed(by: vm.bag)
+        
+        timeCardView.tvList // 근무기록 삭제
+            .rx
+            .itemDeleted
+            .map { $0.row }
+            .bind(to: vm.input.bindDelete)
+            .disposed(by: vm.bag)
+        
         timeCardView.btnAdd // 근무기록 추가
             .rx
             .tap
-            .bind { [weak self] in
-                guard let self = self else { return }
-                
-                let punchInVC = PunchInVC(type: .create)
-                self.pushVC(punchInVC)
-            }.disposed(by: vm.bag)
+            .map { nil }
+            .bind(to: vm.input.bindPunchIn)
+            .disposed(by: vm.bag)
         
         vm.output
             .bindValue // 날짜, 임금 값 전달
@@ -104,6 +115,15 @@ class TimeCardVC: BaseMainVC {
                 
                 let isHidden = !list.isEmpty
                 self.timeCardView.setHiddenEmpty(isHidden)
+            }.disposed(by: vm.bag)
+        
+        vm.output
+            .bindPunchIn // PunchIn 이동
+            .bind { [weak self] data in
+                guard let self = self else { return }
+                
+                let punchInVC = PunchInVC(data)
+                self.pushVC(punchInVC)
             }.disposed(by: vm.bag)
     }
 }

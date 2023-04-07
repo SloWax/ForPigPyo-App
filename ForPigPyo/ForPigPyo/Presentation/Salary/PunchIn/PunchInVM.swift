@@ -14,11 +14,6 @@ import RxCocoa
 
 class PunchInVM: BaseVM {
     
-    enum RouteType {
-        case create
-        case edit
-    }
-    
     enum EventType {
         case wage
         case work
@@ -54,9 +49,12 @@ class PunchInVM: BaseVM {
     private let calendar = Calendar.current
     private var components = DateComponents()
     
-    init(input: Input = Input(), output: Output = Output()) {
+    init(input: Input = Input(), output: Output = Output(),
+         data: TimeCardModel.Attendance?) {
+        
         self.input = input
         self.output = output
+        
         super.init()
         
         self.input
@@ -65,18 +63,43 @@ class PunchInVM: BaseVM {
                 guard let self = self,
                       self.output.bindDate.value == 0 else { return }
                 
-                self.components.day = self.calendar.component(.day, from: Date())
-                
-                let date = self.calendar.date(from: self.components)?.toString(dateFormat: "dd") ?? "0"
-                let today = Int(date) ?? 0
-                
-                self.output.bindDate.accept(today)
-                
-                let wage = UserInfoManager.shared.getWage()
-                self.output.bindWage.accept(wage)
-                
-                let work = UserInfoManager.shared.getWorkTime()
-                self.input.bindWorkTime.accept((.work, work))
+                switch data.isNil {
+                case true:
+                    self.components.day = self.calendar.component(.day, from: Date())
+                    
+                    let date = self.calendar.date(from: self.components)
+                    let today = Int(date?.toString(dateFormat: "dd") ?? "0") ?? 0
+                    
+                    self.output.bindDate.accept(today)
+                    
+                    let wage = UserInfoManager.shared.getWage()
+                    self.output.bindWage.accept(wage)
+                    
+                    let work = UserInfoManager.shared.getWorkTime()
+                    self.input.bindWorkTime.accept((.work, work))
+                case false:
+                    guard let data = data else { return }
+                    
+                    let today = Int(data.date.toString(dateFormat: "dd")) ?? 0
+                    self.output.bindDate.accept(today)
+                    
+                    self.output.bindWage.accept(data.wage)
+                    
+                    self.output.bindWork.accept(data.workTime)
+                    
+                    self.output.bindOver.accept(data.overTime)
+                    
+                    self.output.bindNight.accept(data.nightTime)
+                    
+                    self.output.bindOverNight.accept(data.overNightTime)
+                    
+                    self.output.bindTotal.accept(data.total)
+                    
+                    self.output.bindDayPay.accept(data.dayPay)
+                    
+                    let saveIsEnabled = data.dayPay > 0
+                    self.output.bindBtnSaveIsEnabled.accept(saveIsEnabled)
+                }
             }.disposed(by: bag)
         
         self.input
@@ -136,7 +159,6 @@ class PunchInVM: BaseVM {
                 self.output.bindDayPay.accept(Int(dayPay))
                 
                 let saveIsEnabled = dayPay > 0
-                
                 self.output.bindBtnSaveIsEnabled.accept(saveIsEnabled)
             }.disposed(by: bag)
         
@@ -171,6 +193,8 @@ class PunchInVM: BaseVM {
                     total: total,
                     dayPay: dayPay
                 )
+                
+                if let data = data { DataManager.shared.delete(data) }
                 
                 DataManager.shared.create(attendance)
             }.bind(to: self.output.bindSave)
