@@ -75,17 +75,17 @@ class MyPageView: BaseView {
 final class PyoMyMenuButton: UIButton {
     
     private let ivImage = UIImageView().then {
-        $0.tintColor = .setCustomColor(.textBasic)
+        $0.tintColor = .setCustomColor(.gray10)
     }
     
     private let lblTitle = UILabel().then {
-        $0.textColor = .setCustomColor(.textBasic)
+        $0.textColor = .setCustomColor(.gray10)
         $0.font = .setCustomFont(font: .bold, size: 18)
     }
     
     private let lblValue = UILabel().then {
         $0.text = "미설정"
-        $0.textColor = .setCustomColor(.textBasic)
+        $0.textColor = .setCustomColor(.gray10)
         $0.font = .setCustomFont(font: .bold, size: 20)
     }
     
@@ -101,7 +101,7 @@ final class PyoMyMenuButton: UIButton {
     }
     
     private func setUP() {
-        self.backgroundColor = .setCustomColor(.lightGray)
+        self.backgroundColor = .setCustomColor(.gray1)
         
         let views = [ivImage, lblTitle, lblValue]
         self.addSubviews(views)

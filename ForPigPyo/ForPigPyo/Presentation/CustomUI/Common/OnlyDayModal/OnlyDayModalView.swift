@@ -22,13 +22,13 @@ class OnlyDayModalView: BaseView {
     }
     
     private let lblTitle = UILabel().then {
-        $0.textColor = .setCustomColor(.textBasic)
+        $0.textColor = .setCustomColor(.gray10)
         $0.font = .setCustomFont(font: .bold, size: 18)
         $0.textAlignment = .center
     }
     
     private let lblSubTitle = UILabel().then {
-        $0.textColor = .setCustomColor(.textBasic)
+        $0.textColor = .setCustomColor(.gray10)
         $0.font = .setCustomFont(font: .medium, size: 14)
         $0.textAlignment = .center
         $0.numberOfLines = 0

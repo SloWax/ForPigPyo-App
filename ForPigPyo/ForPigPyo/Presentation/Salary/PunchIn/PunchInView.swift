@@ -87,7 +87,7 @@ class PunchInView: BaseView {
     
     private let lblDayPay = UILabel().then {
         $0.text = "일 급여:"
-        $0.textColor = .setCustomColor(.textBasic)
+        $0.textColor = .setCustomColor(.gray10)
         $0.font = .setCustomFont(font: .bold, size: 20)
     }
     
@@ -95,9 +95,9 @@ class PunchInView: BaseView {
         $0.text = "0 원"
         $0.font = .setCustomFont(font: .bold, size: 20)
         $0.textAlignment = .right
-        $0.backgroundColor = .setCustomColor(.lightGray)
+        $0.backgroundColor = .setCustomColor(.gray1)
         $0.clipsToBounds = true
-        $0.borderColor = .setCustomColor(.yellow)
+        $0.borderColor = .setCustomColor(.primaryYellow)
         $0.borderWidth = 2
         $0.cornerRadius = 25
     }

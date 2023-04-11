@@ -15,6 +15,13 @@ import RxOptional
 
 class UserInfoManager: NSObject {
     
+    enum UserDefaultKeys: String {
+        case wage     = "wage"
+        case workTime = "workTime"
+        case tax      = "tax"
+        case id       = "userID"
+    }
+    
     static let shared = UserInfoManager()
     
     private let bag = DisposeBag()
@@ -41,52 +48,42 @@ class UserInfoManager: NSObject {
             }.disposed(by: bag)
         
         self.wage
-            .bind { [weak self] in self?.saveWage($0) }
+            .bind { [weak self] in self?.setUserDefaults($0, key: .wage) }
             .disposed(by: bag)
         
         self.workTime
-            .bind { [weak self] in self?.saveWorkTime($0) }
+            .bind { [weak self] in self?.setUserDefaults($0, key: .workTime) }
             .disposed(by: bag)
         
         self.tax
-            .bind { [weak self] in self?.saveTax($0) }
+            .bind { [weak self] in self?.setUserDefaults($0, key: .tax) }
             .disposed(by: bag)
         
         self.login
-            .bind { [weak self] in self?.saveLogin($0) }
+            .bind { [weak self] in self?.setUserDefaults($0, key: .id) }
             .disposed(by: bag)
     }
     
-    private func saveWage(_ sum: Int) {
-        UserDefaults.standard.set(sum, forKey: "MyPageVCHourly")
-    }
-    
-    private func saveWorkTime(_ time: WorkTime?) {
-        UserDefaults.standard.set(time?.hour, forKey: "myPageVCWorkHour")
-        UserDefaults.standard.set(time?.min, forKey: "myPageVCWorkMin")
-    }
-    
-    private func saveTax(_ tax: TaxCase?) {
-        UserDefaults.standard.set(tax?.rawValue, forKey: "MyPageVCTax")
-    }
-    
-    private func saveLogin(_ identifier: String?) {
-        UserDefaults.standard.set(identifier, forKey: "userID")
+    private func setUserDefaults(_ value: Any?, key: UserDefaultKeys) {
+        if let workTime = value as? WorkTime, key == .workTime {
+            let combineTime = (workTime.hour * 60) + workTime.min
+            
+            UserDefaults.standard.set(combineTime, forKey: key.rawValue)
+        } else {
+            UserDefaults.standard.set(value, forKey: key.rawValue)
+        }
     }
     
     func getWage() -> Int {
-        return UserDefaults.standard.integer(forKey: "MyPageVCHourly")
+        return UserDefaults.standard.integer(forKey: "wage")
     }
     
     func getWorkTime() -> WorkTime {
-        let hour = UserDefaults.standard.integer(forKey: "myPageVCWorkHour")
-        let min = UserDefaults.standard.integer(forKey: "myPageVCWorkMin")
-        
-        return (hour, min)
+        return UserDefaults.standard.integer(forKey: "workTime").splitTime
     }
     
     func getTax() -> TaxCase {
-        let tax = UserDefaults.standard.string(forKey: "MyPageVCTax") ?? "미공제"
+        let tax = UserDefaults.standard.string(forKey: "tax") ?? "미공제"
         return TaxCase(rawValue: tax) ?? .free
     }
     

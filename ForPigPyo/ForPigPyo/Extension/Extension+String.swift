@@ -37,8 +37,8 @@ extension String {
         
         let attributes: [NSAttributedString.Key: Any] = [
             .underlineStyle: lineStyle,
-            .foregroundColor: UIColor.setCustomColor(.textBasic),
-            .underlineColor: UIColor.setCustomColor(.yellow)
+            .foregroundColor: UIColor.setCustomColor(.gray10),
+            .underlineColor: UIColor.setCustomColor(.primaryYellow)
         ]
 
         let attributedString = NSAttributedString(string: self, attributes: attributes)

@@ -20,7 +20,7 @@ class TimeCardView: BaseView {
     }
     
     let btnDate = UIButton(type: .system).then {
-        $0.setTitleColor(.setCustomColor(.textBasic), for: .normal)
+        $0.setTitleColor(.setCustomColor(.gray10), for: .normal)
         $0.titleLabel?.font = .setCustomFont(font: .black, size: 26)
     }
     

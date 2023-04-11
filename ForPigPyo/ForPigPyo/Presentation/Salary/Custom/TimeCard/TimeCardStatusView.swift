@@ -15,17 +15,17 @@ class TimeCardStatusView: UIView {
     
     private let lblTitle = UILabel().then {
         $0.attributedText = "이번 달에는 얼마를 받을까요?".underLine
-        $0.textColor = .setCustomColor(.textBasic)
+        $0.textColor = .setCustomColor(.gray10)
         $0.font = .setCustomFont(font: .bold, size: 14)
     }
     
     private let lblValue = UILabel().then {
-        $0.textColor = .setCustomColor(.textBasic)
+        $0.textColor = .setCustomColor(.gray10)
         $0.font = .setCustomFont(font: .bold, size: 20)
     }
         
     let btnTax = UIButton(type: .system).then {
-        $0.tintColor = .setCustomColor(.textBasic)
+        $0.tintColor = .setCustomColor(.gray10)
         $0.titleLabel?.font = .setCustomFont(font: .bold, size: 14)
         $0.backgroundColor = .setCustomColor(.gray1)
         $0.cornerRadius = 5
@@ -34,7 +34,7 @@ class TimeCardStatusView: UIView {
     override init(frame: CGRect) {
         super .init(frame: frame)
         
-        self.backgroundColor = .setCustomColor(.lightGray)
+        self.backgroundColor = .setCustomColor(.gray1)
         
         let views = [lblTitle, lblValue, btnTax]
         self.addSubviews(views)

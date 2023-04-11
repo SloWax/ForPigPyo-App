@@ -36,7 +36,7 @@ class LoginVC: BaseVC {
     }
     
     private func bind() {
-        loginView.btnApple
+        loginView.btnApple // 애플 로그인
             .rx
             .tapGesture()
             .when(.recognized)
@@ -45,7 +45,7 @@ class LoginVC: BaseVC {
             .disposed(by: vm.bag)
         
         vm.output
-            .bindIsRestore
+            .bindIsRestore // firebase data 복구 여부
             .bind { [weak self] in
                 guard let self = self else { return }
                 
@@ -63,7 +63,7 @@ class LoginVC: BaseVC {
             }.disposed(by: vm.bag)
         
         vm.output
-            .bindCompleteLogin
+            .bindCompleteLogin // 로그인 완료
             .observe(on: MainScheduler.asyncInstance)
             .bind { [weak self] in
                 guard let self = self else { return }

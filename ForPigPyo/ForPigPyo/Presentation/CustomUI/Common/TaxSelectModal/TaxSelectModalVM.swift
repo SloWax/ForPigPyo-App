@@ -15,7 +15,7 @@ class TaxSelectModalVM: BaseVM {
     
     struct Input {
         // Void
-        let viewWillAppear = PublishRelay<Void>()
+        let loadData = PublishRelay<Void>()
         let bindConfirm = PublishRelay<Void>()
         
         // Data
@@ -42,7 +42,7 @@ class TaxSelectModalVM: BaseVM {
         super.init()
         
         self.input
-            .viewWillAppear
+            .loadData
             .bind { [weak self] in
                 guard let self = self else { return }
                 

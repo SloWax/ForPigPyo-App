@@ -20,7 +20,7 @@ class TimeCardCell: UITableViewCell {
     }
     
     private let viewContainer = UIView().then {
-        $0.backgroundColor = .setCustomColor(.lightGray)
+        $0.backgroundColor = .setCustomColor(.gray1)
         $0.cornerRadius = 25
     }
     
@@ -60,7 +60,7 @@ class TimeCardCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        lblDate.textColor = .setCustomColor(.textBasic)
+        lblDate.textColor = .setCustomColor(.gray10)
     }
     
     private func setUP() {
@@ -74,7 +74,7 @@ class TimeCardCell: UITableViewCell {
         ]
         
         labels.forEach {
-            $0.textColor = .setCustomColor(.textBasic)
+            $0.textColor = .setCustomColor(.gray10)
             $0.font = .setCustomFont(font: .bold, size: 14)
         }
         

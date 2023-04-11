@@ -14,7 +14,7 @@ import Then
 class PunchInContainerButton: UIButton {
     
     private let lblTitle = UILabel().then {
-        $0.textColor = .setCustomColor(.textBasic)
+        $0.textColor = .setCustomColor(.gray10)
     }
     
     private let lblCenterValue = UILabel().then {
@@ -23,7 +23,7 @@ class PunchInContainerButton: UIButton {
     }
     
     private let lblCenterUnit = UILabel().then {
-        $0.textColor = .setCustomColor(.textBasic)
+        $0.textColor = .setCustomColor(.gray10)
     }
     
     private let lblRightValue = UILabel().then {
@@ -32,14 +32,14 @@ class PunchInContainerButton: UIButton {
     }
     
     private let lblRightUnit = UILabel().then {
-        $0.textColor = .setCustomColor(.textBasic)
+        $0.textColor = .setCustomColor(.gray10)
     }
     
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = .setCustomColor(.lightGray)
+        self.backgroundColor = .setCustomColor(.gray1)
         self.cornerRadius = 25
         
         setUP()
@@ -93,8 +93,8 @@ class PunchInContainerButton: UIButton {
     }
     
     func textColor(isEmpty: Bool) {
-        lblCenterValue.textColor = isEmpty ? .setCustomColor(.gray6) : .setCustomColor(.textBasic)
-        lblRightValue.textColor = isEmpty ? .setCustomColor(.gray6) : .setCustomColor(.textBasic)
+        lblCenterValue.textColor = isEmpty ? .setCustomColor(.gray6) : .setCustomColor(.gray10)
+        lblRightValue.textColor = isEmpty ? .setCustomColor(.gray6) : .setCustomColor(.gray10)
     }
     
     func setValue(title: String? = nil,

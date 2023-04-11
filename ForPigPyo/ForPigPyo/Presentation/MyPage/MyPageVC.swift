@@ -42,28 +42,28 @@ class MyPageVC: BaseMainVC {
             .bind(to: vm.input.bindRefresh)
             .disposed(by: vm.bag)
         
-        myPageView.btnWage
+        myPageView.btnWage // 시급 설정
             .rx
             .tap
             .map { .wage }
             .bind(to: vm.input.bindMenu)
             .disposed(by: vm.bag)
         
-        myPageView.btnHour
+        myPageView.btnHour // 근무시간 설정
             .rx
             .tap
             .map { .hour }
             .bind(to: vm.input.bindMenu)
             .disposed(by: vm.bag)
         
-        myPageView.btnTax
+        myPageView.btnTax // 세금 설정
             .rx
             .tap
             .map { .tax }
             .bind(to: vm.input.bindMenu)
             .disposed(by: vm.bag)
         
-        myPageView.btnBackup
+        myPageView.btnBackup // 로그인
             .rx
             .tap
             .map { .backup }
@@ -71,39 +71,7 @@ class MyPageVC: BaseMainVC {
             .disposed(by: vm.bag)
         
         vm.output
-            .bindMyWage
-            .bind { [weak self] hourlyPay in
-                guard let self = self else { return }
-                
-                self.myPageView.btnWage.setValue(value: hourlyPay)
-            }.disposed(by: vm.bag)
-        
-        vm.output
-            .bindMyWorkTime
-            .bind { [weak self] workTime in
-                guard let self = self else { return }
-
-                self.myPageView.btnHour.setValue(value: workTime)
-            }.disposed(by: vm.bag)
-        
-        vm.output
-            .bindMyTax
-            .bind { [weak self] tax in
-                guard let self = self else { return }
-                
-                self.myPageView.btnTax.setValue(value: tax)
-            }.disposed(by: vm.bag)
-        
-        vm.output
-            .bindMyBackup
-            .bind { [weak self] isLogin in
-                guard let self = self else { return }
-                
-                self.myPageView.btnBackup.setValue(value: isLogin)
-            }.disposed(by: vm.bag)
-        
-        vm.output
-            .bindMenu
+            .bindMenu // Tap한 버튼 화면전환 분기
             .bind { [weak self] menu in
                 guard let self = self else { return }
                 
@@ -113,6 +81,38 @@ class MyPageVC: BaseMainVC {
                 case .tax    : self.setTax()
                 case .backup : self.setBackup()
                 }
+            }.disposed(by: vm.bag)
+        
+        vm.output
+            .bindMyWage // 설정한 시급 bind
+            .bind { [weak self] wage in
+                guard let self = self else { return }
+                
+                self.myPageView.btnWage.setValue(value: wage)
+            }.disposed(by: vm.bag)
+        
+        vm.output
+            .bindMyWorkTime // 설정한 근무시간 bind
+            .bind { [weak self] workTime in
+                guard let self = self else { return }
+
+                self.myPageView.btnHour.setValue(value: workTime)
+            }.disposed(by: vm.bag)
+        
+        vm.output
+            .bindMyTax // 설정한 세금 bind
+            .bind { [weak self] tax in
+                guard let self = self else { return }
+                
+                self.myPageView.btnTax.setValue(value: tax)
+            }.disposed(by: vm.bag)
+        
+        vm.output
+            .bindMyBackup // 로그인 여부 bind
+            .bind { [weak self] isLogin in
+                guard let self = self else { return }
+                
+                self.myPageView.btnBackup.setValue(value: isLogin)
             }.disposed(by: vm.bag)
     }
     

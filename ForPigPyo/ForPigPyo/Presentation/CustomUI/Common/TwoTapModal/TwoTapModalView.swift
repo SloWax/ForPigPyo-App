@@ -34,7 +34,7 @@ class TwoTapModalView: BaseView {
         $0.spacing = 4
     }
     private let lblTitle = UILabel().then {
-        $0.textColor = .setCustomColor(.textBasic)
+        $0.textColor = .setCustomColor(.gray10)
         $0.font = .setCustomFont(font: .bold, size: 18)
         $0.textAlignment = .center
         $0.numberOfLines = 0
@@ -53,7 +53,7 @@ class TwoTapModalView: BaseView {
     }
     
     let btnCancle = UIButton().then {
-        $0.setTitleColor(.setCustomColor(.textBasic), for: .normal)
+        $0.setTitleColor(.setCustomColor(.gray10), for: .normal)
         $0.titleLabel?.font = .setCustomFont(font: .regular, size: 16)
         $0.borderColor = .setCustomColor(.gray2)
         $0.borderWidth = 1

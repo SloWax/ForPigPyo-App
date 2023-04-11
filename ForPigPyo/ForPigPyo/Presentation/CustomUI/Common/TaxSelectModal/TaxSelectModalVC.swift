@@ -80,7 +80,7 @@ class TaxSelectModalVC: BaseModalVC {
     private func bind() {
         self.rx
             .viewWillAppear
-            .bind(to: vm.input.viewWillAppear)
+            .bind(to: vm.input.loadData)
             .disposed(by: bag)
         
         taxSelectModalView.viewDismiss // 빈 공간 tap dismiss

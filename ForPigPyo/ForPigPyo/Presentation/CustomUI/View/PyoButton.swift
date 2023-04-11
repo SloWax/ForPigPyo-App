@@ -18,12 +18,12 @@ class PyoButton: UIButton {
         self.setTitleColor(.systemBackground, for: .disabled)
         
         self.setBackgroundColor(
-            sel: .setCustomColor(.yellow),
-            nor: .setCustomColor(.yellow)
+            sel: .setCustomColor(.primaryYellow),
+            nor: .setCustomColor(.primaryYellow)
         )
         self.setBackgroundColor(
-            dis: .setCustomColor(.lightGray),
-            nor: .setCustomColor(.yellow)
+            dis: .setCustomColor(.gray1),
+            nor: .setCustomColor(.primaryYellow)
         )
     }
     

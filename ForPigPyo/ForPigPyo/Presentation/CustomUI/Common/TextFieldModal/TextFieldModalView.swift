@@ -26,13 +26,13 @@ class TextFieldModalView: BaseView {
         $0.spacing = 4
     }
     private let lblTitle = UILabel().then {
-        $0.textColor = .setCustomColor(.textBasic)
+        $0.textColor = .setCustomColor(.gray10)
         $0.font = .setCustomFont(font: .bold, size: 18)
         $0.textAlignment = .center
         $0.numberOfLines = 0
     }
     private let lblSubTitle = UILabel().then {
-        $0.textColor = .setCustomColor(.textBasic)
+        $0.textColor = .setCustomColor(.gray10)
         $0.font = .setCustomFont(font: .medium, size: 14)
         $0.textAlignment = .center
         $0.numberOfLines = 0
@@ -40,10 +40,10 @@ class TextFieldModalView: BaseView {
     
     let tfInput = UITextField().then {
         $0.addLeftPadding()
-        $0.textColor = .setCustomColor(.textBasic)
+        $0.textColor = .setCustomColor(.gray10)
         $0.font = .setCustomFont(font: .medium, size: 16)
         $0.borderWidth = 1
-        $0.borderColor = .setCustomColor(.lightGray)
+        $0.borderColor = .setCustomColor(.gray1)
     }
     
     let btnConfirm = PyoButton(type: .system).then {

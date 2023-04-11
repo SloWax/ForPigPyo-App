@@ -40,16 +40,11 @@ extension UIColor {
 }
 
 enum ColorCode: String {
-    
-    // UI
-    case purple    = "#CBA6F9"
-    case lightGray = "#EBEBEB"
-    case gray      = "#DDDDDD"
-    case yellow    = "#FFD100"
 
-    // text
-    case primaryRed   = "#ED6363"
-    case primaryBlue  = "#6F74EA"
+    // primary
+    case primaryRed            = "#ED6363"
+    case primaryYellow         = "#FFD100"
+    case primaryBlue           = "#6F74EA"
     
     // Grays
     case white                 = "#FFFFFF"
@@ -58,6 +53,6 @@ enum ColorCode: String {
     case gray4                 = "#B8B8B8"
     case gray6                 = "#808080"
     case gray8                 = "#555555"
-    case textBasic             = "#393939"
+    case gray10                = "#393939"
     case black                 = "#000000"
 }

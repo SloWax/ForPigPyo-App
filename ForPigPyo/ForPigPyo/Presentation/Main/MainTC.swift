@@ -28,12 +28,12 @@ class MainTC: UITabBarController {
         ]
         let selectedTitle: [NSAttributedString.Key: Any] = [
             .font: UIFont.setCustomFont(font: .medium, size: 12),
-            .foregroundColor: UIColor.setCustomColor(.textBasic)
+            .foregroundColor: UIColor.setCustomColor(.gray10)
         ]
         
         tabBarItemAppearance.normal.titleTextAttributes = nomalTitle
         tabBarItemAppearance.selected.titleTextAttributes = selectedTitle
-        tabBarItemAppearance.selected.iconColor = .setCustomColor(.textBasic)
+        tabBarItemAppearance.selected.iconColor = .setCustomColor(.gray10)
 
         tabBarAppearance.stackedLayoutAppearance = tabBarItemAppearance
         tabBarAppearance.backgroundColor = .setCustomColor(.white)
