@@ -10,6 +10,14 @@ import Foundation
 
 struct TimeCardModel {
     
+    enum TimeType {
+        case work
+        case over
+        case night
+        case overNight
+        case total
+    }
+    
     struct Attendance {
         let id: Date
         
@@ -23,5 +31,20 @@ struct TimeCardModel {
         let total: WorkTime
         
         let dayPay: Int
+        
+        func combineTime(_ type: TimeType) -> Int {
+            let time: WorkTime
+            
+            switch type {
+            case .work      : time = self.workTime
+            case .over      : time = self.overTime
+            case .night     : time = self.nightTime
+            case .overNight : time = self.overNightTime
+            case .total     : time = self.total
+            }
+            
+            let result = (time.hour * 60) + time.min
+            return result
+        }
     }
 }

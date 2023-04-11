@@ -11,9 +11,9 @@ import RealmSwift
 
 
 protocol Persistable {
-    associatedtype ManagedObject : RealmSwift.Object
+    associatedtype ManagedObject: RealmSwift.Object
 
-    init(managedObject : ManagedObject)
+    init(managedObject: ManagedObject)
 
     func managedObject() -> ManagedObject
 }
@@ -90,18 +90,13 @@ extension TimeCardModel.Attendance: Persistable {
         module.id = self.id
         module.date = self.date
         module.wage = self.wage
-        module.workTime = combineTime(self.workTime)
-        module.overTime = combineTime(self.overTime)
-        module.nightTime = combineTime(self.nightTime)
-        module.overNightTime = combineTime(self.overNightTime)
-        module.total = combineTime(self.total)
+        module.workTime = self.combineTime(.work)
+        module.overTime = self.combineTime(.over)
+        module.nightTime = self.combineTime(.night)
+        module.overNightTime = self.combineTime(.overNight)
+        module.total = self.combineTime(.total)
         module.dayPay = self.dayPay
         
         return module
-    }
-    
-    private func combineTime(_ time: WorkTime) -> Int {
-        let result = (time.hour * 60) + time.min
-        return result
     }
 }

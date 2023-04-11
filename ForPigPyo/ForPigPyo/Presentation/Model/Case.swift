@@ -10,6 +10,7 @@ import Foundation
 
 typealias WorkTime = (hour: Int, min: Int)
 typealias OnWorkTime = (WorkTime) -> Void
+typealias CallBack = () -> Void
 
 // 세금 유형
 enum TaxCase: String, CaseIterable {

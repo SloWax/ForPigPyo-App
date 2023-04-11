@@ -197,6 +197,10 @@ class PunchInVM: BaseVM {
                 if let data = data { DataManager.shared.delete(data) }
                 
                 DataManager.shared.create(attendance)
+                
+                if let userID = UserInfoManager.shared.getLogin() {
+                    FirebaseManager.shared.uploadDocument(userID)
+                }
             }.bind(to: self.output.bindSave)
             .disposed(by: bag)
     }

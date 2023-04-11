@@ -16,6 +16,8 @@ class BaseVM {
     }
     
     var bag = DisposeBag()
+    let error = PublishRelay<Error>()
+    let toast = PublishRelay<String>()
     
     // parser
     func task<T: Codable>(_ type: T.Type, data: Data?, success: (T) -> Void) {

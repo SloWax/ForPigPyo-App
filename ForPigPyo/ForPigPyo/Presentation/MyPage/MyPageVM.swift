@@ -54,7 +54,7 @@ class MyPageVM: BaseVM {
         
         self.input
             .bindMenu
-            .filter { $0 == .backup ? !UserInfoManager.shared.getLogin().isNil : true }
+            .filter { $0 == .backup ? UserInfoManager.shared.getLogin().isNil : true }
             .bind(to: self.output.bindMenu)
             .disposed(by: bag)
         

@@ -95,6 +95,14 @@ class MyPageVC: BaseMainVC {
             }.disposed(by: vm.bag)
         
         vm.output
+            .bindMyBackup
+            .bind { [weak self] isLogin in
+                guard let self = self else { return }
+                
+                self.myPageView.btnBackup.setValue(value: isLogin)
+            }.disposed(by: vm.bag)
+        
+        vm.output
             .bindMenu
             .bind { [weak self] menu in
                 guard let self = self else { return }
@@ -145,8 +153,8 @@ class MyPageVC: BaseMainVC {
     }
     
     private func setBackup() {
-//        let vc = LoginVC()
-//        
-//        self.presentVC(vc, modal: .formSheet)
+        let vc = LoginVC()
+        
+        self.presentVC(vc, modal: .formSheet)
     }
 }
