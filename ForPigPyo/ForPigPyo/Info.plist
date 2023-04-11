@@ -28,8 +28,7 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>BMHANNA_11yrs_otf.otf</string>
-		<string>BMHANNAAir_otf.otf</string>
+		<string>NotoSansCJKkr-Regular.otf</string>
 		<string>NotoSansCJKkr-Black.otf</string>
 		<string>NotoSansCJKkr-Bold.otf</string>
 		<string>NotoSansCJKkr-Medium.otf</string>
@@ -53,5 +52,13 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>adMobBanner</key>
+	<string>ca-app-pub-1495831513834989/6549745688</string>
+	<key>adMobBannerDebug</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>adMobfull</key>
+	<string>ca-app-pub-1495831513834989/2874709656</string>
+	<key>adMobfullDebug</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
 </dict>
 </plist>
