@@ -87,6 +87,7 @@ final class PyoMyMenuButton: UIButton {
         $0.text = "미설정"
         $0.textColor = .setCustomColor(.gray10)
         $0.font = .setCustomFont(font: .bold, size: 20)
+        $0.textAlignment = .right
     }
     
     override init(frame: CGRect) {
@@ -114,12 +115,14 @@ final class PyoMyMenuButton: UIButton {
             $0.height.equalTo(ivImage.snp.width)
         }
         
+        lblTitle.setContentCompressionResistancePriority(.required, for: .horizontal)
         lblTitle.snp.makeConstraints {
             $0.left.equalTo(ivImage.snp.right).offset(15)
             $0.centerY.equalTo(ivImage.snp.centerY)
         }
         
         lblValue.snp.makeConstraints {
+            $0.left.equalTo(lblTitle.snp.right).offset(5)
             $0.right.equalTo(self).inset(15)
             $0.centerY.equalTo(self)
         }
