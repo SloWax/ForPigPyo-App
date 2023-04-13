@@ -66,6 +66,7 @@ class PunchInContainerButton: UIButton {
     }
     
     private func setLayout() {
+        lblTitle.setContentCompressionResistancePriority(.required, for: .horizontal)
         lblTitle.snp.makeConstraints { make in
             make.centerY.equalTo(self)
             make.left.equalTo(self).inset(15)
@@ -78,6 +79,7 @@ class PunchInContainerButton: UIButton {
         
         lblCenterValue.snp.makeConstraints { make in
             make.centerY.equalTo(self)
+            make.left.equalTo(lblTitle.snp.right).offset(5)
             make.right.equalTo(lblCenterUnit.snp.left).offset(-5)
         }
         
@@ -120,5 +122,10 @@ class PunchInContainerButton: UIButton {
         if let value = rightUnit {
             lblRightUnit.text = value
         }
+        
+        guard centerUnit.isNil, centerValue.isNil else { return }
+        
+        lblCenterValue.removeFromSuperview()
+        lblCenterUnit.removeFromSuperview()
     }
 }

@@ -21,7 +21,7 @@ class LoginView: BaseView {
     
     private let lblTitle = UILabel().then {
         $0.font = .setCustomFont(font: .black, size: 26)
-        $0.attributedText = "모두의 앱 로그인".underLine
+        $0.attributedText = "동기화 로그인".underLine
     }
     
     let btnApple = ASAuthorizationAppleIDButton()

@@ -56,6 +56,7 @@ class UserInfoManager: NSObject {
             .disposed(by: bag)
         
         self.tax
+            .map { $0.rawValue }
             .bind { [weak self] in self?.setUserDefaults($0, key: .tax) }
             .disposed(by: bag)
         
