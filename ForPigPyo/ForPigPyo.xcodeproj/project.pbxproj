@@ -48,9 +48,12 @@
 		6E26B3A025B83B190025C998 /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E26B39F25B83B190025C998 /* Extension+String.swift */; };
 		6E2A807025BC29C800D4B80B /* Extension+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2A806F25BC29C800D4B80B /* Extension+Date.swift */; };
 		6E4B8B3825E381D400B3AF09 /* ForPigPyoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8CFFE6255175390002D202 /* ForPigPyoTests.swift */; };
-		6E5236E429C9B4890065022B /* NotoSansCJKkr-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6E5236E329C9B4890065022B /* NotoSansCJKkr-Regular.otf */; };
 		6E5236E729CB0BCC0065022B /* BaseMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5236E629CB0BCC0065022B /* BaseMainVC.swift */; };
 		6E5236E929CB0BDE0065022B /* BaseSceneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5236E829CB0BDE0065022B /* BaseSceneVC.swift */; };
+		6E56AE2C29ED8DF300A94A35 /* NotoSansKR-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6E56AE2829ED8DF200A94A35 /* NotoSansKR-Black.otf */; };
+		6E56AE2D29ED8DF300A94A35 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6E56AE2929ED8DF300A94A35 /* NotoSansKR-Regular.otf */; };
+		6E56AE2E29ED8DF300A94A35 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6E56AE2A29ED8DF300A94A35 /* NotoSansKR-Bold.otf */; };
+		6E56AE2F29ED8DF300A94A35 /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6E56AE2B29ED8DF300A94A35 /* NotoSansKR-Medium.otf */; };
 		6E6529F629DF34C600A71164 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6529F529DF34C600A71164 /* DataManager.swift */; };
 		6E6529F829E39A7C00A71164 /* BackupDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6529F729E39A7C00A71164 /* BackupDto.swift */; };
 		6E6529FA29E39B5200A71164 /* AttendanceDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6529F929E39B5200A71164 /* AttendanceDto.swift */; };
@@ -79,9 +82,6 @@
 		6EB2950129DDF0B3004C7AD4 /* OnlyDayModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB2950029DDF0B3004C7AD4 /* OnlyDayModalVC.swift */; };
 		6EB2950329DDF0C1004C7AD4 /* OnlyDayModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB2950229DDF0C1004C7AD4 /* OnlyDayModalView.swift */; };
 		6EB2950529DDF0CC004C7AD4 /* OnlyDayModalVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB2950429DDF0CC004C7AD4 /* OnlyDayModalVM.swift */; };
-		6EC70C9525B2A337004D1900 /* NotoSansCJKkr-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6EC70C9325B2A336004D1900 /* NotoSansCJKkr-Bold.otf */; };
-		6EC70C9625B2A337004D1900 /* NotoSansCJKkr-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6EC70C9425B2A337004D1900 /* NotoSansCJKkr-Black.otf */; };
-		6EC70C9B25B2D461004D1900 /* NotoSansCJKkr-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6EC70C9A25B2D461004D1900 /* NotoSansCJKkr-Medium.otf */; };
 		6ED0728625529266000EE881 /* MainTC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED0728525529266000EE881 /* MainTC.swift */; };
 		6ED072982552934A000EE881 /* MyPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED072972552934A000EE881 /* MyPageVC.swift */; };
 /* End PBXBuildFile section */
@@ -144,9 +144,12 @@
 		6E26B38E25B6865F0025C998 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		6E26B39F25B83B190025C998 /* Extension+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
 		6E2A806F25BC29C800D4B80B /* Extension+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Date.swift"; sourceTree = "<group>"; };
-		6E5236E329C9B4890065022B /* NotoSansCJKkr-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansCJKkr-Regular.otf"; path = "../../../../../../기획/font/NotoSansCJKkr/NotoSansCJKkr-Regular.otf"; sourceTree = "<group>"; };
 		6E5236E629CB0BCC0065022B /* BaseMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMainVC.swift; sourceTree = "<group>"; };
 		6E5236E829CB0BDE0065022B /* BaseSceneVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSceneVC.swift; sourceTree = "<group>"; };
+		6E56AE2829ED8DF200A94A35 /* NotoSansKR-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Black.otf"; sourceTree = "<group>"; };
+		6E56AE2929ED8DF300A94A35 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
+		6E56AE2A29ED8DF300A94A35 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
+		6E56AE2B29ED8DF300A94A35 /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
 		6E6529F529DF34C600A71164 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		6E6529F729E39A7C00A71164 /* BackupDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupDto.swift; sourceTree = "<group>"; };
 		6E6529F929E39B5200A71164 /* AttendanceDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceDto.swift; sourceTree = "<group>"; };
@@ -183,9 +186,6 @@
 		6EB2950029DDF0B3004C7AD4 /* OnlyDayModalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyDayModalVC.swift; sourceTree = "<group>"; };
 		6EB2950229DDF0C1004C7AD4 /* OnlyDayModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyDayModalView.swift; sourceTree = "<group>"; };
 		6EB2950429DDF0CC004C7AD4 /* OnlyDayModalVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyDayModalVM.swift; sourceTree = "<group>"; };
-		6EC70C9325B2A336004D1900 /* NotoSansCJKkr-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Bold.otf"; sourceTree = "<group>"; };
-		6EC70C9425B2A337004D1900 /* NotoSansCJKkr-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Black.otf"; sourceTree = "<group>"; };
-		6EC70C9A25B2D461004D1900 /* NotoSansCJKkr-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Medium.otf"; sourceTree = "<group>"; };
 		6ED0728525529266000EE881 /* MainTC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTC.swift; sourceTree = "<group>"; };
 		6ED072972552934A000EE881 /* MyPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageVC.swift; sourceTree = "<group>"; };
 		988121FD4A72D1E2116922D2 /* Pods-ForPigPyo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ForPigPyo.debug.xcconfig"; path = "Target Support Files/Pods-ForPigPyo/Pods-ForPigPyo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -419,10 +419,10 @@
 		6E26B38225B553A60025C998 /* Font */ = {
 			isa = PBXGroup;
 			children = (
-				6EC70C9425B2A337004D1900 /* NotoSansCJKkr-Black.otf */,
-				6EC70C9325B2A336004D1900 /* NotoSansCJKkr-Bold.otf */,
-				6EC70C9A25B2D461004D1900 /* NotoSansCJKkr-Medium.otf */,
-				6E5236E329C9B4890065022B /* NotoSansCJKkr-Regular.otf */,
+				6E56AE2829ED8DF200A94A35 /* NotoSansKR-Black.otf */,
+				6E56AE2A29ED8DF300A94A35 /* NotoSansKR-Bold.otf */,
+				6E56AE2B29ED8DF300A94A35 /* NotoSansKR-Medium.otf */,
+				6E56AE2929ED8DF300A94A35 /* NotoSansKR-Regular.otf */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -689,13 +689,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E56AE2F29ED8DF300A94A35 /* NotoSansKR-Medium.otf in Resources */,
+				6E56AE2E29ED8DF300A94A35 /* NotoSansKR-Bold.otf in Resources */,
+				6E56AE2C29ED8DF300A94A35 /* NotoSansKR-Black.otf in Resources */,
 				6E8CFFDC255175380002D202 /* LaunchScreen.storyboard in Resources */,
 				6E83A86425E3580B009561E2 /* GoogleService-Info.plist in Resources */,
-				6EC70C9B25B2D461004D1900 /* NotoSansCJKkr-Medium.otf in Resources */,
-				6EC70C9525B2A337004D1900 /* NotoSansCJKkr-Bold.otf in Resources */,
-				6E5236E429C9B4890065022B /* NotoSansCJKkr-Regular.otf in Resources */,
+				6E56AE2D29ED8DF300A94A35 /* NotoSansKR-Regular.otf in Resources */,
 				3447A93B287EABFF003D1B0D /* Colors.xcassets in Resources */,
-				6EC70C9625B2A337004D1900 /* NotoSansCJKkr-Black.otf in Resources */,
 				6E8CFFD9255175380002D202 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

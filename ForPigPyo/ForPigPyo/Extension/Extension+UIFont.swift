@@ -17,9 +17,9 @@ extension UIFont {
     
     // 폰트 굵기
     enum Name: String {
-        case black   = "NotoSansCJKkr-Black"
-        case bold    = "NotoSansCJKkr-Bold"
-        case medium  = "NotoSansCJKkr-Medium"
-        case regular = "NotoSansCJKkr-Regular"
+        case black   = "NotoSansKR-Black"
+        case bold    = "NotoSansKR-Bold"
+        case medium  = "NotoSansKR-Medium"
+        case regular = "NotoSansKR-Regular"
     }
 }

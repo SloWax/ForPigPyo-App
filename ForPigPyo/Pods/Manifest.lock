@@ -212,7 +212,6 @@ PODS:
     - abseil/base/base_internal
     - abseil/base/config
     - abseil/meta/type_traits
-  - Alamofire (5.5.0)
   - BoringSSL-GRPC (0.0.7):
     - BoringSSL-GRPC/Implementation (= 0.0.7)
     - BoringSSL-GRPC/Interface (= 0.0.7)
@@ -328,11 +327,6 @@ PODS:
     - gRPC-Core/Interface (= 1.28.2)
   - gRPC-Core/Interface (1.28.2)
   - leveldb-library (1.22.1)
-  - Moya/Core (15.0.0):
-    - Alamofire (~> 5.0)
-  - Moya/RxSwift (15.0.0):
-    - Moya/Core
-    - RxSwift (~> 6.0)
   - nanopb (1.30906.0):
     - nanopb/decode (= 1.30906.0)
     - nanopb/encode (= 1.30906.0)
@@ -369,19 +363,18 @@ DEPENDENCIES:
   - Firebase/Crashlytics
   - Firebase/Firestore
   - FirebaseFirestoreSwift
-  - Moya/RxSwift (~> 15.0.0)
   - RealmSwift (~> 10)
-  - RxCocoa (~> 6.2.0)
-  - RxDataSources (~> 5.0)
-  - RxGesture (~> 4.0.2)
+  - RxCocoa
+  - RxDataSources
+  - RxGesture
   - RxOptional
+  - RxSwift
   - SnapKit (~> 5.0.0)
   - Then
 
 SPEC REPOS:
   trunk:
     - abseil
-    - Alamofire
     - BoringSSL-GRPC
     - Differentiator
     - Firebase
@@ -398,7 +391,6 @@ SPEC REPOS:
     - "gRPC-C++"
     - gRPC-Core
     - leveldb-library
-    - Moya
     - nanopb
     - PromisesObjC
     - Realm
@@ -414,7 +406,6 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
-  Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
   Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
   Firebase: c23a36d9e4cdf7877dfcba8dd0c58add66358999
@@ -431,7 +422,6 @@ SPEC CHECKSUMS:
   "gRPC-C++": 13d8ccef97d5c3c441b7e3c529ef28ebee86fad2
   gRPC-Core: 4afa11bfbedf7cdecd04de535a9e046893404ed5
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
-  Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   Realm: 1a6e9b4f6983711655d8c0bcb6d2d29c3afbb1f3
@@ -445,6 +435,6 @@ SPEC CHECKSUMS:
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
 
-PODFILE CHECKSUM: a2b2c8977e497a23c8f4b0ab6e49c30098d7bede
+PODFILE CHECKSUM: ea5e57002f76f191eb1272b60ea76f2f267792a7
 
 COCOAPODS: 1.11.2
