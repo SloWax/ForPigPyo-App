@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '13.0'
+ platform :ios, '13.0'
 
 # [Xcodeproj] Generated duplicate UUIDs 제거
 install!'cocoapods',:deterministic_uuids=>false
@@ -19,13 +19,13 @@ def available_pods
   # Pods for ForPigPyo
   
   #Rx
-  pod 'Moya/RxSwift', '~> 15.0.0'
-  pod 'RxCocoa', '~> 6.2.0'
-  pod 'RxGesture', '~> 4.0.2'
-  pod 'RxDataSources', '~> 5.0'
+  pod 'RxSwift'
+  pod 'RxCocoa'
+  pod 'RxGesture'
+  pod 'RxDataSources'
   pod 'RxOptional'
   
-  #util
+  #Util
   pod 'Then'
   pod 'SnapKit', '~> 5.0.0'
   pod 'RealmSwift', '~> 10'
