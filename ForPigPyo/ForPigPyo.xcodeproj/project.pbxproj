@@ -40,7 +40,6 @@
 		34E3931728894CDA00552616 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E3931428894CDA00552616 /* BaseVC.swift */; };
 		34E3931828894CDA00552616 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E3931528894CDA00552616 /* BaseView.swift */; };
 		34E3931A28894D1F00552616 /* Paser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E3931928894D1F00552616 /* Paser.swift */; };
-		34E3931C28895DA700552616 /* Snippets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E3931B28895DA700552616 /* Snippets.swift */; };
 		6E13DB9A25E2D46B004FFF8F /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E13DB9925E2D46B004FFF8F /* LoginVC.swift */; };
 		6E13DBA925E2EBDB004FFF8F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E13DBA825E2EBDB004FFF8F /* LoginView.swift */; };
 		6E1A4B1829CC4B49004E4D6D /* TimeCardVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1A4B1729CC4B49004E4D6D /* TimeCardVM.swift */; };
@@ -118,7 +117,6 @@
 		34E3931428894CDA00552616 /* BaseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		34E3931528894CDA00552616 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		34E3931928894D1F00552616 /* Paser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paser.swift; sourceTree = "<group>"; };
-		34E3931B28895DA700552616 /* Snippets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Snippets.swift; sourceTree = "<group>"; };
 		6E13DB9925E2D46B004FFF8F /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		6E13DBA825E2EBDB004FFF8F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		6E1A4B1729CC4B49004E4D6D /* TimeCardVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCardVM.swift; sourceTree = "<group>"; };
@@ -203,7 +201,6 @@
 		3447A921287EA51D003D1B0D /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				34E3931B28895DA700552616 /* Snippets.swift */,
 				6E83A82F25E2F7B5009561E2 /* ForPigPyo.entitlements */,
 				6E8CFFD8255175380002D202 /* Assets.xcassets */,
 				3447A93A287EABFF003D1B0D /* Colors.xcassets */,
@@ -722,7 +719,6 @@
 				6E65872029D5D9CD00A7B568 /* TimeCardView.swift in Sources */,
 				34DCEB3028A4EF0A00CD9545 /* Extension+Int.swift in Sources */,
 				6E8EDAEA29E58F3700A842D9 /* TwoTapModalView.swift in Sources */,
-				34E3931C28895DA700552616 /* Snippets.swift in Sources */,
 				34D3DD0F28992E0900D29433 /* WorkTimeModalVM.swift in Sources */,
 				6E6529FC29E39CBA00A71164 /* FirebaseManager.swift in Sources */,
 				34E3931828894CDA00552616 /* BaseView.swift in Sources */,
