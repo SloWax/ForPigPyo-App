@@ -47,7 +47,6 @@
 		6E26B38F25B6865F0025C998 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E26B38E25B6865F0025C998 /* PaddingLabel.swift */; };
 		6E26B3A025B83B190025C998 /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E26B39F25B83B190025C998 /* Extension+String.swift */; };
 		6E2A807025BC29C800D4B80B /* Extension+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2A806F25BC29C800D4B80B /* Extension+Date.swift */; };
-		6E4B8B3825E381D400B3AF09 /* ForPigPyoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8CFFE6255175390002D202 /* ForPigPyoTests.swift */; };
 		6E5236E729CB0BCC0065022B /* BaseMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5236E629CB0BCC0065022B /* BaseMainVC.swift */; };
 		6E5236E929CB0BDE0065022B /* BaseSceneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5236E829CB0BDE0065022B /* BaseSceneVC.swift */; };
 		6E56AE2C29ED8DF300A94A35 /* NotoSansKR-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6E56AE2829ED8DF200A94A35 /* NotoSansKR-Black.otf */; };
@@ -73,7 +72,6 @@
 		6E8CFFD7255175350002D202 /* ForPigPyo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6E8CFFD5255175350002D202 /* ForPigPyo.xcdatamodeld */; };
 		6E8CFFD9255175380002D202 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E8CFFD8255175380002D202 /* Assets.xcassets */; };
 		6E8CFFDC255175380002D202 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E8CFFDA255175380002D202 /* LaunchScreen.storyboard */; };
-		6E8CFFF2255175390002D202 /* ForPigPyoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8CFFF1255175390002D202 /* ForPigPyoUITests.swift */; };
 		6E8EDAE829E58F2B00A842D9 /* TwoTapModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8EDAE729E58F2B00A842D9 /* TwoTapModalVC.swift */; };
 		6E8EDAEA29E58F3700A842D9 /* TwoTapModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8EDAE929E58F3700A842D9 /* TwoTapModalView.swift */; };
 		6EAF7A7925BC619200F91A39 /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAF7A7825BC619200F91A39 /* MyPageView.swift */; };
@@ -85,23 +83,6 @@
 		6ED0728625529266000EE881 /* MainTC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED0728525529266000EE881 /* MainTC.swift */; };
 		6ED072982552934A000EE881 /* MyPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED072972552934A000EE881 /* MyPageVC.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		6E8CFFE3255175390002D202 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6E8CFFC1255175350002D202 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6E8CFFC8255175350002D202;
-			remoteInfo = ForPigPyo;
-		};
-		6E8CFFEE255175390002D202 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6E8CFFC1255175350002D202 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6E8CFFC8255175350002D202;
-			remoteInfo = ForPigPyo;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		276F60824C1B64E8022B38B9 /* Pods_ForPigPyo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ForPigPyo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -172,12 +153,6 @@
 		6E8CFFD8255175380002D202 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6E8CFFDB255175380002D202 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6E8CFFDD255175380002D202 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6E8CFFE2255175390002D202 /* ForPigPyoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ForPigPyoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6E8CFFE6255175390002D202 /* ForPigPyoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForPigPyoTests.swift; sourceTree = "<group>"; };
-		6E8CFFE8255175390002D202 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6E8CFFED255175390002D202 /* ForPigPyoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ForPigPyoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6E8CFFF1255175390002D202 /* ForPigPyoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForPigPyoUITests.swift; sourceTree = "<group>"; };
-		6E8CFFF3255175390002D202 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6E8EDAE729E58F2B00A842D9 /* TwoTapModalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoTapModalVC.swift; sourceTree = "<group>"; };
 		6E8EDAE929E58F3700A842D9 /* TwoTapModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoTapModalView.swift; sourceTree = "<group>"; };
 		6EAF7A7825BC619200F91A39 /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
@@ -198,20 +173,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D109DF815DAD86FA08A5A10 /* Pods_ForPigPyo.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6E8CFFDF255175390002D202 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6E8CFFEA255175390002D202 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,8 +439,6 @@
 			isa = PBXGroup;
 			children = (
 				6E8CFFCB255175350002D202 /* ForPigPyo */,
-				6E8CFFE5255175390002D202 /* ForPigPyoTests */,
-				6E8CFFF0255175390002D202 /* ForPigPyoUITests */,
 				6E8CFFCA255175350002D202 /* Products */,
 				4DAD3C0F9256E88523BAE64B /* Pods */,
 				84C97652D9798BA21C547D24 /* Frameworks */,
@@ -490,8 +449,6 @@
 			isa = PBXGroup;
 			children = (
 				6E8CFFC9255175350002D202 /* ForPigPyo.app */,
-				6E8CFFE2255175390002D202 /* ForPigPyoTests.xctest */,
-				6E8CFFED255175390002D202 /* ForPigPyoUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -509,24 +466,6 @@
 				3447A921287EA51D003D1B0D /* Resource */,
 			);
 			path = ForPigPyo;
-			sourceTree = "<group>";
-		};
-		6E8CFFE5255175390002D202 /* ForPigPyoTests */ = {
-			isa = PBXGroup;
-			children = (
-				6E8CFFE6255175390002D202 /* ForPigPyoTests.swift */,
-				6E8CFFE8255175390002D202 /* Info.plist */,
-			);
-			path = ForPigPyoTests;
-			sourceTree = "<group>";
-		};
-		6E8CFFF0255175390002D202 /* ForPigPyoUITests */ = {
-			isa = PBXGroup;
-			children = (
-				6E8CFFF1255175390002D202 /* ForPigPyoUITests.swift */,
-				6E8CFFF3255175390002D202 /* Info.plist */,
-			);
-			path = ForPigPyoUITests;
 			sourceTree = "<group>";
 		};
 		6E8EDAE629E58F1000A842D9 /* TwoTapModal */ = {
@@ -605,42 +544,6 @@
 			productReference = 6E8CFFC9255175350002D202 /* ForPigPyo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6E8CFFE1255175390002D202 /* ForPigPyoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6E8CFFF9255175390002D202 /* Build configuration list for PBXNativeTarget "ForPigPyoTests" */;
-			buildPhases = (
-				6E8CFFDE255175390002D202 /* Sources */,
-				6E8CFFDF255175390002D202 /* Frameworks */,
-				6E8CFFE0255175390002D202 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				6E8CFFE4255175390002D202 /* PBXTargetDependency */,
-			);
-			name = ForPigPyoTests;
-			productName = ForPigPyoTests;
-			productReference = 6E8CFFE2255175390002D202 /* ForPigPyoTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		6E8CFFEC255175390002D202 /* ForPigPyoUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6E8CFFFC255175390002D202 /* Build configuration list for PBXNativeTarget "ForPigPyoUITests" */;
-			buildPhases = (
-				6E8CFFE9255175390002D202 /* Sources */,
-				6E8CFFEA255175390002D202 /* Frameworks */,
-				6E8CFFEB255175390002D202 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				6E8CFFEF255175390002D202 /* PBXTargetDependency */,
-			);
-			name = ForPigPyoUITests;
-			productName = ForPigPyoUITests;
-			productReference = 6E8CFFED255175390002D202 /* ForPigPyoUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -653,14 +556,6 @@
 				TargetAttributes = {
 					6E8CFFC8255175350002D202 = {
 						CreatedOnToolsVersion = 12.1;
-					};
-					6E8CFFE1255175390002D202 = {
-						CreatedOnToolsVersion = 12.1;
-						TestTargetID = 6E8CFFC8255175350002D202;
-					};
-					6E8CFFEC255175390002D202 = {
-						CreatedOnToolsVersion = 12.1;
-						TestTargetID = 6E8CFFC8255175350002D202;
 					};
 				};
 			};
@@ -678,8 +573,6 @@
 			projectRoot = "";
 			targets = (
 				6E8CFFC8255175350002D202 /* ForPigPyo */,
-				6E8CFFE1255175390002D202 /* ForPigPyoTests */,
-				6E8CFFEC255175390002D202 /* ForPigPyoUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -697,20 +590,6 @@
 				6E56AE2D29ED8DF300A94A35 /* NotoSansKR-Regular.otf in Resources */,
 				3447A93B287EABFF003D1B0D /* Colors.xcassets in Resources */,
 				6E8CFFD9255175380002D202 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6E8CFFE0255175390002D202 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6E8CFFEB255175390002D202 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -851,36 +730,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6E8CFFDE255175390002D202 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6E4B8B3825E381D400B3AF09 /* ForPigPyoTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6E8CFFE9255175390002D202 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6E8CFFF2255175390002D202 /* ForPigPyoUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		6E8CFFE4255175390002D202 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 6E8CFFC8255175350002D202 /* ForPigPyo */;
-			targetProxy = 6E8CFFE3255175390002D202 /* PBXContainerItemProxy */;
-		};
-		6E8CFFEF255175390002D202 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 6E8CFFC8255175350002D202 /* ForPigPyo */;
-			targetProxy = 6E8CFFEE255175390002D202 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		6E8CFFDA255175380002D202 /* LaunchScreen.storyboard */ = {
@@ -1018,7 +868,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ForPigPyo/ForPigPyo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 489;
+				CURRENT_PROJECT_VERSION = 490;
 				DEVELOPMENT_TEAM = 3799SNND63;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1036,7 +886,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2.0;
+				MARKETING_VERSION = 2.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = SloWax.ForPigPyo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1055,7 +905,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ForPigPyo/ForPigPyo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 489;
+				CURRENT_PROJECT_VERSION = 490;
 				DEVELOPMENT_TEAM = 3799SNND63;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1073,7 +923,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2.0;
+				MARKETING_VERSION = 2.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = SloWax.ForPigPyo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1081,92 +931,6 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Release;
-		};
-		6E8CFFFA255175390002D202 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3799SNND63;
-				HEADER_SEARCH_PATHS = "${SRCROOT}/Pods/Firebase/CoreOnly/Sources";
-				INFOPLIST_FILE = ForPigPyoTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = individual.ForPigPyoTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ForPigPyo.app/ForPigPyo";
-			};
-			name = Debug;
-		};
-		6E8CFFFB255175390002D202 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3799SNND63;
-				HEADER_SEARCH_PATHS = "${SRCROOT}/Pods/Firebase/CoreOnly/Sources";
-				INFOPLIST_FILE = ForPigPyoTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = individual.ForPigPyoTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ForPigPyo.app/ForPigPyo";
-			};
-			name = Release;
-		};
-		6E8CFFFD255175390002D202 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3799SNND63;
-				INFOPLIST_FILE = ForPigPyoUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = individual.ForPigPyoUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ForPigPyo;
-			};
-			name = Debug;
-		};
-		6E8CFFFE255175390002D202 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3799SNND63;
-				INFOPLIST_FILE = ForPigPyoUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = individual.ForPigPyoUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ForPigPyo;
 			};
 			name = Release;
 		};
@@ -1187,24 +951,6 @@
 			buildConfigurations = (
 				6E8CFFF7255175390002D202 /* Debug */,
 				6E8CFFF8255175390002D202 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		6E8CFFF9255175390002D202 /* Build configuration list for PBXNativeTarget "ForPigPyoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6E8CFFFA255175390002D202 /* Debug */,
-				6E8CFFFB255175390002D202 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		6E8CFFFC255175390002D202 /* Build configuration list for PBXNativeTarget "ForPigPyoUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6E8CFFFD255175390002D202 /* Debug */,
-				6E8CFFFE255175390002D202 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
