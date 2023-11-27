@@ -82,7 +82,7 @@ class OnlyDayModalVC: BaseModalVC {
             .bind { [weak self] _ in
                 guard let self = self else { return }
                 
-                self.clearBag(vm: self.vm)
+                self.vm.clearBag()
                 self.dismiss(animated: false)
             }.disposed(by: bag)
         
@@ -123,7 +123,7 @@ class OnlyDayModalVC: BaseModalVC {
                     callBack(day)
                 }
 
-                self.clearBag(vm: self.vm)
+                self.vm.clearBag()
                 self.dismiss(animated: false)
             }.disposed(by: bag)
     }

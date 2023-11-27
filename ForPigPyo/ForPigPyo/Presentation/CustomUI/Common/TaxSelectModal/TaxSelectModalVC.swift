@@ -90,7 +90,7 @@ class TaxSelectModalVC: BaseModalVC {
             .bind { [weak self] _ in
                 guard let self = self else { return }
                 
-                self.clearBag(vm: self.vm)
+                self.vm.clearBag()
                 self.dismiss(animated: false)
             }.disposed(by: bag)
         
@@ -131,7 +131,7 @@ class TaxSelectModalVC: BaseModalVC {
                     callBack(tax)
                 }
 
-                self.clearBag(vm: self.vm)
+                self.vm.clearBag()
                 self.dismiss(animated: false)
             }.disposed(by: bag)
     }

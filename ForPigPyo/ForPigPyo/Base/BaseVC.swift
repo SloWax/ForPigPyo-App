@@ -29,8 +29,4 @@ class BaseVC: UIViewController {
         
         navigationItem.titleView = titleLabel
     }
-    
-    func clearBag(vm: BaseVM = BaseVM()) {
-        vm.clearBag()
-    }
 }
