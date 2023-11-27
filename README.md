@@ -7,7 +7,7 @@
 알바시간 개인화 계산 앱(예상급여, 공제액 계산)
 
 - 현재 ver. 2.2.0
-- 사용기술 : Swift, UIKit, RxSwift, Realm, Firebase
+- 사용기술 : Swift, UIKit, RxSwift, Realm, Firebase, SnapKit
 - AppStore : https://apps.apple.com/app/id1544430902
 
 <p align="center">

@@ -68,7 +68,7 @@ class LoginVC: BaseVC {
             .bind { [weak self] in
                 guard let self = self else { return }
                 
-                self.clearBag(vm: self.vm)
+                self.vm.clearBag()
                 self.dismiss(animated: true)
             }.disposed(by: vm.bag)
     }

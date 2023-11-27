@@ -187,7 +187,7 @@ class PunchInVC: BaseSceneVC {
             .bind { [weak self] in
                 guard let self = self else { return }
                 
-                self.clearBag(vm: self.vm)
+                self.vm.clearBag()
                 self.popVC()
             }.disposed(by: vm.bag)
     }
